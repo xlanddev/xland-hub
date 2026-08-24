@@ -1,0 +1,716 @@
+/* =========================================
+        XLAND SUPPORT 4.2
+        SUPPORT CENTER
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #111827,
+            #05070b 65%
+        );
+
+    color: white;
+
+    direction: rtl;
+
+}
+
+
+/* =========================================
+        PAGE
+========================================= */
+
+.support-page {
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================
+        HEADER
+========================================= */
+
+.support-header {
+
+    width: 100%;
+
+    padding: 20px 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(5,7,11,.75);
+
+    backdrop-filter:
+        blur(15px);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+
+.support-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.support-logo img {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 12px;
+
+}
+
+
+.support-logo h1 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.support-logo span {
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+}
+
+
+.back-home {
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border:
+        1px solid rgba(56,189,248,.35);
+
+    border-radius: 10px;
+
+    transition: .3s;
+
+}
+
+
+.back-home:hover {
+
+    background:
+        rgba(56,189,248,.12);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================
+        HERO
+========================================= */
+
+.support-hero {
+
+    padding:
+        90px 20px 70px;
+
+    text-align: center;
+
+}
+
+
+.hero-content {
+
+    max-width: 850px;
+
+    margin: auto;
+
+}
+
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(56,189,248,.08);
+
+    border:
+        1px solid rgba(56,189,248,.3);
+
+    color: #38bdf8;
+
+    font-size: 13px;
+
+}
+
+
+.support-hero h2 {
+
+    font-size:
+        clamp(32px, 6vw, 58px);
+
+    margin:
+        25px 0 15px;
+
+}
+
+
+.support-hero p {
+
+    color: #94a3b8;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+}
+
+
+/* =========================================
+        SEARCH
+========================================= */
+
+.support-search {
+
+    margin:
+        35px auto 0;
+
+    max-width: 650px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 5px 18px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+}
+
+
+.support-search input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 15px;
+
+}
+
+
+.support-search input::placeholder {
+
+    color: #64748b;
+
+}
+
+
+/* =========================================
+        SECTION
+========================================= */
+
+.support-section {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding:
+        40px 20px 80px;
+
+}
+
+
+.section-title {
+
+    text-align: center;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.section-subtitle {
+
+    text-align: center;
+
+    color: #64748b;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================================
+        GRID
+========================================= */
+
+.support-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.support-card {
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform .3s,
+        border .3s,
+        box-shadow .3s;
+
+}
+
+
+.support-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(56,189,248,.45);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.3);
+
+}
+
+
+.support-icon {
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.support-card h3 {
+
+    margin:
+        0 0 10px;
+
+    font-size: 21px;
+
+}
+
+
+.support-card p {
+
+    color: #94a3b8;
+
+    line-height: 1.8;
+
+    min-height: 75px;
+
+}
+
+
+.support-card button {
+
+    border: none;
+
+    cursor: pointer;
+
+    padding:
+        10px 15px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(56,189,248,.1);
+
+    color: #38bdf8;
+
+    transition: .3s;
+
+}
+
+
+.support-card button:hover {
+
+    background:
+        #38bdf8;
+
+    color: #020617;
+
+}
+
+
+/* =========================================
+        FORM
+========================================= */
+
+.support-form-section {
+
+    display: none;
+
+    padding:
+        50px 20px 100px;
+
+}
+
+
+.support-form-section.active {
+
+    display: block;
+
+}
+
+
+.form-container {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(15,23,42,.85);
+
+    border:
+        1px solid rgba(56,189,248,.2);
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,.4);
+
+}
+
+
+.form-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.form-header span {
+
+    color: #38bdf8;
+
+    font-size: 12px;
+
+}
+
+
+.form-header h2 {
+
+    margin:
+        5px 0 0;
+
+}
+
+
+.close-form {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: white;
+
+    font-size: 18px;
+
+}
+
+
+#supportForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+#supportForm label {
+
+    margin-top: 8px;
+
+    color: #cbd5e1;
+
+}
+
+
+#supportForm input,
+#supportForm textarea {
+
+    width: 100%;
+
+    border: 1px solid
+        rgba(255,255,255,.1);
+
+    outline: none;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    padding: 14px;
+
+    font-size: 14px;
+
+}
+
+
+#supportForm textarea {
+
+    min-height: 150px;
+
+    resize: vertical;
+
+}
+
+
+#supportForm input:focus,
+#supportForm textarea:focus {
+
+    border-color:
+        #38bdf8;
+
+}
+
+
+.submit-support {
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #6366f1
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+        RESULT
+========================================= */
+
+.support-result {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    display: none;
+
+}
+
+
+.support-result.success {
+
+    display: block;
+
+    background:
+        rgba(34,197,94,.1);
+
+    border:
+        1px solid rgba(34,197,94,.3);
+
+    color: #86efac;
+
+}
+
+
+/* =========================================
+        FOOTER
+========================================= */
+
+.support-footer {
+
+    text-align: center;
+
+    padding:
+        50px 20px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    color: #64748b;
+
+}
+
+
+.support-footer h3 {
+
+    color: white;
+
+}
+
+
+.support-footer a {
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================
+        MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .support-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .support-header {
+
+        padding:
+            15px 20px;
+
+    }
+
+    .support-logo h1 {
+
+        font-size: 15px;
+
+    }
+
+    .back-home {
+
+        font-size: 12px;
+
+        padding:
+            8px 12px;
+
+    }
+
+}

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XLAND API</title>
+
+<link rel="icon" href="xland-icon.png">
+
+<link rel="stylesheet" href="api.css">
+
+<link rel="stylesheet" href="loader.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     Account
+========================================= -->
+
+<div class="account-box">
+
+    <button id="accountBtn" class="signin-btn">
+        👤 Sign In
+    </button>
+
+    <div id="profileMenu" class="profile-menu">
+
+        <a href="apikey.html">
+            🔑 API Keys
+        </a>
+
+        <button id="logoutBtn">
+            🚪 Log Out
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     Loader
+========================================= -->
+
+<!-- =========================================
+     XLAND SUPPORT 4.2 LOADER
+========================================= -->
+
+<div id="loader">
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- =========================================
+     Hero
+========================================= -->
+
+<header class="hero">
+
+    <div class="hero-badge">
+        ⚡ XLAND DEVELOPER PLATFORM
+    </div>
+
+
+    <div class="api-logo">
+        🌍
+    </div>
+
+
+    <h1>
+        XLAND API
+    </h1>
+
+
+    <p>
+        Build powerful applications with XLAND API
+    </p>
+
+
+    <p class="hero-subtitle">
+        Fast • Secure • Reliable • Developer Friendly
+    </p>
+
+
+    <div class="live-status">
+
+        <span class="status-dot"></span>
+
+        API SYSTEM ONLINE
+
+    </div>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#plans"
+            class="btn"
+        >
+            🚀 Get Started
+        </a>
+
+
+        <a
+            href="#docs"
+            class="btn secondary-btn"
+        >
+            📚 Documentation
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     Live API Status
+========================================= -->
+
+<section class="api-status">
+
+
+    <div class="status-card">
+
+        <div class="icon">
+            🟢
+        </div>
+
+        <h3>
+            ONLINE
+        </h3>
+
+        <p>
+            System Status
+        </p>
+
+        <strong class="status-value">
+            Operational
+        </strong>
+
+    </div>
+
+
+    <div class="status-card">
+
+        <div class="icon">
+            1.0
+        </div>
+
+        <h3>
+            VERSION
+        </h3>
+
+        <p>
+            Current Release
+        </p>
+
+        <strong class="status-value">
+            v1.0
+        </strong>
+
+    </div>
+
+
+    <div class="status-card">
+
+        <div class="icon">
+            🌍
+        </div>
+
+        <h3>
+            REST API
+        </h3>
+
+        <p>
+            Architecture
+        </p>
+
+        <strong class="status-value">
+            REST
+        </strong>
+
+    </div>
+
+
+    <div class="status-card">
+
+        <div class="icon">
+            { }
+        </div>
+
+        <h3>
+            JSON
+        </h3>
+
+        <p>
+            Response Format
+        </p>
+
+        <strong class="status-value">
+            JSON
+        </strong>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+     API Statistics
+========================================= -->
+
+<section class="statistics">
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            📤
+        </span>
+
+        <div>
+
+            <strong>
+                1,284
+            </strong>
+
+            <p>
+                Requests
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            📥
+        </span>
+
+        <div>
+
+            <strong>
+                1,276
+            </strong>
+
+            <p>
+                Responses
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            ⚡
+        </span>
+
+        <div>
+
+            <strong>
+                42ms
+            </strong>
+
+            <p>
+                Avg Response
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            ⏱️
+        </span>
+
+        <div>
+
+            <strong>
+                99.9%
+            </strong>
+
+            <p>
+                Uptime
+            </p>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+     Features
+========================================= -->
+
+<section class="features">
+
+    <div class="section-title">
+        <span>PLATFORM</span>
+
+        <h2>⚡ Powerful API Features</h2>
+
+        <p>Everything you need to build with XLAND.</p>
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Fast</h3>
+
+            <p>Fast API responses.</p>
+
+        </div>
+
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">🔒</div>
+
+            <h3>Secure</h3>
+
+            <p>Protected API access.</p>
+
+        </div>
+
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">🌐</div>
+
+            <h3>REST API</h3>
+
+            <p>Simple REST architecture.</p>
+
+        </div>
+
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">📄</div>
+
+            <h3>JSON</h3>
+
+            <p>Clean JSON responses.</p>
+
+        </div>
+
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">🧩</div>
+
+            <h3>Easy Integration</h3>
+
+            <p>Simple application setup.</p>
+
+        </div>
+
+
+        <div class="card feature-card">
+
+            <div class="feature-icon">📈</div>
+
+            <h3>Scalable</h3>
+
+            <p>Ready to grow with XLAND.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     Documentation
+========================================= -->
+
+<section
+    id="docs"
+    class="docs"
+>
+
+
+    <div class="section-title">
+
+        <span>
+            DEVELOPER DOCS
+        </span>
+
+        <h2>
+            📚 Documentation
+        </h2>
+
+        <p>
+            Learn how to connect your application with XLAND API.
+        </p>
+
+    </div>
+
+
+    <div class="docs-panel">
+
+
+        <div class="docs-item">
+
+            <div>
+
+                <strong>
+                    🚀 Getting Started
+                </strong>
+
+                <p>
+                    Start using XLAND API in your application.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </div>
+
+
+        <div class="docs-item">
+
+            <div>
+
+                <strong>
+                    🔑 Authentication
+                </strong>
+
+                <p>
+                    Learn how API authentication works.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </div>
+
+
+        <div class="docs-item">
+
+            <div>
+
+                <strong>
+                    📡 Endpoints
+                </strong>
+
+                <p>
+                    Explore available XLAND API endpoints.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </div>
+
+
+        <div class="docs-item">
+
+            <div>
+
+                <strong>
+                    🛡️ Security
+                </strong>
+
+                <p>
+                    Learn about secure API usage.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <button id="docsBtn">
+        📚 Read Documentation
+    </button>
+
+
+</section>
+
+
+<!-- =========================================
+     API Endpoints
+========================================= -->
+
+<section
+    id="endpoints"
+    class="example"
+>
+
+
+    <div class="section-title">
+
+        <span>
+            API REFERENCE
+        </span>
+
+        <h2>
+            💻 API Endpoints
+        </h2>
+
+        <p>
+            Example requests and responses.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         GET /comments
+    ========================== -->
+
+    <div class="endpoint-card">
+
+
+        <div class="endpoint-header">
+
+            <div>
+
+                <span class="method get">
+                    GET
+                </span>
+
+                <strong>
+                    /comments
+                </strong>
+
+            </div>
+
+
+            <button
+                class="copy-btn"
+                data-copy="/comments"
+            >
+                📋 Copy
+            </button>
+
+        </div>
+
+
+        <pre><code>[
+    {
+        "username": "User",
+        "message": "Hello XLAND!"
+    }
+]</code></pre>
+
+
+    </div>
+
+
+    <!-- =========================
+         POST /comments
+    ========================== -->
+
+    <div class="endpoint-card">
+
+
+        <div class="endpoint-header">
+
+            <div>
+
+                <span class="method post">
+                    POST
+                </span>
+
+                <strong>
+                    /comments
+                </strong>
+
+            </div>
+
+
+            <button
+                class="copy-btn"
+                data-copy="/comments"
+            >
+                📋 Copy
+            </button>
+
+        </div>
+
+
+        <pre><code>{
+    "username": "User",
+    "message": "Hello!"
+}</code></pre>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+     Security
+========================================= -->
+
+<section class="security-section">
+
+
+    <div class="security-content">
+
+
+        <div class="security-icon">
+            🛡️
+        </div>
+
+
+        <span>
+            SECURITY
+        </span>
+
+
+        <h2>
+            Built With Security In Mind
+        </h2>
+
+
+        <p>
+            XLAND API is designed with secure communication,
+            input validation and protected API access in mind.
+        </p>
+
+
+        <div class="security-grid">
+
+
+            <div class="security-card">
+
+                <span class="security-card-icon">
+                    🔐
+                </span>
+
+                <strong>
+                    Secure Access
+                </strong>
+
+                <p>
+                    Protected API access and authentication.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <span class="security-card-icon">
+                    🧹
+                </span>
+
+                <strong>
+                    Input Protection
+                </strong>
+
+                <p>
+                    User input is handled with security in mind.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <span class="security-card-icon">
+                    🚫
+                </span>
+
+                <strong>
+                    Request Validation
+                </strong>
+
+                <p>
+                    API requests can be validated before processing.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <span class="security-card-icon">
+                    🛡️
+                </span>
+
+                <strong>
+                    Security Layer
+                </strong>
+
+                <p>
+                    Additional security controls help protect API usage.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+     Pricing
+========================================= -->
+
+<section id="plans">
+
+
+    <div class="section-title">
+
+        <span>
+            PLANS
+        </span>
+
+        <h2>
+            💰 Pricing Plans
+        </h2>
+
+        <p>
+            Choose the plan that fits your project.
+        </p>
+
+    </div>
+
+
+    <div class="plans">
+
+
+        <!-- =========================
+             Free
+        ========================== -->
+
+        <div class="plan free">
+
+
+            <div class="plan-badge">
+                STARTER
+            </div>
+
+
+            <h3>
+                🟢 Free
+            </h3>
+
+
+            <div class="price">
+
+                $0
+
+                <span>
+                    / forever
+                </span>
+
+            </div>
+
+
+            <ul>
+
+                <li>
+                    ✔ Basic API
+                </li>
+
+                <li>
+                    ✔ Community Support
+                </li>
+
+                <li>
+                    ✔ Limited Requests
+                </li>
+
+                <li>
+                    ✔ Free Forever
+                </li>
+
+            </ul>
+
+
+            <button>
+                Free
+            </button>
+
+
+        </div>
+
+
+        <!-- =========================
+             Pro
+        ========================== -->
+
+        <div class="plan pro">
+
+
+            <div class="plan-badge">
+                COMING SOON
+            </div>
+
+
+            <h3>
+                🔥 Pro
+            </h3>
+
+
+            <div class="price">
+                Soon
+            </div>
+
+
+            <ul>
+
+                <li>
+                    ✔ Higher Limits
+                </li>
+
+                <li>
+                    ✔ Priority Support
+                </li>
+
+                <li>
+                    ✔ Premium Features
+                </li>
+
+                <li>
+                    ✔ Advanced API Access
+                </li>
+
+            </ul>
+
+
+            <button>
+                Coming Soon
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+     Footer
+========================================= -->
+
+<footer>
+
+
+    <div class="footer-logo">
+        🌍 XLAND API
+    </div>
+
+
+    <p>
+        © 2026 XLAND API
+    </p>
+
+
+    <p>
+        Build • Connect • Create
+    </p>
+
+
+</footer>
+
+
+<!-- =========================================
+     Logout Modal
+========================================= -->
+
+<div
+    id="logoutModal"
+    class="logout-modal"
+>
+
+
+    <div class="logout-box">
+
+
+        <h2>
+            🚪 Log Out?
+        </h2>
+
+
+        <p>
+            Are you sure you want to log out?
+        </p>
+
+
+        <div class="logout-buttons">
+
+
+            <button
+                id="yesLogout"
+                class="yes-btn"
+            >
+                Yes
+            </button>
+
+
+            <button
+                id="noLogout"
+                class="no-btn"
+            >
+                No
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     Existing Scripts
+========================================= -->
+
+<script src="security.js"></script>
+
+<script src="api.js"></script>
+
+<script src="api-account.js"></script>
+
+<script src="api-profile.js"></script>
+
+<script src="loader.js"></script>
+
+
+<!-- =========================================
+     API Enhancements
+========================================= -->
+
+<script src="api-enhancements.js"></script>
+
+
+</body>
+
+</html>

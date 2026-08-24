@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Payment Successful</title>
+
+<link rel="icon" type="image/png" href="xland-icon.png">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <div class="payment-card">
+
+        <div class="success-icon">
+
+            ✅
+
+        </div>
+
+        <h1>
+
+            Payment Successful
+
+        </h1>
+
+        <p>
+
+            Thank you for purchasing
+            <strong>Xland Map</strong>.
+
+        </p>
+
+        <div class="payment-info">
+
+            <div>
+
+                <span>Product</span>
+
+                <strong>Xland Map</strong>
+
+            </div>
+
+            <div>
+
+                <span>Price</span>
+
+                <strong>1,000,000 تومان</strong>
+
+            </div>
+
+        </div>
+
+        <button
+        class="download-btn"
+        onclick="downloadMap()">
+
+            ⬇ Download Xland Map
+
+        </button>
+
+        <br><br>
+
+        <a href="index.html">
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+function downloadMap(){
+
+window.open(
+"https://drive.google.com/file/d/1HLq4SZsDzFNRImvylMRXABmkmMikkWXm/view?usp=sharing",
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>

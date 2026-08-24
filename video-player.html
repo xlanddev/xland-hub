@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ویدیو | Xland Support</title>
+
+    <link rel="icon" type="image/png" href="xland-icon.png">
+    <link rel="stylesheet" href="video-player.css">
+</head>
+
+<body>
+
+    <header class="player-header">
+        <a href="videos.html" class="back-button">
+            ← بازگشت به ویدیوها
+        </a>
+
+        <div class="player-logo">
+            🎬 XLAND VIDEOS
+        </div>
+    </header>
+
+
+    <main class="player-container">
+
+        <section class="video-player-section">
+
+            <div id="video-wrapper" class="video-wrapper">
+
+                <video
+                    id="main-video"
+                    class="main-video"
+                    controls
+                    playsinline>
+                </video>
+
+            </div>
+
+
+            <div class="video-information">
+
+                <h1 id="video-title">
+                    در حال بارگذاری ویدیو...
+                </h1>
+
+                <div class="video-meta">
+
+                    <span id="video-views">
+                        👁 0 بازدید
+                    </span>
+
+                    <span id="video-date">
+                        📅 -
+                    </span>
+
+                </div>
+
+
+                <div class="video-actions">
+
+                    <button id="like-button" class="action-button">
+                        👍 <span id="like-count">0</span>
+                    </button>
+
+                    <button
+                        id="comment-button"
+                        class="action-button">
+                        💬 <span id="comment-count">0</span>
+                    </button>
+
+                    <button
+                        id="share-button"
+                        class="action-button">
+                        🔗 اشتراک‌گذاری
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Comments -->
+
+        <section class="comments-section">
+
+            <div class="comments-title">
+
+                <h2>
+                    💬 نظرات
+                </h2>
+
+                <span id="comments-number">
+                    0 نظر
+                </span>
+
+            </div>
+
+
+            <div class="comment-form">
+
+                <textarea
+                    id="comment-input"
+                    placeholder="نظر خود را درباره این ویدیو بنویسید..."></textarea>
+
+                <button id="submit-comment">
+                    ارسال نظر
+                </button>
+
+            </div>
+
+
+            <div id="comments-list" class="comments-list">
+
+                <!-- Comments توسط JavaScript ساخته می‌شوند -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="toast" class="toast"></div>
+
+    <script src="security.js"></script>
+    <script src="video-player.js"></script>
+
+</body>
+</html>

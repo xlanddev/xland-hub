@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XLAND API Documentation</title>
+
+<link rel="icon" href="xland-icon.png">
+
+<link rel="stylesheet" href="documentation.css">
+
+</head>
+
+<body>
+
+<header class="hero">
+
+<h1>📚 XLAND API Documentation</h1>
+
+<p>Learn how to use XLAND API</p>
+
+<a href="api.html" class="back-btn">⬅ Back to API</a>
+
+</header>
+
+<div class="container">
+
+<input
+type="text"
+placeholder="🔍 Search Documentation..."
+class="search">
+
+<div class="accordion">
+
+<button class="accordion-btn">
+▶ 🚀 Getting Started
+</button>
+
+<div class="accordion-content">
+
+<p>
+Welcome to XLAND API.
+</p>
+
+<p>
+Create an account, get your API Key and start building.
+</p>
+
+</div>
+
+<button class="accordion-btn">
+▶ 🔑 Authentication
+</button>
+
+<div class="accordion-content">
+
+<p>All requests require an API Key.</p>
+
+<pre><code>
+Authorization: Bearer YOUR_API_KEY
+</code></pre>
+
+</div>
+
+<button class="accordion-btn">
+▶ 📄 Endpoints
+</button>
+
+<div class="accordion-content">
+
+<h3>GET /comments</h3>
+
+<pre><code>[
+    {
+        "username":"User",
+        "message":"Hello XLAND!"
+    }
+]</code></pre>
+
+<h3>POST /comments</h3>
+
+<pre><code>{
+    "username":"User",
+    "message":"Hello!"
+}</code></pre>
+
+</div>
+
+<button class="accordion-btn">
+▶ ❌ Error Codes
+</button>
+
+<div class="accordion-content">
+
+<p>401 Unauthorized</p>
+
+<p>404 Not Found</p>
+
+<p>500 Internal Server Error</p>
+
+</div>
+
+<button class="accordion-btn">
+▶ 📊 API Limits
+</button>
+
+<div class="accordion-content">
+
+<p>🟢 Free</p>
+
+<p>100 Requests / Day</p>
+
+<br>
+
+<p>🔥 Pro</p>
+
+<p>Coming Soon</p>
+
+</div>
+
+<button class="accordion-btn">
+▶ 📝 Version History
+</button>
+
+<div class="accordion-content">
+
+<p>Version 1.0</p>
+
+<ul>
+
+<li>✔ Initial Release</li>
+
+<li>✔ GET /comments</li>
+
+<li>✔ POST /comments</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 XLAND API
+
+</footer>
+
+<script src="documentation.js"></script>
+
+</body>
+
+</html>

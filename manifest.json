@@ -1,0 +1,25 @@
+{
+  "name": "Xland Support",
+  "short_name": "Xland",
+  "description": "Official Xland Support Website",
+  "start_url": "/xland-support/",
+  "scope": "/xland-support/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "xland-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "xland-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

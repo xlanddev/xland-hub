@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Xland Hub</title>
+
+    <link rel="icon" type="image/png" href="xland-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="banner.css">
+
+    <link rel="stylesheet" href="loader.css">
+
+    <!-- XLAND HERO -->
+    <link rel="stylesheet" href="hero.css">
+
+    <link rel="stylesheet" href="home-enhancement.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#2563eb">
+
+
+    <!-- =========================================
+            XLAND HUB PROJECTS STYLE
+    ========================================= -->
+
+    <style>
+
+        /* =========================================
+                PROJECTS CONTAINER
+        ========================================= */
+
+        .xland-projects {
+
+            width: min(1200px, 92%);
+
+            margin: 70px auto;
+
+            padding: 40px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.07),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.10);
+
+            box-shadow:
+                0 20px 70px rgba(0,0,0,0.30);
+
+            backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        /* =========================================
+                TITLE
+        ========================================= */
+
+        .projects-title {
+
+            text-align: center;
+
+            margin-bottom: 10px;
+
+            font-size: 32px;
+
+            color: #ffffff;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .projects-subtitle {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+            color: #94a3b8;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =========================================
+                PROJECT GRID
+        ========================================= */
+
+        .projects-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        /* =========================================
+                PROJECT CARD
+        ========================================= */
+
+        .project-card {
+
+            position: relative;
+
+            min-height: 250px;
+
+            padding: 26px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,23,42,0.95),
+                    rgba(15,23,42,0.60)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            overflow: hidden;
+
+            transition:
+                transform .35s ease,
+                border-color .35s ease,
+                box-shadow .35s ease;
+
+        }
+
+
+        /* نور داخل کارت */
+
+        .project-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+
+            height: 140px;
+
+            top: -70px;
+
+            right: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(56,189,248,0.18);
+
+            filter:
+                blur(30px);
+
+            transition: .35s;
+
+        }
+
+
+        /* Hover */
+
+        .project-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(56,189,248,0.45);
+
+            box-shadow:
+                0 18px 50px rgba(0,0,0,0.40);
+
+        }
+
+
+        .project-card:hover::before {
+
+            transform:
+                scale(1.5);
+
+            background:
+                rgba(99,102,241,0.25);
+
+        }
+
+
+        /* =========================================
+                ICON
+        ========================================= */
+
+        .project-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 18px;
+
+            font-size: 32px;
+
+            background:
+                rgba(56,189,248,0.08);
+
+            border:
+                1px solid rgba(56,189,248,0.18);
+
+        }
+
+
+        /* =========================================
+                CARD TITLE
+        ========================================= */
+
+        .project-card h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 21px;
+
+            color: #ffffff;
+
+        }
+
+
+        /* =========================================
+                DESCRIPTION
+        ========================================= */
+
+        .project-card p {
+
+            margin: 0 0 20px;
+
+            color: #94a3b8;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================================
+                TYPE
+        ========================================= */
+
+        .project-type {
+
+            display: inline-block;
+
+            padding:
+                5px 10px;
+
+            margin-bottom: 15px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            color: #38bdf8;
+
+            background:
+                rgba(56,189,248,0.08);
+
+            border:
+                1px solid rgba(56,189,248,0.15);
+
+        }
+
+
+        /* =========================================
+                BUTTON
+        ========================================= */
+
+        .project-button {
+
+            display: inline-block;
+
+            padding:
+                9px 15px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            color: #38bdf8;
+
+            background:
+                rgba(56,189,248,0.08);
+
+            border:
+                1px solid rgba(56,189,248,0.15);
+
+            transition: .3s;
+
+            font-size: 13px;
+
+        }
+
+
+        .project-button:hover {
+
+            background:
+                #38bdf8;
+
+            color:
+                #020617;
+
+            transform:
+                translateX(-3px);
+
+        }
+
+
+        /* =========================================
+                RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .projects-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .xland-projects {
+
+                width: 94%;
+
+                padding: 22px;
+
+                margin-top: 45px;
+
+            }
+
+
+            .projects-title {
+
+                font-size: 26px;
+
+            }
+
+
+            .projects-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .project-card {
+
+                min-height: auto;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+     Loader
+========================================= -->
+
+<!-- =========================================
+     XLAND SUPPORT 4.2 LOADER
+========================================= -->
+
+<div id="loader">
+
+    <div class="loader"></div>
+
+</div>
+
+    
+
+
+<!-- =========================================
+        🔔 نوار اعلان آپدیت
+========================================= -->
+
+<div id="updateBanner" class="update-banner">
+
+    🎉 سایت Xland Support آپدیت شد!
+    برای مشاهده تغییرات به بخش News Xland مراجعه کنید.
+
+    <button onclick="closeBanner()">
+
+        ✖
+
+    </button>
+
+</div>
+
+
+<!-- =========================================
+        INSTALL BANNER
+========================================= -->
+
+<div id="installBanner">
+
+
+    <div class="install-info">
+
+
+        <img
+            src="xland-icon.png"
+            class="install-icon"
+        >
+
+
+        <div>
+
+
+            <div class="install-title">
+
+                Install Xland Support
+
+            </div>
+
+
+            <div class="install-sub">
+
+                Install the app for faster and easier access.
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="install-buttons">
+
+
+        <button id="installBtn">
+
+            Install
+
+        </button>
+
+
+        <button id="closeInstall">
+
+            ✕
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+        دکمه منوی موبایل
+========================================= -->
+
+<button
+    class="menu-btn"
+    onclick="toggleMenu()"
+>
+
+    ☰
+
+</button>
+
+
+<!-- =========================================
+        نوار بالا
+========================================= -->
+
+<nav id="navbar">
+
+
+    <a href="rules.html">
+
+        قوانین xland
+
+    </a>
+
+
+    <a href="news.html">
+
+        News Xland
+
+    </a>
+
+
+    <a href="xland-map.html">
+
+        دانلود مپ xland
+
+    </a>
+
+
+    <a href="xland.html">
+
+        دانلود بازی xland game
+
+    </a>
+
+
+    <a href="endless.html">
+
+        دانلود بازی EndIessRoadHorror 3D
+
+    </a>
+
+
+    <a href="about.html">
+
+        درباره ما
+
+    </a>
+
+
+    <!-- =========================================
+            DEVELOPER MENU
+    ========================================= -->
+
+    <div class="dropdown">
+
+
+        <a
+            href="xland-script.html"
+            class="dropbtn"
+        >
+
+            Developer ▼
+
+        </a>
+
+
+        <div class="dropdown-content">
+
+
+            <a href="xland-script.html">
+
+                📜 Xland Script
+
+            </a>
+
+
+            <a href="api.html">
+
+                🌍 Xland API
+
+            </a>
+
+
+            <a href="xland-news.html">
+
+                📰 XLAND News
+
+            </a>
+
+
+            <a href="videos.html">
+
+                📰 xland video
+
+            </a>
+
+
+            <a href="support.html">
+
+                🛠️ Support
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</nav>
+
+
+<!-- =========================================
+        STATUS BANNER
+========================================= -->
+
+<div
+    id="statusBanner"
+    class="status-banner"
+>
+
+
+    <div class="status-left">
+
+
+        <div
+            id="statusIcon"
+            class="status-icon"
+        >
+
+            🟡
+
+        </div>
+
+
+        <div>
+
+
+            <h3 id="statusTitle"></h3>
+
+            <p id="statusMessage"></p>
+
+            <small id="statusUpdated"></small>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="status-right">
+
+
+        <a
+            id="statusButton"
+            href="#"
+        >
+
+            Learn More
+
+        </a>
+
+
+        <button id="closeStatus">
+
+            ✕
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+        XLAND 4.2 HERO
+========================================= -->
+
+<section class="xland-home-hero">
+
+
+    <!-- Background Glow -->
+
+    <div class="hero-glow hero-glow-1"></div>
+
+    <div class="hero-glow hero-glow-2"></div>
+
+
+    <!-- Grid Background -->
+
+    <div class="hero-grid"></div>
+
+
+    <!-- Hero Content -->
+
+    <div class="hero-content">
+
+
+        <div class="hero-badge">
+
+            ✦ XLAND SUPPORT 4.2
+
+        </div>
+
+
+        <h1>
+
+            WELCOME TO
+
+            <span>XLAND</span>
+
+        </h1>
+
+
+        <p>
+
+            Your gateway to Xland games,
+            projects, technology and more.
+
+        </p>
+
+
+        <!-- Hero Buttons -->
+
+        <div class="hero-buttons">
+
+
+            <a
+                href="xland.html"
+                class="hero-btn primary"
+            >
+
+                🎮 Explore Xland Game
+
+            </a>
+
+
+            <a
+                href="support.html"
+                class="hero-btn secondary"
+            >
+
+                🛠️ Xland Support
+
+            </a>
+
+
+        </div>
+
+
+        <!-- Hero Stats -->
+
+        <div class="hero-stats">
+
+
+            <div class="hero-stat">
+
+                <strong>🎮</strong>
+
+                <span>
+                    Xland Games
+                </span>
+
+            </div>
+
+
+            <div class="hero-stat">
+
+                <strong>⚙️</strong>
+
+                <span>
+                    Xland Projects
+                </span>
+
+            </div>
+
+
+            <div class="hero-stat">
+
+                <strong>🚀</strong>
+
+                <span>
+                    Active Development
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Decorative X -->
+
+    <div class="hero-x">
+
+        X
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+        BANNER SLIDER
+========================================= -->
+
+<div class="banner-slider">
+
+
+    <button class="banner-btn prev">
+
+        ❮
+
+    </button>
+
+
+    <div class="banner-content">
+
+
+        <h2 id="banner-title"></h2>
+
+
+        <p id="banner-text"></p>
+
+
+        <a
+            id="banner-link"
+            href="#"
+        >
+
+            مشاهده
+
+        </a>
+
+
+        <div class="banner-indicators">
+
+
+            <span class="dot active"></span>
+
+            <span class="dot"></span>
+
+            <span class="dot"></span>
+
+            <span class="dot"></span>
+
+
+        </div>
+
+
+    </div>
+
+
+    <button class="banner-btn next">
+
+        ❯
+
+    </button>
+
+
+</div>
+
+
+<!-- =========================================
+        MAIN CONTENT
+========================================= -->
+
+<div class="container">
+
+
+    <h1>
+
+        XLAND Hub
+
+    </h1>
+
+
+    <p class="subtitle">
+
+        پیشنهادها و نظرات خود را در بخش کامنت‌ها
+        با ما به اشتراک بگذارید
+
+    </p>
+
+
+    <input
+        type="text"
+        id="search"
+        placeholder="سرچ صفحه ی مورد نظر..."
+    >
+
+
+    <!-- =========================================
+            COMMENT SYSTEM
+    ========================================= -->
+
+    <div class="comment-box">
+
+
+        <textarea
+            id="commentInput"
+            placeholder="  نظر خود را بنویسید..."
+        ></textarea>
+
+
+        <br>
+
+
+        <button onclick="addComment()">
+
+            ارسال کامنت
+
+        </button>
+
+
+    </div>
+
+
+    <div id="comments"></div>
+
+
+</div>
+
+
+<!-- =========================================
+        XLAND PROJECTS
+========================================= -->
+
+<section class="xland-projects">
+
+
+    <h2 class="projects-title">
+
+        🚀 Xland Projects
+
+    </h2>
+
+
+    <p class="projects-subtitle">
+
+        پروژه‌ها و سرویس‌های اصلی اکوسیستم Xland
+
+    </p>
+
+
+    <div class="projects-grid">
+
+
+        <!-- =================================
+                CARD 1
+        ================================== -->
+
+        <div class="project-card">
+
+
+            <div class="project-icon">
+
+                🎮
+
+            </div>
+
+
+            <span class="project-type">
+
+                GAME
+
+            </span>
+
+
+            <h3>
+
+                Xland Game
+
+            </h3>
+
+
+            <p>
+
+                بازی اصلی Xland با دنیایی
+                اختصاصی و تجربه‌ای متفاوت
+                برای بازیکنان.
+
+            </p>
+
+
+            <a
+                href="xland.html"
+                class="project-button"
+            >
+
+                مشاهده بازی →
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================
+                CARD 2
+        ================================== -->
+
+        <div class="project-card">
+
+
+            <div class="project-icon">
+
+                👻
+
+            </div>
+
+
+            <span class="project-type">
+
+                HORROR GAME
+
+            </span>
+
+
+            <h3>
+
+                Endless Road Horror 3D
+
+            </h3>
+
+
+            <p>
+
+                یک بازی ترسناک سه‌بعدی
+                با جاده‌ای بی‌پایان،
+                فضای تاریک و اتفاقات غیرمنتظره.
+
+            </p>
+
+
+            <a
+                href="endless.html"
+                class="project-button"
+            >
+
+                مشاهده بازی →
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================
+                CARD 4
+        ================================== -->
+
+        <div class="project-card">
+
+
+            <div class="project-icon">
+
+                🌍
+
+            </div>
+
+
+            <span class="project-type">
+
+                API
+
+            </span>
+
+
+            <h3>
+
+                Xland API
+
+            </h3>
+
+
+            <p>
+
+                زیرساخت API برای اتصال
+                پروژه‌ها و سرویس‌های مختلف
+                Xland به یکدیگر.
+
+            </p>
+
+
+            <a
+                href="api.html"
+                class="project-button"
+            >
+
+                مشاهده API →
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================
+                CARD 5
+        ================================== -->
+
+        <div class="project-card">
+
+
+            <div class="project-icon">
+
+                📜
+
+            </div>
+
+
+            <span class="project-type">
+
+                DEVELOPER
+
+            </span>
+
+
+            <h3>
+
+                Xland Script
+
+            </h3>
+
+
+            <p>
+
+                بخش توسعه‌دهندگان Xland
+                برای ابزارها، اسکریپت‌ها
+                و منابع برنامه‌نویسی.
+
+            </p>
+
+
+            <a
+                href="xland-script.html"
+                class="project-button"
+            >
+
+                مشاهده →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================
+        SCRIPTS
+========================================= -->
+
+<script src="security.js"></script>
+
+<script src="script.js"></script>
+
+<script src="banner.js"></script>
+
+<script src="status.js"></script>
+
+<script src="loader.js"></script>
+
+
+</body>
+
+</html>

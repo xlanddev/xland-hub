@@ -1,0 +1,29 @@
+[
+
+    {
+        "title":"Xland Association Website",
+        "date":"July 2026",
+        "image":"association.png",
+        "tag":"🔥 UPDATE",
+        "description":"Latest News:\n\n The Xland team has officially launched the Xland Community Forum, a dedicated space where users and developers can connect, ask questions, share ideas, report bugs, and discuss everything related to Xland projects. Members can create new discussions, reply to existing topics, and help improve the Xland ecosystem together. This marks a major step toward building an active and supportive Xland community. End of update."
+    },
+
+    {
+        "title":"XLAND Support 3.1 Released",
+        "date":"July 2026",
+        "image":"update31.png",
+        "tag":"🟢 NEW",
+        "description":"Latest Update:\n\nExciting new features have been added to the Xland Support site that you're sure to love. For instance, a \"Developer\" section has been introduced; simply hovering your mouse over it opens a menu allowing you to access specific pages—such as Xland Script and Xland API—making things much easier for you.\n\nAnother fantastic feature is the smooth, beautiful user interface, which ensures seamless site entry and a lightweight, responsive mobile experience that significantly minimizes lag on smartphones.\n\nStay tuned so you don't miss out on future updates.\n\nEnd of update.",
+        "link":"news.html"
+    },
+
+    {
+        "title":"XLAND API Online",
+        "date":"August 2026",
+        "image":"api.png",
+        "tag":"🔥 UPDATE",
+        "description":"Latest News:\n\n The Xland team has finally launched the Xland API page—a section dedicated to developers. You can purchase access to this premium API though a free version is also available; however the free tier comes with significant limitations. For instance you cannot build AI applications or create user registration systems for your websites and while you can implement a commenting feature its functionality is heavily restricted. End of update.",
+        "link":"news.html"
+    }
+
+]

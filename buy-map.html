@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>خرید مپ Xland</title>
+
+<link rel="icon" type="image/png" href="xland-icon.png">
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<div class="checkout">
+
+<h1>
+
+🛒 خرید مپ Xland
+
+</h1>
+
+<form>
+
+
+<label>
+نام کاربر
+</label>
+
+<input
+
+type="text"
+
+id="username"
+
+placeholder="Enter your name"
+
+required>
+
+
+<label>
+ایمیل کاربر
+</label>
+
+<input
+
+type="email"
+
+id="email"
+
+placeholder="example@email.com"
+
+required>
+
+
+<label>
+مپ انتخاب شده
+</label>
+
+<input
+
+type="text"
+
+value="Xland Map"
+
+readonly>
+
+
+<label>
+توضیحات سفارش (اختیاری)
+</label>
+
+<textarea
+
+placeholder="اگر توضیحی دارید بنویسید...">
+
+</textarea>
+
+
+<button
+
+type="button"
+
+onclick="goToPayment()">
+
+ادامه خرید
+
+</button>
+
+
+</form>
+
+</div>
+
+<script>
+
+function goToPayment(){
+
+
+let username =
+document.getElementById("username").value;
+
+
+let email =
+document.getElementById("email").value;
+
+
+
+if(username === "" || email === ""){
+
+
+alert("Please enter your name and email.");
+
+return;
+
+
+}
+
+
+
+localStorage.setItem(
+"xlandBuyerName",
+username
+);
+
+
+
+localStorage.setItem(
+"xlandBuyerEmail",
+email
+);
+
+
+
+window.location.href="YOUR-ZARINPAL-LINK";
+
+
+}
+
+</script>
+
+</body>
+
+</html>

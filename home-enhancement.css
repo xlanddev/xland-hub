@@ -1,0 +1,1193 @@
+/* =========================================================
+        XLAND HUB 4.2
+        HOME VISUAL ENHANCEMENT
+        فقط ظاهر — بدون تغییر ساختار سایت
+========================================================= */
+
+
+/* =========================================================
+        GLOBAL SMOOTHNESS
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+        BACKGROUND ENHANCEMENT
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -10;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(37,99,235,0.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(124,58,237,0.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(6,182,212,0.08),
+            transparent 30%
+        );
+
+}
+
+
+/* =========================================================
+        NAVBAR
+========================================================= */
+
+#navbar {
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    background:
+        rgba(2,6,23,0.72);
+
+    border-bottom:
+        1px solid
+        rgba(96,165,250,0.12);
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,0,0,0.18);
+
+}
+
+
+#navbar a {
+
+    transition:
+        color .25s ease,
+        transform .25s ease,
+        text-shadow .25s ease;
+
+}
+
+
+#navbar a:hover {
+
+    color: #60a5fa;
+
+    transform:
+        translateY(-1px);
+
+    text-shadow:
+        0 0 15px
+        rgba(96,165,250,0.55);
+
+}
+
+
+/* =========================================================
+        UPDATE BANNER
+========================================================= */
+
+.update-banner {
+
+    border:
+        1px solid
+        rgba(96,165,250,0.18);
+
+    box-shadow:
+        0 8px 30px
+        rgba(37,99,235,0.10);
+
+}
+
+
+/* =========================================================
+        STATUS BANNER
+========================================================= */
+
+.status-banner {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(96,165,250,0.16);
+
+    box-shadow:
+        0 12px 45px
+        rgba(0,0,0,0.22);
+
+}
+
+
+.status-banner::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 80%;
+
+    height: 100%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.06),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    animation:
+        statusLight 7s
+        linear
+        infinite;
+
+}
+
+
+@keyframes statusLight {
+
+    0% {
+        left: -120%;
+    }
+
+    45% {
+        left: 140%;
+    }
+
+    100% {
+        left: 140%;
+    }
+
+}
+
+
+/* =========================================================
+        BANNER SLIDER
+========================================================= */
+
+.banner-slider {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(96,165,250,0.14);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.25);
+
+}
+
+
+.banner-slider::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    top: -100px;
+
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37,99,235,0.15);
+
+    filter:
+        blur(60px);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+        MAIN HUB CONTAINER
+========================================================= */
+
+.container {
+
+    position: relative;
+
+    width: min(1100px, 92%);
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    padding:
+        50px 35px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.22);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+}
+
+
+/* =========================================================
+        HUB TITLE
+========================================================= */
+
+.container h1 {
+
+    font-size:
+        clamp(35px, 6vw, 65px);
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #60a5fa,
+            #22d3ee,
+            #a78bfa
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    text-shadow:
+        0 0 30px
+        rgba(34,211,238,0.08);
+
+}
+
+
+/* =========================================================
+        SUBTITLE
+========================================================= */
+
+.container .subtitle {
+
+    color:
+        #94a3b8;
+
+    line-height:
+        1.9;
+
+}
+
+
+/* =========================================================
+        SEARCH
+========================================================= */
+
+#search {
+
+    width:
+        min(700px, 100%);
+
+    padding:
+        15px 20px;
+
+    margin:
+        25px auto;
+
+    display:
+        block;
+
+    border-radius:
+        15px;
+
+    border:
+        1px solid
+        rgba(96,165,250,0.16);
+
+    outline:
+        none;
+
+    color:
+        #e2e8f0;
+
+    background:
+        rgba(15,23,42,0.65);
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+
+}
+
+
+#search:focus {
+
+    border-color:
+        rgba(56,189,248,0.55);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(56,189,248,0.07),
+
+        0 0 30px
+        rgba(56,189,248,0.10);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+#search::placeholder {
+
+    color:
+        #64748b;
+
+}
+
+
+/* =========================================================
+        COMMENT BOX
+========================================================= */
+
+.comment-box {
+
+    padding:
+        22px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(15,23,42,0.45);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    box-shadow:
+        inset 0 0 40px
+        rgba(37,99,235,0.025);
+
+}
+
+
+/* =========================================================
+        PROJECT SECTION
+========================================================= */
+
+.xland-projects {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.xland-projects::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        350px;
+
+    height:
+        350px;
+
+    top:
+        -200px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(37,99,235,0.10);
+
+    filter:
+        blur(80px);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+        PROJECT TITLE
+========================================================= */
+
+.projects-title {
+
+    position:
+        relative;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1px;
+
+    text-shadow:
+        0 0 20px
+        rgba(96,165,250,0.15);
+
+}
+
+
+/* =========================================================
+        PROJECT CARD ENHANCEMENT
+========================================================= */
+
+.project-card {
+
+    isolation:
+        isolate;
+
+    transform:
+        translateZ(0);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,0.18);
+
+}
+
+
+.project-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    border-radius:
+        inherit;
+
+    padding:
+        1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(96,165,250,0.0),
+            rgba(96,165,250,0.18),
+            rgba(167,139,250,0.0)
+        );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0)
+        content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:
+        xor;
+
+    mask-composite:
+        exclude;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+
+    transition:
+        opacity .35s ease;
+
+}
+
+
+.project-card:hover::after {
+
+    opacity:
+        1;
+
+}
+
+
+.project-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+}
+
+
+/* =========================================================
+        PROJECT ICON
+========================================================= */
+
+.project-icon {
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.project-card:hover .project-icon {
+
+    transform:
+        translateY(-4px)
+        rotate(-3deg);
+
+    box-shadow:
+        0 0 25px
+        rgba(56,189,248,0.12);
+
+}
+
+
+/* =========================================================
+        PROJECT BUTTON
+========================================================= */
+
+.project-button {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.project-button::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -120%;
+
+    width:
+        70%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .5s ease;
+
+}
+
+
+.project-button:hover::before {
+
+    left:
+        140%;
+
+}
+
+
+/* =========================================================
+        DROPDOWN
+========================================================= */
+
+.dropdown-content {
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    background:
+        rgba(2,6,23,0.90);
+
+    border:
+        1px solid
+        rgba(96,165,250,0.14);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.35);
+
+}
+
+
+/* =========================================================
+        SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width:
+        9px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background:
+        #020617;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            #2563eb,
+            #06b6d4
+        );
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        linear-gradient(
+            #3b82f6,
+            #22d3ee
+        );
+
+}
+
+
+/* =========================================================
+        SELECTION
+========================================================= */
+
+::selection {
+
+    background:
+        rgba(37,99,235,0.35);
+
+    color:
+        white;
+
+}
+
+
+/* =========================================================
+        MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width:
+            94%;
+
+        padding:
+            35px 18px;
+
+        border-radius:
+            22px;
+
+    }
+
+
+    .container h1 {
+
+        font-size:
+            38px;
+
+    }
+
+
+    .comment-box {
+
+        padding:
+            16px;
+
+    }
+
+
+    .project-card:hover {
+
+        transform:
+            translateY(-6px);
+
+    }
+
+}
+
+/* =========================================================
+        XLAND UPDATE BANNER 4.2
+        🔔 Premium Announcement Bar
+========================================================= */
+
+#updateBanner {
+
+    position: relative;
+
+    width: 92%;
+    max-width: 1200px;
+
+    margin: 15px auto;
+
+    padding: 15px 55px 15px 25px;
+
+    box-sizing: border-box;
+
+    border-radius: 16px;
+
+    color: #e0f2fe;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8,47,73,0.92),
+            rgba(15,23,42,0.96),
+            rgba(30,27,75,0.92)
+        );
+
+    border:
+        1px solid
+        rgba(56,189,248,0.35);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.25),
+
+        0 0 25px
+        rgba(56,189,248,0.10);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow:
+        hidden;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+
+/* =========================================================
+        BACKGROUND GLOW
+========================================================= */
+
+#updateBanner::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    left: -50px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(34,211,238,0.18);
+
+    filter:
+        blur(45px);
+
+    pointer-events:
+        none;
+
+    animation:
+        updateGlow 5s ease-in-out infinite alternate;
+}
+
+
+#updateBanner::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    bottom: -100px;
+    right: -40px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(99,102,241,0.18);
+
+    filter:
+        blur(45px);
+
+    pointer-events:
+        none;
+
+    animation:
+        updateGlow2 6s ease-in-out infinite alternate;
+}
+
+
+@keyframes updateGlow {
+
+    from {
+        transform: scale(.8);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes updateGlow2 {
+
+    from {
+        transform: scale(1);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.3);
+        opacity: .9;
+    }
+
+}
+
+
+/* =========================================================
+        TEXT
+========================================================= */
+
+#updateBanner {
+
+    text-shadow:
+        0 0 12px
+        rgba(56,189,248,0.18);
+
+}
+
+
+/* =========================================================
+        UPDATE ICON
+========================================================= */
+
+#updateBanner::marker {
+    display: none;
+}
+
+
+/* =========================================================
+        CLOSE BUTTON
+========================================================= */
+
+#updateBanner button {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 15px;
+
+    transform:
+        translateY(-50%);
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    color:
+        #94a3b8;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    cursor:
+        pointer;
+
+    font-size:
+        14px;
+
+    transition:
+        all .3s ease;
+
+    z-index:
+        5;
+}
+
+
+#updateBanner button:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        rgba(239,68,68,0.18);
+
+    border-color:
+        rgba(248,113,113,0.40);
+
+    box-shadow:
+        0 0 15px
+        rgba(239,68,68,0.18);
+
+    transform:
+        translateY(-50%)
+        rotate(90deg);
+
+}
+
+
+/* =========================================================
+        HOVER
+========================================================= */
+
+#updateBanner:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(56,189,248,0.55);
+
+    box-shadow:
+        0 12px 40px
+        rgba(0,0,0,0.32),
+
+        0 0 35px
+        rgba(56,189,248,0.16);
+}
+
+
+/* =========================================================
+        MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #updateBanner {
+
+        width:
+            94%;
+
+        padding:
+            13px 50px 13px 16px;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.8;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    #updateBanner button {
+
+        right:
+            10px;
+
+        width:
+            28px;
+
+        height:
+            28px;
+
+    }
+
+}
+
+/* =========================================================
+        XLAND UPDATE BANNER FIX 4.2
+========================================================= */
+
+#updateBanner {
+
+    position: relative !important;
+
+    top: auto;
+
+    left: auto;
+
+    transform: none;
+
+    margin: 15px auto;
+
+}
+
+
+/* دکمه X دقیقاً وسط نوار */
+
+#updateBanner button {
+
+    position: absolute !important;
+
+    top: 50% !important;
+
+    right: 14px;
+
+    transform: translateY(-50%) !important;
+
+    margin: 0;
+
+}
+
+
+/* Hover دکمه */
+
+#updateBanner button:hover {
+
+    transform:
+        translateY(-50%)
+        rotate(90deg) !important;
+
+}
+
+
+/* فاصله برای اینکه محتوای صفحه زیر نوار نرود */
+
+body {
+
+    padding-top: 5px;
+
+}
+
+
+/* موبایل */
+
+@media (max-width: 600px) {
+
+    #updateBanner {
+
+        top: 8px;
+
+        width: 94%;
+
+    }
+
+}

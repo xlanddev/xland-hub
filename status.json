@@ -1,0 +1,17 @@
+{
+    "version": 4,
+
+    "enabled": true,
+
+    "status": "warning",
+
+    "title": "Scheduled Maintenance",
+
+    "message": "Xland Script will be unavailable today from 22:00 to 23:00 UTC.",
+
+    "updated": "2 minutes ago",
+
+    "button": "Learn More",
+
+    "link": "maintenance.html"
+}

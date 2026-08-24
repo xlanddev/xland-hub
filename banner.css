@@ -1,0 +1,770 @@
+/* =========================================================
+        XLAND BANNER
+        VERSION 4.2 — NEON GLASS
+========================================================= */
+
+.banner-slider {
+
+    position: relative;
+
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 30px auto;
+
+    min-height: 190px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(56,189,248,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(2,6,23,0.96),
+            rgba(15,23,42,0.92),
+            rgba(9,20,35,0.96)
+        );
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.35),
+        0 0 25px rgba(56,189,248,0.10),
+        inset 0 0 35px rgba(56,189,248,0.025);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+
+/* =========================================================
+        BACKGROUND GLOW
+========================================================= */
+
+.banner-slider::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    top: -150px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(56,189,248,0.13);
+
+    filter: blur(65px);
+
+    pointer-events: none;
+
+    animation:
+        bannerGlow 6s ease-in-out infinite alternate;
+}
+
+
+.banner-slider::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    bottom: -150px;
+    left: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(99,102,241,0.12);
+
+    filter: blur(65px);
+
+    pointer-events: none;
+
+    animation:
+        bannerGlow2 8s ease-in-out infinite alternate;
+}
+
+
+@keyframes bannerGlow {
+
+    from {
+        transform: scale(0.9);
+        opacity: .5;
+    }
+
+    to {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes bannerGlow2 {
+
+    from {
+        transform: scale(1);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.3);
+        opacity: .9;
+    }
+
+}
+
+
+/* =========================================================
+        MOVING LIGHT
+========================================================= */
+
+.banner-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    flex: 1;
+
+    text-align: center;
+
+    padding: 38px 45px;
+}
+
+
+.banner-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.045),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+
+    animation:
+        bannerLight 7s linear infinite;
+}
+
+
+@keyframes bannerLight {
+
+    0% {
+        left: -100%;
+    }
+
+    45% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+
+}
+
+
+/* =========================================================
+        TITLE
+========================================================= */
+
+.banner-content h2 {
+
+    position: relative;
+
+    margin:
+        0 0 14px;
+
+    font-size:
+        clamp(24px, 3vw, 32px);
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #22d3ee,
+            #818cf8
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    text-shadow:
+        0 0 25px
+        rgba(56,189,248,0.12);
+
+}
+
+
+/* =========================================================
+        DESCRIPTION
+========================================================= */
+
+.banner-content p {
+
+    position: relative;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        16px;
+
+    line-height:
+        1.9;
+
+    margin:
+        0 auto 24px;
+
+    max-width:
+        720px;
+
+}
+
+
+/* =========================================================
+        BUTTON
+========================================================= */
+
+.banner-content a {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        12px 28px;
+
+    border-radius:
+        12px;
+
+    color:
+        #e0f2fe;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #2563eb
+        );
+
+    border:
+        1px solid
+        rgba(125,211,252,0.35);
+
+    box-shadow:
+        0 8px 25px
+        rgba(37,99,235,0.22);
+
+    overflow:
+        hidden;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        filter .3s ease;
+}
+
+
+.banner-content a::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -120%;
+
+    width:
+        70%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.28),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .55s ease;
+}
+
+
+.banner-content a:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    box-shadow:
+        0 12px 35px
+        rgba(37,99,235,0.40);
+
+    filter:
+        brightness(1.1);
+}
+
+
+.banner-content a:hover::before {
+
+    left:
+        140%;
+}
+
+
+/* =========================================================
+        ARROWS
+========================================================= */
+
+.banner-btn {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        68px;
+
+    height:
+        100%;
+
+    min-height:
+        190px;
+
+    border:
+        none;
+
+    background:
+        rgba(255,255,255,0.015);
+
+    color:
+        #38bdf8;
+
+    font-size:
+        30px;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+
+.banner-btn:hover {
+
+    background:
+        rgba(56,189,248,0.08);
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(56,189,248,0.06);
+
+}
+
+
+.banner-btn:active {
+
+    transform:
+        scale(.92);
+
+}
+
+
+/* =========================================================
+        INDICATORS
+========================================================= */
+
+.banner-indicators {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    margin-top:
+        22px;
+}
+
+
+.dot {
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #334155;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.dot.active {
+
+    width:
+        24px;
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #6366f1
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(56,189,248,0.55);
+
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================================
+        HOVER
+========================================================= */
+
+.banner-slider:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(56,189,248,0.55);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.42),
+
+        0 0 35px
+        rgba(56,189,248,0.14),
+
+        inset 0 0 40px
+        rgba(56,189,248,0.035);
+}
+
+
+/* =========================================================
+        MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .banner-slider {
+
+        width:
+            94%;
+
+        min-height:
+            auto;
+
+        flex-direction:
+            column;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    .banner-content {
+
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+
+        padding:
+            30px 20px;
+    }
+
+
+    .banner-content h2 {
+
+        font-size:
+            24px;
+
+    }
+
+
+    .banner-content p {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .banner-btn {
+
+        width:
+            100%;
+
+        height:
+            48px;
+
+        min-height:
+            48px;
+
+        font-size:
+            25px;
+
+    }
+
+
+    .banner-btn.prev {
+
+        order:
+            2;
+
+    }
+
+
+    .banner-btn.next {
+
+        order:
+            3;
+
+    }
+
+
+    .banner-content {
+
+        order:
+            1;
+
+    }
+
+}
+
+
+/* =========================================================
+        REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .banner-slider::before,
+    .banner-slider::after,
+    .banner-content::before {
+
+        animation:
+            none;
+
+    }
+
+}
+
+/* =========================================================
+        XLAND BANNER SLIDE ANIMATION 4.2
+========================================================= */
+
+.banner-content {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* حالت خروج */
+
+.banner-content.slide-out-left {
+    animation: bannerOutLeft 0.35s ease forwards;
+}
+
+.banner-content.slide-out-right {
+    animation: bannerOutRight 0.35s ease forwards;
+}
+
+
+/* حالت ورود */
+
+.banner-content.slide-in-left {
+    animation: bannerInLeft 0.45s ease forwards;
+}
+
+.banner-content.slide-in-right {
+    animation: bannerInRight 0.45s ease forwards;
+}
+
+
+/* خروج به چپ */
+
+@keyframes bannerOutLeft {
+
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+}
+
+
+/* خروج به راست */
+
+@keyframes bannerOutRight {
+
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+}
+
+
+/* ورود از راست */
+
+@keyframes bannerInRight {
+
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* ورود از چپ */
+
+@keyframes bannerInLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}

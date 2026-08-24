@@ -1,0 +1,2628 @@
+/* =========================================================
+   XLAND SUPPORT 4.1
+   VIDEO PLAYER
+   CINEMATIC EDITION
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        "Segoe UI",
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(0, 140, 255, 0.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(130, 50, 255, 0.14),
+            transparent 30%
+        ),
+        #05070c;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   CINEMATIC GRID
+   ========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   AMBIENT LIGHTS
+   ========================================================= */
+
+.ambient-light {
+
+    position: fixed;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(90px);
+
+    opacity: 0.18;
+
+    z-index: -1;
+
+    will-change: transform;
+}
+
+
+.light-one {
+
+    top: 5%;
+    left: -140px;
+
+    background:
+        rgba(0, 130, 255, 0.8);
+
+    animation:
+        ambientFloatOne
+        14s
+        ease-in-out
+        infinite;
+}
+
+
+.light-two {
+
+    top: 35%;
+    right: -160px;
+
+    background:
+        rgba(125, 50, 255, 0.7);
+
+    animation:
+        ambientFloatTwo
+        18s
+        ease-in-out
+        infinite;
+}
+
+
+.light-three {
+
+    bottom: -180px;
+    left: 35%;
+
+    background:
+        rgba(20, 180, 255, 0.55);
+
+    animation:
+        ambientFloatThree
+        20s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes ambientFloatOne {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            translate3d(80px, 60px, 0);
+    }
+}
+
+
+@keyframes ambientFloatTwo {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            translate3d(-70px, 80px, 0);
+    }
+}
+
+
+@keyframes ambientFloatThree {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            translate3d(50px, -60px, 0);
+    }
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.player-header {
+
+    width: 100%;
+
+    min-height: 70px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    background:
+        rgba(5,8,14,0.88);
+
+    backdrop-filter:
+        blur(15px);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    animation:
+        headerEnter
+        0.8s
+        ease
+        both;
+}
+
+
+@keyframes headerEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #aab7c8;
+
+    text-decoration: none;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    transition:
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+
+    overflow: hidden;
+}
+
+
+.back-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(50,160,255,0.15),
+            transparent
+        );
+
+    transition:
+        left .5s ease;
+}
+
+
+.back-button:hover {
+
+    color: white;
+
+    border-color:
+        rgba(60,160,255,0.5);
+
+    background:
+        rgba(40,130,255,0.08);
+
+    transform:
+        translateX(3px);
+}
+
+
+.back-button:hover::before {
+
+    left: 100%;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.player-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    font-size: 18px;
+
+    text-shadow:
+        0 0 18px
+        rgba(60,170,255,0.35);
+
+    animation:
+        logoGlow
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+.logo-icon {
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(50,160,255,0.5)
+        );
+}
+
+
+@keyframes logoGlow {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.player-container {
+
+    width: min(1100px, 92%);
+
+    margin: auto;
+
+    padding:
+        45px 0
+        100px;
+}
+
+
+/* =========================================================
+   VIDEO SECTION
+   ========================================================= */
+
+.video-player-section {
+
+    width: 100%;
+
+    animation:
+        cinematicEnter
+        0.9s
+        ease
+        both;
+}
+
+
+@keyframes cinematicEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.985);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+}
+
+
+/* =========================================================
+   VIDEO WRAPPER
+   ========================================================= */
+
+.video-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    max-height: 75vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(20,35,55,0.6),
+            rgba(5,8,13,0.97)
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.45),
+
+        0 0 70px
+        rgba(30,130,255,0.08);
+
+    overflow: hidden;
+
+    transition:
+        border-color .4s ease,
+        box-shadow .4s ease,
+        transform .4s ease;
+}
+
+
+.video-wrapper::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(50,150,255,0.2),
+            transparent 80%
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .4s ease;
+}
+
+
+.video-wrapper:hover {
+
+    border-color:
+        rgba(45,150,255,0.45);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.6),
+
+        0 0 80px
+        rgba(35,140,255,0.16);
+}
+
+
+.video-wrapper:hover::before {
+
+    opacity: 1;
+
+    animation:
+        videoBorderGlow
+        2.5s
+        linear
+        infinite;
+}
+
+
+@keyframes videoBorderGlow {
+
+    0% {
+        transform:
+            translateX(-20%);
+    }
+
+    100% {
+        transform:
+            translateX(20%);
+    }
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.main-video {
+
+    width: 100%;
+
+    max-height: 70vh;
+
+    display: block;
+
+    background: #000;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,0.5);
+
+    transition:
+        transform .4s ease,
+        filter .4s ease;
+}
+
+
+.video-wrapper:hover .main-video {
+
+    transform:
+        scale(1.008);
+
+}
+
+
+/* =========================================================
+   SHORT VIDEO
+   ========================================================= */
+
+.video-wrapper.short-video {
+
+    max-width: 600px;
+
+    margin: auto;
+}
+
+
+.video-wrapper.short-video .main-video {
+
+    width: auto;
+
+    max-width: 100%;
+
+    height: 70vh;
+
+    aspect-ratio: 9 / 16;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   PLAYER BADGES
+   ========================================================= */
+
+.player-badges {
+
+    position: absolute;
+
+    top: 35px;
+    right: 35px;
+
+    z-index: 20;
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    pointer-events: none;
+}
+
+
+.player-badge {
+
+    padding:
+        7px 12px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 0 20px
+        rgba(0,0,0,0.25);
+
+    animation:
+        badgeEnter
+        .6s
+        ease
+        both;
+}
+
+
+.player-badge.featured {
+
+    color: #ffd76a;
+
+    background:
+        rgba(45,32,5,0.85);
+
+    border:
+        1px solid
+        rgba(255,195,65,0.45);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,170,40,0.16);
+}
+
+
+.player-badge.new {
+
+    color: #65c7ff;
+
+    background:
+        rgba(5,30,48,0.88);
+
+    border:
+        1px solid
+        rgba(50,170,255,0.45);
+
+    box-shadow:
+        0 0 25px
+        rgba(30,150,255,0.15);
+}
+
+
+@keyframes badgeEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-10px)
+            scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.video-loading {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background:
+        rgba(3,7,12,0.82);
+
+    backdrop-filter:
+        blur(8px);
+
+    color: #9caabd;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    opacity: 1;
+
+    transition:
+        opacity .35s ease;
+}
+
+
+.loading-spinner {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(255,255,255,0.08);
+
+    border-top-color:
+        #32a5ff;
+
+    animation:
+        spinnerRotate
+        .8s
+        linear
+        infinite;
+}
+
+
+@keyframes spinnerRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.video-player-error {
+
+    display: none;
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 40;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    background:
+        rgba(5,7,12,0.92);
+
+    color: #ff8795;
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.video-information {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 18px;
+
+    background:
+        rgba(12,17,26,0.75);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.18);
+
+    animation:
+        infoEnter
+        1s
+        .15s
+        ease
+        both;
+}
+
+
+@keyframes infoEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.video-category {
+
+    display: inline-flex;
+
+    width: fit-content;
+
+    margin-bottom: 9px;
+
+    padding:
+        5px 11px;
+
+    border-radius: 999px;
+
+    color: #65bcff;
+
+    background:
+        rgba(40,140,255,0.08);
+
+    border:
+        1px solid
+        rgba(50,150,255,0.22);
+
+    font-size: 12px;
+
+    box-shadow:
+        0 0 18px
+        rgba(40,140,255,0.07);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.video-information h1 {
+
+    font-size: 27px;
+
+    line-height: 1.6;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 25px
+        rgba(70,160,255,0.12);
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.video-meta {
+
+    display: flex;
+
+    gap: 20px;
+
+    color: #8996a8;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+.video-meta span {
+
+    transition:
+        color .25s ease;
+}
+
+
+.video-meta span:hover {
+
+    color:
+        #b9d8f5;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.video-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.action-button {
+
+    position: relative;
+
+    border: none;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: #dce7f5;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    padding:
+        11px 18px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+    overflow: hidden;
+}
+
+
+.action-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+
+    transition:
+        left .5s ease;
+}
+
+
+.action-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(45,140,255,0.12);
+
+    border-color:
+        rgba(55,155,255,0.45);
+
+    box-shadow:
+        0 8px 25px
+        rgba(40,130,255,0.12);
+}
+
+
+.action-button:hover::before {
+
+    left: 120%;
+}
+
+
+/* =========================================================
+   LIKE
+   ========================================================= */
+
+.action-button.liked {
+
+    color: #55b7ff;
+
+    border-color:
+        rgba(55,155,255,0.6);
+
+    background:
+        rgba(30,130,255,0.12);
+
+    box-shadow:
+        0 0 25px
+        rgba(40,150,255,0.12);
+}
+
+
+.action-button.like-pop {
+
+    animation:
+        likePop
+        .45s
+        ease;
+}
+
+
+@keyframes likePop {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            scale(1.16);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   RELATED VIDEOS
+   ========================================================= */
+
+.related-videos-section {
+
+    margin-top: 60px;
+
+    animation:
+        sectionEnter
+        1s
+        .25s
+        ease
+        both;
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+
+.section-heading h2 {
+
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.section-heading p {
+
+    color: #758397;
+
+    font-size: 13px;
+}
+
+
+.related-videos {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 16px;
+}
+
+
+.related-video-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 150px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    background:
+        rgba(10,15,24,0.78);
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.related-video-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(45,150,255,0.4);
+
+    box-shadow:
+        0 18px 40px
+        rgba(0,0,0,0.35);
+}
+
+
+/* =========================================================
+   COMMENTS
+   ========================================================= */
+
+.comments-section {
+
+    margin-top: 60px;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 20px;
+
+    background:
+        rgba(10,15,23,0.78);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.16);
+
+    animation:
+        sectionEnter
+        1s
+        .35s
+        ease
+        both;
+}
+
+
+@keyframes sectionEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+.comments-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.comments-title h2 {
+
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.comments-title p {
+
+    color: #758397;
+
+    font-size: 13px;
+}
+
+
+.comments-title span {
+
+    color: #7e8a9b;
+
+    font-size: 14px;
+
+    padding:
+        7px 12px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.04);
+}
+
+
+/* =========================================================
+   COMMENT FORM
+   ========================================================= */
+
+.comment-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.comment-form textarea {
+
+    width: 100%;
+
+    min-height: 120px;
+
+    resize: vertical;
+
+    outline: none;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    color: white;
+
+    background:
+        rgba(0,0,0,0.3);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+
+.comment-form textarea:focus {
+
+    border-color:
+        rgba(55,160,255,0.55);
+
+    background:
+        rgba(0,20,35,0.35);
+
+    box-shadow:
+        0 0 20px
+        rgba(30,130,255,0.08);
+}
+
+
+.comment-form-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.comment-counter {
+
+    color: #687587;
+
+    font-size: 12px;
+}
+
+
+.comment-form button {
+
+    border: none;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #714cff
+        );
+
+    padding:
+        11px 24px;
+
+    border-radius: 11px;
+
+    font-weight: bold;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.comment-form button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(40,130,255,0.25);
+}
+
+
+.comment-form button:active {
+
+    transform:
+        translateY(0)
+        scale(.98);
+}
+
+
+/* =========================================================
+   COMMENTS LIST
+   ========================================================= */
+
+.comments-list {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.comment {
+
+    padding: 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+
+.comment:hover {
+
+    transform:
+        translateX(-3px);
+
+    border-color:
+        rgba(50,150,255,0.18);
+
+    background:
+        rgba(255,255,255,0.035);
+}
+
+
+.comment-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    gap: 10px;
+}
+
+
+.comment-user {
+
+    font-weight: bold;
+
+    color: #65baff;
+}
+
+
+.comment-date {
+
+    color: #687587;
+
+    font-size: 12px;
+}
+
+
+.comment-text {
+
+    color: #c5cfdb;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+}
+
+
+.no-comments {
+
+    text-align: center;
+
+    color: #687587;
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translate(-50%, 120px);
+
+    opacity: 0;
+
+    padding:
+        12px 20px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(20,27,38,0.95);
+
+    border:
+        1px solid
+        rgba(70,150,255,0.3);
+
+    color: white;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.35),
+
+        0 0 25px
+        rgba(50,140,255,0.08);
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+    z-index: 999;
+}
+
+
+.toast.show {
+
+    transform:
+        translate(-50%, 0);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+
+    .player-header {
+
+        padding:
+            0 4%;
+
+    }
+
+
+    .player-logo {
+
+        font-size: 14px;
+
+    }
+
+
+    .back-button {
+
+        font-size: 12px;
+
+        padding:
+            8px 10px;
+
+    }
+
+
+    .player-container {
+
+        width: 94%;
+
+        padding-top: 25px;
+
+    }
+
+
+    .video-wrapper {
+
+        padding: 8px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .video-information {
+
+        padding: 18px;
+
+    }
+
+
+    .video-information h1 {
+
+        font-size: 21px;
+
+    }
+
+
+    .video-meta {
+
+        flex-direction: column;
+
+        gap: 7px;
+
+    }
+
+
+    .comments-section {
+
+        padding: 18px;
+
+        margin-top: 35px;
+
+    }
+
+
+    .action-button {
+
+        flex: 1;
+
+        min-width: 100px;
+
+    }
+
+
+    .video-wrapper.short-video {
+
+        max-width: 100%;
+
+        padding: 8px;
+
+    }
+
+
+    .video-wrapper.short-video .main-video {
+
+        height: 70vh;
+
+        max-height: 70vh;
+
+    }
+
+
+    .player-badges {
+
+        top: 18px;
+
+        right: 18px;
+
+    }
+
+
+    .comments-title {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+
+    .comments-title h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    .comment-form-bottom {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+    }
+
+
+    .comment-form button {
+
+        width: 100%;
+
+    }
+
+
+    .related-videos {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* =========================================================
+   XLAND PLAYER BADGES
+   ========================================================= */
+
+.video-wrapper {
+    position: relative;
+}
+
+.player-badges {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+.player-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    color: white;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid
+        rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.35);
+
+    animation:
+        badgeIn 0.5s ease both;
+}
+
+.featured-badge {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,180,0,0.85),
+            rgba(255,90,0,0.75)
+        );
+
+    box-shadow:
+        0 0 22px
+        rgba(255,170,0,0.25);
+}
+
+.new-badge {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,170,255,0.85),
+            rgba(100,60,255,0.8)
+        );
+
+    box-shadow:
+        0 0 22px
+        rgba(50,140,255,0.25);
+}
+
+.short-badge {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,50,255,0.85),
+            rgba(80,40,255,0.8)
+        );
+}
+
+@keyframes badgeIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-10px)
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   PLAYER ERROR
+   ========================================================= */
+
+.player-error-message {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    color: #ff6b6b;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    backdrop-filter: blur(5px);
+
+    border-radius: 14px;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    animation:
+        errorFadeIn 0.35s ease;
+}
+
+@keyframes errorFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .player-badges {
+        top: 18px;
+        right: 18px;
+
+        gap: 6px;
+    }
+
+    .player-badge {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+}
+
+/* =========================================================
+   🔥 RELATED VIDEOS - XLAND 4.1
+   ========================================================= */
+
+.related-videos-section {
+    position: relative;
+
+    margin-top: 70px;
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 20, 34, 0.92),
+            rgba(7, 11, 20, 0.88)
+        );
+
+    border: 1px solid
+        rgba(255,255,255,0.08);
+
+    overflow: hidden;
+
+    animation:
+        relatedSectionIn
+        0.8s ease both;
+}
+
+
+/* نور محیطی بخش */
+
+.related-videos-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -180px;
+    right: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,150,255,0.18),
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* خط نور پایین */
+
+.related-videos-section::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,160,255,0.7),
+            rgba(130,70,255,0.7),
+            transparent
+        );
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.related-title {
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 28px;
+
+    text-align: right;
+}
+
+.related-title h2 {
+    margin: 0;
+
+    font-size: 26px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #71c7ff,
+            #a77cff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    text-shadow:
+        0 0 25px
+        rgba(70,150,255,0.15);
+}
+
+.related-title p {
+    margin-top: 7px;
+
+    color: #7f8da1;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.related-videos-grid {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.related-video-card {
+
+    position: relative;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(14,20,31,0.9);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    cursor: pointer;
+
+    transform:
+        translateY(20px);
+
+    opacity: 0;
+
+    animation:
+        relatedCardIn
+        0.65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* نور متحرک دور کارت */
+
+.related-video-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 20px;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            rgba(0,160,255,0.5),
+            transparent,
+            rgba(140,70,255,0.5),
+            transparent
+        );
+
+    opacity: 0;
+
+    animation:
+        relatedGlow
+        5s
+        linear
+        infinite;
+
+    pointer-events: none;
+}
+
+
+/* لایه داخلی */
+
+.related-video-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(10,15,24,0.96);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* Hover */
+
+.related-video-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.015);
+
+    border-color:
+        rgba(50,160,255,0.45);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.45),
+
+        0 0 35px
+        rgba(20,130,255,0.13);
+}
+
+.related-video-card:hover::before {
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+   ========================================================= */
+
+.related-thumbnail {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #05070c
+        );
+
+    background-size: cover;
+
+    background-position: center;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+/* Thumbnail zoom */
+
+.related-thumbnail::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 35%,
+            rgba(0,0,0,0.75)
+        );
+
+    z-index: 1;
+
+    transition:
+        opacity 0.35s ease;
+}
+
+
+/* نور روی Thumbnail */
+
+.related-thumbnail::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left 0.7s ease;
+
+    z-index: 2;
+}
+
+
+.related-video-card:hover
+.related-thumbnail::after {
+
+    left: 140%;
+}
+
+
+.related-video-card:hover
+.related-thumbnail {
+
+    transform:
+        scale(1.035);
+
+    transition:
+        transform 0.5s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+   ========================================================= */
+
+.related-play {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.8);
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 20px;
+
+    padding-right: 2px;
+
+    background:
+        rgba(10,20,35,0.78);
+
+    border:
+        1px solid
+        rgba(120,200,255,0.45);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 0 0
+        rgba(0,150,255,0);
+
+    opacity: 0.8;
+
+    z-index: 5;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.related-video-card:hover
+.related-play {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    opacity: 1;
+
+    box-shadow:
+        0 0 28px
+        rgba(0,160,255,0.55);
+
+    animation:
+        relatedPlayPulse
+        1.6s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.related-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    padding: 15px 16px 17px;
+}
+
+
+.related-content h3 {
+
+    margin: 0 0 10px;
+
+    color: #eaf3ff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    font-weight: 800;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.related-video-card:hover
+.related-content h3 {
+
+    color: #69c5ff;
+}
+
+
+/* Views */
+
+.related-content span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #718096;
+
+    font-size: 12px;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.related-video-card:hover
+.related-content span {
+
+    color: #9bcfff;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes relatedSectionIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes relatedCardIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes relatedGlow {
+
+    0% {
+        transform:
+            rotate(0deg);
+    }
+
+    100% {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes relatedPlayPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 20px
+            rgba(0,160,255,0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px
+            rgba(80,170,255,0.65);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .related-videos-section {
+
+        margin-top: 45px;
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+
+    .related-title h2 {
+
+        font-size: 21px;
+    }
+
+
+    .related-title p {
+
+        font-size: 12px;
+    }
+
+
+    .related-videos-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+    }
+
+
+    .related-video-card {
+
+        border-radius: 15px;
+    }
+
+
+    .related-play {
+
+        width: 52px;
+        height: 52px;
+    }
+
+
+    .related-content {
+
+        padding: 13px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .related-video-card,
+    .related-videos-section,
+    .related-play,
+    .related-video-card::before {
+
+        animation: none !important;
+
+        transition: none !important;
+    }
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XLAND Support 3.2 Released</title>
+
+<link rel="icon" href="xland-icon.png">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="xland-news.css">
+
+<link rel="stylesheet" href="comments.css">
+
+</head>
+
+<body>
+
+<header class="article-header">
+
+<a href="xland-news.html" class="back-btn">
+
+⬅ Back to XLAND News
+
+</a>
+
+</header>
+
+<section class="article-hero">
+
+<img src="xland-apdate.png" alt="XLAND Support 3.2">
+
+<div class="article-overlay">
+
+<span class="hero-tag">
+
+🟢 UPDATE
+
+</span>
+
+<h1>
+
+XLAND Support 3.2 Released
+
+</h1>
+
+<p>
+
+The biggest update of Xland Support has officially arrived.
+
+</p>
+
+<div class="article-meta">
+
+<span>📅 July 2026</span>
+
+<span>⏱️ 3 min read</span>
+
+<span>👤 Xland Team</span>
+
+</div>
+
+</div>
+
+</section>
+
+<main class="article-container">
+
+<h2>
+
+What's New?
+
+</h2>
+
+<p>
+
+Version 3.2 focuses on improving the user experience and preparing Xland Support for future updates.
+
+</p>
+
+<div class="quote-box">
+
+"The biggest redesign of Xland Support since the project started."
+
+</div>
+
+<div class="article-image">
+
+<img src="xland-apdate.png" alt="Xland 3.2">
+
+</div>
+
+<div class="info-box">
+
+<h3>✨ Highlights</h3>
+
+<ul>
+
+<li>📱 Progressive Web App (PWA)</li>
+
+<li>📰 New News Portal</li>
+
+<li>⚡ Faster Performance</li>
+
+<li>🎨 Modern Interface</li>
+
+<li>📱 Better Mobile Experience</li>
+
+</ul>
+
+</div>
+
+<p>
+
+Some of the biggest improvements include:
+
+</p>
+
+<ul>
+
+<li>✅ Modern News Page</li>
+
+<li>✅ Progressive Web App (PWA)</li>
+
+<li>✅ Better Performance</li>
+
+<li>✅ Responsive Design</li>
+
+<li>✅ New Hero Section</li>
+
+<li>✅ Breaking News</li>
+
+</ul>
+
+<h2>
+
+Developer Notes
+
+</h2>
+
+<p>
+
+This version is the beginning of a complete redesign of the Xland ecosystem.
+
+More features will be added in future updates.
+
+</p>
+
+<!-- ===========================
+Gallery
+=========================== -->
+
+<section class="gallery-section">
+
+    <h2>📸 Gallery</h2>
+
+    <div class="gallery-grid">
+
+        <img src="xland-apdate.png" alt="Gallery 1">
+
+        <img src="xland-api.png" alt="Gallery 2">
+
+        <img src="endless.png" alt="Gallery 3">
+
+    </div>
+
+</section>
+
+<!-- ===========================
+Tags
+=========================== -->
+
+<section class="tags-section">
+
+<h2>🏷 Tags</h2>
+
+<div class="tags">
+
+<span>#Xland</span>
+
+<span>#Update</span>
+
+<span>#API</span>
+
+<span>#Game</span>
+
+<span>#News</span>
+
+</div>
+
+</section>
+
+<!-- ===========================
+Related News
+=========================== -->
+
+<section class="related-news">
+
+    <h2>📰 Related News</h2>
+
+    <div class="related-grid">
+
+        <a href="news2.html" class="related-card">
+
+            <img src="xland-api.png" alt="API">
+
+            <h3>Xland API Update</h3>
+
+            <p>Discover the latest improvements for developers.</p>
+
+        </a>
+
+        <a href="news3.html" class="related-card">
+
+            <img src="endless.png" alt="Endless">
+
+            <h3>Endless Road Horror</h3>
+
+            <p>New update with better gameplay and optimization.</p>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+<!-- ===========================
+Author
+=========================== -->
+
+<section class="author-box">
+
+<img src="xland-icon.png" alt="Author">
+
+<div>
+
+<h3>👤 Written by</h3>
+
+<h2>Xland Team</h2>
+
+<p>
+
+Official developers of the Xland ecosystem.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+Comments
+=========================== -->
+
+<section class="comments-section">
+
+<h2>
+
+💬 Comments
+
+<span id="commentCount">(0)</span>
+
+</h2>
+
+<div id="commentsList">
+
+</div>
+
+<div class="comment-form">
+
+<input
+type="text"
+id="username"
+placeholder="👤 Your Name">
+
+<textarea
+id="commentText"
+placeholder="💬 Write your comment..."></textarea>
+
+<button id="publishComment">
+
+Publish Comment
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- ===========================
+Lightbox
+=========================== -->
+
+<div id="lightbox" class="lightbox">
+
+    <span class="close-lightbox">&times;</span>
+
+    <img id="lightbox-img" src="" alt="Preview">
+
+</div>
+
+<script>
+
+const images = document.querySelectorAll(".gallery-grid img");
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImg = document.getElementById("lightbox-img");
+
+const closeBtn = document.querySelector(".close-lightbox");
+
+images.forEach(img=>{
+
+    img.addEventListener("click",()=>{
+
+        lightbox.style.display="flex";
+
+        lightboxImg.src=img.src;
+
+    });
+
+});
+
+closeBtn.onclick=()=>{
+
+    lightbox.style.display="none";
+
+}
+
+lightbox.onclick=(e)=>{
+
+    if(e.target===lightbox){
+
+        lightbox.style.display="none";
+
+    }
+
+}
+
+</script>
+
+<script src="comments.js"></script>
+
+</body>
+
+</html>

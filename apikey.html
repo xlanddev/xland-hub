@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XLAND API Keys</title>
+
+<link rel="icon" href="xland-icon.png">
+
+<link rel="stylesheet" href="api.css">
+<link rel="stylesheet" href="loader.css">
+<link rel="stylesheet" href="apikey.css">
+<link rel="stylesheet" href="mobile.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     Loader
+========================================= -->
+
+<div id="loader">
+
+    <img src="loading.gif" alt="Loading">
+
+</div>
+
+
+<!-- =========================================
+     API Key Page
+========================================= -->
+
+<main class="apikey-page">
+
+
+    <!-- Header -->
+
+    <div class="apikey-header">
+
+        <div class="apikey-icon">
+            🔑
+        </div>
+
+        <span class="eyebrow">
+            DEVELOPER ACCESS
+        </span>
+
+        <h1>
+            API Keys
+        </h1>
+
+        <p>
+            Create and manage your XLAND API access key.
+        </p>
+
+    </div>
+
+
+
+    <!-- Main Card -->
+
+    <section class="apikey-card">
+
+
+        <div class="card-top">
+
+            <div>
+
+                <span class="card-label">
+                    🔐 YOUR API KEY
+                </span>
+
+                <h2>
+                    Personal Access Key
+                </h2>
+
+            </div>
+
+
+            <div class="key-status">
+
+                <span class="status-dot"></span>
+
+                ACTIVE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Key Box -->
+
+        <div class="key-box">
+
+            <input
+                type="text"
+                id="apiKey"
+                readonly
+                aria-label="Your XLAND API Key"
+            >
+
+            <button
+                id="copyBtn"
+                type="button"
+            >
+                📋 Copy
+            </button>
+
+        </div>
+
+
+
+        <!-- Actions -->
+
+        <div class="key-actions">
+
+            <button
+                id="generateBtn"
+                type="button"
+                class="generate-btn"
+            >
+                🔄 Generate New Key
+            </button>
+
+
+            <a
+                href="api.html"
+                class="back-btn"
+            >
+                ⬅ Back to API
+            </a>
+
+        </div>
+
+
+
+        <!-- Warning -->
+
+        <div class="key-warning">
+
+            <span>
+                🛡️
+            </span>
+
+            <div>
+
+                <strong>
+                    Keep your API key private
+                </strong>
+
+                <p>
+                    Never share your API key publicly or include it
+                    in client-side code.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- Security Information -->
+
+    <section class="security-info">
+
+
+        <div class="info-title">
+
+            <span>
+                SECURITY
+            </span>
+
+            <h2>
+                🔒 API Key Protection
+            </h2>
+
+        </div>
+
+
+        <div class="security-grid">
+
+
+            <div class="security-item">
+
+                <div class="security-item-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Private Access
+                    </h3>
+
+                    <p>
+                        Your API key is intended for your personal
+                        API access.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="security-item">
+
+                <div class="security-item-icon">
+                    🚫
+                </div>
+
+                <div>
+
+                    <h3>
+                        Don't Share
+                    </h3>
+
+                    <p>
+                        Avoid sharing your key in public repositories
+                        or messages.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="security-item">
+
+                <div class="security-item-icon">
+                    🔄
+                </div>
+
+                <div>
+
+                    <h3>
+                        Regenerate
+                    </h3>
+
+                    <p>
+                        Generate a new key whenever you need to
+                        replace the current one.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     Existing Scripts
+========================================= -->
+
+<script src="security.js"></script>
+
+<script src="loader.js"></script>
+
+<script src="apikey.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Xland Script Platform Released</title>
+
+<link rel="icon" href="xland-icon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="xland-news.css">
+<link rel="stylesheet" href="comments.css">
+
+</head>
+
+<body>
+
+<header class="article-header">
+
+<a href="xland-news.html" class="back-btn">
+
+⬅ Back to XLAND News
+
+</a>
+
+</header>
+
+<section class="article-hero">
+
+<img src="xlandscript.png" alt="Xland Script">
+
+<div class="article-overlay">
+
+<span class="hero-tag">
+
+📜 SCRIPT
+
+</span>
+
+<h1>
+
+Xland Script Platform Officially Released
+
+</h1>
+
+<p>
+
+A modern place for developers to download, explore and share official Xland scripts.
+
+</p>
+
+<div class="article-meta">
+
+<span>📅 August 2026</span>
+
+<span>⏱️ 4 min read</span>
+
+<span>👤 Xland Team</span>
+
+</div>
+
+</div>
+
+</section>
+
+<main class="article-container">
+
+<h2>
+
+Introducing Xland Script
+
+</h2>
+
+<p>
+
+The new Xland Script platform is now available for developers. It provides an organized environment where official scripts, examples and developer resources can be explored and downloaded easily.
+
+</p>
+
+<div class="quote-box">
+
+"One place for every official Xland developer resource."
+
+</div>
+
+<div class="article-image">
+
+<img src="xlandscript.png" alt="Xland Script">
+
+</div>
+
+<div class="info-box">
+
+<h3>🚀 Features</h3>
+
+<ul>
+
+<li>📜 Official Xland Scripts</li>
+
+<li>🔍 Fast Search</li>
+
+<li>📥 Easy Download</li>
+
+<li>👤 User Account System</li>
+
+<li>🎨 Modern Interface</li>
+
+<li>📱 Mobile Friendly Design</li>
+
+</ul>
+
+</div>
+
+<h2>
+
+Supported Categories
+
+</h2>
+
+<ul>
+
+<li>🟦 Python Scripts</li>
+
+<li>🟨 JavaScript</li>
+
+<li>🟣 C#</li>
+
+<li>🟩 C++</li>
+
+<li>🔵 API Examples</li>
+
+</ul>
+
+<h2>
+
+Developer Experience
+
+</h2>
+
+<p>
+
+The new interface was redesigned to provide a cleaner and faster experience. Developers can quickly browse scripts, copy code, download resources and explore official examples.
+
+</p>
+
+<p>
+
+Future updates will introduce authentication improvements, cloud synchronization, favorite scripts and many more developer tools.
+
+</p>
+
+<!-- Gallery -->
+
+<section class="gallery-section">
+
+<h2>📸 Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="xlandscript.png" alt="Gallery">
+
+<img src="xland-apdate.png" alt="Gallery">
+
+<img src="xland-api.png" alt="Gallery">
+
+</div>
+
+</section>
+
+<!-- Tags -->
+
+<section class="tags-section">
+
+<h2>🏷 Tags</h2>
+
+<div class="tags">
+
+<span>#Xland</span>
+
+<span>#Script</span>
+
+<span>#Developer</span>
+
+<span>#Python</span>
+
+<span>#API</span>
+
+</div>
+
+</section>
+
+<!-- Related -->
+
+<section class="related-news">
+
+<h2>📰 Related News</h2>
+
+<div class="related-grid">
+
+<a href="news1.html" class="related-card">
+
+<img src="xland-apdate.png">
+
+<h3>Xland Support 3.2</h3>
+
+<p>The biggest update of Xland Support.</p>
+
+</a>
+
+<a href="news2.html" class="related-card">
+
+<img src="xland-api.png">
+
+<h3>Xland API</h3>
+
+<p>New API improvements for developers.</p>
+
+</a>
+
+<a href="news3.html" class="related-card">
+
+<img src="endless.png">
+
+<h3>Endless Road Horror</h3>
+
+<p>Latest improvements to the game.</p>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- Author -->
+
+<section class="author-box">
+
+<img src="xland-icon.png">
+
+<div>
+
+<h3>👤 Written by</h3>
+
+<h2>Xland Team</h2>
+
+<p>
+
+Official developers of the Xland ecosystem.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- Comments -->
+
+<section class="comments-section">
+
+<h2>
+
+💬 Comments
+
+<span id="commentCount">(0)</span>
+
+</h2>
+
+<div id="commentsList">
+
+</div>
+
+<div class="comment-form">
+
+<input
+type="text"
+id="username"
+placeholder="👤 Your Name">
+
+<textarea
+id="commentText"
+placeholder="💬 Write your comment..."></textarea>
+
+<button id="publishComment">
+
+Publish Comment
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- Lightbox -->
+
+<div id="lightbox" class="lightbox">
+
+<span class="close-lightbox">&times;</span>
+
+<img id="lightbox-img" src="" alt="Preview">
+
+</div>
+
+<script>
+
+const images=document.querySelectorAll(".gallery-grid img");
+
+const lightbox=document.getElementById("lightbox");
+
+const lightboxImg=document.getElementById("lightbox-img");
+
+const closeBtn=document.querySelector(".close-lightbox");
+
+images.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+lightbox.style.display="flex";
+
+lightboxImg.src=img.src;
+
+});
+
+});
+
+closeBtn.onclick=()=>{
+
+lightbox.style.display="none";
+
+};
+
+lightbox.onclick=(e)=>{
+
+if(e.target===lightbox){
+
+lightbox.style.display="none";
+
+}
+
+};
+
+</script>
+
+<script src="comments.js"></script>
+
+</body>
+
+</html>

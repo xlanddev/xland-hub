@@ -1,0 +1,38 @@
+{
+    "longVideos": [
+        {
+            "id": "xland-video-01",
+            "title": "آموزش نصب Xland Game",
+            "video": "xland-intro.mp4",
+            "thumbnail": "xland-game-banner.png",
+            "type": "long",
+            "category": "آموزش",
+            "views": 0,
+            "likes": 0,
+            "date": "2026-08-16",
+            "new": true,
+            "featured": true,
+            "latest": true
+        }
+        
+    ],
+
+
+    "shortVideos": [
+        {
+            "id": "xland-short-01",
+            "title": "اولین Short Xland 🔥",
+            "video": "videos/shorts/short01.mp4",
+            "thumbnail": "images/videos/short01.jpg",
+            "type": "short",
+            "category": "Xland",
+            "views": 0,
+            "likes": 0,
+            "date": "2026-08-16",
+            "new": true,
+            "featured": false,
+            "latest": true
+        }
+    ]
+    
+}
