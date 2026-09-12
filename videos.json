@@ -13,10 +13,22 @@
             "new": true,
             "featured": true,
             "latest": true
+        },
+        {
+            "id": "xland-video-02",
+            "title": "اموزش نصب مپ xland",
+            "video": "InShot_20260817_113316092.mp4",
+            "thumbnail": "xland-video-02.png",
+            "type": "long",
+            "category": "Xland",
+            "views": 0,
+            "likes": 0,
+            "date": "2026-09-11",
+            "new": true,
+            "featured": false,
+            "latest": true
         }
-        
     ],
-
 
     "shortVideos": [
         {
@@ -34,5 +46,4 @@
             "latest": true
         }
     ]
-    
 }

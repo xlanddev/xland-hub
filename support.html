@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Xland Support Center</title>
+    <title>Xland Support</title>
 
     <link rel="icon" type="image/png" href="xland-icon.png">
 
@@ -19,320 +18,952 @@
 
 <body>
 
+<div class="support-page">
+
     <!-- =========================================
-         XLAND SUPPORT CENTER
-    ========================================= -->
+         BACKGROUND EFFECTS
+    ========================================== -->
 
-    <div class="support-page">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
 
-        <!-- Header -->
 
-        <header class="support-header">
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-            <div class="support-logo">
+    <header class="support-header">
 
-                <img
-                    src="xland-icon.png"
-                    alt="Xland"
-                >
+        <div class="support-logo">
 
-                <div>
+            <img src="xland-icon.png" alt="Xland">
 
-                    <h1>XLAND SUPPORT</h1>
+            <div>
 
-                    <span>Support Center 4.2</span>
+                <h1>XLAND SUPPORT</h1>
+
+                <span>
+                    Support Center 5.1
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="support-nav">
+
+            <button
+                class="nav-btn active"
+                data-section="support"
+            >
+                🛠️ پشتیبانی
+            </button>
+
+            <button
+                class="nav-btn"
+                data-section="faq"
+            >
+                📚 FAQ
+            </button>
+
+            <button
+                class="nav-btn"
+                data-section="tickets"
+            >
+                🎫 Tickets
+            </button>
+
+        </nav>
+
+
+        <a
+            href="index.html"
+            class="back-home"
+        >
+            ← صفحه اصلی
+        </a>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             SUPPORT SECTION
+        ====================================== -->
+
+        <section
+            id="support"
+            class="page-section active"
+        >
+
+            <div class="support-hero">
+
+                <div class="hero-content">
+
+                    <span class="hero-badge">
+                        🛡️ XLAND SUPPORT CENTER 5.1
+                    </span>
+
+                    <h2>
+                        چطور می‌توانیم
+                        <span>کمکت کنیم؟</span>
+                    </h2>
+
+                    <p>
+                        مشکل، باگ، پیشنهاد یا سوالی داری؟
+                        موضوع موردنظر خودت رو پیدا کن و درخواستت رو برای تیم Xland ارسال کن.
+                    </p>
+
+
+                    <!-- SEARCH -->
+
+                    <div class="support-search">
+
+                        <span>🔎</span>
+
+                        <input
+                            type="text"
+                            id="supportSearch"
+                            placeholder="مشکل خود را جستجو کنید..."
+                            autocomplete="off"
+                        >
+
+                        <kbd>CTRL + K</kbd>
+
+                    </div>
+
+
+                    <div
+                        id="searchStatus"
+                        class="search-status"
+                    ></div>
 
                 </div>
 
             </div>
 
-            <a
-                href="index.html"
-                class="back-home"
-            >
-                ← صفحه اصلی
-            </a>
 
-        </header>
+            <!-- =================================
+                 QUICK HELP
+            ================================== -->
+
+            <section class="quick-help">
+
+                <div class="quick-card">
+
+                    <strong>🎫</strong>
+
+                    <div>
+                        <b>Ticket Center</b>
+                        <span>
+                            درخواست‌های خود را پیگیری کنید
+                        </span>
+                    </div>
+
+                    <button
+                        onclick="showSection('tickets')"
+                    >
+                        مشاهده
+                    </button>
+
+                </div>
 
 
-        <!-- Hero -->
+                <div class="quick-card">
 
-        <section class="support-hero">
+                    <strong>📚</strong>
 
-            <div class="hero-content">
+                    <div>
+                        <b>سوالات متداول</b>
+                        <span>
+                            شاید پاسخ سوالت اینجا باشد
+                        </span>
+                    </div>
+
+                    <button
+                        onclick="showSection('faq')"
+                    >
+                        مشاهده
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 SUPPORT CATEGORIES
+            ================================== -->
+
+            <section class="support-section">
+
+                <h2 class="section-title">
+                    بخش‌های پشتیبانی
+                </h2>
+
+                <p class="section-subtitle">
+                    نوع درخواست خود را انتخاب کنید
+                </p>
+
+
+                <div class="support-grid">
+
+
+                    <!-- BUG -->
+
+                    <article
+                        class="support-card"
+                        data-search="bug باگ گزارش خطا error crash مشکل خرابی"
+                    >
+
+                        <div class="support-icon">
+                            🐛
+                        </div>
+
+                        <div class="card-badge">
+                            BUG REPORT
+                        </div>
+
+                        <h3>
+                            گزارش باگ
+                        </h3>
+
+                        <p>
+                            باگ یا خطایی در یکی از محصولات Xland پیدا کردی؟
+                            اطلاعات دقیق آن را برای ما ارسال کن.
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('bug')"
+                        >
+                            گزارش باگ
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+
+                    <!-- SUGGESTION -->
+
+                    <article
+                        class="support-card"
+                        data-search="suggestion پیشنهاد ایده feature قابلیت امکانات"
+                    >
+
+                        <div class="support-icon">
+                            💡
+                        </div>
+
+                        <div class="card-badge">
+                            FEATURE REQUEST
+                        </div>
+
+                        <h3>
+                            پیشنهاد قابلیت
+                        </h3>
+
+                        <p>
+                            ایده‌ای برای بهتر شدن Xland داری؟
+                            پیشنهادت را با ما به اشتراک بگذار.
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('suggestion')"
+                        >
+                            ارسال پیشنهاد
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+
+                    <!-- GAME -->
+
+                    <article
+                        class="support-card"
+                        data-search="game بازی اجرا crash fps launcher endless road xland"
+                    >
+
+                        <div class="support-icon">
+                            🎮
+                        </div>
+
+                        <div class="card-badge">
+                            GAME SUPPORT
+                        </div>
+
+                        <h3>
+                            پشتیبانی بازی
+                        </h3>
+
+                        <p>
+                            در اجرای بازی، عملکرد، نصب یا امکانات بازی مشکل داری؟
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('game')"
+                        >
+                            پشتیبانی بازی
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+
+                    <!-- WEBSITE -->
+
+                    <article
+                        class="support-card"
+                        data-search="website سایت وب page صفحه link لینک error مشکل"
+                    >
+
+                        <div class="support-icon">
+                            🌐
+                        </div>
+
+                        <div class="card-badge">
+                            WEBSITE
+                        </div>
+
+                        <h3>
+                            مشکل سایت
+                        </h3>
+
+                        <p>
+                            اگر یکی از صفحات یا امکانات Xland درست کار نمی‌کند،
+                            گزارشش کن.
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('website')"
+                        >
+                            گزارش مشکل
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACCOUNT -->
+
+                    <article
+                        class="support-card"
+                        data-search="account حساب کاربری login ورود password رمز profile پروفایل"
+                    >
+
+                        <div class="support-icon">
+                            🔐
+                        </div>
+
+                        <div class="card-badge">
+                            ACCOUNT
+                        </div>
+
+                        <h3>
+                            حساب کاربری
+                        </h3>
+
+                        <p>
+                            مشکلات ورود، حساب کاربری یا سرویس‌های Xland.
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('account')"
+                        >
+                            دریافت کمک
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+
+                    <!-- CONTACT -->
+
+                    <article
+                        class="support-card"
+                        data-search="contact تماس support پشتیبانی ارتباط message پیام"
+                    >
+
+                        <div class="support-icon">
+                            💬
+                        </div>
+
+                        <div class="card-badge">
+                            CONTACT
+                        </div>
+
+                        <h3>
+                            تماس با پشتیبانی
+                        </h3>
+
+                        <p>
+                            برای ارتباط با تیم Xland درخواست خود را ارسال کنید.
+                        </p>
+
+                        <button
+                            onclick="openSupportForm('contact')"
+                        >
+                            تماس با ما
+                            <span>→</span>
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             FAQ SECTION
+        ====================================== -->
+
+        <section
+            id="faq"
+            class="page-section"
+        >
+
+            <div class="internal-hero">
 
                 <span class="hero-badge">
-                    🛠️ XLAND SUPPORT CENTER
+                    📚 XLAND KNOWLEDGE BASE
                 </span>
 
                 <h2>
-                    چطور می‌توانیم کمکت کنیم؟
+                    سوالات متداول
                 </h2>
 
                 <p>
-                    مشکل، پیشنهاد یا سوالی داری؟
-                    بخش مناسب را انتخاب کن و از پشتیبانی Xland کمک بگیر.
+                    قبل از ارسال Ticket شاید پاسخ سوالت همین‌جا باشد.
                 </p>
 
-                <div class="support-search">
-
-                    <span>🔎</span>
-
-                    <input
-                        type="text"
-                        id="supportSearch"
-                        placeholder="مشکل خود را جستجو کنید..."
-                    >
-
-                </div>
-
             </div>
 
-        </section>
+
+            <section class="faq-container">
 
 
-        <!-- Support Categories -->
+                <div class="faq-item">
 
-        <section class="support-section">
-
-            <h2 class="section-title">
-                بخش‌های پشتیبانی
-            </h2>
-
-            <p class="section-subtitle">
-                نوع مشکل خود را انتخاب کنید
-            </p>
-
-
-            <div class="support-grid">
-
-
-                <div
-                    class="support-card"
-                    data-search="bug bug report باگ مشکل"
-                >
-
-                    <div class="support-icon">
-                        🐛
-                    </div>
-
-                    <h3>
-                        گزارش باگ
-                    </h3>
-
-                    <p>
-                        باگ یا خطایی در محصولات Xland پیدا کردی؟
-                        آن را گزارش کن.
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('bug')"
-                    >
-                        گزارش باگ →
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="support-card"
-                    data-search="suggestion پیشنهاد ایده"
-                >
-
-                    <div class="support-icon">
-                        💡
-                    </div>
-
-                    <h3>
-                        پیشنهاد
-                    </h3>
-
-                    <p>
-                        ایده‌ای برای بهتر شدن Xland داری؟
-                        با ما به اشتراک بگذار.
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('suggestion')"
-                    >
-                        ارسال پیشنهاد →
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="support-card"
-                    data-search="game بازی xland"
-                >
-
-                    <div class="support-icon">
-                        🎮
-                    </div>
-
-                    <h3>
-                        پشتیبانی بازی
-                    </h3>
-
-                    <p>
-                        در اجرای بازی یا امکانات Xland
-                        مشکلی داری؟
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('game')"
-                    >
-                        پشتیبانی بازی →
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="support-card"
-                    data-search="website سایت وب مشکل"
-                >
-
-                    <div class="support-icon">
-                        🌐
-                    </div>
-
-                    <h3>
-                        مشکل سایت
-                    </h3>
-
-                    <p>
-                        اگر مشکلی در Xland Support یا صفحات سایت داری،
-                        اطلاع بده.
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('website')"
-                    >
-                        گزارش مشکل →
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="support-card"
-                    data-search="account حساب کاربری"
-                >
-
-                    <div class="support-icon">
-                        🔑
-                    </div>
-
-                    <h3>
-                        حساب کاربری
-                    </h3>
-
-                    <p>
-                        مشکلات مربوط به حساب یا ورود به سرویس‌ها.
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('account')"
-                    >
-                        دریافت کمک →
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="support-card"
-                    data-search="contact تماس پشتیبانی"
-                >
-
-                    <div class="support-icon">
-                        💬
-                    </div>
-
-                    <h3>
-                        تماس با پشتیبانی
-                    </h3>
-
-                    <p>
-                        برای ارتباط مستقیم با تیم Xland
-                        درخواست خود را ارسال کنید.
-                    </p>
-
-                    <button
-                        onclick="openSupportForm('contact')"
-                    >
-                        تماس با ما →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Support Form -->
-
-        <section
-            id="supportFormSection"
-            class="support-form-section"
-        >
-
-            <div class="form-container">
-
-                <div class="form-header">
-
-                    <div>
+                    <button class="faq-question">
 
                         <span>
-                            XLAND SUPPORT
+                            چگونه یک Ticket ارسال کنم؟
                         </span>
 
-                        <h2 id="formTitle">
-                            ارسال درخواست پشتیبانی
-                        </h2>
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            از بخش پشتیبانی نوع درخواست خود را انتخاب کنید،
+                            فرم را کامل کنید و روی «ارسال درخواست» بزنید.
+                            Ticket ID برای درخواست شما ساخته می‌شود.
+                        </p>
 
                     </div>
-
-                    <button
-                        id="closeForm"
-                        class="close-form"
-                    >
-                        ✕
-                    </button>
 
                 </div>
 
 
-                <form id="supportForm">
+                <div class="faq-item">
 
-                    <label>
-                        نام
-                    </label>
+                    <button class="faq-question">
 
-                    <input
-                        type="text"
-                        id="supportName"
-                        placeholder="نام شما"
-                        required
+                        <span>
+                            Ticket ID چیست؟
+                        </span>
+
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Ticket ID یک شناسه یکتا برای درخواست شماست.
+                            با استفاده از آن می‌توان در آینده درخواست را
+                            از طریق Xland API پیگیری کرد.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            وضعیت Open / Pending / Solved یعنی چه؟
+                        </span>
+
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Open یعنی درخواست تازه ثبت شده،
+                            Pending یعنی درخواست در حال بررسی است،
+                            و Solved یعنی درخواست حل شده است.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            آیا درخواست‌ها ذخیره می‌شوند؟
+                        </span>
+
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            در نسخه 5.1 درخواست‌ها فعلاً به صورت موقت
+                            داخل localStorage مرورگر ذخیره می‌شوند.
+                            در نسخه Backend، این سیستم به Xland API متصل خواهد شد.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            آیا می‌توانم درخواست خودم را ببینم؟
+                        </span>
+
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            بله. از بخش Ticket Center می‌توانی درخواست‌های
+                            ذخیره‌شده در همین مرورگر را مشاهده کنی.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            آیا Xland API آماده است؟
+                        </span>
+
+                        <b>+</b>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            معماری نسخه 5.1 برای اتصال به Backend آماده شده،
+                            اما ذخیره‌سازی فعلی Frontend و localStorage است.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             TICKETS SECTION
+        ====================================== -->
+
+        <section
+            id="tickets"
+            class="page-section"
+        >
+
+            <div class="internal-hero">
+
+                <span class="hero-badge">
+                    🎫 XLAND TICKET CENTER
+                </span>
+
+                <h2>
+                    Ticket Center
+                </h2>
+
+                <p>
+                    وضعیت درخواست‌های ثبت‌شده خود را مشاهده کنید.
+                </p>
+
+            </div>
+
+
+            <section class="ticket-dashboard">
+
+
+                <div class="ticket-stats">
+
+                    <div class="stat-card">
+
+                        <span>📂</span>
+
+                        <div>
+                            <small>Open</small>
+                            <strong id="openCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>⏳</span>
+
+                        <div>
+                            <small>Pending</small>
+                            <strong id="pendingCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>✅</span>
+
+                        <div>
+                            <small>Solved</small>
+                            <strong id="solvedCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>🎫</span>
+
+                        <div>
+                            <small>Total</small>
+                            <strong id="totalCount">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="ticketsList"
+                    class="tickets-list"
+                ></div>
+
+
+                <div
+                    id="emptyTickets"
+                    class="empty-tickets"
+                >
+
+                    <div>
+                        🎫
+                    </div>
+
+                    <h3>
+                        هنوز Ticketای ثبت نشده
+                    </h3>
+
+                    <p>
+                        اولین درخواست پشتیبانی خودت را ایجاد کن.
+                    </p>
+
+                    <button
+                        onclick="showSection('support')"
                     >
+                        ایجاد Ticket
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
 
 
-                    <label>
-                        ایمیل
-                    </label>
+    <!-- =========================================
+         SUPPORT FORM MODAL
+    ========================================== -->
 
-                    <input
-                        type="email"
-                        id="supportEmail"
-                        placeholder="example@email.com"
-                        required
-                    >
+    <div
+        id="supportFormModal"
+        class="modal"
+    >
+
+        <div class="modal-backdrop"></div>
 
 
-                    <label>
+        <div class="form-container">
+
+
+            <div class="form-header">
+
+                <div>
+
+                    <span>
+                        XLAND SUPPORT 5.1
+                    </span>
+
+                    <h2 id="formTitle">
+                        درخواست پشتیبانی
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="closeForm"
+                    class="close-form"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <form id="supportForm">
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="supportName">
+                            نام
+                        </label>
+
+                        <input
+                            type="text"
+                            id="supportName"
+                            placeholder="نام شما"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="supportEmail">
+                            ایمیل
+                        </label>
+
+                        <input
+                            type="email"
+                            id="supportEmail"
+                            placeholder="example@email.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- GAME FIELDS -->
+
+                <div
+                    id="gameFields"
+                    class="dynamic-fields"
+                >
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="gameName">
+                                نام بازی
+                            </label>
+
+                            <select id="gameName">
+
+                                <option value="">
+                                    انتخاب بازی
+                                </option>
+
+                                <option value="Endless Road">
+                                    Endless Road
+                                </option>
+
+                                <option value="Xland Game">
+                                    Xland Game
+                                </option>
+
+                                <option value="Other">
+                                    بازی دیگر
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="gameVersion">
+                                نسخه بازی
+                            </label>
+
+                            <select id="gameVersion">
+
+                                <option value="">
+                                    انتخاب نسخه
+                                </option>
+
+                                <option value="Latest">
+                                    Latest
+                                </option>
+
+                                <option value="1.0">
+                                    1.0
+                                </option>
+
+                                <option value="1.1">
+                                    1.1
+                                </option>
+
+                                <option value="2.0">
+                                    2.0
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUG FIELDS -->
+
+                <div
+                    id="bugFields"
+                    class="dynamic-fields"
+                >
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="bugPriority">
+                                اولویت
+                            </label>
+
+                            <select id="bugPriority">
+
+                                <option value="Low">
+                                    Low
+                                </option>
+
+                                <option value="Normal" selected>
+                                    Normal
+                                </option>
+
+                                <option value="High">
+                                    High
+                                </option>
+
+                                <option value="Critical">
+                                    Critical
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="platform">
+                                سیستم
+                            </label>
+
+                            <select id="platform">
+
+                                <option value="">
+                                    انتخاب سیستم
+                                </option>
+
+                                <option value="Windows">
+                                    Windows
+                                </option>
+
+                                <option value="Linux">
+                                    Linux
+                                </option>
+
+                                <option value="macOS">
+                                    macOS
+                                </option>
+
+                                <option value="Android">
+                                    Android
+                                </option>
+
+                                <option value="iOS">
+                                    iOS
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="supportSubject">
                         موضوع
                     </label>
 
@@ -343,8 +974,12 @@
                         required
                     >
 
+                </div>
 
-                    <label>
+
+                <div class="form-group">
+
+                    <label for="supportMessage">
                         توضیحات
                     </label>
 
@@ -354,48 +989,93 @@
                         required
                     ></textarea>
 
-
-                    <button
-                        type="submit"
-                        class="submit-support"
-                    >
-                        🚀 ارسال درخواست
-                    </button>
-
-                </form>
-
-                <div
-                    id="supportResult"
-                    class="support-result"
-                ></div>
-
-            </div>
-
-        </section>
+                </div>
 
 
-        <!-- Footer -->
+                <div class="backend-note">
 
-        <footer class="support-footer">
+                    🛡️
+                    اطلاعات این درخواست در نسخه 5.1
+                    فعلاً به صورت محلی ذخیره می‌شود.
 
-            <h3>
-                XLAND SUPPORT
-            </h3>
+                </div>
 
-            <p>
-                Xland Support 4.2 — Developer & Support Center
-            </p>
 
-            <a href="index.html">
-                بازگشت به صفحه اصلی
-            </a>
+                <button
+                    type="submit"
+                    class="submit-support"
+                >
 
-        </footer>
+                    🚀 ایجاد Ticket
+
+                </button>
+
+
+            </form>
+
+        </div>
 
     </div>
 
 
-    <script src="support.js"></script>
+    <!-- =========================================
+         TOAST
+    ========================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="support-footer">
+
+        <h3>
+            XLAND SUPPORT
+        </h3>
+
+        <p>
+            Xland Support Center 5.1
+            — Developer & Support Center
+        </p>
+
+        <div>
+
+            <button
+                onclick="showSection('support')"
+            >
+                Support
+            </button>
+
+            <button
+                onclick="showSection('faq')"
+            >
+                FAQ
+            </button>
+
+            <button
+                onclick="showSection('tickets')"
+            >
+                Tickets
+            </button>
+
+        </div>
+
+        <a href="index.html">
+            ← بازگشت به صفحه اصلی
+        </a>
+
+    </footer>
+
+
+</div>
+
+
+<script src="support.js"></script>
 
 </body>
 

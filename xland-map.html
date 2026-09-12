@@ -8,21 +8,281 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Xland Map | Minecraft Map</title>
-
 
 <link rel="icon" type="image/png" href="xland-icon.png">
 
-
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+/* ============================= */
+/* Xland Map Discount */
+/* ============================= */
+
+.discount-section {
+    margin: 60px auto;
+    max-width: 1000px;
+    padding: 45px 25px;
+    text-align: center;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top left, rgba(0, 150, 255, 0.25), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(160, 0, 255, 0.25), transparent 40%),
+        rgba(10, 10, 25, 0.95);
+
+    border: 1px solid rgba(120, 100, 255, 0.35);
+
+    box-shadow:
+        0 0 30px rgba(70, 80, 255, 0.25),
+        inset 0 0 40px rgba(80, 50, 255, 0.08);
+}
+
+.discount-badge {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        #ff1744,
+        #ff6d00
+    );
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 0 20px rgba(255, 60, 0, 0.45);
+}
+
+.discount-section h2 {
+    font-size: 34px;
+
+    margin-bottom: 15px;
+
+    color: white;
+
+    text-shadow:
+        0 0 15px rgba(100, 150, 255, 0.6);
+}
+
+.discount-text {
+    color: #ddd;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+.price-box {
+    margin: 25px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+.old-price {
+    font-size: 22px;
+
+    color: #999;
+
+    text-decoration: line-through;
+}
+
+.new-price {
+    font-size: 48px;
+
+    font-weight: 900;
+
+    color: #00ff9d;
+
+    text-shadow:
+        0 0 15px rgba(0, 255, 157, 0.7),
+        0 0 35px rgba(0, 255, 157, 0.3);
+}
+
+.discount-percent {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    font-weight: bold;
+}
+
+/* Countdown */
+
+.countdown-title {
+    margin-top: 30px;
+
+    margin-bottom: 15px;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.countdown {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.time-box {
+    min-width: 85px;
+
+    padding: 15px 12px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(100, 100, 255, 0.12);
+}
+
+.time-box span {
+    display: block;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: white;
+}
+
+.time-box small {
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+.discount-buy-btn {
+    margin-top: 30px;
+
+    padding: 16px 35px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    background: linear-gradient(
+        90deg,
+        #6a00ff,
+        #00aaff
+    );
+
+    box-shadow:
+        0 0 20px rgba(90, 70, 255, 0.45);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.discount-buy-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 35px rgba(90, 100, 255, 0.7);
+}
+
+/* Expired */
+
+.discount-expired {
+    display: none;
+
+    color: #ff6b6b;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin-top: 25px;
+}
+
+.normal-price {
+    display: none;
+
+    font-size: 42px;
+
+    font-weight: 900;
+
+    color: white;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .discount-section {
+        margin: 35px 15px;
+        padding: 35px 18px;
+    }
+
+    .discount-section h2 {
+        font-size: 27px;
+    }
+
+    .new-price {
+        font-size: 38px;
+    }
+
+    .time-box {
+        min-width: 70px;
+    }
+
+    .time-box span {
+        font-size: 25px;
+    }
+
+}
+
+</style>
 
 </head>
 
 
 <body>
-
 
 
 <nav>
@@ -36,24 +296,17 @@
 </nav>
 
 
-
-
-
 <section class="map-hero">
-
 
 <img src="xland-map-banner.png" class="map-banner">
 
-
 <div class="map-overlay">
-
 
 <h1>
 
 🌎 Xland Map
 
 </h1>
-
 
 <p>
 
@@ -62,9 +315,7 @@
 </p>
 
 
-
 <div class="map-tags">
-
 
 <span>⛏ Minecraft</span>
 
@@ -74,30 +325,20 @@
 
 <span>🔥 Xland</span>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
 
-
-
-
-
-
 <section class="map-section">
-
 
 <h2>
 
 🌎 درباره مپ Xland
 
 </h2>
-
 
 <p>
 
@@ -110,24 +351,16 @@
 
 </p>
 
-
 </section>
 
 
-
-
-
-
-
 <section class="features">
-
 
 <h2>
 
 🔥 ویژگی‌های مپ
 
 </h2>
-
 
 
 <div class="feature-container">
@@ -146,7 +379,6 @@
 </div>
 
 
-
 <div class="feature-card">
 
 <h3>
@@ -158,8 +390,6 @@
 </p>
 
 </div>
-
-
 
 
 <div class="feature-card">
@@ -175,7 +405,6 @@
 </div>
 
 
-
 <div class="feature-card">
 
 <h3>
@@ -189,23 +418,17 @@
 </div>
 
 
-
 </div>
 
-
 </section>
-
-
-
-
-
-
 
 
 <section class="screenshots">
 
 <h2>
+
 🖼 تصاویر مپ
+
 </h2>
 
 
@@ -219,18 +442,168 @@
 
 </div>
 
+</section>
+
+
+<!-- ====================================== -->
+<!-- Xland Map Flash Sale -->
+<!-- ====================================== -->
+
+<section class="discount-section" id="mapDiscount">
+
+<div class="discount-badge">
+
+🔥 FLASH SALE
+
+</div>
+
+
+<h2>
+
+🎉 تخفیف ویژه مپ Xland
+
+</h2>
+
+
+<p class="discount-text">
+
+فقط برای مدت محدود!
+مپ Xland را با قیمت فوق‌العاده ویژه تهیه کنید.
+
+</p>
+
+
+<div class="price-box" id="discountPrice">
+
+<span class="old-price">
+
+2,000,000 تومان
+
+</span>
+
+
+<span class="new-price">
+
+20,000 تومان
+
+</span>
+
+
+<span class="discount-percent">
+
+٪99 تخفیف
+
+</span>
+
+</div>
+
+
+<div class="normal-price" id="normalPrice">
+
+2,000,000 تومان
+
+</div>
+
+
+<div class="countdown-title" id="countdownTitle">
+
+⏳ زمان باقی‌مانده تا پایان تخفیف
+
+</div>
+
+
+<div class="countdown" id="countdown">
+
+<div class="time-box">
+
+<span id="days">
+
+00
+
+</span>
+
+<small>
+
+روز
+
+</small>
+
+</div>
+
+
+<div class="time-box">
+
+<span id="hours">
+
+00
+
+</span>
+
+<small>
+
+ساعت
+
+</small>
+
+</div>
+
+
+<div class="time-box">
+
+<span id="minutes">
+
+00
+
+</span>
+
+<small>
+
+دقیقه
+
+</small>
+
+</div>
+
+
+<div class="time-box">
+
+<span id="seconds">
+
+00
+
+</span>
+
+<small>
+
+ثانیه
+
+</small>
+
+</div>
+
+</div>
+
+
+<div class="discount-expired" id="discountExpired">
+
+⛔ تخفیف به پایان رسید
+
+</div>
+
+
+<button
+class="discount-buy-btn"
+onclick="window.location.href='buy-map.html'">
+
+🛒 خرید مپ با قیمت ویژه
+
+</button>
+
 
 </section>
 
 
-
-
-
-
-
-
 <section class="buy-section">
-
 
 <h2>
 
@@ -239,45 +612,32 @@
 </h2>
 
 
-
 <p class="price-value">
 
-1,000,000 تومان
+2,000,000 تومان
 
 </p>
 
 
-
-
-<button class="buy-btn"
-
+<button
+class="buy-btn"
 onclick="window.location.href='buy-map.html'">
-
 
 🛒 خرید مپ Xland
 
-
 </button>
-
 
 
 </section>
 
 
-
-
-
-
-
 <section class="requirements">
-
 
 <h2>
 
 💻 اطلاعات فایل
 
 </h2>
-
 
 
 <div class="requirements-box">
@@ -303,29 +663,146 @@ onclick="window.location.href='buy-map.html'">
 </p>
 
 
-
 </div>
-
 
 </section>
 
 
-
-
-
-
-
 <footer>
-
 
 © Xland Team - Xland Map
 
-
 </footer>
 
+
+<script>
+
+/* ========================================= */
+/* Xland Map Flash Sale Countdown */
+/* ========================================= */
+
+/*
+   تخفیف به مدت 7 روز فعال است.
+
+   تاریخ شروع:
+   11 September 2026
+
+   پایان:
+   18 September 2026 - 23:59:59
+*/
+
+const discountEndDate =
+    new Date("2026-09-18T23:59:59");
+
+
+function updateCountdown() {
+
+    const now = new Date();
+
+    const difference =
+        discountEndDate.getTime() - now.getTime();
+
+
+    const discountPrice =
+        document.getElementById("discountPrice");
+
+    const countdown =
+        document.getElementById("countdown");
+
+    const countdownTitle =
+        document.getElementById("countdownTitle");
+
+    const expired =
+        document.getElementById("discountExpired");
+
+    const normalPrice =
+        document.getElementById("normalPrice");
+
+
+    /* تخفیف تمام شده */
+
+    if (difference <= 0) {
+
+        discountPrice.style.display = "none";
+
+        countdown.style.display = "none";
+
+        countdownTitle.style.display = "none";
+
+        expired.style.display = "block";
+
+        normalPrice.style.display = "block";
+
+        return;
+
+    }
+
+
+    /* محاسبه زمان */
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    /* نمایش */
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/* اجرای اولیه */
+
+updateCountdown();
+
+
+/* آپدیت هر ثانیه */
+
+setInterval(updateCountdown, 1000);
+
+</script>
 
 
 </body>
 
 </html>
-

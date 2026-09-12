@@ -1,5 +1,5 @@
 // ============================
-// XLAND Banner Slider v4.2
+// XLAND Banner Slider v5.0
 // Animated Slider
 // ============================
 
