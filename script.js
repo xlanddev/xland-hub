@@ -133,7 +133,7 @@ nav.classList.toggle("show");
 // 🔔 Update Banner System
 // ===========================
 
-const SITE_VERSION = "5.9";
+const SITE_VERSION = "6.0";
 
 function closeBanner(){
 document.getElementById("updateBanner").style.display = "none";
