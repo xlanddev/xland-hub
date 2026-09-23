@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xlanddev.github.io/xland-hub/sitemap.xml
