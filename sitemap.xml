@@ -1,0 +1,93 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main -->
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/</loc>
+    </url>
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/rules.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/support.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/videos.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/xland.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/xland-map.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/xland-script.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/xland-downloads.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/open-world-game.html</loc>
+    </url>
+
+    <!-- Xland News -->
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/xland-news.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news2.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news3.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news4.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news5.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news6.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news7.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news8.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news11.html</loc>
+    </url>
+
+    <url>
+        <loc>https://xlanddev.github.io/xland-hub/news12.html</loc>
+    </url>
+
+</urlset>
+```
