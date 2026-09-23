@@ -19,6 +19,9 @@
 
     <link rel="stylesheet" href="xland-ai-button.css">
 
+    <!-- 🤖 XLAND AI COPILOT -->
+    <link rel="stylesheet" href="xland-ai-copilot.css">
+
     <!-- XLAND HERO -->
     <link rel="stylesheet" href="hero.css">
 
@@ -400,319 +403,786 @@
 
 <body>
 
+
     <!-- =========================================
-     Loader
-========================================= -->
+            LOADER
+    ========================================= -->
 
-<!-- =========================================
-     XLAND SUPPORT 5.0 LOADER
-========================================= -->
+    <div id="loader">
 
-<div id="loader">
+        <div class="loader"></div>
 
-    <div class="loader"></div>
-
-</div>
-
-    
+    </div>
 
 
-<!-- =========================================
-        🔔 نوار اعلان آپدیت
-========================================= -->
+    <!-- =========================================
+            🔔 UPDATE BANNER
+    ========================================= -->
 
-<div id="updateBanner" class="update-banner">
+    <div id="updateBanner" class="update-banner">
 
-    🎉 سایت Xland hub آپدیت شد!
-    برای مشاهده تغییرات به بخش News Xland مراجعه کنید.
+        🎉 سایت Xland hub آپدیت شد!
 
-    <button onclick="closeBanner()">
+        برای مشاهده تغییرات به بخش News Xland مراجعه کنید.
 
-        ✖
+        <button onclick="closeBanner()">
+
+            ✖
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================================
+            INSTALL BANNER
+    ========================================= -->
+
+    <div id="installBanner">
+
+        <div class="install-info">
+
+            <img
+                src="xland-icon.png"
+                class="install-icon"
+            >
+
+            <div>
+
+                <div class="install-title">
+
+                    Install Xland hub
+
+                </div>
+
+                <div class="install-sub">
+
+                    Install the app for faster and easier access.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="install-buttons">
+
+            <button id="installBtn">
+
+                Install
+
+            </button>
+
+            <button id="closeInstall">
+
+                ✕
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+            MOBILE MENU BUTTON
+    ========================================= -->
+
+    <button
+        class="menu-btn"
+        onclick="toggleMenu()"
+    >
+
+        ☰
 
     </button>
 
-</div>
+
+    <!-- =========================================
+            NAVBAR
+    ========================================= -->
+
+    <nav id="navbar">
+
+        <a href="rules.html">
+
+            قوانین xland
+
+        </a>
 
 
-<!-- =========================================
-        INSTALL BANNER
-========================================= -->
+        <a href="news.html">
 
-<div id="installBanner">
+            News Xland
 
-
-    <div class="install-info">
+        </a>
 
 
-        <img
-            src="xland-icon.png"
-            class="install-icon"
-        >
+        <a href="xland-map.html">
+
+            دانلود مپ xland
+
+        </a>
 
 
-        <div>
+        <a href="xland.html">
+
+            دانلود بازی xland game
+
+        </a>
 
 
-            <div class="install-title">
+        <a href="endless.html">
 
-                Install Xland hub
+            دانلود بازی EndIessRoadHorror 3D
+
+        </a>
+
+
+        <a href="about.html">
+
+            درباره ما
+
+        </a>
+
+
+        <!-- =========================================
+                DEVELOPER MENU
+        ========================================= -->
+
+        <div class="dropdown">
+
+            <a
+                href="xland-script.html"
+                class="dropbtn"
+            >
+
+                Developer ▼
+
+            </a>
+
+
+            <div class="dropdown-content">
+
+                <a href="xland-script.html">
+
+                    📜 Xland Script
+
+                </a>
+
+
+                <a href="api.html">
+
+                    🌍 Xland API
+
+                </a>
+
+
+                <a href="xland-news.html">
+
+                    📰 XLAND News
+
+                </a>
+
+
+                <a href="videos.html">
+
+                    📰 xland video
+
+                </a>
+
+
+                <a href="support.html">
+
+                    🛠️ Support
+
+                </a>
+
+
+                <a href="open-world-game.html">
+
+                    Wild Horizon Game
+
+                </a>
 
             </div>
-
-
-            <div class="install-sub">
-
-                Install the app for faster and easier access.
-
-            </div>
-
 
         </div>
 
-
-    </div>
-
-
-    <div class="install-buttons">
-
-
-        <button id="installBtn">
-
-            Install
-
-        </button>
-
-
-        <button id="closeInstall">
-
-            ✕
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-<!-- =========================================
-        دکمه منوی موبایل
-========================================= -->
-
-<button
-    class="menu-btn"
-    onclick="toggleMenu()"
->
-
-    ☰
-
-</button>
-
-
-<!-- =========================================
-        نوار بالا
-========================================= -->
-
-<nav id="navbar">
-
-
-    <a href="rules.html">
-
-        قوانین xland
-
-    </a>
-
-
-    <a href="news.html">
-
-        News Xland
-
-    </a>
-
-
-    <a href="xland-map.html">
-
-        دانلود مپ xland
-
-    </a>
-
-
-    <a href="xland.html">
-
-        دانلود بازی xland game
-
-    </a>
-
-
-    <a href="endless.html">
-
-        دانلود بازی EndIessRoadHorror 3D
-
-    </a>
-
-
-    <a href="about.html">
-
-        درباره ما
-
-    </a>
-
-    
+    </nav>
 
 
     <!-- =========================================
-            DEVELOPER MENU
+            FLOATING XLAND AI BUTTON
     ========================================= -->
 
-    <div class="dropdown">
-
+    <div class="xland-ai-button-wrapper">
 
         <a
-            href="xland-script.html"
-            class="dropbtn"
+            href="https://xland-ai-web.onrender.com/"
+            class="xland-ai-button"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Xland AI"
         >
 
-            Developer ▼
+            <span class="xland-ai-icon">
+
+                🤖
+
+            </span>
 
         </a>
 
 
-        <div class="dropdown-content">
+        <div class="xland-ai-tooltip">
 
-
-            <a href="xland-script.html">
-
-                📜 Xland Script
-
-            </a>
-
-
-            <a href="api.html">
-
-                🌍 Xland API
-
-            </a>
-
-
-            <a href="xland-news.html">
-
-                📰 XLAND News
-
-            </a>
-
-
-            <a href="videos.html">
-
-                📰 xland video
-
-            </a>
-
-
-            <a href="support.html">
-
-                🛠️ Support
-
-            </a>
-
-              <a href="open-world-game.html">
-
-            
-
-             Wild Horizon Game
-
-            </a>
-
+            XLAND AI
 
         </div>
-
 
     </div>
 
 
-</nav>
+    <!-- =========================================
+            STATUS BANNER
+    ========================================= -->
 
-<!-- =========================================
-        FLOATING XLAND AI BUTTON
-========================================= -->
-
-<div class="xland-ai-button-wrapper">
-
-    <a
-        href="https://xland-ai-web.onrender.com/"
-        class="xland-ai-button"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open Xland AI"
+    <div
+        id="statusBanner"
+        class="status-banner"
     >
-        <span class="xland-ai-icon">🤖</span>
-    </a>
 
-    <div class="xland-ai-tooltip">
-        XLAND AI
-    </div>
+        <div class="status-left">
 
-</div>
+            <div
+                id="statusIcon"
+                class="status-icon"
+            >
 
+                🟡
 
-
-
-<!-- =========================================
-        STATUS BANNER
-========================================= -->
-
-<div
-    id="statusBanner"
-    class="status-banner"
->
+            </div>
 
 
-    <div class="status-left">
+            <div>
 
+                <h3 id="statusTitle"></h3>
 
-        <div
-            id="statusIcon"
-            class="status-icon"
-        >
+                <p id="statusMessage"></p>
 
-            🟡
+                <small id="statusUpdated"></small>
+
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="status-right">
+
+            <a
+                id="statusButton"
+                href="#"
+            >
+
+                Learn More
+
+            </a>
 
 
-            <h3 id="statusTitle"></h3>
+            <button id="closeStatus">
 
-            <p id="statusMessage"></p>
+                ✕
 
-            <small id="statusUpdated"></small>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+            XLAND 5.2 HERO
+    ========================================= -->
+
+    <section class="xland-home-hero">
+
+        <!-- Background Glow -->
+
+        <div class="hero-glow hero-glow-1"></div>
+
+        <div class="hero-glow hero-glow-2"></div>
+
+
+        <!-- Grid Background -->
+
+        <div class="hero-grid"></div>
+
+
+        <!-- Hero Content -->
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                ✦ XLAND HUB 5.2
+
+            </div>
+
+
+            <h1>
+
+                WELCOME TO
+
+                <span>XLAND</span>
+
+            </h1>
+
+
+            <p>
+
+                Your gateway to Xland games,
+                projects, technology and more.
+
+            </p>
+
+
+            <!-- Hero Buttons -->
+
+            <div class="hero-buttons">
+
+                <a
+                    href="xland.html"
+                    class="hero-btn primary"
+                >
+
+                    🎮 Explore Xland Game
+
+                </a>
+
+
+                <a
+                    href="support.html"
+                    class="hero-btn secondary"
+                >
+
+                    🛠️ Xland Support
+
+                </a>
+
+            </div>
+
+
+            <!-- Hero Stats -->
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+
+                    <strong>🎮</strong>
+
+                    <span>
+
+                        Xland Games
+
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>⚙️</strong>
+
+                    <span>
+
+                        Xland Projects
+
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>🚀</strong>
+
+                    <span>
+
+                        Active Development
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Decorative X -->
+
+        <div class="hero-x">
+
+            X
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+            🤖 XLAND AI COPILOT
+    ========================================= -->
+
+    <section class="xland-ai-copilot">
+
+        <div class="xland-ai-copilot-inner">
+
+
+            <!-- =====================================
+                    COPILOT HEADER
+            ===================================== -->
+
+            <div class="copilot-header">
+
+
+                <div class="copilot-brand">
+
+
+                    <div class="copilot-icon">
+
+                        🤖
+
+                    </div>
+
+
+                    <div class="copilot-title">
+
+                        <h2>
+
+                            Xland AI Copilot
+
+                        </h2>
+
+
+                        <p>
+
+                            Find anything inside the Xland ecosystem.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="copilot-online">
+
+                    <span class="copilot-online-dot"></span>
+
+                    ONLINE
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                    SEARCH
+            ===================================== -->
+
+            <div class="copilot-search-area">
+
+
+                <div class="copilot-search-box">
+
+
+                    <div class="copilot-search-icon">
+
+                        🔎
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        id="copilotSearch"
+                        placeholder="مثلاً: Xland Script، بازی‌ها، API..."
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        id="copilotSearchButton"
+                        type="button"
+                    >
+
+                        جستجو
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================
+                        QUICK ACCESS
+                ================================== -->
+
+                <div class="copilot-suggestions-title">
+
+                    ⚡ QUICK ACCESS
+
+                </div>
+
+
+                <div class="copilot-suggestions">
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland Game"
+                    >
+
+                        🎮 Games
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland Script"
+                    >
+
+                        📜 Developer
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland API"
+                    >
+
+                        🌍 API
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="News Xland"
+                    >
+
+                        📰 News
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland Support"
+                    >
+
+                        🛠️ Support
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland Map"
+                    >
+
+                        🗺️ Map
+
+                    </button>
+
+
+                    <button
+                        class="copilot-suggestion"
+                        type="button"
+                        data-query="Xland AI"
+                    >
+
+                        🤖 Xland AI
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================
+                        RESULT
+                ================================== -->
+
+                <div
+                    id="copilotResult"
+                    class="copilot-result"
+                >
+
+
+                    <div class="copilot-result-header">
+
+
+                        <div
+                            id="copilotResultIcon"
+                            class="copilot-result-icon"
+                        >
+
+                            🎮
+
+                        </div>
+
+
+                        <div class="copilot-result-info">
+
+
+                            <h3
+                                id="copilotResultTitle"
+                            ></h3>
+
+
+                            <p
+                                id="copilotResultDescription"
+                            ></p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <a
+                        id="copilotResultLink"
+                        class="copilot-open"
+                        href="#"
+                    >
+
+                        باز کردن صفحه →
+
+                    </a>
+
+
+                </div>
+
+
+                <!-- =================================
+                        NO RESULT
+                ================================== -->
+
+                <div
+                    id="copilotNoResult"
+                    class="copilot-no-result"
+                >
+
+                    🔎 چیزی پیدا نشد.
+
+                    <br>
+
+                    عبارت دیگری را امتحان کنید.
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                    COPILOT FOOTER
+            ===================================== -->
+
+            <div class="copilot-footer">
+
+
+                <span>
+
+                    🧠 Smart Xland Navigation
+
+                </span>
+
+
+                <span>
+
+                    ⚡ Powered by Xland Hub
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+            BANNER SLIDER
+    ========================================= -->
+
+    <div class="banner-slider">
+
+
+        <button class="banner-btn prev">
+
+            ❮
+
+        </button>
+
+
+        <div class="banner-content">
+
+
+            <h2 id="banner-title"></h2>
+
+
+            <p id="banner-text"></p>
+
+
+            <a
+                id="banner-link"
+                href="#"
+            >
+
+                مشاهده
+
+            </a>
+
+
+            <div class="banner-indicators">
+
+
+                <span class="dot active"></span>
+
+                <span class="dot"></span>
+
+                <span class="dot"></span>
+
+                <span class="dot"></span>
+
+
+            </div>
 
 
         </div>
 
 
-    </div>
+        <button class="banner-btn next">
 
-
-    <div class="status-right">
-
-
-        <a
-            id="statusButton"
-            href="#"
-        >
-
-            Learn More
-
-        </a>
-
-
-        <button id="closeStatus">
-
-            ✕
+            ❯
 
         </button>
 
@@ -720,506 +1190,316 @@
     </div>
 
 
-</div>
+    <!-- =========================================
+            MAIN CONTENT
+    ========================================= -->
 
-
-<!-- =========================================
-        XLAND 5.0 HERO
-========================================= -->
-
-<section class="xland-home-hero">
-
-
-    <!-- Background Glow -->
-
-    <div class="hero-glow hero-glow-1"></div>
-
-    <div class="hero-glow hero-glow-2"></div>
-
-
-    <!-- Grid Background -->
-
-    <div class="hero-grid"></div>
-
-
-    <!-- Hero Content -->
-
-    <div class="hero-content">
-
-
-        <div class="hero-badge">
-
-            ✦ XLAND HUB 5.0
-
-        </div>
+    <div class="container">
 
 
         <h1>
 
-            WELCOME TO
-
-            <span>XLAND</span>
+            XLAND Hub
 
         </h1>
 
 
-        <p>
+        <p class="subtitle">
 
-            Your gateway to Xland games,
-            projects, technology and more.
+            پیشنهادها و نظرات خود را در بخش کامنت‌ها
+            با ما به اشتراک بگذارید
 
         </p>
 
 
-        <!-- Hero Buttons -->
+        <!-- SEARCH -->
 
-        <div class="hero-buttons">
-
-
-            <a
-                href="xland.html"
-                class="hero-btn primary"
-            >
-
-                🎮 Explore Xland Game
-
-            </a>
-
-
-            <a
-                href="support.html"
-                class="hero-btn secondary"
-            >
-
-                🛠️ Xland Support
-
-            </a>
-
-
-        </div>
-
-
-        <!-- Hero Stats -->
-
-        <div class="hero-stats">
-
-
-            <div class="hero-stat">
-
-                <strong>🎮</strong>
-
-                <span>
-                    Xland Games
-                </span>
-
-            </div>
-
-
-            <div class="hero-stat">
-
-                <strong>⚙️</strong>
-
-                <span>
-                    Xland Projects
-                </span>
-
-            </div>
-
-
-            <div class="hero-stat">
-
-                <strong>🚀</strong>
-
-                <span>
-                    Active Development
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-    <!-- Decorative X -->
-
-    <div class="hero-x">
-
-        X
-
-    </div>
-
-
-</section>
-
-
-<!-- =========================================
-        BANNER SLIDER
-========================================= -->
-
-<div class="banner-slider">
-
-
-    <button class="banner-btn prev">
-
-        ❮
-
-    </button>
-
-
-    <div class="banner-content">
-
-
-        <h2 id="banner-title"></h2>
-
-
-        <p id="banner-text"></p>
-
-
-        <a
-            id="banner-link"
-            href="#"
+        <input
+            type="text"
+            id="search"
+            placeholder="سرچ صفحه ی مورد نظر..."
         >
 
-            مشاهده
 
-        </a>
+        <!-- =========================================
+                COMMENT SYSTEM
+        ========================================= -->
+
+        <div class="comment-box">
 
 
-        <div class="banner-indicators">
+            <textarea
+                id="commentInput"
+                placeholder="  نظر خود را بنویسید..."
+            ></textarea>
 
 
-            <span class="dot active"></span>
+            <br>
 
-            <span class="dot"></span>
 
-            <span class="dot"></span>
+            <button onclick="addComment()">
 
-            <span class="dot"></span>
+                ارسال کامنت
+
+            </button>
 
 
         </div>
 
 
+        <div id="comments"></div>
+
+
     </div>
-
-
-    <button class="banner-btn next">
-
-        ❯
-
-    </button>
-
-
-</div>
-
-
-<!-- =========================================
-        MAIN CONTENT
-========================================= -->
-
-<div class="container">
-
-
-    <h1>
-
-        XLAND Hub
-
-    </h1>
-
-
-    <p class="subtitle">
-
-        پیشنهادها و نظرات خود را در بخش کامنت‌ها
-        با ما به اشتراک بگذارید
-
-    </p>
-
-
-    <input
-        type="text"
-        id="search"
-        placeholder="سرچ صفحه ی مورد نظر..."
-    >
 
 
     <!-- =========================================
-            COMMENT SYSTEM
+            XLAND PROJECTS
     ========================================= -->
 
-    <div class="comment-box">
+    <section class="xland-projects">
 
 
-        <textarea
-            id="commentInput"
-            placeholder="  نظر خود را بنویسید..."
-        ></textarea>
+        <h2 class="projects-title">
+
+            🚀 Xland Projects
+
+        </h2>
 
 
-        <br>
+        <p class="projects-subtitle">
+
+            پروژه‌ها و سرویس‌های اصلی اکوسیستم Xland
+
+        </p>
 
 
-        <button onclick="addComment()">
-
-            ارسال کامنت
-
-        </button>
+        <div class="projects-grid">
 
 
-    </div>
+            <!-- =================================
+                    CARD 1
+            ================================== -->
+
+            <div class="project-card">
 
 
-    <div id="comments"></div>
+                <div class="project-icon">
+
+                    🎮
+
+                </div>
 
 
-</div>
+                <span class="project-type">
+
+                    GAME
+
+                </span>
 
 
-<!-- =========================================
-        XLAND PROJECTS
-========================================= -->
+                <h3>
 
-<section class="xland-projects">
+                    Xland Game
 
-
-    <h2 class="projects-title">
-
-        🚀 Xland Projects
-
-    </h2>
+                </h3>
 
 
-    <p class="projects-subtitle">
+                <p>
 
-        پروژه‌ها و سرویس‌های اصلی اکوسیستم Xland
+                    بازی اصلی Xland با دنیایی
+                    اختصاصی و تجربه‌ای متفاوت
+                    برای بازیکنان.
 
-    </p>
-
-
-    <div class="projects-grid">
-
-
-        <!-- =================================
-                CARD 1
-        ================================== -->
-
-        <div class="project-card">
+                </p>
 
 
-            <div class="project-icon">
+                <a
+                    href="xland.html"
+                    class="project-button"
+                >
 
-                🎮
+                    مشاهده بازی →
+
+                </a>
+
 
             </div>
 
 
-            <span class="project-type">
+            <!-- =================================
+                    CARD 2
+            ================================== -->
 
-                GAME
-
-            </span>
-
-
-            <h3>
-
-                Xland Game
-
-            </h3>
+            <div class="project-card">
 
 
-            <p>
+                <div class="project-icon">
 
-                بازی اصلی Xland با دنیایی
-                اختصاصی و تجربه‌ای متفاوت
-                برای بازیکنان.
+                    👻
 
-            </p>
+                </div>
 
 
-            <a
-                href="xland.html"
-                class="project-button"
-            >
+                <span class="project-type">
 
-                مشاهده بازی →
+                    HORROR GAME
 
-            </a>
+                </span>
+
+
+                <h3>
+
+                    Endless Road Horror 3D
+
+                </h3>
+
+
+                <p>
+
+                    یک بازی ترسناک سه‌بعدی
+                    با جاده‌ای بی‌پایان،
+                    فضای تاریک و اتفاقات غیرمنتظره.
+
+                </p>
+
+
+                <a
+                    href="endless.html"
+                    class="project-button"
+                >
+
+                    مشاهده بازی →
+
+                </a>
+
+
+            </div>
+
+
+            <!-- =================================
+                    CARD 4
+            ================================== -->
+
+            <div class="project-card">
+
+
+                <div class="project-icon">
+
+                    🌍
+
+                </div>
+
+
+                <span class="project-type">
+
+                    API
+
+                </span>
+
+
+                <h3>
+
+                    Xland API
+
+                </h3>
+
+
+                <p>
+
+                    زیرساخت API برای اتصال
+                    پروژه‌ها و سرویس‌های مختلف
+                    Xland به یکدیگر.
+
+                </p>
+
+
+                <a
+                    href="api.html"
+                    class="project-button"
+                >
+
+                    مشاهده API →
+
+                </a>
+
+
+            </div>
+
+
+            <!-- =================================
+                    CARD 5
+            ================================== -->
+
+            <div class="project-card">
+
+
+                <div class="project-icon">
+
+                    📜
+
+                </div>
+
+
+                <span class="project-type">
+
+                    DEVELOPER
+
+                </span>
+
+
+                <h3>
+
+                    Xland Script
+
+                </h3>
+
+
+                <p>
+
+                    بخش توسعه‌دهندگان Xland
+                    برای ابزارها، اسکریپت‌ها
+                    و منابع برنامه‌نویسی.
+
+                </p>
+
+
+                <a
+                    href="xland-script.html"
+                    class="project-button"
+                >
+
+                    مشاهده →
+
+                </a>
+
+
+            </div>
 
 
         </div>
 
 
-        <!-- =================================
-                CARD 2
-        ================================== -->
+    </section>
 
-        <div class="project-card">
 
+    <!-- =========================================
+            SCRIPTS
+    ========================================= -->
 
-            <div class="project-icon">
+    <script src="security.js"></script>
 
-                👻
+    <script src="script.js"></script>
 
-            </div>
+    <script src="banner.js"></script>
 
+    <script src="status.js"></script>
 
-            <span class="project-type">
+    <script src="loader.js"></script>
 
-                HORROR GAME
+    <!-- 🤖 XLAND AI COPILOT -->
 
-            </span>
-
-
-            <h3>
-
-                Endless Road Horror 3D
-
-            </h3>
-
-
-            <p>
-
-                یک بازی ترسناک سه‌بعدی
-                با جاده‌ای بی‌پایان،
-                فضای تاریک و اتفاقات غیرمنتظره.
-
-            </p>
-
-
-            <a
-                href="endless.html"
-                class="project-button"
-            >
-
-                مشاهده بازی →
-
-            </a>
-
-
-        </div>
-
-
-        <!-- =================================
-                CARD 4
-        ================================== -->
-
-        <div class="project-card">
-
-
-            <div class="project-icon">
-
-                🌍
-
-            </div>
-
-
-            <span class="project-type">
-
-                API
-
-            </span>
-
-
-            <h3>
-
-                Xland API
-
-            </h3>
-
-
-            <p>
-
-                زیرساخت API برای اتصال
-                پروژه‌ها و سرویس‌های مختلف
-                Xland به یکدیگر.
-
-            </p>
-
-
-            <a
-                href="api.html"
-                class="project-button"
-            >
-
-                مشاهده API →
-
-            </a>
-
-
-        </div>
-
-
-        <!-- =================================
-                CARD 5
-        ================================== -->
-
-        <div class="project-card">
-
-
-            <div class="project-icon">
-
-                📜
-
-            </div>
-
-
-            <span class="project-type">
-
-                DEVELOPER
-
-            </span>
-
-
-            <h3>
-
-                Xland Script
-
-            </h3>
-
-
-            <p>
-
-                بخش توسعه‌دهندگان Xland
-                برای ابزارها، اسکریپت‌ها
-                و منابع برنامه‌نویسی.
-
-            </p>
-
-
-            <a
-                href="xland-script.html"
-                class="project-button"
-            >
-
-                مشاهده →
-
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =========================================
-        SCRIPTS
-========================================= -->
-
-<script src="security.js"></script>
-
-<script src="script.js"></script>
-
-<script src="banner.js"></script>
-
-<script src="status.js"></script>
-
-<script src="loader.js"></script>
+    <script src="xland-ai-copilot.js"></script>
 
 
 </body>

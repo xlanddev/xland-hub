@@ -1,0 +1,791 @@
+/* =========================================
+   XLAND SCRIPT
+   Mobile CSS
+   Version 3.2
+========================================= */
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+
+    body.xland-script-page {
+
+        overflow-x: hidden;
+
+    }
+
+
+    /* HEADER */
+
+    .xland-script-page .script-header {
+
+        min-height: auto;
+
+        padding:
+            13px 16px;
+
+        flex-wrap: wrap;
+
+        gap:
+            12px;
+
+    }
+
+
+    .xland-script-page .header-brand {
+
+        flex: 1;
+
+        min-width:
+            180px;
+
+    }
+
+
+    .xland-script-page .header-logo {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+    }
+
+
+    .xland-script-page .header-brand h1 {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .xland-script-page .signin-btn {
+
+        padding:
+            9px 13px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    /* HERO */
+
+    .xland-script-page .script-hero {
+
+        min-height:
+            auto;
+
+    }
+
+
+    .xland-script-page .hero-content {
+
+        width:
+            100%;
+
+        padding:
+            65px 18px 55px;
+
+    }
+
+
+    .xland-script-page .hero-badge {
+
+        font-size:
+            9px;
+
+        padding:
+            8px 12px;
+
+    }
+
+
+    .xland-script-page .hero-content h1 {
+
+        margin-top:
+            20px;
+
+        font-size:
+            clamp(48px, 16vw, 78px);
+
+        letter-spacing:
+            -3px;
+
+    }
+
+
+    .xland-script-page .hero-content p {
+
+        margin-top:
+            20px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.7;
+
+    }
+
+
+    .xland-script-page .hero-btn {
+
+        width:
+            100%;
+
+        min-height:
+            45px;
+
+    }
+
+
+    .xland-script-page .hero-stats {
+
+        width:
+            100%;
+
+        margin-top:
+            35px;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    .xland-script-page .hero-stat {
+
+        padding:
+            15px 8px;
+
+    }
+
+
+    .xland-script-page .hero-stat strong {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .xland-script-page .hero-stat span {
+
+        font-size:
+            9px;
+
+    }
+
+
+    /* EXPLORER */
+
+    .xland-script-page .script-explorer {
+
+        width:
+            calc(100% - 24px);
+
+        padding:
+            50px 0 65px;
+
+    }
+
+
+    .xland-script-page .section-heading {
+
+        display:
+            block;
+
+        margin-bottom:
+            18px;
+
+    }
+
+
+    .xland-script-page .section-heading h2 {
+
+        font-size:
+            26px;
+
+    }
+
+
+    .xland-script-page .section-heading p {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .xland-script-page .library-badge {
+
+        width:
+            max-content;
+
+        margin-top:
+            14px;
+
+    }
+
+
+    /* WORKSPACE */
+
+    .xland-script-page .script-workspace {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+        min-height:
+            0;
+
+        height:
+            auto;
+
+        border-radius:
+            17px;
+
+        overflow:
+            hidden;
+
+    }
+
+
+    /* SIDEBAR */
+
+    .xland-script-page .sidebar {
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        max-height:
+            340px;
+
+        padding:
+            16px;
+
+        border-right:
+            none;
+
+        border-bottom:
+            1px solid var(--border);
+
+    }
+
+
+    .xland-script-page .sidebar-header {
+
+        margin-bottom:
+            13px;
+
+    }
+
+
+    .xland-script-page #scriptList {
+
+        max-height:
+            205px;
+
+        overflow-y:
+            auto;
+
+    }
+
+
+    .xland-script-page #scriptList li {
+
+        padding:
+            10px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    /* VIEWER */
+
+    .xland-script-page .viewer {
+
+        width:
+            100%;
+
+        min-width:
+            0;
+
+        padding:
+            14px;
+
+    }
+
+
+    .xland-script-page .viewer-header {
+
+        align-items:
+            flex-start;
+
+        padding-bottom:
+            12px;
+
+    }
+
+
+    .xland-script-page .viewer-file {
+
+        min-width:
+            0;
+
+    }
+
+
+    .xland-script-page .viewer-file strong {
+
+        max-width:
+            190px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .xland-script-page .viewer-file span {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .xland-script-page .file-icon {
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .xland-script-page .viewer-status {
+
+        font-size:
+            9px;
+
+    }
+
+
+    /* CODE */
+
+    .xland-script-page .code-window {
+
+        margin-top:
+            13px;
+
+        border-radius:
+            12px;
+
+    }
+
+
+    .xland-script-page .code-toolbar {
+
+        height:
+            38px;
+
+        padding:
+            0 10px;
+
+    }
+
+
+    .xland-script-page #codeViewer {
+
+        width:
+            100%;
+
+        height:
+            52vh;
+
+        min-height:
+            280px;
+
+        max-height:
+            500px;
+
+        padding:
+            16px;
+
+        font-size:
+            11px;
+
+        line-height:
+            1.65;
+
+        overflow:
+            auto;
+
+        white-space:
+            pre;
+
+    }
+
+
+    /* BUTTONS */
+
+    .xland-script-page .buttons,
+    .xland-script-page .script-actions {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            8px;
+
+        margin-top:
+            10px;
+
+    }
+
+
+    .xland-script-page .buttons button,
+    .xland-script-page .script-actions button {
+
+        min-height:
+            42px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    /* INFO */
+
+    .xland-script-page .script-info {
+
+        margin-top:
+            13px;
+
+        padding:
+            13px;
+
+    }
+
+
+    .xland-script-page .info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            7px;
+
+    }
+
+
+    .xland-script-page .info-item {
+
+        padding:
+            9px;
+
+    }
+
+
+    .xland-script-page .info-item span {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .xland-script-page .info-item strong {
+
+        font-size:
+            10px;
+
+    }
+
+
+    /* PROFILE */
+
+    .xland-script-page .profile-menu {
+
+        top:
+            68px;
+
+        right:
+            12px;
+
+        width:
+            min(245px, calc(100vw - 24px));
+
+    }
+
+
+    /* MODAL */
+
+    .xland-script-page .modal {
+
+        padding:
+            14px;
+
+    }
+
+
+    .xland-script-page .modal-box {
+
+        width:
+            100%;
+
+        padding:
+            24px 18px;
+
+        border-radius:
+            17px;
+
+    }
+
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+
+
+    .xland-script-page .script-header {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .xland-script-page .header-brand {
+
+        min-width:
+            0;
+
+    }
+
+
+    .xland-script-page .header-brand span {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .xland-script-page .signin-btn {
+
+        font-size:
+            10px;
+
+        padding:
+            8px 10px;
+
+    }
+
+
+    .xland-script-page .hero-content {
+
+        padding-top:
+            50px;
+
+    }
+
+
+    .xland-script-page .hero-content h1 {
+
+        font-size:
+            52px;
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .xland-script-page .hero-content p {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .xland-script-page .hero-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .xland-script-page .script-explorer {
+
+        width:
+            calc(100% - 18px);
+
+    }
+
+
+    .xland-script-page .language-filters span {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .xland-script-page .viewer {
+
+        padding:
+            10px;
+
+    }
+
+
+    .xland-script-page .viewer-status {
+
+        display:
+            none;
+
+    }
+
+
+    .xland-script-page #codeViewer {
+
+        height:
+            48vh;
+
+        min-height:
+            250px;
+
+        font-size:
+            10px;
+
+        padding:
+            13px;
+
+    }
+
+
+    .xland-script-page .buttons button,
+    .xland-script-page .script-actions button {
+
+        font-size:
+            10px;
+
+        min-height:
+            40px;
+
+    }
+
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+
+    .xland-script-page .header-logo {
+
+        width:
+            36px;
+
+        height:
+            36px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .xland-script-page .header-brand h1 {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .xland-script-page .signin-btn {
+
+        padding:
+            7px 8px;
+
+    }
+
+
+    .xland-script-page .hero-content h1 {
+
+        font-size:
+            45px;
+
+    }
+
+
+    .xland-script-page .hero-stats {
+
+        border-radius:
+            11px;
+
+    }
+
+
+    .xland-script-page .hero-stat {
+
+        padding:
+            12px 5px;
+
+    }
+
+
+    .xland-script-page .info-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .xland-script-page .modal-buttons {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}

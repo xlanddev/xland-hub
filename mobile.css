@@ -1,6 +1,7 @@
 /* =========================================================
-        XLAND HUB
-        MOBILE RESPONSIVE 4.2
+        XLAND HUB 5.2
+        MOBILE RESPONSIVE SYSTEM
+        mobile.css
 ========================================================= */
 
 
@@ -14,8 +15,33 @@
 
 html,
 body {
+    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+        TOUCH / MOBILE BASE
+========================================================= */
+
+button,
+a,
+input,
+textarea,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    touch-action: manipulation;
 }
 
 
@@ -37,6 +63,11 @@ body {
 
         padding: 12px;
 
+        position: relative;
+
+        overflow: visible;
+
+        z-index: 5000;
     }
 
 
@@ -44,50 +75,178 @@ body {
 
         width: 100%;
 
+        min-height: 44px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
         text-align: center;
 
         padding: 12px 10px;
 
         border-radius: 10px;
-
     }
 
 
-    /* Developer */
+    /* =====================================================
+            DEVELOPER CONTAINER
+    ===================================================== */
 
     .dropdown {
 
         width: 100%;
 
+        position: relative;
+
         text-align: center;
 
+        overflow: visible;
+
+        z-index: 6000;
     }
 
+
+    /* =====================================================
+            DEVELOPER BUTTON
+    ===================================================== */
 
     .dropdown .dropbtn {
 
-        display: block;
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
 
         width: 100%;
 
+        min-height: 44px;
     }
 
+
+    /* =====================================================
+            DEVELOPER DROPDOWN
+            FLOATING - DOES NOT PUSH NAVBAR
+    ===================================================== */
 
     .dropdown-content {
 
-        position: static;
+        position: absolute;
 
-        width: 100%;
+        top: calc(100% + 8px);
 
-        box-shadow: none;
+        left: 50%;
 
+        transform: translateX(-50%);
+
+        width: min(320px, calc(100vw - 28px));
+
+        max-width: calc(100vw - 28px);
+
+        max-height: 65vh;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        display: none;
+
+        padding: 8px;
+
+        z-index: 99999;
+
+        border-radius: 16px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(12, 12, 12, 0.98),
+                rgba(5, 5, 5, 0.96)
+            );
+
+        border: 1px solid rgba(0, 255, 136, 0.25);
+
+        box-shadow:
+            0 15px 45px rgba(0, 0, 0, 0.60),
+            0 0 25px rgba(0, 255, 136, 0.10);
+
+        backdrop-filter: blur(18px);
+
+        -webkit-backdrop-filter: blur(18px);
     }
 
 
+    /* =====================================================
+            SHOW DROPDOWN
+            Works with common :hover / JS systems
+    ===================================================== */
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content,
+    .dropdown.active .dropdown-content,
+    .dropdown.open .dropdown-content {
+
+        display: block;
+    }
+
+
+    /* =====================================================
+            DEVELOPER LINKS
+    ===================================================== */
+
     .dropdown-content a {
 
-        width: 100%;
+        width: 100% !important;
 
+        min-height: 44px;
+
+        display: flex !important;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 11px 12px;
+
+        margin: 2px 0;
+
+        border-radius: 10px;
+
+        text-align: center;
+
+        white-space: normal;
+
+        word-break: break-word;
+    }
+
+
+    /* =====================================================
+            DROPDOWN SCROLLBAR
+    ===================================================== */
+
+    .dropdown-content::-webkit-scrollbar {
+
+        width: 7px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-track {
+
+        background: transparent;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb {
+
+        background: rgba(0, 255, 136, 0.35);
+
+        border-radius: 10px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb:hover {
+
+        background: rgba(0, 255, 136, 0.65);
     }
 
 }
@@ -107,6 +266,11 @@ body {
 
         z-index: 10000;
 
+        min-width: 44px;
+
+        min-height: 44px;
+
+        cursor: pointer;
     }
 
 }
@@ -132,6 +296,11 @@ body {
 
         text-align: center;
 
+        border-radius: 14px;
+
+        margin-left: auto;
+
+        margin-right: auto;
     }
 
 
@@ -143,6 +312,9 @@ body {
 
         height: 28px;
 
+        min-width: 28px;
+
+        min-height: 28px;
     }
 
 }
@@ -166,6 +338,7 @@ body {
 
         gap: 15px;
 
+        border-radius: 16px;
     }
 
 
@@ -174,7 +347,6 @@ body {
         width: 100%;
 
         align-items: flex-start;
-
     }
 
 
@@ -184,6 +356,7 @@ body {
 
         justify-content: space-between;
 
+        gap: 10px;
     }
 
 
@@ -191,8 +364,9 @@ body {
 
         flex: 1;
 
-        text-align: center;
+        min-height: 44px;
 
+        text-align: center;
     }
 
 }
@@ -214,6 +388,7 @@ body {
 
         border-radius: 16px;
 
+        overflow: hidden;
     }
 
 
@@ -233,6 +408,7 @@ body {
 
         align-items: center;
 
+        text-align: center;
     }
 
 
@@ -242,6 +418,9 @@ body {
 
         line-height: 1.5;
 
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
     }
 
 
@@ -251,6 +430,7 @@ body {
 
         line-height: 1.8;
 
+        max-width: 100%;
     }
 
 
@@ -258,6 +438,7 @@ body {
 
         padding: 11px 24px;
 
+        min-height: 44px;
     }
 
 
@@ -265,17 +446,17 @@ body {
 
         width: 100%;
 
+        min-height: 42px;
+
         height: 42px;
 
         font-size: 24px;
-
     }
 
 
     .banner-indicators {
 
         margin-top: 14px;
-
     }
 
 }
@@ -291,10 +472,13 @@ body {
 
         width: 94%;
 
+        max-width: 100%;
+
         margin: 25px auto;
 
         padding: 20px 14px;
 
+        overflow: visible;
     }
 
 
@@ -306,6 +490,7 @@ body {
 
         text-align: center;
 
+        overflow-wrap: anywhere;
     }
 
 
@@ -317,6 +502,7 @@ body {
 
         text-align: center;
 
+        overflow-wrap: anywhere;
     }
 
 
@@ -326,8 +512,11 @@ body {
 
         height: 46px;
 
-        font-size: 14px;
+        min-height: 46px;
 
+        font-size: 16px;
+
+        max-width: 100%;
     }
 
 
@@ -335,6 +524,7 @@ body {
 
         width: 100%;
 
+        max-width: 100%;
     }
 
 
@@ -346,6 +536,7 @@ body {
 
         resize: vertical;
 
+        font-size: 16px;
     }
 
 }
@@ -361,8 +552,9 @@ body {
 
         width: 94%;
 
-        padding: 28px 20px;
+        max-width: 100%;
 
+        padding: 28px 20px;
     }
 
 
@@ -370,6 +562,7 @@ body {
 
         grid-template-columns: repeat(2, 1fr);
 
+        gap: 16px;
     }
 
 }
@@ -386,7 +579,6 @@ body {
         padding: 24px 15px;
 
         border-radius: 20px;
-
     }
 
 
@@ -396,6 +588,7 @@ body {
 
         line-height: 1.5;
 
+        overflow-wrap: anywhere;
     }
 
 
@@ -404,7 +597,6 @@ body {
         font-size: 13px;
 
         line-height: 1.8;
-
     }
 
 
@@ -413,18 +605,18 @@ body {
         grid-template-columns: 1fr;
 
         gap: 15px;
-
     }
 
 
     .project-card {
+
+        width: 100%;
 
         min-height: auto;
 
         padding: 21px;
 
         border-radius: 18px;
-
     }
 
 
@@ -435,7 +627,6 @@ body {
         height: 58px;
 
         font-size: 28px;
-
     }
 
 
@@ -443,6 +634,7 @@ body {
 
         font-size: 19px;
 
+        line-height: 1.5;
     }
 
 
@@ -452,6 +644,7 @@ body {
 
         line-height: 1.9;
 
+        overflow-wrap: anywhere;
     }
 
 }
@@ -466,6 +659,14 @@ body {
     .project-button {
 
         width: 100%;
+
+        min-height: 44px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
 
         text-align: center;
 
@@ -496,6 +697,7 @@ body {
 
         gap: 12px;
 
+        border-radius: 16px;
     }
 
 
@@ -503,6 +705,7 @@ body {
 
         width: 100%;
 
+        text-align: center;
     }
 
 
@@ -513,7 +716,6 @@ body {
         display: flex;
 
         gap: 8px;
-
     }
 
 
@@ -521,13 +723,166 @@ body {
 
         flex: 1;
 
+        min-height: 44px;
     }
 
 }
 
 
 /* =========================================================
-        SMALL PHONES
+        MOBILE MODALS / POPUPS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .modal,
+    .popup {
+
+        width: calc(100% - 24px);
+
+        max-width: 500px;
+
+        max-height: calc(100vh - 24px);
+
+        overflow-y: auto;
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+}
+
+
+/* =========================================================
+        MOBILE CARDS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .card,
+    .game-card,
+    .news-card {
+
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+        MOBILE FORMS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    input,
+    textarea,
+    select {
+
+        max-width: 100%;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+        TABLE FIX
+========================================================= */
+
+@media (max-width: 600px) {
+
+    table {
+
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+}
+
+
+/* =========================================================
+        CODE / PRE FIX
+========================================================= */
+
+@media (max-width: 600px) {
+
+    pre {
+
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    code {
+
+        overflow-wrap: anywhere;
+    }
+
+}
+
+
+/* =========================================================
+        XLAND AI FLOATING BUTTON
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .xland-ai-button {
+
+        right: 14px;
+
+        bottom: 14px;
+
+        width: 54px;
+
+        height: 54px;
+
+        z-index: 9998;
+    }
+
+}
+
+
+/* =========================================================
+        SAFE AREA
+        For phones with gesture/navigation areas
+========================================================= */
+
+@media (max-width: 768px) {
+
+    body {
+
+        padding-bottom:
+            env(safe-area-inset-bottom);
+    }
+
+
+    .xland-ai-button {
+
+        bottom:
+            calc(14px + env(safe-area-inset-bottom));
+    }
+
+}
+
+
+/* =========================================================
+        VERY SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
@@ -535,35 +890,127 @@ body {
     .container h1 {
 
         font-size: 25px;
-
     }
 
 
     .banner-content h2 {
 
         font-size: 20px;
-
     }
 
 
     .banner-content p {
 
         font-size: 13px;
-
     }
 
 
     .projects-title {
 
         font-size: 22px;
-
     }
 
 
     .project-card {
 
         padding: 18px;
+    }
 
+
+    .dropdown-content {
+
+        width: calc(100vw - 20px);
+
+        max-width: calc(100vw - 20px);
+    }
+
+}
+
+
+/* =========================================================
+        EXTRA SMALL PHONES
+========================================================= */
+
+@media (max-width: 340px) {
+
+    #navbar {
+
+        padding: 8px;
+    }
+
+
+    #navbar a,
+    .dropdown .dropbtn {
+
+        font-size: 12px;
+
+        padding: 10px 8px;
+    }
+
+
+    .container {
+
+        width: 96%;
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+    }
+
+
+    .project-card {
+
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+        LANDSCAPE PHONE
+========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    #navbar {
+
+        margin-top: 8px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .container {
+
+        margin-top: 25px;
+    }
+
+
+    .dropdown-content {
+
+        max-height: 70vh;
+    }
+
+}
+
+
+/* =========================================================
+        REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
     }
 
 }

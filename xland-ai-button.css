@@ -1,9 +1,16 @@
-/* =========================================
+/* =========================================================
+        XLAND HUB 5.2
         FLOATING XLAND AI
-        XLAND HUB 5.1
-========================================= */
+        xland-ai.css
+========================================================= */
+
+
+/* =========================================================
+        WRAPPER
+========================================================= */
 
 .xland-ai-button-wrapper {
+
     position: fixed !important;
 
     left: 20px !important;
@@ -12,83 +19,210 @@
     top: auto !important;
     right: auto !important;
 
-    z-index: 99999 !important;
+    width: auto;
+    height: auto;
 
     display: flex;
-    align-items: center;
-}
 
-/* =========================================
-        MAIN BUTTON
-========================================= */
-
-.xland-ai-button {
-
-    width: 58px;
-    height: 58px;
-
-    display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 18px;
+    z-index: 99999 !important;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+        MAIN BUTTON
+========================================================= */
+
+.xland-ai-button {
+
+    position: relative;
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 19px;
 
     text-decoration: none;
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+    cursor: pointer;
 
     background:
         linear-gradient(
             135deg,
-            rgba(99, 102, 241, 0.95),
-            rgba(56, 189, 248, 0.90)
+            rgba(99, 102, 241, 0.96),
+            rgba(56, 189, 248, 0.94)
         );
 
     border:
-        1px solid rgba(255,255,255,0.25);
+        1px solid rgba(255, 255, 255, 0.28);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,0.40);
+
+        0 10px 35px
+        rgba(0, 0, 0, 0.42),
+
+        0 0 0
+        rgba(99, 102, 241, 0);
 
     backdrop-filter:
         blur(15px);
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    -webkit-backdrop-filter:
+        blur(15px);
 
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease,
+
+        border-color 0.3s ease;
+
+    animation:
+        xlandAIIdle 3s ease-in-out infinite;
 }
 
 
-/* =========================================
+/* =========================================================
+        INNER GLOW
+========================================================= */
+
+.xland-ai-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -40%;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255,255,255,0.30) 50%,
+            transparent 65%
+        );
+
+    transform:
+        translateX(-70%)
+        rotate(15deg);
+
+    animation:
+        xlandAIShine 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+        OUTER GLOW
+========================================================= */
+
+.xland-ai-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(99, 102, 241, 0.35);
+
+    box-shadow:
+
+        0 0 18px
+        rgba(99, 102, 241, 0.18),
+
+        0 0 35px
+        rgba(56, 189, 248, 0.10);
+
+    opacity: 0.75;
+
+    pointer-events: none;
+
+    animation:
+        xlandAIGlow 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
         ICON
-========================================= */
+========================================================= */
 
 .xland-ai-icon {
 
-    font-size: 27px;
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    transition:
-        transform 0.3s ease;
+    font-size: 28px;
 
+    line-height: 1;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,255,255,0.35)
+        );
+
+    transition:
+
+        transform 0.35s ease,
+
+        filter 0.35s ease;
 }
 
 
-/* =========================================
+/* =========================================================
         HOVER
-========================================= */
+========================================================= */
 
 .xland-ai-button:hover {
 
     transform:
-        translateY(-5px)
-        scale(1.05);
+        translateY(-6px)
+        scale(1.07);
+
+    border-color:
+        rgba(255, 255, 255, 0.48);
 
     box-shadow:
-        0 15px 45px rgba(79,70,229,0.50);
 
+        0 18px 50px
+        rgba(0, 0, 0, 0.48),
+
+        0 0 30px
+        rgba(99, 102, 241, 0.42),
+
+        0 0 60px
+        rgba(56, 189, 248, 0.18);
+
+    animation:
+        none;
 }
 
 
@@ -96,130 +230,348 @@
 .xland-ai-icon {
 
     transform:
-        scale(1.15)
-        rotate(-6deg);
+        scale(1.18)
+        rotate(-8deg);
 
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,255,255,0.65)
+        );
 }
 
 
-/* =========================================
-        XLAND AI LABEL
-========================================= */
+/* =========================================================
+        ACTIVE / CLICK
+========================================================= */
+
+.xland-ai-button:active {
+
+    transform:
+        translateY(-2px)
+        scale(0.96);
+
+    transition:
+        transform 0.1s ease;
+}
+
+
+/* =========================================================
+        XLAND AI TOOLTIP
+========================================================= */
 
 .xland-ai-tooltip {
 
     position: absolute;
 
-    left: 70px;
+    left: 76px;
 
     top: 50%;
 
     transform:
         translateY(-50%)
-        translateX(-10px);
+        translateX(-12px);
 
     padding:
-        9px 15px;
+        10px 16px;
 
-    border-radius:
-        11px;
+    min-height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
 
     background:
-        rgba(15,23,42,0.96);
+        rgba(15, 23, 42, 0.97);
 
     border:
-        1px solid rgba(99,102,241,0.45);
+        1px solid
+        rgba(99, 102, 241, 0.50);
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    font-weight:
-        700;
+    font-weight: 800;
 
-    letter-spacing:
-        1px;
+    letter-spacing: 1px;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    visibility:
-        hidden;
+    visibility: hidden;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.40);
+
+        0 12px 35px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 20px
+        rgba(99, 102, 241, 0.10);
 
     backdrop-filter:
-        blur(14px);
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
     transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
 
+        opacity 0.25s ease,
+
+        transform 0.25s ease,
+
+        visibility 0.25s ease;
 }
 
 
-/* =========================================
-        SHOW LABEL
-========================================= */
+/* =========================================================
+        TOOLTIP ARROW
+========================================================= */
+
+.xland-ai-tooltip::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -6px;
+
+    top: 50%;
+
+    width: 11px;
+    height: 11px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    border-left:
+        1px solid
+        rgba(99, 102, 241, 0.50);
+
+    border-bottom:
+        1px solid
+        rgba(99, 102, 241, 0.50);
+
+    transform:
+        translateY(-50%)
+        rotate(45deg);
+}
+
+
+/* =========================================================
+        SHOW TOOLTIP
+========================================================= */
 
 .xland-ai-button-wrapper:hover
 .xland-ai-tooltip {
 
-    opacity:
-        1;
+    opacity: 1;
 
-    visibility:
-        visible;
+    visibility: visible;
 
     transform:
         translateY(-50%)
         translateX(0);
-
 }
 
 
-/* =========================================
+/* =========================================================
+        KEYFRAMES
+========================================================= */
+
+@keyframes xlandAIIdle {
+
+    0%,
+    100% {
+
+        box-shadow:
+
+            0 10px 35px
+            rgba(0, 0, 0, 0.42),
+
+            0 0 18px
+            rgba(99, 102, 241, 0.10);
+    }
+
+    50% {
+
+        box-shadow:
+
+            0 12px 40px
+            rgba(0, 0, 0, 0.44),
+
+            0 0 28px
+            rgba(99, 102, 241, 0.22);
+    }
+}
+
+
+@keyframes xlandAIShine {
+
+    0% {
+
+        transform:
+            translateX(-80%)
+            rotate(15deg);
+
+        opacity: 0;
+    }
+
+    20% {
+
+        opacity: 1;
+    }
+
+    45%,
+    100% {
+
+        transform:
+            translateX(80%)
+            rotate(15deg);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes xlandAIGlow {
+
+    0%,
+    100% {
+
+        opacity: 0.45;
+
+        transform:
+            scale(0.98);
+    }
+
+    50% {
+
+        opacity: 0.9;
+
+        transform:
+            scale(1.02);
+    }
+}
+
+
+/* =========================================================
         MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
     .xland-ai-button-wrapper {
 
-        left: 16px;
-        bottom: 16px;
+        left:
+            16px !important;
 
+        bottom:
+            calc(
+                16px +
+                env(safe-area-inset-bottom)
+            ) !important;
     }
+
 
     .xland-ai-button {
 
-        width: 52px;
-        height: 52px;
+        width: 54px;
 
-        border-radius: 16px;
+        height: 54px;
 
+        border-radius: 17px;
     }
+
 
     .xland-ai-icon {
 
-        font-size: 24px;
-
+        font-size: 25px;
     }
+
+
+    .xland-ai-tooltip {
+
+        left: 68px;
+
+        padding:
+            9px 13px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+        VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .xland-ai-button-wrapper {
+
+        left:
+            12px !important;
+
+        bottom:
+            calc(
+                12px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+
+
+    .xland-ai-button {
+
+        width: 50px;
+
+        height: 50px;
+
+        border-radius: 15px;
+    }
+
+
+    .xland-ai-icon {
+
+        font-size: 23px;
+    }
+
 
     .xland-ai-tooltip {
 
         left: 62px;
+    }
 
+}
+
+
+/* =========================================================
+        ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .xland-ai-button,
+    .xland-ai-button::before,
+    .xland-ai-button::after {
+
+        animation: none !important;
+    }
+
+    .xland-ai-button,
+    .xland-ai-icon,
+    .xland-ai-tooltip {
+
+        transition: none !important;
     }
 
 }

@@ -1,328 +1,1291 @@
 // ================================
 // Xland Script
-// Version : 2.0 (Part 1)
+// Version : 3.2
 // ================================
 
-const scriptList = document.getElementById("scriptList");
-const codeViewer = document.getElementById("codeViewer");
-const favoriteBtn =
-document.getElementById("favoriteBtn");
 
+// =================================
+// DOM ELEMENTS
+// =================================
+
+const scriptList =
+    document.getElementById("scriptList");
+
+const codeViewer =
+    document.getElementById("codeViewer");
+
+const searchInput =
+    document.getElementById("search");
+
+const copyBtn =
+    document.getElementById("copyBtn");
+
+const downloadBtn =
+    document.getElementById("downloadBtn");
+
+const favoriteBtn =
+    document.getElementById("favoriteBtn");
 
 const shareBtn =
-document.getElementById("shareBtn");
-
+    document.getElementById("shareBtn");
 
 const scriptLanguage =
-document.getElementById("scriptLanguage");
-
+    document.getElementById("scriptLanguage");
 
 const scriptFile =
-document.getElementById("scriptFile");
-
+    document.getElementById("scriptFile");
 
 const scriptSize =
-document.getElementById("scriptSize");
+    document.getElementById("scriptSize");
 
-const signInBtn = document.getElementById("signInBtn");
-const profileMenu = document.getElementById("profileMenu");
+const scriptLines =
+    document.getElementById("scriptLines");
 
-if (signInBtn) {
+const signInBtn =
+    document.getElementById("signInBtn");
 
-    const account = JSON.parse(localStorage.getItem("xlandAccount"));
+const profileMenu =
+    document.getElementById("profileMenu");
 
-    if (account) {
+const profileUsername =
+    document.getElementById("profileUsername");
 
-        signInBtn.textContent = "👤 " + account.username;
+const selectedFileName =
+    document.getElementById("selectedFileName");
 
-        signInBtn.onclick = () => {
+const selectedFileType =
+    document.getElementById("selectedFileType");
 
-            if (profileMenu.style.display === "block") {
+const fileIcon =
+    document.getElementById("fileIcon");
 
-                profileMenu.style.display = "none";
+const languageLabel =
+    document.getElementById("languageLabel");
 
-            } else {
+const scriptCount =
+    document.getElementById("scriptCount");
 
-                profileMenu.style.display = "block";
+const browseScriptsBtn =
+    document.getElementById("browseScriptsBtn");
 
-            }
 
-        };
+// =================================
+// MODALS
+// =================================
 
-    } else {
+const downloadModal =
+    document.getElementById("downloadModal");
 
-        signInBtn.onclick = () => {
+const cancelBtn =
+    document.getElementById("cancelBtn");
 
-            window.location.href = "signin.html";
+const confirmDownloadBtn =
+    document.getElementById("confirmDownloadBtn");
 
-        };
+const logoutModal =
+    document.getElementById("logoutModal");
+
+const yesLogout =
+    document.getElementById("yesLogout");
+
+const noLogout =
+    document.getElementById("noLogout");
+
+
+// =================================
+// PROFILE BUTTONS
+// =================================
+
+const aboutBtn =
+    document.getElementById("aboutBtn");
+
+const changePasswordBtn =
+    document.getElementById("changePasswordBtn");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+// =================================
+// DATA
+// =================================
+
+let selectedScript = null;
+
+let allScripts = [];
+
+
+// =================================
+// SAFE TEXT LIMIT
+// =================================
+
+function safeLimitText(text, maxLength = 500000) {
+
+    if (
+        typeof limitText === "function"
+    ) {
+
+        return limitText(
+            text,
+            maxLength
+        );
+
+    }
+
+
+    if (
+        text.length <= maxLength
+    ) {
+
+        return text;
+
+    }
+
+
+    return (
+        text.slice(0, maxLength) +
+        "\n\n// ... code truncated ..."
+    );
+
+}
+
+
+// =================================
+// FILE ICON
+// =================================
+
+function getFileIcon(file) {
+
+    if (!file) {
+        return "&lt;/&gt;";
+    }
+
+
+    const ext =
+        file
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    switch (ext) {
+
+        case "py":
+            return "PY";
+
+        case "js":
+            return "JS";
+
+        case "ts":
+            return "TS";
+
+        case "cs":
+            return "C#";
+
+        case "cpp":
+            return "C++";
+
+        case "c":
+            return "C";
+
+        case "html":
+            return "HTML";
+
+        case "css":
+            return "CSS";
+
+        case "json":
+            return "{}";
+
+        case "java":
+            return "JAVA";
+
+        default:
+            return "&lt;/&gt;";
 
     }
 
 }
 
-copyBtn.addEventListener("click", () => {
 
-    if (!selectedScript) {
+// =================================
+// FILE LANGUAGE
+// =================================
 
-        alert("Please select a script first.");
+function getLanguage(file) {
+
+    if (!file) {
+        return "-";
+    }
+
+
+    const ext =
+        file
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const languages = {
+
+        py: "Python",
+        js: "JavaScript",
+        ts: "TypeScript",
+        cs: "C#",
+        cpp: "C++",
+        c: "C",
+        html: "HTML",
+        css: "CSS",
+        json: "JSON",
+        java: "Java"
+
+    };
+
+
+    return languages[ext] || ext.toUpperCase();
+
+}
+
+
+// =================================
+// RENDER SCRIPTS
+// =================================
+
+function renderScripts(filter = "") {
+
+    scriptList.innerHTML = "";
+
+
+    const query =
+        filter
+            .trim()
+            .toLowerCase();
+
+
+    const filtered =
+        allScripts.filter(script => {
+
+            const name =
+                String(
+                    script.name || ""
+                ).toLowerCase();
+
+            const file =
+                String(
+                    script.file || ""
+                ).toLowerCase();
+
+            return (
+                name.includes(query) ||
+                file.includes(query)
+            );
+
+        });
+
+
+    if (scriptCount) {
+
+        scriptCount.textContent =
+            filtered.length;
+
+    }
+
+
+    if (filtered.length === 0) {
+
+        const empty =
+            document.createElement("li");
+
+        empty.textContent =
+            "🔎 No scripts found.";
+
+        empty.style.cursor =
+            "default";
+
+        scriptList.appendChild(empty);
 
         return;
 
     }
 
-    navigator.clipboard.writeText(codeViewer.textContent);
 
-    copyBtn.textContent = "✅ Copied!";
+    filtered.forEach(script => {
 
-    setTimeout(() => {
+        const li =
+            document.createElement("li");
 
-        copyBtn.textContent = "Copy";
 
-    }, 1500);
+        const icon =
+            document.createElement("span");
 
-});
+        icon.className =
+            "script-item-icon";
 
-downloadBtn.addEventListener("click", () => {
+        icon.textContent =
+            getFileIcon(script.file);
 
-    if(isEmpty(selectedScript.file)){
 
-    alert("Invalid File");
+        const name =
+            document.createElement("span");
 
-    return;
+        name.textContent =
+            script.name || script.file;
+
+
+        li.appendChild(icon);
+        li.appendChild(name);
+
+
+        if (
+            selectedScript &&
+            selectedScript.file === script.file
+        ) {
+
+            li.classList.add("active");
+
+        }
+
+
+        li.addEventListener(
+            "click",
+            () => {
+
+                openScript(script);
+
+            }
+        );
+
+
+        scriptList.appendChild(li);
+
+    });
 
 }
 
-window.location.href =
-"download.html?file=" +
-encodeURIComponent(selectedScript.file);
 
-});
-
-
-let selectedScript = null;
-
-// ================================
-// Load Scripts
-// ================================
+// =================================
+// LOAD SCRIPTS
+// =================================
 
 async function loadScripts() {
 
     try {
 
-        const response = await fetch("scripts.json");
+        const response =
+            await fetch("scripts.json");
+
 
         if (!response.ok) {
-            throw new Error("Cannot load scripts.json");
+
+            throw new Error(
+                "Cannot load scripts.json"
+            );
+
         }
 
-        const scripts = await response.json();
+
+        const scripts =
+            await response.json();
+
+
+        if (!Array.isArray(scripts)) {
+
+            throw new Error(
+                "Invalid scripts.json format"
+            );
+
+        }
+
+
+        allScripts =
+            scripts;
+
+
+        renderScripts();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
 
         scriptList.innerHTML = "";
 
-        scripts.forEach(script => {
 
-            const li = document.createElement("li");
+        const errorItem =
+            document.createElement("li");
 
-            li.textContent = "🐍 " + script.name;
+        errorItem.textContent =
+            "❌ Cannot load scripts.";
 
-            li.addEventListener("click", () => {
+        errorItem.style.cursor =
+            "default";
 
-                openScript(script);
-
-            });
-
-            scriptList.appendChild(li);
-
-        });
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        scriptList.innerHTML =
-        "<li>Cannot load scripts.</li>";
+        scriptList.appendChild(
+            errorItem
+        );
 
     }
 
 }
 
-// ================================
-// Open Script
-// ================================
+
+// =================================
+// OPEN SCRIPT
+// =================================
 
 async function openScript(script) {
 
-    selectedScript = script;
+    if (!script || !script.file) {
+
+        alert("Invalid script.");
+
+        return;
+
+    }
+
+
+    selectedScript =
+        script;
+
+
+    // -----------------------------
+    // Basic Information
+    // -----------------------------
+
+    const language =
+        getLanguage(
+            script.file
+        );
+
+
+    const icon =
+        getFileIcon(
+            script.file
+        );
+
 
     scriptFile.textContent =
-script.file;
+        script.file;
 
 
-let ext =
-script.file.split(".").pop();
+    scriptLanguage.textContent =
+        language;
 
 
-scriptLanguage.textContent =
-ext.toUpperCase();
+    languageLabel.textContent =
+        language.toUpperCase();
 
 
-fetch(script.file)
-
-.then(r=>r.blob())
-
-.then(blob=>{
+    fileIcon.innerHTML =
+        icon;
 
 
-scriptSize.textContent =
-Math.round(blob.size/1024)
-+ " KB";
+    selectedFileName.textContent =
+        script.name ||
+        script.file;
 
 
-});
-
-    try {
-
-        const response = await fetch(script.file);
-
-        if (!response.ok) {
-            throw new Error("Cannot open script.");
-        }
-
-       const code = await response.text();
+    selectedFileType.textContent =
+        language +
+        " • Xland Script";
 
 
-// Animation Reload
-
-codeViewer.classList.remove("code-loading");
-
-
-setTimeout(()=>{
+    scriptSize.textContent =
+        "Loading...";
 
 
-    codeViewer.classList.add("code-loading");
+    scriptLines.textContent =
+        "Loading...";
 
 
     codeViewer.textContent =
-    limitText(code,500000);
+        "Loading script...";
 
 
-},50);
+    codeViewer.classList.remove(
+        "code-loading"
+    );
 
-}
+
+    // -----------------------------
+    // Load File
+    // -----------------------------
+
+    try {
+
+        const response =
+            await fetch(
+                script.file
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Cannot open script."
+            );
+
+        }
+
+
+        const responseClone =
+            response.clone();
+
+
+        const code =
+            await response.text();
+
+
+        const blob =
+            await responseClone.blob();
+
+
+        // -------------------------
+        // Size
+        // -------------------------
+
+        const sizeKB =
+            blob.size / 1024;
+
+
+        if (sizeKB < 1) {
+
+            scriptSize.textContent =
+                blob.size + " B";
+
+        }
+
+        else if (sizeKB < 1024) {
+
+            scriptSize.textContent =
+                Math.round(sizeKB) +
+                " KB";
+
+        }
+
+        else {
+
+            scriptSize.textContent =
+                (
+                    sizeKB / 1024
+                ).toFixed(2) +
+                " MB";
+
+        }
+
+
+        // -------------------------
+        // Lines
+        // -------------------------
+
+        const lines =
+            code.split("\n").length;
+
+
+        scriptLines.textContent =
+            lines.toLocaleString();
+
+
+        // -------------------------
+        // Code Animation
+        // -------------------------
+
+        codeViewer.classList.remove(
+            "code-loading"
+        );
+
+
+        setTimeout(() => {
+
+            codeViewer.textContent =
+                safeLimitText(
+                    code,
+                    500000
+                );
+
+
+            codeViewer.classList.add(
+                "code-loading"
+            );
+
+        }, 40);
+
+
+        updateFavoriteButton();
+
+        renderScripts(
+            searchInput.value
+        );
+
+    }
 
     catch (error) {
 
         console.error(error);
 
+
         codeViewer.textContent =
-        "Cannot open script.";
+            "❌ Cannot open script.";
+
+        scriptSize.textContent =
+            "-";
+
+        scriptLines.textContent =
+            "-";
 
     }
 
 }
 
-// ================================
-// Start
-// ================================
 
-loadScripts();
+// =================================
+// COPY SCRIPT
+// =================================
 
-const aboutBtn = document.getElementById("aboutBtn");
+copyBtn.addEventListener(
+    "click",
+    async () => {
 
-aboutBtn.addEventListener("click", () => {
-    window.location.href = "about.html";
-});
+        if (!selectedScript) {
 
-const changePasswordBtn = document.getElementById("changePasswordBtn");
+            alert(
+                "Please select a script first."
+            );
 
-changePasswordBtn.addEventListener("click", () => {
+            return;
 
-    window.location.href = "change-password.html";
-
-});
-
-const logoutBtn = document.getElementById("logoutBtn");
-
-const logoutModal = document.getElementById("logoutModal");
-
-const yesLogout = document.getElementById("yesLogout");
-
-const noLogout = document.getElementById("noLogout");
-
-logoutBtn.addEventListener("click",()=>{
-
-    logoutModal.style.display="flex";
-
-});
-
-noLogout.addEventListener("click",()=>{
-
-    logoutModal.style.display="none";
-
-});
-
-yesLogout.addEventListener("click",()=>{
-
-    localStorage.removeItem("xlandAccount");
-
-    window.location.href="xland-script.html";
-
-});
-
-shareBtn.onclick=()=>{
+        }
 
 
-if(!selectedScript){
-
-alert("Select a script first");
-
-return;
-
-}
+        const text =
+            codeViewer.textContent;
 
 
-navigator.clipboard.writeText(
-window.location.href
+        try {
+
+            await navigator.clipboard.writeText(
+                text
+            );
+
+        }
+
+        catch {
+
+            const textarea =
+                document.createElement(
+                    "textarea"
+                );
+
+
+            textarea.value =
+                text;
+
+
+            document.body.appendChild(
+                textarea
+            );
+
+
+            textarea.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            textarea.remove();
+
+        }
+
+
+        copyBtn.textContent =
+            "✅ Copied!";
+
+
+        setTimeout(() => {
+
+            copyBtn.textContent =
+                "📋 Copy";
+
+        }, 1500);
+
+    }
 );
 
 
-shareBtn.textContent =
-"✅ Copied";
+// =================================
+// DOWNLOAD
+// =================================
+
+downloadBtn.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !selectedScript ||
+            !selectedScript.file
+        ) {
+
+            alert(
+                "Please select a script first."
+            );
+
+            return;
+
+        }
 
 
-setTimeout(()=>{
+        downloadModal.style.display =
+            "flex";
 
-shareBtn.textContent =
-"🔗 Share";
-
-
-},1500);
+    }
+);
 
 
-};
+cancelBtn.addEventListener(
+    "click",
+    () => {
 
-favoriteBtn.onclick=()=>{
+        downloadModal.style.display =
+            "none";
+
+    }
+);
 
 
-if(!selectedScript){
+confirmDownloadBtn.addEventListener(
+    "click",
+    () => {
 
-alert("Select a script first");
+        if (
+            !selectedScript ||
+            !selectedScript.file
+        ) {
 
-return;
+            downloadModal.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "download.html?file=" +
+            encodeURIComponent(
+                selectedScript.file
+            );
+
+    }
+);
+
+
+// =================================
+// FAVORITES
+// =================================
+
+function getFavorites() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "xlandScriptFavorites"
+            )
+        ) || [];
+
+    }
+
+    catch {
+
+        return [];
+
+    }
 
 }
 
 
-favoriteBtn.textContent =
-"⭐ Added";
+function saveFavorites(favorites) {
+
+    localStorage.setItem(
+        "xlandScriptFavorites",
+        JSON.stringify(
+            favorites
+        )
+    );
+
+}
 
 
-};
+function updateFavoriteButton() {
+
+    if (!selectedScript) {
+
+        favoriteBtn.textContent =
+            "⭐ Favorite";
+
+        return;
+
+    }
 
 
+    const favorites =
+        getFavorites();
 
 
+    const exists =
+        favorites.includes(
+            selectedScript.file
+        );
 
+
+    favoriteBtn.textContent =
+        exists
+            ? "⭐ Favorited"
+            : "⭐ Favorite";
+
+}
+
+
+favoriteBtn.addEventListener(
+    "click",
+    () => {
+
+        if (!selectedScript) {
+
+            alert(
+                "Select a script first."
+            );
+
+            return;
+
+        }
+
+
+        let favorites =
+            getFavorites();
+
+
+        const index =
+            favorites.indexOf(
+                selectedScript.file
+            );
+
+
+        if (index === -1) {
+
+            favorites.push(
+                selectedScript.file
+            );
+
+        }
+
+        else {
+
+            favorites.splice(
+                index,
+                1
+            );
+
+        }
+
+
+        saveFavorites(
+            favorites
+        );
+
+
+        updateFavoriteButton();
+
+    }
+);
+
+
+// =================================
+// SHARE
+// =================================
+
+shareBtn.addEventListener(
+    "click",
+    async () => {
+
+        if (!selectedScript) {
+
+            alert(
+                "Select a script first."
+            );
+
+            return;
+
+        }
+
+
+        const shareData = {
+
+            title:
+                selectedScript.name ||
+                "Xland Script",
+
+            text:
+                "Check out this Xland Script",
+
+            url:
+                window.location.href
+
+        };
+
+
+        try {
+
+            if (
+                navigator.share
+            ) {
+
+                await navigator.share(
+                    shareData
+                );
+
+                shareBtn.textContent =
+                    "✅ Shared";
+
+            }
+
+            else {
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+                shareBtn.textContent =
+                    "✅ Link Copied";
+
+            }
+
+        }
+
+        catch (error) {
+
+            if (
+                error.name !==
+                "AbortError"
+            ) {
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        window.location.href
+                    );
+
+                    shareBtn.textContent =
+                        "✅ Link Copied";
+
+                }
+
+                catch {
+
+                    alert(
+                        "Unable to share this script."
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        setTimeout(() => {
+
+            shareBtn.textContent =
+                "🔗 Share";
+
+        }, 1600);
+
+    }
+);
+
+
+// =================================
+// SEARCH
+// =================================
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        renderScripts(
+            searchInput.value
+        );
+
+    }
+);
+
+
+// =================================
+// BROWSE BUTTON
+// =================================
+
+browseScriptsBtn.addEventListener(
+    "click",
+    () => {
+
+        document
+            .getElementById(
+                "scriptExplorer"
+            )
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+);
+
+
+// =================================
+// PROFILE / SIGN IN
+// =================================
+
+if (signInBtn) {
+
+    let account = null;
+
+
+    try {
+
+        account =
+            JSON.parse(
+                localStorage.getItem(
+                    "xlandAccount"
+                )
+            );
+
+    }
+
+    catch {
+
+        account = null;
+
+    }
+
+
+    if (account) {
+
+        const username =
+            account.username ||
+            "Account";
+
+
+        signInBtn.textContent =
+            "👤 " + username;
+
+
+        profileUsername.textContent =
+            username;
+
+
+        signInBtn.onclick =
+            () => {
+
+                profileMenu.style.display =
+                    profileMenu.style.display ===
+                    "block"
+                        ? "none"
+                        : "block";
+
+            };
+
+    }
+
+    else {
+
+        signInBtn.onclick =
+            () => {
+
+                window.location.href =
+                    "signin.html";
+
+            };
+
+    }
+
+}
+
+
+// =================================
+// CLICK OUTSIDE PROFILE
+// =================================
+
+document.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            profileMenu &&
+            signInBtn &&
+            !profileMenu.contains(
+                event.target
+            ) &&
+            !signInBtn.contains(
+                event.target
+            )
+        ) {
+
+            profileMenu.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+// =================================
+// ABOUT
+// =================================
+
+aboutBtn.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+            "about.html";
+
+    }
+);
+
+
+// =================================
+// CHANGE PASSWORD
+// =================================
+
+changePasswordBtn.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+            "change-password.html";
+
+    }
+);
+
+
+// =================================
+// LOGOUT
+// =================================
+
+logoutBtn.addEventListener(
+    "click",
+    () => {
+
+        profileMenu.style.display =
+            "none";
+
+        logoutModal.style.display =
+            "flex";
+
+    }
+);
+
+
+noLogout.addEventListener(
+    "click",
+    () => {
+
+        logoutModal.style.display =
+            "none";
+
+    }
+);
+
+
+yesLogout.addEventListener(
+    "click",
+    () => {
+
+        localStorage.removeItem(
+            "xlandAccount"
+        );
+
+
+        window.location.href =
+            "xland-script.html";
+
+    }
+);
+
+
+// =================================
+// CLOSE MODALS BY BACKDROP
+// =================================
+
+downloadModal.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            event.target ===
+            downloadModal
+        ) {
+
+            downloadModal.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+logoutModal.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            event.target ===
+            logoutModal
+        ) {
+
+            logoutModal.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+// =================================
+// ESCAPE KEY
+// =================================
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            profileMenu.style.display =
+                "none";
+
+            downloadModal.style.display =
+                "none";
+
+            logoutModal.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+// =================================
+// START
+// =================================
+
+loadScripts();

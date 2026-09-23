@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -8,25 +9,33 @@
     <title>Xland Script</title>
 
     <link rel="stylesheet" href="xland-script.css">
-
     <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="xland-script-mobile.css">
 
     <link rel="icon" type="image/png" href="xland-icon.png">
-    
+
 </head>
-<body>
 
-    
+<body class="xland-script-page">
 
-    <!-- Download Modal -->
+
+<!-- =========================================
+     DOWNLOAD MODAL
+========================================= -->
 
 <div id="downloadModal" class="modal">
 
     <div class="modal-box">
 
+        <div class="modal-icon">
+            📥
+        </div>
+
         <h2>Download Script</h2>
 
-        <p>Do you want to download this script?</p>
+        <p>
+            Do you want to download this script?
+        </p>
 
         <div class="modal-buttons">
 
@@ -34,9 +43,9 @@
                 Cancel
             </button>
 
-           <button onclick="window.location.href='download.html'">
-    Download
-</button>
+            <button id="confirmDownloadBtn">
+                Download
+            </button>
 
         </div>
 
@@ -45,76 +54,69 @@
 </div>
 
 
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="script-header">
 
-    <h1>Xland Script</h1>
+    <div class="header-brand">
+
+        <div class="header-logo">
+            &lt;/&gt;
+        </div>
+
+        <div>
+
+            <h1>
+                Xland Script
+            </h1>
+
+            <span>
+                Developer Library
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+            Xland Script v3.2
+        </span>
+
+    </div>
+
 
     <button id="signInBtn" class="signin-btn">
+
         👤 Sign In
+
     </button>
 
 </header>
 
-<div class="container">
 
 
-    <!-- Sidebar -->
-
-    <aside class="sidebar">
-
-        <h2>Scripts</h2>
-
-        <input
-            type="text"
-            placeholder="Search..."
-            id="search">
-
-        <ul id="scriptList">
-
-        </ul>
-
-    </aside>
-
-    <!-- Code Viewer -->
-
-    <main class="viewer">
-
-        <div class="viewer-header">
-
-            <span>Select a Script</span>
-
-        </div>
-
-        <pre id="codeViewer">
-
-Select a script from the menu...
-
-        </pre>
-
-        <div class="buttons">
-
-            <button id="copyBtn">
-                Copy
-            </button>
-
-            <button id="downloadBtn">
-                Download
-            </button>
-
-        </div>
-
-    </main>
-
-</div>
-
-<!-- ===========================
-XLAND SCRIPT HERO
-=========================== -->
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="script-hero">
 
+    <div class="hero-grid"></div>
+
+    <div class="hero-glow hero-glow-one"></div>
+
+    <div class="hero-glow hero-glow-two"></div>
+
+
     <div class="hero-overlay"></div>
+
 
     <div class="hero-content">
 
@@ -124,22 +126,29 @@ XLAND SCRIPT HERO
 
         </span>
 
+
         <h1>
 
-            XLAND SCRIPT
+            XLAND
+            <span>SCRIPT</span>
 
         </h1>
 
+
         <p>
 
-            Discover official Unity, Python and JavaScript
-            scripts created for the Xland ecosystem.
+            Discover official Unity, Python and
+            JavaScript scripts created for the
+            Xland ecosystem.
 
         </p>
 
+
         <div class="hero-buttons">
 
-            <button class="hero-btn">
+            <button
+                class="hero-btn"
+                id="browseScriptsBtn">
 
                 📜 Browse Scripts
 
@@ -147,37 +156,57 @@ XLAND SCRIPT HERO
 
         </div>
 
+
         <div class="hero-stats">
 
-            <div>
+            <div class="hero-stat">
 
-                <h2>35+</h2>
+                <strong>
+                    35+
+                </strong>
 
-                <span>Scripts</span>
-
-            </div>
-
-            <div>
-
-                <h2>3</h2>
-
-                <span>Languages</span>
+                <span>
+                    Scripts
+                </span>
 
             </div>
 
-            <div>
 
-                <h2>v3.2</h2>
+            <div class="hero-stat">
 
-                <span>Version</span>
+                <strong>
+                    3
+                </strong>
+
+                <span>
+                    Languages
+                </span>
 
             </div>
 
-            <div>
 
-                <h2>12K</h2>
+            <div class="hero-stat">
 
-                <span>Downloads</span>
+                <strong>
+                    v3.2
+                </strong>
+
+                <span>
+                    Version
+                </span>
+
+            </div>
+
+
+            <div class="hero-stat">
+
+                <strong>
+                    12K
+                </strong>
+
+                <span>
+                    Downloads
+                </span>
 
             </div>
 
@@ -187,49 +216,406 @@ XLAND SCRIPT HERO
 
 </section>
 
-<div id="profileMenu" class="profile-menu">
 
-    <button id="changePasswordBtn">🔑 Change Password</button>
 
-    <button id="aboutBtn">ℹ️ About</button>
+<!-- =========================================
+     SCRIPT EXPLORER
+========================================= -->
 
-    <button id="logoutBtn">🚪 Log Out</button>
+<section
+    class="script-explorer"
+    id="scriptExplorer">
 
-</div>
 
-<div id="logoutModal" class="modal">
+    <div class="section-heading">
 
-    <div class="modal-box">
+        <div>
 
-        <h2>Log Out</h2>
+            <span class="section-kicker">
+                DEVELOPER TOOLS
+            </span>
 
-        <p>Are you sure you want to log out?</p>
+            <h2>
+                Script Explorer
+            </h2>
 
-        <div class="modal-buttons">
+            <p>
+                Browse and inspect Xland scripts.
+            </p>
 
-            <button id="noLogout">No</button>
+        </div>
 
-            <button id="yesLogout">Yes</button>
+
+        <div class="library-badge">
+
+            <span class="status-dot"></span>
+
+            Library Online
 
         </div>
 
     </div>
 
-</div>
-
-<div class="script-actions">
 
 
-    <button id="favoriteBtn">
+    <div class="script-workspace">
 
-        ⭐ Favorite
+
+        <!-- =================================
+             SIDEBAR
+        ================================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="sidebar-header">
+
+                <div>
+
+                    <span class="sidebar-kicker">
+                        XLAND LIBRARY
+                    </span>
+
+                    <h2>
+                        Scripts
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="script-count"
+                    id="scriptCount">
+
+                    0
+
+                </span>
+
+            </div>
+
+
+            <div class="search-wrapper">
+
+                <span class="search-icon">
+                    🔎
+                </span>
+
+                <input
+                    type="text"
+                    placeholder="Search scripts..."
+                    id="search"
+                    autocomplete="off">
+
+            </div>
+
+
+            <div class="language-filters">
+
+                <span>
+                    ALL
+                </span>
+
+                <span>
+                    PY
+                </span>
+
+                <span>
+                    JS
+                </span>
+
+                <span>
+                    CS
+                </span>
+
+            </div>
+
+
+            <ul id="scriptList">
+
+            </ul>
+
+
+        </aside>
+
+
+
+        <!-- =================================
+             VIEWER
+        ================================= -->
+
+        <main class="viewer">
+
+
+            <div class="viewer-header">
+
+
+                <div class="viewer-file">
+
+                    <div
+                        class="file-icon"
+                        id="fileIcon">
+
+                        &lt;/&gt;
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="selectedFileName">
+
+                            Select a Script
+
+                        </strong>
+
+                        <span id="selectedFileType">
+
+                            Xland Script Library
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="viewer-status">
+
+                    <span class="status-dot"></span>
+
+                    Ready
+
+                </div>
+
+            </div>
+
+
+
+            <div class="code-window">
+
+
+                <div class="code-toolbar">
+
+                    <div class="window-dots">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <span class="code-label">
+
+                        SOURCE CODE
+
+                    </span>
+
+
+                    <span
+                        class="language-label"
+                        id="languageLabel">
+
+                        --
+
+                    </span>
+
+                </div>
+
+
+                <pre id="codeViewer">Select a script from the menu...</pre>
+
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="buttons">
+
+                <button id="copyBtn">
+
+                    📋 Copy
+
+                </button>
+
+
+                <button id="downloadBtn">
+
+                    📥 Download
+
+                </button>
+
+            </div>
+
+
+
+            <div class="script-actions">
+
+
+                <button id="favoriteBtn">
+
+                    ⭐ Favorite
+
+                </button>
+
+
+                <button id="shareBtn">
+
+                    🔗 Share
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- SCRIPT INFO -->
+
+            <div class="script-info">
+
+
+                <div class="info-title">
+
+                    <span>
+                        📊
+                    </span>
+
+                    <h3>
+                        Script Info
+                    </h3>
+
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-item">
+
+                        <span>
+                            Language
+                        </span>
+
+                        <strong id="scriptLanguage">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            File
+                        </span>
+
+                        <strong id="scriptFile">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            Size
+                        </span>
+
+                        <strong id="scriptSize">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            Lines
+                        </span>
+
+                        <strong id="scriptLines">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PROFILE MENU
+========================================= -->
+
+<div
+    id="profileMenu"
+    class="profile-menu">
+
+
+    <div class="profile-header">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div>
+
+            <strong id="profileUsername">
+                Account
+            </strong>
+
+            <span>
+                Xland Developer
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button id="changePasswordBtn">
+
+        🔑
+        <span>
+            Change Password
+        </span>
 
     </button>
 
 
-    <button id="shareBtn">
+    <button id="aboutBtn">
 
-        🔗 Share
+        ℹ️
+        <span>
+            About
+        </span>
+
+    </button>
+
+
+    <button
+        id="logoutBtn"
+        class="logout-button">
+
+        🚪
+        <span>
+            Log Out
+        </span>
 
     </button>
 
@@ -237,45 +623,56 @@ XLAND SCRIPT HERO
 </div>
 
 
-<div class="script-info">
+
+<!-- =========================================
+     LOGOUT MODAL
+========================================= -->
+
+<div
+    id="logoutModal"
+    class="modal">
 
 
-    <h3>
-        📊 Script Info
-    </h3>
+    <div class="modal-box">
 
 
-    <p>
-        Language:
-        <span id="scriptLanguage">
-            -
-        </span>
-    </p>
+        <div class="modal-icon logout-icon">
+            🚪
+        </div>
 
 
-    <p>
-        File:
-        <span id="scriptFile">
-            -
-        </span>
-    </p>
+        <h2>
+            Log Out
+        </h2>
 
 
-    <p>
-        Size:
-        <span id="scriptSize">
-            -
-        </span>
-    </p>
+        <p>
+            Are you sure you want to log out?
+        </p>
 
+
+        <div class="modal-buttons">
+
+            <button id="noLogout">
+                No
+            </button>
+
+            <button id="yesLogout">
+                Yes, Log Out
+            </button>
+
+        </div>
+
+
+    </div>
 
 </div>
+
+
 
 <script src="security.js"></script>
-
 <script src="xland-script.js"></script>
 
 </body>
-
 
 </html>
