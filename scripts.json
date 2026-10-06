@@ -10,7 +10,12 @@
    {
     "name": "desktop_clicker_v2",
     "file": "desktop_clicker_v2.py"
+  },
+   {
+    "name": "Application encryption.py",
+    "file": "Application encryption.py"
   }
+  
 ]
 
 

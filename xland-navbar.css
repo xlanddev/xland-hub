@@ -1,0 +1,1594 @@
+
+/* ========================================================
+   XLAND NAVBAR 3.0
+   PREMIUM GLASS / NEON / CYBER UI
+   ========================================================= */
+
+.xland-navbar {
+
+    position: sticky;
+
+    top: 12px;
+
+    z-index: 99999;
+
+    width: calc(100% - 30px);
+
+    max-width: 1500px;
+
+    min-height: 68px;
+
+    margin: 12px auto 0;
+
+    padding: 8px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 15, 24, .92),
+            rgba(5, 10, 18, .82)
+        );
+
+    backdrop-filter:
+        blur(28px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(28px)
+        saturate(160%);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.05),
+        0 0 45px rgba(0,255,136,.055);
+
+    transition:
+        .35s ease;
+
+}
+
+
+/* =========================================================
+   TOP GLOW
+   ========================================================= */
+
+.xland-navbar::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+
+    left: 12%;
+
+    right: 12%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,136,.8),
+            rgba(0,180,255,.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px rgba(0,255,136,.35);
+
+    opacity: .8;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   BOTTOM NEON LINE
+   ========================================================= */
+
+.xland-navbar::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+
+    right: 15%;
+
+    bottom: -1px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00ff88,
+            #00b7ff,
+            #7c3aed,
+            transparent
+        );
+
+    opacity: .65;
+
+    filter:
+        blur(.2px);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.xland-navbar-brand {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    padding: 7px 10px;
+
+    border-radius: 15px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    transition: .3s ease;
+
+}
+
+
+.xland-navbar-brand:hover {
+
+    background:
+        rgba(0,255,136,.07);
+
+    box-shadow:
+        0 0 25px rgba(0,255,136,.08);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.xland-navbar-logo {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    color: #00ff88;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,136,.18),
+            rgba(0,180,255,.14)
+        );
+
+    border:
+        1px solid rgba(0,255,136,.28);
+
+    box-shadow:
+        inset 0 0 15px rgba(0,255,136,.05),
+        0 0 22px rgba(0,255,136,.13);
+
+    transition: .35s ease;
+
+}
+
+
+.xland-navbar-brand:hover
+.xland-navbar-logo {
+
+    transform:
+        rotate(-6deg)
+        scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(0,255,136,.25);
+
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.xland-navbar-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.05;
+
+}
+
+
+.xland-navbar-brand-title {
+
+    color: #fff;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+}
+
+
+.xland-navbar-brand-sub {
+
+    margin-top: 5px;
+
+    color: #00ff88;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    opacity: .72;
+
+}
+
+
+/* =========================================================
+   MAIN MENU
+   ========================================================= */
+
+.xland-navbar-menu {
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    min-width: 0;
+
+}
+
+
+/* =========================================================
+   NAV LINK
+   ========================================================= */
+
+.xland-nav-link {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 43px;
+
+    padding: 9px 12px;
+
+    border-radius: 13px;
+
+    color:
+        rgba(255,255,255,.78);
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* ICON */
+
+.xland-nav-link span:first-child {
+
+    font-size: 15px;
+
+    transition: .25s ease;
+
+}
+
+
+/* ACTIVE LINE */
+
+.xland-nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20%;
+
+    right: 20%;
+
+    bottom: 3px;
+
+    height: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ff88,
+            #00b7ff
+        );
+
+    box-shadow:
+        0 0 10px rgba(0,255,136,.75);
+
+    transform:
+        scaleX(0);
+
+    transition:
+        .25s ease;
+
+}
+
+
+/* HOVER */
+
+.xland-nav-link:hover {
+
+    color: #00ff88;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,136,.10),
+            rgba(0,180,255,.055)
+        );
+
+    border-color:
+        rgba(0,255,136,.18);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 24px rgba(0,255,136,.09),
+        inset 0 0 14px rgba(0,255,136,.025);
+
+}
+
+
+.xland-nav-link:hover::after {
+
+    transform:
+        scaleX(1);
+
+}
+
+
+.xland-nav-link:hover span:first-child {
+
+    transform:
+        translateY(-1px)
+        scale(1.08);
+
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.xland-nav-dropdown {
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   DROPDOWN ARROW
+   ========================================================= */
+
+.xland-dropdown-arrow {
+
+    margin-right: 2px;
+
+    font-size: 8px;
+
+    opacity: .6;
+
+    transition: .3s ease;
+
+}
+
+
+.xland-nav-dropdown:hover
+.xland-dropdown-arrow {
+
+    color: #00ff88;
+
+    opacity: 1;
+
+    transform:
+        rotate(180deg);
+
+}
+
+
+/* =========================================================
+   DROPDOWN PANEL
+   ========================================================= */
+
+.xland-dropdown-panel {
+
+    position: absolute;
+
+    top: calc(100% + 14px);
+
+    right: 50%;
+
+    transform:
+        translateX(50%)
+        translateY(10px);
+
+    width: 370px;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,20,29,.98),
+            rgba(4,9,16,.98)
+        );
+
+    backdrop-filter:
+        blur(30px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(160%);
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    border-radius: 21px;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.60),
+        0 0 40px rgba(0,255,136,.08),
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+}
+
+
+/* DROPDOWN ARROW */
+
+.xland-dropdown-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -6px;
+
+    right: 50%;
+
+    width: 12px;
+
+    height: 12px;
+
+    transform:
+        translateX(50%)
+        rotate(45deg);
+
+    background:
+        #0d1721;
+
+    border-left:
+        1px solid rgba(255,255,255,.10);
+
+    border-top:
+        1px solid rgba(255,255,255,.10);
+
+}
+
+
+/* OPEN */
+
+.xland-nav-dropdown:hover
+.xland-dropdown-panel {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(50%)
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   DROPDOWN HEADER
+   ========================================================= */
+
+.xland-dropdown-header {
+
+    padding:
+        12px 13px 11px;
+
+    margin-bottom: 7px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+}
+
+
+.xland-dropdown-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+}
+
+
+.xland-dropdown-subtitle {
+
+    margin-top: 5px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   DROPDOWN ITEM
+   ========================================================= */
+
+.xland-dropdown-item {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px;
+
+    margin: 3px 0;
+
+    border-radius: 14px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    border:
+        1px solid transparent;
+
+    transition: .25s ease;
+
+}
+
+
+.xland-dropdown-item:hover {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,255,136,.10),
+            rgba(0,180,255,.06)
+        );
+
+    border-color:
+        rgba(0,255,136,.14);
+
+    transform:
+        translateX(-4px);
+
+}
+
+
+/* =========================================================
+   DROPDOWN ICON
+   ========================================================= */
+
+.xland-dropdown-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    font-size: 18px;
+
+    transition: .25s ease;
+
+}
+
+
+.xland-dropdown-item:hover
+.xland-dropdown-icon {
+
+    background:
+        rgba(0,255,136,.10);
+
+    border-color:
+        rgba(0,255,136,.18);
+
+    box-shadow:
+        0 0 17px rgba(0,255,136,.12);
+
+    transform:
+        scale(1.04);
+
+}
+
+
+/* =========================================================
+   DROPDOWN INFO
+   ========================================================= */
+
+.xland-dropdown-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+
+.xland-dropdown-name {
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+.xland-dropdown-description {
+
+    margin-top: 3px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   DROPDOWN FOOTER
+   ========================================================= */
+
+.xland-dropdown-footer {
+
+    display: flex;
+
+    margin-top: 8px;
+
+    padding-top: 8px;
+
+    border-top:
+        1px solid rgba(255,255,255,.07);
+
+}
+
+
+.xland-dropdown-viewall {
+
+    width: 100%;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #00ff88;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    background:
+        rgba(0,255,136,.05);
+
+    border:
+        1px solid rgba(0,255,136,.10);
+
+    transition: .25s ease;
+
+}
+
+
+.xland-dropdown-viewall:hover {
+
+    background:
+        rgba(0,255,136,.12);
+
+    box-shadow:
+        0 0 20px rgba(0,255,136,.11);
+
+}
+
+
+/* =========================================================
+   XLAND AI BUTTON
+   ========================================================= */
+
+.xland-navbar-ai {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    min-height: 43px;
+
+    padding: 9px 14px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,136,.14),
+            rgba(0,140,255,.12)
+        );
+
+    border:
+        1px solid rgba(0,255,136,.20);
+
+    box-shadow:
+        0 0 20px rgba(0,255,136,.06),
+        inset 0 0 15px rgba(0,255,136,.025);
+
+    white-space: nowrap;
+
+    transition: .3s ease;
+
+}
+
+
+.xland-navbar-ai:hover {
+
+    transform:
+        translateY(-2px);
+
+    color: #00ff88;
+
+    border-color:
+        rgba(0,255,136,.38);
+
+    box-shadow:
+        0 0 30px rgba(0,255,136,.17),
+        inset 0 0 18px rgba(0,255,136,.05);
+
+}
+
+
+/* =========================================================
+   AI DOT
+   ========================================================= */
+
+.xland-ai-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        #00ff88;
+
+    box-shadow:
+        0 0 10px #00ff88;
+
+    animation:
+        xlandAiPulse 1.7s infinite;
+
+}
+
+
+@keyframes xlandAiPulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        opacity: .45;
+
+        transform:
+            scale(.7);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.xland-mobile-btn {
+
+    display: none;
+
+    width: 44px;
+
+    height: 44px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    margin: 0;
+
+    border-radius: 13px;
+
+    border:
+        1px solid rgba(0,255,136,.18);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:
+        #00ff88;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    transition: .3s ease;
+
+}
+
+
+.xland-mobile-btn:hover {
+
+    background:
+        rgba(0,255,136,.10);
+
+    border-color:
+        rgba(0,255,136,.28);
+
+    box-shadow:
+        0 0 22px rgba(0,255,136,.15);
+
+}
+
+
+/* =========================================================
+   MOBILE DRAWER
+   ========================================================= */
+
+.xland-mobile-panel {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+
+    right: 0;
+
+    width: min(88%, 390px);
+
+    height: 100vh;
+
+    padding: 25px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,14,22,.99),
+            rgba(3,7,12,.99)
+        );
+
+    backdrop-filter:
+        blur(30px);
+
+    -webkit-backdrop-filter:
+        blur(30px);
+
+    border-left:
+        1px solid rgba(0,255,136,.13);
+
+    box-shadow:
+        -25px 0 70px rgba(0,0,0,.55);
+
+    z-index: 100000;
+
+    overflow-y: auto;
+
+}
+
+
+.xland-mobile-panel.open {
+
+    display: block;
+
+    animation:
+        xlandMobilePanel .3s ease;
+
+}
+
+
+@keyframes xlandMobilePanel {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+.xland-mobile-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+}
+
+
+.xland-mobile-brand {
+
+    color:
+        #00ff88;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+}
+
+
+.xland-mobile-close {
+
+    width: 40px;
+
+    height: 40px;
+
+    padding: 0;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: .25s ease;
+
+}
+
+
+.xland-mobile-close:hover {
+
+    background:
+        rgba(255,60,60,.10);
+
+    border-color:
+        rgba(255,80,80,.22);
+
+}
+
+
+/* =========================================================
+   MOBILE LINKS
+   ========================================================= */
+
+.xland-mobile-links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.xland-mobile-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    transition: .25s ease;
+
+}
+
+
+.xland-mobile-link:hover {
+
+    color:
+        #00ff88;
+
+    background:
+        rgba(0,255,136,.08);
+
+    border-color:
+        rgba(0,255,136,.16);
+
+    transform:
+        translateX(-4px);
+
+}
+
+
+/* =========================================================
+   MOBILE SECTION
+   ========================================================= */
+
+.xland-mobile-section {
+
+    margin-top: 20px;
+
+    margin-bottom: 7px;
+
+    padding:
+        0 5px;
+
+    color:
+        #00ff88;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   MOBILE BACKDROP
+   ========================================================= */
+
+.xland-mobile-backdrop {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.62);
+
+    backdrop-filter:
+        blur(5px);
+
+    z-index: 99998;
+
+}
+
+
+.xland-mobile-backdrop.show {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+    .xland-nav-link {
+
+        padding:
+            9px 8px;
+
+        font-size:
+            11px;
+
+    }
+
+    .xland-nav-link span:first-child {
+
+        font-size:
+            14px;
+
+    }
+
+    .xland-navbar-ai {
+
+        padding:
+            9px 10px;
+
+    }
+
+}
+
+
+@media (max-width: 1050px) {
+
+    .xland-navbar {
+
+        gap: 6px;
+
+    }
+
+    .xland-navbar-brand-sub {
+
+        display: none;
+
+    }
+
+    .xland-navbar-brand-title {
+
+        font-size:
+            13px;
+
+    }
+
+    .xland-nav-link {
+
+        padding:
+            8px 6px;
+
+        font-size:
+            10px;
+
+    }
+
+    .xland-navbar-ai {
+
+        font-size:
+            10px;
+
+        padding:
+            8px 9px;
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .xland-navbar {
+
+        top: 8px;
+
+        width:
+            calc(100% - 18px);
+
+        min-height:
+            58px;
+
+        padding:
+            7px 9px;
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .xland-navbar-menu {
+
+        display: none;
+
+    }
+
+
+    .xland-navbar-ai {
+
+        display: none;
+
+    }
+
+
+    .xland-mobile-btn {
+
+        display: flex;
+
+        margin-right: auto;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .xland-navbar-brand {
+
+        padding:
+            6px 7px;
+
+    }
+
+
+    .xland-navbar-logo {
+
+        width: 36px;
+
+        height: 36px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+
+    }
+
+
+    .xland-navbar-brand-title {
+
+        font-size:
+            12px;
+
+        letter-spacing:
+            1.5px;
+
+    }
+
+
+    .xland-mobile-btn {
+
+        width: 40px;
+
+        height: 40px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .xland-navbar,
+    .xland-nav-link,
+    .xland-dropdown-item,
+    .xland-mobile-link,
+    .xland-navbar-ai {
+
+        transition:
+            none;
+
+    }
+
+
+    .xland-ai-dot {
+
+        animation:
+            none;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DROPDOWN OPEN FIX
+   ========================================================= */
+
+.xland-nav-dropdown.keyboard-open .xland-dropdown-panel,
+.xland-nav-dropdown.mouse-open .xland-dropdown-panel,
+.xland-nav-dropdown:hover .xland-dropdown-panel {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(50%)
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   DROPDOWN POSITION
+   ========================================================= */
+
+.xland-nav-dropdown {
+
+    position: relative;
+
+}
+
+
+.xland-dropdown-panel {
+
+    position: absolute;
+
+    top: calc(100% + 14px);
+
+    right: 50%;
+    left: auto;
+
+    transform:
+        translateX(50%)
+        translateY(10px);
+
+    width: 360px;
+
+    max-width: min(360px, calc(100vw - 20px));
+
+    z-index: 100000;
+
+}
+
+
+/* =========================================================
+   INVISIBLE MOUSE BRIDGE
+   ========================================================= */
+
+.xland-dropdown-panel::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -14px;
+
+    right: 0;
+
+    left: 0;
+
+    height: 14px;
+
+    background: transparent;
+
+}
+
+
+/* =========================================================
+   INVISIBLE MOUSE BRIDGE
+   Prevent menu from closing while moving mouse
+   ========================================================= */
+
+.xland-dropdown-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-14px;
+
+    left:0;
+
+    right:0;
+
+    height:14px;
+
+    background:transparent;
+
+}
+
+/* =========================================================
+   XLAND NAVBAR LOGO IMAGE
+   ========================================================= */
+
+.xland-navbar-logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+}
+

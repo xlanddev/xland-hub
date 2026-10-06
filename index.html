@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -12,12 +13,12 @@
     <link rel="icon" type="image/png" href="xland-icon.png">
 
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="xland-navbar.css">
     <link rel="stylesheet" href="banner.css">
-
     <link rel="stylesheet" href="loader.css">
-
     <link rel="stylesheet" href="xland-ai-button.css">
+    <link rel="stylesheet" href="xland-comments.css">
+    <link rel="stylesheet" href="xland-mobile.css">
 
     <!-- 🤖 XLAND AI COPILOT -->
     <link rel="stylesheet" href="xland-ai-copilot.css">
@@ -37,10 +38,6 @@
     ========================================= -->
 
     <style>
-
-        /* =========================================
-                PROJECTS CONTAINER
-        ========================================= */
 
         .xland-projects {
 
@@ -71,10 +68,6 @@
         }
 
 
-        /* =========================================
-                TITLE
-        ========================================= */
-
         .projects-title {
 
             text-align: center;
@@ -103,10 +96,6 @@
         }
 
 
-        /* =========================================
-                PROJECT GRID
-        ========================================= */
-
         .projects-grid {
 
             display: grid;
@@ -118,10 +107,6 @@
 
         }
 
-
-        /* =========================================
-                PROJECT CARD
-        ========================================= */
 
         .project-card {
 
@@ -153,8 +138,6 @@
         }
 
 
-        /* نور داخل کارت */
-
         .project-card::before {
 
             content: "";
@@ -182,8 +165,6 @@
         }
 
 
-        /* Hover */
-
         .project-card:hover {
 
             transform:
@@ -208,10 +189,6 @@
 
         }
 
-
-        /* =========================================
-                ICON
-        ========================================= */
 
         .project-icon {
 
@@ -240,10 +217,6 @@
         }
 
 
-        /* =========================================
-                CARD TITLE
-        ========================================= */
-
         .project-card h3 {
 
             margin: 0 0 10px;
@@ -254,10 +227,6 @@
 
         }
 
-
-        /* =========================================
-                DESCRIPTION
-        ========================================= */
 
         .project-card p {
 
@@ -271,10 +240,6 @@
 
         }
 
-
-        /* =========================================
-                TYPE
-        ========================================= */
 
         .project-type {
 
@@ -299,10 +264,6 @@
 
         }
 
-
-        /* =========================================
-                BUTTON
-        ========================================= */
 
         .project-button {
 
@@ -343,10 +304,6 @@
 
         }
 
-
-        /* =========================================
-                RESPONSIVE
-        ========================================= */
 
         @media (max-width: 950px) {
 
@@ -445,6 +402,7 @@
             <img
                 src="xland-icon.png"
                 class="install-icon"
+                alt="Xland"
             >
 
             <div>
@@ -486,131 +444,624 @@
 
 
     <!-- =========================================
-            MOBILE MENU BUTTON
+            🔥 PREMIUM XLAND NAVBAR
     ========================================= -->
 
-    <button
-        class="menu-btn"
-        onclick="toggleMenu()"
-    >
+    <nav class="xland-navbar" id="navbar">
 
-        ☰
+        <!-- BRAND -->
 
-    </button>
+<a
+    href="index.html"
+    class="xland-navbar-brand"
+>
 
+    <span class="xland-navbar-logo">
 
-    <!-- =========================================
-            NAVBAR
-    ========================================= -->
+        <img src="xland-icon.png" alt="Xland Hub">
 
-    <nav id="navbar">
+    </span>
 
-        <a href="rules.html">
+    <span class="xland-navbar-brand-text">
 
-            قوانین xland
+        <span class="xland-navbar-brand-title">
 
-        </a>
+            XLAND HUB
 
+        </span>
 
-        <a href="news.html">
+        <span class="xland-navbar-brand-sub">
 
-            News Xland
+            DIGITAL ECOSYSTEM
 
-        </a>
+        </span>
 
+    </span>
 
-        <a href="xland-map.html">
-
-            دانلود مپ xland
-
-        </a>
+</a>
 
 
-        <a href="xland.html">
+        <!-- MAIN MENU -->
 
-            دانلود بازی xland game
-
-        </a>
+        <div class="xland-navbar-menu">
 
 
-        <a href="endless.html">
-
-            دانلود بازی EndIessRoadHorror 3D
-
-        </a>
-
-
-        <a href="about.html">
-
-            درباره ما
-
-        </a>
-
-
-        <!-- =========================================
-                DEVELOPER MENU
-        ========================================= -->
-
-        <div class="dropdown">
+            <!-- 01 -->
 
             <a
-                href="xland-script.html"
-                class="dropbtn"
+                href="rules.html"
+                class="xland-nav-link"
             >
 
-                Developer ▼
+                <span>📜</span>
+
+                <span>قوانین</span>
 
             </a>
 
 
-            <div class="dropdown-content">
+            <!-- 02 -->
 
-                <a href="xland-script.html">
+            <a
+                href="news.html"
+                class="xland-nav-link"
+            >
 
-                    📜 Xland Script
+                <span>📰</span>
+
+                <span>News</span>
+
+            </a>
+
+
+            <!-- 03 -->
+
+            <a
+                href="xland-map.html"
+                class="xland-nav-link"
+            >
+
+                <span>🗺️</span>
+
+                <span> Xland Map</span>
+
+            </a>
+
+
+            <!-- 04 -->
+
+            <a
+                href="xland.html"
+                class="xland-nav-link"
+            >
+
+                <span>🎮</span>
+
+                <span>Xland Game</span>
+
+            </a>
+
+
+            <!-- 05 -->
+
+            <a
+                href="endless.html"
+                class="xland-nav-link"
+            >
+
+                <span>👻</span>
+
+                <span>Endless Road</span>
+
+            </a>
+
+
+            <!-- 06 -->
+
+            <a
+                href="about.html"
+                class="xland-nav-link"
+            >
+
+                <span>ℹ️</span>
+
+                <span>درباره ما</span>
+
+            </a>
+
+
+            <!-- 07 DEVELOPER -->
+
+            <div class="xland-nav-dropdown">
+
+                <a
+                    href="xland-script.html"
+                    class="xland-nav-link xland-nav-dropdown-btn"
+                >
+
+                    <span>👨‍💻</span>
+
+                    <span>Developer</span>
+
+                    <span class="xland-dropdown-arrow">
+
+                        ▼
+
+                    </span>
 
                 </a>
 
 
-                <a href="api.html">
-
-                    🌍 Xland API
-
-                </a>
+                <div class="xland-dropdown-panel">
 
 
-                <a href="xland-news.html">
+                    <div class="xland-dropdown-header">
 
-                    📰 XLAND News
+                        <div class="xland-dropdown-title">
 
-                </a>
+                            ⚡ Xland Developer
 
+                        </div>
 
-                <a href="videos.html">
+                        <div class="xland-dropdown-subtitle">
 
-                    📰 xland video
+                            Tools & Services
 
-                </a>
+                        </div>
 
-
-                <a href="support.html">
-
-                    🛠️ Support
-
-                </a>
+                    </div>
 
 
-                <a href="open-world-game.html">
+                    <a
+                        href="xland-script.html"
+                        class="xland-dropdown-item"
+                    >
 
-                    Wild Horizon Game
+                        <span class="xland-dropdown-icon">
 
-                </a>
+                            📜
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Xland Script
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                Xland programming language
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="api.html"
+                        class="xland-dropdown-item"
+                    >
+
+                        <span class="xland-dropdown-icon">
+
+                            🌍
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Xland API
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                API infrastructure
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="xland-news.html"
+                        class="xland-dropdown-item"
+                    >
+
+                        <span class="xland-dropdown-icon">
+
+                            📰
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Xland News
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                Developer news
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="videos.html"
+                        class="xland-dropdown-item"
+                    >
+
+                        <span class="xland-dropdown-icon">
+
+                            🎬
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Xland Videos
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                Videos & tutorials
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="support.html"
+                        class="xland-dropdown-item"
+                    >
+
+                        <span class="xland-dropdown-icon">
+
+                            🛠️
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Xland Support
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                Help & support center
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="open-world-game.html"
+                        class="xland-dropdown-item"
+                    >
+
+                        <span class="xland-dropdown-icon">
+
+                            🌎
+
+                        </span>
+
+                        <span class="xland-dropdown-info">
+
+                            <span class="xland-dropdown-name">
+
+                                Wild Horizon
+
+                            </span>
+
+                            <span class="xland-dropdown-description">
+
+                                Open world project
+
+                            </span>
+
+                        </span>
+
+                    </a>
+
+
+                    <div class="xland-dropdown-footer">
+
+                        <a
+                            href="xland-script.html"
+                            class="xland-dropdown-viewall"
+                        >
+
+                            🚀 Open Developer Center →
+
+                        </a>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
+
+        <!-- XLAND AI -->
+
+        <a
+            href="https://xland-ai-web.onrender.com/"
+            class="xland-navbar-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <span class="xland-ai-dot"></span>
+
+            🤖 XLAND AI
+
+        </a>
+
+
+        <!-- MOBILE BUTTON -->
+
+<button 
+    class="xland-mobile-btn" 
+    id="xlandMobileBtn" 
+    type="button" 
+    aria-label="Open menu"
+    onclick="toggleMenu()"
+>
+
+    ☰
+
+</button>
+
     </nav>
+
+
+    <!-- =========================================
+            MOBILE BACKDROP
+    ========================================= -->
+
+    <div
+        class="xland-mobile-backdrop"
+        id="xlandMobileBackdrop"
+    ></div>
+
+
+    <!-- =========================================
+            MOBILE DRAWER
+    ========================================= -->
+
+    <aside
+        class="xland-mobile-panel"
+        id="xlandMobilePanel"
+    >
+
+        <div class="xland-mobile-header">
+
+            <div class="xland-mobile-brand">
+
+                ✕ XLAND HUB
+
+            </div>
+
+            <button
+                class="xland-mobile-close"
+                id="xlandMobileClose"
+                type="button"
+            >
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <div class="xland-mobile-links">
+
+
+            <a
+                href="rules.html"
+                class="xland-mobile-link"
+            >
+
+                📜
+
+                قوانین Xland
+
+            </a>
+
+
+            <a
+                href="news.html"
+                class="xland-mobile-link"
+            >
+
+                📰
+
+                News Xland
+
+            </a>
+
+
+            <a
+                href="xland-map.html"
+                class="xland-mobile-link"
+            >
+
+                🗺️
+
+                دانلود Map
+
+            </a>
+
+
+            <a
+                href="xland.html"
+                class="xland-mobile-link"
+            >
+
+                🎮
+
+                Xland Game
+
+            </a>
+
+
+            <a
+                href="endless.html"
+                class="xland-mobile-link"
+            >
+
+                👻
+
+                Endless Road Horror 3D
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="xland-mobile-link"
+            >
+
+                ℹ️
+
+                درباره ما
+
+            </a>
+
+
+            <div class="xland-mobile-section">
+
+                DEVELOPER
+
+            </div>
+
+
+            <a
+                href="xland-script.html"
+                class="xland-mobile-link"
+            >
+
+                📜
+
+                Xland Script
+
+            </a>
+
+
+            <a
+                href="api.html"
+                class="xland-mobile-link"
+            >
+
+                🌍
+
+                Xland API
+
+            </a>
+
+
+            <a
+                href="xland-news.html"
+                class="xland-mobile-link"
+            >
+
+                📰
+
+                Xland News
+
+            </a>
+
+
+            <a
+                href="videos.html"
+                class="xland-mobile-link"
+            >
+
+                🎬
+
+                Xland Videos
+
+            </a>
+
+
+            <a
+                href="support.html"
+                class="xland-mobile-link"
+            >
+
+                🛠️
+
+                Xland Support
+
+            </a>
+
+
+            <a
+                href="open-world-game.html"
+                class="xland-mobile-link"
+            >
+
+                🌎
+
+                Wild Horizon Game
+
+            </a>
+
+
+            <div class="xland-mobile-section">
+
+                AI
+
+            </div>
+
+
+            <a
+                href="https://xland-ai-web.onrender.com/"
+                class="xland-mobile-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                🤖
+
+                XLAND AI
+
+            </a>
+
+        </div>
+
+    </aside>
 
 
     <!-- =========================================
@@ -708,25 +1159,18 @@
 
     <section class="xland-home-hero">
 
-        <!-- Background Glow -->
-
         <div class="hero-glow hero-glow-1"></div>
 
         <div class="hero-glow hero-glow-2"></div>
 
-
-        <!-- Grid Background -->
-
         <div class="hero-grid"></div>
 
-
-        <!-- Hero Content -->
 
         <div class="hero-content">
 
             <div class="hero-badge">
 
-                ✦ XLAND HUB 5.2
+                ✦ XLAND HUB 5.3
 
             </div>
 
@@ -747,8 +1191,6 @@
 
             </p>
 
-
-            <!-- Hero Buttons -->
 
             <div class="hero-buttons">
 
@@ -773,8 +1215,6 @@
 
             </div>
 
-
-            <!-- Hero Stats -->
 
             <div class="hero-stats">
 
@@ -821,8 +1261,6 @@
         </div>
 
 
-        <!-- Decorative X -->
-
         <div class="hero-x">
 
             X
@@ -840,16 +1278,9 @@
 
         <div class="xland-ai-copilot-inner">
 
-
-            <!-- =====================================
-                    COPILOT HEADER
-            ===================================== -->
-
             <div class="copilot-header">
 
-
                 <div class="copilot-brand">
-
 
                     <div class="copilot-icon">
 
@@ -875,7 +1306,6 @@
 
                     </div>
 
-
                 </div>
 
 
@@ -887,19 +1317,12 @@
 
                 </div>
 
-
             </div>
 
 
-            <!-- =====================================
-                    SEARCH
-            ===================================== -->
-
             <div class="copilot-search-area">
 
-
                 <div class="copilot-search-box">
-
 
                     <div class="copilot-search-icon">
 
@@ -925,13 +1348,8 @@
 
                     </button>
 
-
                 </div>
 
-
-                <!-- =================================
-                        QUICK ACCESS
-                ================================== -->
 
                 <div class="copilot-suggestions-title">
 
@@ -941,7 +1359,6 @@
 
 
                 <div class="copilot-suggestions">
-
 
                     <button
                         class="copilot-suggestion"
@@ -1019,22 +1436,15 @@
 
                     </button>
 
-
                 </div>
 
-
-                <!-- =================================
-                        RESULT
-                ================================== -->
 
                 <div
                     id="copilotResult"
                     class="copilot-result"
                 >
 
-
                     <div class="copilot-result-header">
-
 
                         <div
                             id="copilotResultIcon"
@@ -1048,19 +1458,11 @@
 
                         <div class="copilot-result-info">
 
+                            <h3 id="copilotResultTitle"></h3>
 
-                            <h3
-                                id="copilotResultTitle"
-                            ></h3>
-
-
-                            <p
-                                id="copilotResultDescription"
-                            ></p>
-
+                            <p id="copilotResultDescription"></p>
 
                         </div>
-
 
                     </div>
 
@@ -1075,13 +1477,8 @@
 
                     </a>
 
-
                 </div>
 
-
-                <!-- =================================
-                        NO RESULT
-                ================================== -->
 
                 <div
                     id="copilotNoResult"
@@ -1096,16 +1493,10 @@
 
                 </div>
 
-
             </div>
 
 
-            <!-- =====================================
-                    COPILOT FOOTER
-            ===================================== -->
-
             <div class="copilot-footer">
-
 
                 <span>
 
@@ -1120,9 +1511,7 @@
 
                 </span>
 
-
             </div>
-
 
         </div>
 
@@ -1135,7 +1524,6 @@
 
     <div class="banner-slider">
 
-
         <button class="banner-btn prev">
 
             ❮
@@ -1145,9 +1533,7 @@
 
         <div class="banner-content">
 
-
             <h2 id="banner-title"></h2>
-
 
             <p id="banner-text"></p>
 
@@ -1164,7 +1550,6 @@
 
             <div class="banner-indicators">
 
-
                 <span class="dot active"></span>
 
                 <span class="dot"></span>
@@ -1173,9 +1558,7 @@
 
                 <span class="dot"></span>
 
-
             </div>
-
 
         </div>
 
@@ -1186,7 +1569,6 @@
 
         </button>
 
-
     </div>
 
 
@@ -1195,7 +1577,6 @@
     ========================================= -->
 
     <div class="container">
-
 
         <h1>
 
@@ -1212,8 +1593,6 @@
         </p>
 
 
-        <!-- SEARCH -->
-
         <input
             type="text"
             id="search"
@@ -1221,36 +1600,44 @@
         >
 
 
-        <!-- =========================================
-                COMMENT SYSTEM
-        ========================================= -->
-
         <div class="comment-box">
 
+    <div class="comment-header">
+        <span class="comment-icon">💬</span>
 
-            <textarea
-                id="commentInput"
-                placeholder="  نظر خود را بنویسید..."
-            ></textarea>
-
-
-            <br>
-
-
-            <button onclick="addComment()">
-
-                ارسال کامنت
-
-            </button>
-
-
+        <div>
+            <h2>ارسال کامنت</h2>
+            <p>نظر، پیشنهاد یا انتقاد خود را با ما به اشتراک بگذارید</p>
         </div>
+    </div>
 
+    <textarea
+        id="commentInput"
+        maxlength="500"
+        placeholder="نظر خود را بنویسید..."
+    ></textarea>
 
-        <div id="comments"></div>
+    <div class="comment-footer">
 
+        <span id="commentCounter">
+            0 / 500
+        </span>
+
+        <button
+            type="button"
+            onclick="addComment()"
+        >
+            <span>🚀</span>
+            ارسال کامنت
+        </button>
 
     </div>
+
+</div>
+
+<div id="comments"></div>
+
+</div>
 
 
     <!-- =========================================
@@ -1258,7 +1645,6 @@
     ========================================= -->
 
     <section class="xland-projects">
-
 
         <h2 class="projects-title">
 
@@ -1277,12 +1663,7 @@
         <div class="projects-grid">
 
 
-            <!-- =================================
-                    CARD 1
-            ================================== -->
-
             <div class="project-card">
-
 
                 <div class="project-icon">
 
@@ -1323,16 +1704,10 @@
 
                 </a>
 
-
             </div>
 
 
-            <!-- =================================
-                    CARD 2
-            ================================== -->
-
             <div class="project-card">
-
 
                 <div class="project-icon">
 
@@ -1373,16 +1748,10 @@
 
                 </a>
 
-
             </div>
 
 
-            <!-- =================================
-                    CARD 4
-            ================================== -->
-
             <div class="project-card">
-
 
                 <div class="project-icon">
 
@@ -1423,16 +1792,10 @@
 
                 </a>
 
-
             </div>
 
 
-            <!-- =================================
-                    CARD 5
-            ================================== -->
-
             <div class="project-card">
-
 
                 <div class="project-icon">
 
@@ -1473,12 +1836,9 @@
 
                 </a>
 
-
             </div>
 
-
         </div>
-
 
     </section>
 
@@ -1497,11 +1857,18 @@
 
     <script src="loader.js"></script>
 
+    <script src="xland-navbar.js"></script>
+
     <!-- 🤖 XLAND AI COPILOT -->
 
     <script src="xland-ai-copilot.js"></script>
+
+    <!-- 💬 XLAND COMMUNITY COMMENTS 2.0 -->
+
+    <script src="xland-comments.js"></script>
 
 
 </body>
 
 </html>
+

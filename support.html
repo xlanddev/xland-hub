@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -44,7 +45,7 @@
                 <h1>XLAND SUPPORT</h1>
 
                 <span>
-                    Support Center 5.1
+                    Support Center 5.3
                 </span>
 
             </div>
@@ -109,7 +110,7 @@
                 <div class="hero-content">
 
                     <span class="hero-badge">
-                        🛡️ XLAND SUPPORT CENTER 5.1
+                        🛡️ XLAND SUPPORT CENTER 5.3
                     </span>
 
                     <h2>
@@ -163,6 +164,7 @@
 
                     <div>
                         <b>Ticket Center</b>
+
                         <span>
                             درخواست‌های خود را پیگیری کنید
                         </span>
@@ -183,6 +185,7 @@
 
                     <div>
                         <b>سوالات متداول</b>
+
                         <span>
                             شاید پاسخ سوالت اینجا باشد
                         </span>
@@ -495,7 +498,7 @@
                         <p>
                             Ticket ID یک شناسه یکتا برای درخواست شماست.
                             با استفاده از آن می‌توان در آینده درخواست را
-                            از طریق Xland API پیگیری کرد.
+                            پیگیری کرد.
                         </p>
 
                     </div>
@@ -533,7 +536,7 @@
                     <button class="faq-question">
 
                         <span>
-                            آیا درخواست‌ها ذخیره می‌شوند؟
+                          ایا اطلاعات ثبت نام در سایت xland Hub توسط تیم xland محفوظ است ؟
                         </span>
 
                         <b>+</b>
@@ -543,9 +546,7 @@
                     <div class="faq-answer">
 
                         <p>
-                            در نسخه 5.1 درخواست‌ها فعلاً به صورت موقت
-                            داخل localStorage مرورگر ذخیره می‌شوند.
-                            در نسخه Backend، این سیستم به Xland API متصل خواهد شد.
+                           بله تمام اطلاعات کاربران توسط تیم xland محفوظ است 
                         </p>
 
                     </div>
@@ -569,7 +570,7 @@
 
                         <p>
                             بله. از بخش Ticket Center می‌توانی درخواست‌های
-                            ذخیره‌شده در همین مرورگر را مشاهده کنی.
+                            ذخیره‌شده در همین مرورگر را مشاهده و مدیریت کنی.
                         </p>
 
                     </div>
@@ -582,7 +583,7 @@
                     <button class="faq-question">
 
                         <span>
-                            آیا Xland API آماده است؟
+                           ایا تیم xland support 24 ساعته هستن
                         </span>
 
                         <b>+</b>
@@ -592,8 +593,7 @@
                     <div class="faq-answer">
 
                         <p>
-                            معماری نسخه 5.1 برای اتصال به Backend آماده شده،
-                            اما ذخیره‌سازی فعلی Frontend و localStorage است.
+                           بله تیم ما 24 ساعته است و هر وقت و هر زمان به تیکت شما پاسخ میدهند
                         </p>
 
                     </div>
@@ -617,7 +617,7 @@
             <div class="internal-hero">
 
                 <span class="hero-badge">
-                    🎫 XLAND TICKET CENTER
+                    🎫 XLAND TICKET CENTER 5.3
                 </span>
 
                 <h2>
@@ -625,13 +625,32 @@
                 </h2>
 
                 <p>
-                    وضعیت درخواست‌های ثبت‌شده خود را مشاهده کنید.
+                    وضعیت درخواست‌های ثبت‌شده خود را مشاهده و مدیریت کنید.
                 </p>
 
             </div>
 
 
             <section class="ticket-dashboard">
+
+
+                <div class="ticket-toolbar">
+
+                    <button
+                        class="ticket-action-btn"
+                        id="refreshTickets"
+                    >
+                        🔄 بروزرسانی
+                    </button>
+
+                  <button
+                      class="ticket-action-btn"
+                      onclick="openSupportForm('contact')"
+>
+                      ➕ Ticket جدید
+              </button>
+
+                </div>
 
 
                 <div class="ticket-stats">
@@ -738,13 +757,12 @@
 
         <div class="form-container">
 
-
             <div class="form-header">
 
                 <div>
 
                     <span>
-                        XLAND SUPPORT 5.1
+                        XLAND SUPPORT 5.3
                     </span>
 
                     <h2 id="formTitle">
@@ -995,7 +1013,7 @@
                 <div class="backend-note">
 
                     🛡️
-                    اطلاعات این درخواست در نسخه 5.1
+                    اطلاعات این درخواست در نسخه 5.3
                     فعلاً به صورت محلی ذخیره می‌شود.
 
                 </div>
@@ -1012,6 +1030,116 @@
 
 
             </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TICKET DETAILS MODAL
+    ========================================== -->
+
+    <div
+        id="ticketDetailsModal"
+        class="modal"
+    >
+
+        <div
+            class="modal-backdrop ticket-details-backdrop"
+        ></div>
+
+
+        <div class="ticket-details-container">
+
+
+            <div class="ticket-details-header">
+
+                <div>
+
+                    <span>
+                        XLAND TICKET 5.3
+                    </span>
+
+                    <h2>
+                        جزئیات Ticket
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="closeTicketDetails"
+                    class="close-form"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div
+                id="ticketDetailsContent"
+                class="ticket-details-content"
+            ></div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         DELETE CONFIRM MODAL
+    ========================================== -->
+
+    <div
+        id="deleteTicketModal"
+        class="modal"
+    >
+
+        <div
+            class="modal-backdrop delete-ticket-backdrop"
+        ></div>
+
+
+        <div class="confirm-container">
+
+            <div class="confirm-icon">
+                🗑️
+            </div>
+
+            <h2>
+                حذف Ticket؟
+            </h2>
+
+            <p>
+                این Ticket از localStorage این مرورگر حذف خواهد شد.
+            </p>
+
+            <div
+                id="deleteTicketId"
+                class="confirm-ticket-id"
+            ></div>
+
+
+            <div class="confirm-actions">
+
+                <button
+                    id="cancelDeleteTicket"
+                    class="confirm-cancel"
+                >
+                    انصراف
+                </button>
+
+                <button
+                    id="confirmDeleteTicket"
+                    class="confirm-delete"
+                >
+                    🗑️ حذف Ticket
+                </button>
+
+            </div>
 
         </div>
 
@@ -1039,7 +1167,7 @@
         </h3>
 
         <p>
-            Xland Support Center 5.1
+            Xland Support Center 5.3
             — Developer & Support Center
         </p>
 
@@ -1080,3 +1208,4 @@
 </body>
 
 </html>
+

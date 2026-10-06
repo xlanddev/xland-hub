@@ -1,5 +1,5 @@
 // ===============================
-// XLAND Security v4.2
+// XLAND Security v5.3
 // Frontend Security + Video Security
 // ===============================
 
@@ -1200,6 +1200,168 @@ function clearLoginSensitiveData() {
 
 }
 
+// =========================================================
+// 🛡 FRONTEND SOURCE PROTECTION
+// Xland Security v4.2
+// =========================================================
+
+function enableSourceProtection() {
+
+    // -----------------------------------------------------
+    // 🚫 Disable Right Click
+    // -----------------------------------------------------
+
+    document.addEventListener(
+        "contextmenu",
+        function (event) {
+
+            event.preventDefault();
+
+        },
+        true
+    );
+
+
+    // -----------------------------------------------------
+    // 🚫 Disable Developer Keyboard Shortcuts
+    // -----------------------------------------------------
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            const key =
+                event.key.toLowerCase();
+
+            const ctrl =
+                event.ctrlKey;
+
+            const shift =
+                event.shiftKey;
+
+            const alt =
+                event.altKey;
+
+            // F12
+            if (key === "f12") {
+
+                event.preventDefault();
+
+                return false;
+
+            }
+
+
+            // Ctrl + U
+            if (
+                ctrl &&
+                !shift &&
+                !alt &&
+                key === "u"
+            ) {
+
+                event.preventDefault();
+
+                return false;
+
+            }
+
+
+            // Ctrl + Shift + I
+            if (
+                ctrl &&
+                shift &&
+                key === "i"
+            ) {
+
+                event.preventDefault();
+
+                return false;
+
+            }
+
+
+            // Ctrl + Shift + J
+            if (
+                ctrl &&
+                shift &&
+                key === "j"
+            ) {
+
+                event.preventDefault();
+
+                return false;
+
+            }
+
+
+            // Ctrl + Shift + C
+            if (
+                ctrl &&
+                shift &&
+                key === "c"
+            ) {
+
+                event.preventDefault();
+
+                return false;
+
+            }
+
+        },
+        true
+    );
+
+
+    // -----------------------------------------------------
+    // 🚫 Disable Dragging Source Images
+    // -----------------------------------------------------
+
+    document.addEventListener(
+        "dragstart",
+        function (event) {
+
+            if (
+                event.target &&
+                event.target.tagName === "IMG"
+            ) {
+
+                event.preventDefault();
+
+            }
+
+        },
+        true
+    );
+
+
+    console.log(
+        "🛡 Frontend Source Protection Enabled"
+    );
+
+}
+
+
+// =========================================================
+// 🚀 START FRONTEND PROTECTION
+// =========================================================
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        enableSourceProtection
+    );
+
+}
+else {
+
+    enableSourceProtection();
+
+}
+
 
 // =========================================================
 // SECURITY STATUS
@@ -1209,7 +1371,7 @@ function getXlandSecurityStatus() {
 
     return {
 
-        version: "4.1",
+        version: "5.3",
 
         xssProtection: true,
 
@@ -1225,7 +1387,13 @@ function getXlandSecurityStatus() {
 
         filenameValidation: true,
 
-        htmlEscaping: true
+        htmlEscaping: true,
+
+        frontendSourceProtection: true,
+
+        contextMenuProtection: true,
+
+        keyboardShortcutProtection: true
 
     };
 
@@ -1297,6 +1465,8 @@ window.XlandSecurity = {
     resetLoginAttempts,
 
     clearLoginSensitiveData,
+
+    enableSourceProtection,
 
     getXlandSecurityStatus
 
@@ -1378,5 +1548,29 @@ console.log(
 console.log(
     "🛡 Security API Ready"
 );
+
+console.log(
+    "🛡 Frontend Source Protection"
+);
+
+console.log(
+    "🚫 Right Click Protection"
+);
+
+console.log(
+    "🚫 Ctrl+U Protection"
+);
+
+console.log(
+    "🚫 F12 Protection"
+);
+
+console.log(
+    "🚫 Developer Shortcut Protection"
+);
+
+console.log(
+    "⚠️ Frontend Protection is Deterrence Only"
+);    
 
 console.groupEnd();

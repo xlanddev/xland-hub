@@ -62,6 +62,25 @@ showComments();
 }
 
 // ===========================
+// 💬 شمارنده کاراکتر کامنت
+// ===========================
+
+const commentInput = document.getElementById("commentInput");
+const commentCounter = document.getElementById("commentCounter");
+
+if (commentInput && commentCounter) {
+
+    commentInput.addEventListener("input", function () {
+
+        const length = this.value.length;
+
+        commentCounter.textContent = `${length} / 500`;
+
+    });
+
+}
+
+// ===========================
 // 🔍 سرچ کامنت + سرچ کل سایت
 // ===========================
 document.getElementById("search").addEventListener("keyup", function(){

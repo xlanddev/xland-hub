@@ -1,388 +1,316 @@
 /* =========================================================
-   XLAND SUPPORT CENTER 5.1
+   XLAND SUPPORT CENTER 5.3
    Ticket / FAQ / Search / Navigation
+   Local Ticket System
 ========================================================= */
-
 
 /* =========================================================
    CONFIG
 ========================================================= */
 
 const XLAND_SUPPORT_CONFIG = {
-
-    version: "5.1",
+    version: "5.3",
 
     storageKey: "xland_support_tickets",
 
     api: {
-
         enabled: false,
-
         baseURL: "",
-
         createTicket: "/api/tickets",
-
         getTickets: "/api/tickets",
-
         updateTicket: "/api/tickets"
-
     }
-
 };
-
 
 /* =========================================================
    DOM
 ========================================================= */
 
-const modal =
-    document.getElementById("supportFormModal");
-
-const supportForm =
-    document.getElementById("supportForm");
-
-const formTitle =
-    document.getElementById("formTitle");
-
-const supportSubject =
-    document.getElementById("supportSubject");
-
-const supportMessage =
-    document.getElementById("supportMessage");
-
-const supportSearch =
-    document.getElementById("supportSearch");
-
-const gameFields =
-    document.getElementById("gameFields");
-
-const bugFields =
-    document.getElementById("bugFields");
-
-const toast =
-    document.getElementById("toast");
-
+const modal = document.getElementById("supportFormModal");
+const supportForm = document.getElementById("supportForm");
+const formTitle = document.getElementById("formTitle");
+const supportSubject = document.getElementById("supportSubject");
+const supportMessage = document.getElementById("supportMessage");
+const supportSearch = document.getElementById("supportSearch");
+const gameFields = document.getElementById("gameFields");
+const bugFields = document.getElementById("bugFields");
+const toast = document.getElementById("toast");
 
 let currentSupportType = "contact";
-
+let toastTimer = null;
 
 /* =========================================================
-   SUPPORT TITLES
+   SUPPORT TYPES
 ========================================================= */
 
 const SUPPORT_TYPES = {
-
     bug: {
-
         title: "گزارش باگ",
-
         prefix: "BUG",
-
         placeholder:
             "مراحل بازتولید باگ، خطا، نتیجه مورد انتظار و نتیجه فعلی را توضیح دهید."
-
     },
 
     suggestion: {
-
         title: "پیشنهاد قابلیت جدید",
-
         prefix: "FEAT",
-
         placeholder:
             "قابلیت یا ایده پیشنهادی خود را توضیح دهید."
-
     },
 
     game: {
-
         title: "پشتیبانی بازی",
-
         prefix: "GAME",
-
         placeholder:
             "مشکل بازی، زمان رخ دادن مشکل و جزئیات آن را توضیح دهید."
-
     },
 
     website: {
-
         title: "گزارش مشکل سایت",
-
         prefix: "WEB",
-
         placeholder:
             "آدرس صفحه و مشکل مشاهده‌شده را توضیح دهید."
-
     },
 
     account: {
-
         title: "پشتیبانی حساب کاربری",
-
         prefix: "ACC",
-
         placeholder:
             "مشکل مربوط به حساب کاربری خود را توضیح دهید."
-
     },
 
     contact: {
-
         title: "تماس با پشتیبانی",
-
         prefix: "SUP",
-
         placeholder:
             "پیام خود را برای تیم Xland بنویسید."
-
     }
-
 };
-
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 function showSection(sectionId) {
-
-    const sections =
-        document.querySelectorAll(".page-section");
-
-    const navButtons =
-        document.querySelectorAll(".nav-btn");
-
+    const sections = document.querySelectorAll(".page-section");
+    const navButtons = document.querySelectorAll(".nav-btn");
 
     sections.forEach(section => {
-
         section.classList.remove("active");
-
     });
-
 
     navButtons.forEach(button => {
-
         button.classList.remove("active");
-
     });
 
+    const target = document.getElementById(sectionId);
 
-    const target =
-        document.getElementById(sectionId);
-
-    if (target) {
-
-        target.classList.add("active");
-
+    if (!target) {
+        console.error(
+            "Xland Support: Section not found:",
+            sectionId
+        );
+        return;
     }
 
+    target.classList.add("active");
 
-    const activeButton =
-        document.querySelector(
-            `.nav-btn[data-section="${sectionId}"]`
-        );
+    const activeButton = document.querySelector(
+        `.nav-btn[data-section="${sectionId}"]`
+    );
 
     if (activeButton) {
-
         activeButton.classList.add("active");
-
     }
-
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
-
 
     if (sectionId === "tickets") {
-
         renderTickets();
-
     }
-
 }
 
+/* =========================================================
+   NAV BUTTONS
+========================================================= */
 
-/* Navigation click */
+document.querySelectorAll(".nav-btn").forEach(button => {
+    button.addEventListener("click", event => {
+        event.preventDefault();
 
-document
-    .querySelectorAll(".nav-btn")
-    .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            showSection(
-                button.dataset.section
-            );
-
-        });
-
+        showSection(button.dataset.section);
     });
-
+});
 
 /* =========================================================
    OPEN SUPPORT FORM
 ========================================================= */
 
 function openSupportForm(type) {
-
     currentSupportType =
         SUPPORT_TYPES[type]
             ? type
             : "contact";
 
-
     const config =
         SUPPORT_TYPES[currentSupportType];
 
+    if (!modal || !supportForm) {
+        console.error(
+            "Xland Support: Support form elements not found."
+        );
+        return;
+    }
 
-    formTitle.textContent =
-        config.title;
+    formTitle.textContent = config.title;
 
-
-    supportSubject.value =
-        config.title;
-
+    supportSubject.value = config.title;
 
     supportMessage.placeholder =
         config.placeholder;
 
+    if (gameFields) {
+        gameFields.classList.remove("active");
+    }
 
-    /* Hide dynamic fields */
+    if (bugFields) {
+        bugFields.classList.remove("active");
+    }
 
-    gameFields.classList.remove("active");
-
-    bugFields.classList.remove("active");
-
-
-    /* Game */
-
-    if (currentSupportType === "game") {
-
+    if (
+        currentSupportType === "game" &&
+        gameFields
+    ) {
         gameFields.classList.add("active");
-
     }
 
-
-    /* Bug */
-
-    if (currentSupportType === "bug") {
-
+    if (
+        currentSupportType === "bug" &&
+        bugFields
+    ) {
         bugFields.classList.add("active");
-
     }
-
 
     modal.classList.add("active");
 
     document.body.style.overflow = "hidden";
 
-
     setTimeout(() => {
+        const nameInput =
+            document.getElementById("supportName");
 
-        document
-            .getElementById("supportName")
-            .focus();
-
+        if (nameInput) {
+            nameInput.focus();
+        }
     }, 150);
-
 }
-
 
 /* =========================================================
    CLOSE MODAL
 ========================================================= */
 
 function closeSupportForm() {
+    if (!modal) {
+        return;
+    }
 
     modal.classList.remove("active");
 
     document.body.style.overflow = "";
-
 }
 
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
-document
-    .getElementById("closeForm")
-    .addEventListener(
+const closeFormButton =
+    document.getElementById("closeForm");
+
+if (closeFormButton) {
+    closeFormButton.addEventListener(
         "click",
-        closeSupportForm
+        event => {
+            event.preventDefault();
+            closeSupportForm();
+        }
     );
+}
 
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
 
-document
-    .querySelector(".modal-backdrop")
-    .addEventListener(
+const modalBackdrop =
+    document.querySelector(".modal-backdrop");
+
+if (modalBackdrop) {
+    modalBackdrop.addEventListener(
         "click",
-        closeSupportForm
+        event => {
+            event.preventDefault();
+            closeSupportForm();
+        }
     );
+}
 
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
-
         if (
             event.key === "Escape" &&
+            modal &&
             modal.classList.contains("active")
         ) {
-
             closeSupportForm();
-
         }
-
     }
 );
 
-
 /* =========================================================
-   SMART SEARCH
+   NORMALIZE TEXT
 ========================================================= */
 
 function normalizeText(text) {
-
     return String(text)
-
         .toLowerCase()
-
         .replace(/ي/g, "ی")
-
         .replace(/ك/g, "ک")
-
         .trim();
-
 }
 
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function performSearch() {
+    if (!supportSearch) {
+        return;
+    }
 
     const query =
         normalizeText(
             supportSearch.value
         );
 
-
     const cards =
         document.querySelectorAll(
             ".support-card"
         );
 
-
     let visible = 0;
 
-
     cards.forEach(card => {
-
         const searchable =
             normalizeText(
                 card.dataset.search || ""
             );
-
 
         const title =
             normalizeText(
@@ -390,77 +318,61 @@ function performSearch() {
                     ?.textContent || ""
             );
 
-
         const description =
             normalizeText(
                 card.querySelector("p")
                     ?.textContent || ""
             );
 
-
         const text =
             `${searchable} ${title} ${description}`;
-
 
         const matches =
             query === "" ||
             text.includes(query);
 
-
         if (matches) {
-
             card.classList.remove(
                 "search-hidden"
             );
 
             visible++;
-
         } else {
-
             card.classList.add(
                 "search-hidden"
             );
-
         }
-
     });
-
 
     const status =
         document.getElementById(
             "searchStatus"
         );
 
+    if (!status) {
+        return;
+    }
 
     if (query === "") {
-
         status.textContent = "";
-
         return;
-
     }
-
 
     if (visible === 0) {
-
         status.textContent =
             "❌ نتیجه‌ای برای جستجوی شما پیدا نشد.";
-
     } else {
-
         status.textContent =
             `🔎 ${visible} نتیجه پیدا شد.`;
-
     }
-
 }
 
-
-supportSearch.addEventListener(
-    "input",
-    performSearch
-);
-
+if (supportSearch) {
+    supportSearch.addEventListener(
+        "input",
+        performSearch
+    );
+}
 
 /* =========================================================
    CTRL + K
@@ -469,57 +381,59 @@ supportSearch.addEventListener(
 document.addEventListener(
     "keydown",
     event => {
-
         if (
             (event.ctrlKey || event.metaKey) &&
             event.key.toLowerCase() === "k"
         ) {
-
             event.preventDefault();
 
             showSection("support");
 
-            supportSearch.focus();
-
+            if (supportSearch) {
+                supportSearch.focus();
+            }
         }
-
     }
 );
 
-
 /* =========================================================
-   FAQ ACCORDION
+   FAQ
 ========================================================= */
 
 document
     .querySelectorAll(".faq-question")
     .forEach(question => {
-
         question.addEventListener(
             "click",
-            () => {
+            event => {
+                event.preventDefault();
 
                 const item =
                     question.parentElement;
+
+                if (!item) {
+                    return;
+                }
 
                 const answer =
                     item.querySelector(
                         ".faq-answer"
                     );
 
+                if (!answer) {
+                    return;
+                }
 
                 const isActive =
                     item.classList.contains(
                         "active"
                     );
 
-
-                /* Close all */
-
                 document
-                    .querySelectorAll(".faq-item")
+                    .querySelectorAll(
+                        ".faq-item"
+                    )
                     .forEach(other => {
-
                         other.classList.remove(
                             "active"
                         );
@@ -530,108 +444,96 @@ document
                             );
 
                         if (otherAnswer) {
-
                             otherAnswer.style.maxHeight =
                                 null;
-
                         }
-
                     });
 
-
-                /* Open selected */
-
                 if (!isActive) {
-
                     item.classList.add(
                         "active"
                     );
 
                     answer.style.maxHeight =
-                        answer.scrollHeight + "px";
-
+                        answer.scrollHeight +
+                        "px";
                 }
-
             }
         );
-
     });
 
-
 /* =========================================================
-   LOCAL STORAGE
+   GET TICKETS
 ========================================================= */
 
 function getTickets() {
-
     try {
-
         const raw =
             localStorage.getItem(
                 XLAND_SUPPORT_CONFIG.storageKey
             );
 
-
         if (!raw) {
-
             return [];
-
         }
-
 
         const parsed =
             JSON.parse(raw);
 
+        if (!Array.isArray(parsed)) {
+            return [];
+        }
 
-        return Array.isArray(parsed)
-            ? parsed
-            : [];
-
-    }
-
-    catch (error) {
-
+        return parsed;
+    } catch (error) {
         console.error(
             "Xland Ticket Storage Error:",
             error
         );
 
         return [];
-
     }
-
 }
-
-
-function saveTickets(tickets) {
-
-    localStorage.setItem(
-
-        XLAND_SUPPORT_CONFIG.storageKey,
-
-        JSON.stringify(tickets)
-
-    );
-
-}
-
 
 /* =========================================================
-   TICKET ID
+   SAVE TICKETS
+========================================================= */
+
+function saveTickets(tickets) {
+    try {
+        localStorage.setItem(
+            XLAND_SUPPORT_CONFIG.storageKey,
+            JSON.stringify(tickets)
+        );
+
+        return true;
+    } catch (error) {
+        console.error(
+            "Xland Ticket Save Error:",
+            error
+        );
+
+        showToast(
+            "❌ ذخیره Ticket امکان‌پذیر نیست."
+        );
+
+        return false;
+    }
+}
+
+/* =========================================================
+   GENERATE TICKET ID
 ========================================================= */
 
 function generateTicketId(type) {
-
     const prefix =
         SUPPORT_TYPES[type]?.prefix ||
         "SUP";
-
 
     const timestamp =
         Date.now()
             .toString(36)
             .toUpperCase();
-
 
     const random =
         Math.random()
@@ -639,20 +541,15 @@ function generateTicketId(type) {
             .substring(2, 7)
             .toUpperCase();
 
-
     return `XL-${prefix}-${timestamp}-${random}`;
-
 }
 
-
 /* =========================================================
-   DATE
+   FORMAT DATE
 ========================================================= */
 
 function formatDate(date) {
-
     try {
-
         return new Intl.DateTimeFormat(
             "fa-IR",
             {
@@ -662,53 +559,51 @@ function formatDate(date) {
         ).format(
             new Date(date)
         );
-
-    }
-
-    catch {
-
+    } catch {
         return new Date(date)
             .toLocaleString();
-
     }
-
 }
 
-
 /* =========================================================
-   CREATE TICKET OBJECT
+   BUILD TICKET
 ========================================================= */
 
 function buildTicket() {
+    const nameInput =
+        document.getElementById(
+            "supportName"
+        );
+
+    const emailInput =
+        document.getElementById(
+            "supportEmail"
+        );
 
     const name =
-        document
-            .getElementById("supportName")
-            .value
-            .trim();
-
+        nameInput
+            ? nameInput.value.trim()
+            : "";
 
     const email =
-        document
-            .getElementById("supportEmail")
-            .value
-            .trim();
-
+        emailInput
+            ? emailInput.value.trim()
+            : "";
 
     const subject =
         supportSubject
-            .value
-            .trim();
-
+            ? supportSubject.value.trim()
+            : "";
 
     const message =
         supportMessage
-            .value
-            .trim();
+            ? supportMessage.value.trim()
+            : "";
 
+    const now =
+        new Date().toISOString();
 
     const ticket = {
-
         id:
             generateTicketId(
                 currentSupportType
@@ -729,23 +624,29 @@ function buildTicket() {
         message,
 
         createdAt:
-            new Date().toISOString(),
+            now,
 
         updatedAt:
-            new Date().toISOString(),
+            now,
 
         game:
             currentSupportType === "game"
                 ? {
                     name:
                         document
-                            .getElementById("gameName")
-                            .value,
+                            .getElementById(
+                                "gameName"
+                            )
+                            ?.value
+                            .trim() || "",
 
                     version:
                         document
-                            .getElementById("gameVersion")
-                            .value
+                            .getElementById(
+                                "gameVersion"
+                            )
+                            ?.value
+                            .trim() || ""
                 }
                 : null,
 
@@ -754,250 +655,279 @@ function buildTicket() {
                 ? {
                     priority:
                         document
-                            .getElementById("bugPriority")
-                            .value,
+                            .getElementById(
+                                "bugPriority"
+                            )
+                            ?.value || "Normal",
 
                     platform:
                         document
-                            .getElementById("platform")
-                            .value
+                            .getElementById(
+                                "platform"
+                            )
+                            ?.value
+                            .trim() || ""
                 }
                 : null,
 
         backend:
-
             XLAND_SUPPORT_CONFIG
                 .api
                 .enabled
                 ? "api"
                 : "localStorage"
-
     };
 
-
     return ticket;
-
 }
 
-
 /* =========================================================
-   API READY LAYER
+   BACKEND READY LAYER
 ========================================================= */
 
 async function sendTicketToBackend(ticket) {
-
     const config =
         XLAND_SUPPORT_CONFIG.api;
 
-
     if (!config.enabled) {
-
         return {
-
             success: false,
-
             mode: "localStorage",
-
             message:
-                "Backend is currently disabled."
-
+                "Backend is disabled."
         };
-
     }
-
 
     const response =
         await fetch(
-
             config.baseURL +
             config.createTicket,
-
             {
-
                 method: "POST",
 
                 headers: {
-
                     "Content-Type":
                         "application/json"
-
                 },
 
                 body:
                     JSON.stringify(ticket)
-
             }
-
         );
 
-
     if (!response.ok) {
-
         throw new Error(
             `API Error: ${response.status}`
         );
-
     }
 
-
     return await response.json();
-
 }
 
+/* =========================================================
+   CREATE TICKET
+========================================================= */
+
+async function createTicket() {
+    const ticket =
+        buildTicket();
+
+    /* Validate */
+
+    if (!ticket.name) {
+        throw new Error(
+            "Name is required."
+        );
+    }
+
+    if (!ticket.email) {
+        throw new Error(
+            "Email is required."
+        );
+    }
+
+    if (!ticket.subject) {
+        throw new Error(
+            "Subject is required."
+        );
+    }
+
+    if (!ticket.message) {
+        throw new Error(
+            "Message is required."
+        );
+    }
+
+    /* Get current tickets */
+
+    const tickets =
+        getTickets();
+
+    /* Add newest ticket */
+
+    tickets.unshift(ticket);
+
+    /* Save locally */
+
+    const saved =
+        saveTickets(tickets);
+
+    if (!saved) {
+        throw new Error(
+            "Ticket could not be saved."
+        );
+    }
+
+    /* Optional backend */
+
+    if (
+        XLAND_SUPPORT_CONFIG
+            .api
+            .enabled
+    ) {
+        try {
+            await sendTicketToBackend(
+                ticket
+            );
+        } catch (apiError) {
+            console.warn(
+                "Xland API unavailable:",
+                apiError
+            );
+        }
+    }
+
+    return ticket;
+}
 
 /* =========================================================
    FORM SUBMIT
 ========================================================= */
 
-supportForm.addEventListener(
-    "submit",
-    async event => {
+if (supportForm) {
+    supportForm.addEventListener(
+        "submit",
+        async event => {
 
-        event.preventDefault();
+            /*
+             * بسیار مهم:
+             * جلوگیری از Submit پیش‌فرض مرورگر
+             * و جلوگیری از Navigation
+             */
 
+            event.preventDefault();
+            event.stopPropagation();
 
-        const submitButton =
-            supportForm.querySelector(
-                ".submit-support"
-            );
+            const submitButton =
+                supportForm.querySelector(
+                    ".submit-support"
+                );
 
+            if (submitButton) {
+                submitButton.disabled = true;
 
-        submitButton.disabled = true;
-
-        submitButton.textContent =
-            "⏳ در حال ایجاد Ticket...";
-
-
-        try {
-
-            const ticket =
-                buildTicket();
-
-
-            /* =====================================
-               LOCAL STORAGE
-            ====================================== */
-
-            const tickets =
-                getTickets();
-
-
-            tickets.unshift(ticket);
-
-
-            saveTickets(tickets);
-
-
-            /* =====================================
-               FUTURE BACKEND
-            ====================================== */
-
-            if (
-                XLAND_SUPPORT_CONFIG
-                    .api
-                    .enabled
-            ) {
-
-                try {
-
-                    await sendTicketToBackend(
-                        ticket
-                    );
-
-                }
-
-                catch (apiError) {
-
-                    console.warn(
-                        "Xland API unavailable:",
-                        apiError
-                    );
-
-                }
-
+                submitButton.textContent =
+                    "⏳ در حال ایجاد Ticket...";
             }
 
+            try {
+                /*
+                 * Create Ticket
+                 */
 
-            /* =====================================
-               SUCCESS
-            ====================================== */
+                const ticket =
+                    await createTicket();
 
-            closeSupportForm();
+                /*
+                 * Close Modal
+                 */
 
+                closeSupportForm();
 
-            supportForm.reset();
+                /*
+                 * Reset Form
+                 */
 
+                supportForm.reset();
 
-            gameFields.classList.remove(
-                "active"
-            );
+                if (gameFields) {
+                    gameFields.classList.remove(
+                        "active"
+                    );
+                }
 
+                if (bugFields) {
+                    bugFields.classList.remove(
+                        "active"
+                    );
+                }
 
-            bugFields.classList.remove(
-                "active"
-            );
+                /*
+                 * Success
+                 */
 
+                showToast(
+                    `✅ Ticket ساخته شد — ${ticket.id}`
+                );
 
-            showToast(
-                `✅ Ticket با موفقیت ایجاد شد — ${ticket.id}`
-            );
+                /*
+                 * Open Ticket Center
+                 * بدون redirect
+                 */
 
+                showSection("tickets");
 
-            showSection("tickets");
+                /*
+                 * Render
+                 */
 
+                renderTickets();
 
-            renderTickets();
+            } catch (error) {
+                console.error(
+                    "Xland Ticket Creation Error:",
+                    error
+                );
 
-        }
+                showToast(
+                    "❌ ایجاد Ticket با خطا مواجه شد."
+                );
 
-        catch (error) {
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled =
+                        false;
 
-            console.error(
-                "Ticket creation error:",
-                error
-            );
-
-
-            showToast(
-                "❌ ایجاد Ticket با خطا مواجه شد."
-            );
-
-        }
-
-        finally {
-
-            submitButton.disabled = false;
-
-            submitButton.textContent =
-                "🚀 ایجاد Ticket";
-
-        }
-
-    }
-);
-
+                    submitButton.textContent =
+                        "🚀 ایجاد Ticket";
+                }
+            }
+        },
+        true
+    );
+}
 
 /* =========================================================
    RENDER TICKETS
 ========================================================= */
 
 function renderTickets() {
-
     const tickets =
         getTickets();
-
 
     const list =
         document.getElementById(
             "ticketsList"
         );
 
-
     const empty =
         document.getElementById(
             "emptyTickets"
         );
 
+    if (!list || !empty) {
+        return;
+    }
 
     /* Stats */
 
@@ -1007,13 +937,11 @@ function renderTickets() {
                 ticket.status === "Open"
         ).length;
 
-
     const pending =
         tickets.filter(
             ticket =>
                 ticket.status === "Pending"
         ).length;
-
 
     const solved =
         tickets.filter(
@@ -1021,84 +949,88 @@ function renderTickets() {
                 ticket.status === "Solved"
         ).length;
 
+    const openCount =
+        document.getElementById(
+            "openCount"
+        );
 
-    document.getElementById(
-        "openCount"
-    ).textContent = open;
+    const pendingCount =
+        document.getElementById(
+            "pendingCount"
+        );
 
+    const solvedCount =
+        document.getElementById(
+            "solvedCount"
+        );
 
-    document.getElementById(
-        "pendingCount"
-    ).textContent = pending;
+    const totalCount =
+        document.getElementById(
+            "totalCount"
+        );
 
+    if (openCount) {
+        openCount.textContent =
+            open;
+    }
 
-    document.getElementById(
-        "solvedCount"
-    ).textContent = solved;
+    if (pendingCount) {
+        pendingCount.textContent =
+            pending;
+    }
 
+    if (solvedCount) {
+        solvedCount.textContent =
+            solved;
+    }
 
-    document.getElementById(
-        "totalCount"
-    ).textContent =
-        tickets.length;
+    if (totalCount) {
+        totalCount.textContent =
+            tickets.length;
+    }
 
+    /* Empty state */
 
     if (tickets.length === 0) {
-
         list.innerHTML = "";
 
         empty.style.display =
             "block";
 
         return;
-
     }
-
 
     empty.style.display =
         "none";
 
+    /* Render */
 
     list.innerHTML =
         tickets
-            .map(renderTicketCard)
+            .map(ticket =>
+                renderTicketCard(ticket)
+            )
             .join("");
-
 }
-
 
 /* =========================================================
    TICKET CARD
 ========================================================= */
 
 function renderTicketCard(ticket) {
-
     const statusClass = {
-
-        Open:
-            "status-open",
-
-        Pending:
-            "status-pending",
-
-        Solved:
-            "status-solved"
-
+        Open: "status-open",
+        Pending: "status-pending",
+        Solved: "status-solved"
     }[ticket.status] ||
         "status-open";
 
-
     const statusIcon = {
-
         Open: "📂",
-
         Pending: "⏳",
-
         Solved: "✅"
-
     }[ticket.status] ||
         "📂";
-
 
     const typeName =
         SUPPORT_TYPES[
@@ -1106,50 +1038,59 @@ function renderTicketCard(ticket) {
         ]?.title ||
         "Support";
 
-
     let extraTags = "";
 
+    /* Game */
 
     if (
         ticket.type === "game" &&
         ticket.game
     ) {
-
         extraTags += `
             <span class="ticket-tag">
-                🎮 ${escapeHTML(ticket.game.name || "Unknown")}
+                🎮
+                ${escapeHTML(
+                    ticket.game.name ||
+                    "Unknown"
+                )}
             </span>
 
             <span class="ticket-tag">
                 Version:
-                ${escapeHTML(ticket.game.version || "Unknown")}
+                ${escapeHTML(
+                    ticket.game.version ||
+                    "Unknown"
+                )}
             </span>
         `;
-
     }
 
+    /* Bug */
 
     if (
         ticket.type === "bug" &&
         ticket.bug
     ) {
-
         extraTags += `
             <span class="ticket-tag">
                 Priority:
-                ${escapeHTML(ticket.bug.priority || "Normal")}
+                ${escapeHTML(
+                    ticket.bug.priority ||
+                    "Normal"
+                )}
             </span>
 
             <span class="ticket-tag">
-                💻 ${escapeHTML(ticket.bug.platform || "Unknown")}
+                💻
+                ${escapeHTML(
+                    ticket.bug.platform ||
+                    "Unknown"
+                )}
             </span>
         `;
-
     }
 
-
     return `
-
         <article class="ticket-card">
 
             <div class="ticket-top">
@@ -1157,46 +1098,55 @@ function renderTicketCard(ticket) {
                 <div>
 
                     <div class="ticket-id">
-                        ${escapeHTML(ticket.id)}
+                        ${escapeHTML(
+                            ticket.id
+                        )}
                     </div>
 
                     <h3 class="ticket-subject">
-                        ${escapeHTML(ticket.subject)}
+                        ${escapeHTML(
+                            ticket.subject
+                        )}
                     </h3>
 
                     <div class="ticket-date">
-                        ${formatDate(ticket.createdAt)}
+                        ${formatDate(
+                            ticket.createdAt
+                        )}
                     </div>
 
                 </div>
 
-
-                <span class="status ${statusClass}">
-
+                <span
+                    class="status ${statusClass}"
+                >
                     ${statusIcon}
-
-                    ${escapeHTML(ticket.status)}
-
+                    ${escapeHTML(
+                        ticket.status
+                    )}
                 </span>
 
             </div>
 
-
             <div class="ticket-message">
-
-                ${escapeHTML(ticket.message)}
-
+                ${escapeHTML(
+                    ticket.message
+                )}
             </div>
-
 
             <div class="ticket-meta">
 
                 <span class="ticket-tag">
-                    ${escapeHTML(typeName)}
+                    ${escapeHTML(
+                        typeName
+                    )}
                 </span>
 
                 <span class="ticket-tag">
-                    👤 ${escapeHTML(ticket.name)}
+                    👤
+                    ${escapeHTML(
+                        ticket.name
+                    )}
                 </span>
 
                 ${extraTags}
@@ -1204,80 +1154,67 @@ function renderTicketCard(ticket) {
             </div>
 
         </article>
-
     `;
-
 }
-
 
 /* =========================================================
    HTML SECURITY
 ========================================================= */
 
 function escapeHTML(value) {
-
     return String(value ?? "")
-
         .replace(
             /&/g,
             "&amp;"
         )
-
         .replace(
             /</g,
             "&lt;"
         )
-
         .replace(
             />/g,
             "&gt;"
         )
-
         .replace(
             /"/g,
             "&quot;"
         )
-
         .replace(
             /'/g,
             "&#039;"
         );
-
 }
-
 
 /* =========================================================
    TOAST
 ========================================================= */
 
-let toastTimer = null;
-
-
 function showToast(message) {
+    if (!toast) {
+        return;
+    }
 
-    clearTimeout(toastTimer);
-
+    clearTimeout(
+        toastTimer
+    );
 
     toast.textContent =
         message;
-
 
     toast.classList.add(
         "show"
     );
 
-
     toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        }, 4500);
-
+        setTimeout(
+            () => {
+                toast.classList.remove(
+                    "show"
+                );
+            },
+            4500
+        );
 }
-
 
 /* =========================================================
    INITIALIZATION
@@ -1286,19 +1223,15 @@ function showToast(message) {
 document.addEventListener(
     "DOMContentLoaded",
     () => {
-
         renderTickets();
-
     }
 );
 
-
 /* =========================================================
-   DEBUG / FUTURE API
+   PUBLIC API
 ========================================================= */
 
 window.XlandSupport = {
-
     version:
         XLAND_SUPPORT_CONFIG.version,
 
@@ -1306,13 +1239,15 @@ window.XlandSupport = {
 
     saveTickets,
 
-    createTicket:
-        buildTicket,
+    createTicket,
+
+    buildTicket,
 
     renderTickets,
 
     openSupportForm,
 
-    showSection
+    showSection,
 
+    showToast
 };

@@ -1,0 +1,978 @@
+/* =========================================================
+   XLAND MOBILE SYSTEM
+   File: xland-mobile.css
+   Purpose:
+   - Mobile responsive layout
+   - Tablet responsive layout
+   - Mobile navbar / drawer
+   - Touch-friendly controls
+   - Hero / Copilot / Comments / Projects
+   - Prevent horizontal overflow
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL MOBILE SAFETY
+   ========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   2. TABLET + MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVBAR
+       ----------------------------------------------------- */
+
+    .xland-navbar {
+        width: calc(100% - 20px);
+        max-width: none;
+        margin: 10px auto;
+        padding: 10px 14px;
+        border-radius: 18px;
+    }
+
+    .xland-navbar-menu {
+        display: none !important;
+    }
+
+    .xland-navbar-ai {
+        display: none !important;
+    }
+
+    .xland-navbar-brand {
+        min-width: 0;
+        max-width: calc(100% - 60px);
+    }
+
+    .xland-navbar-logo {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+    }
+
+    .xland-navbar-brand-text {
+        min-width: 0;
+    }
+
+    .xland-navbar-brand-title {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .xland-navbar-brand-sub {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE MENU BUTTON
+       ----------------------------------------------------- */
+
+    .xland-mobile-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+
+        border-radius: 13px;
+
+        font-size: 22px;
+        line-height: 1;
+
+        cursor: pointer;
+
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE PANEL
+       ----------------------------------------------------- */
+
+    .xland-mobile-panel {
+        width: min(88vw, 390px);
+        max-width: 390px;
+        height: 100dvh;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        padding: 18px 14px 30px;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior: contain;
+    }
+
+    .xland-mobile-panel.open {
+        transform: translateX(0);
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE HEADER
+       ----------------------------------------------------- */
+
+    .xland-mobile-header {
+        min-height: 52px;
+        gap: 10px;
+
+        margin-bottom: 12px;
+    }
+
+    .xland-mobile-brand {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .xland-mobile-close {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+
+        border-radius: 13px;
+
+        cursor: pointer;
+
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE LINKS
+       ----------------------------------------------------- */
+
+    .xland-mobile-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .xland-mobile-link {
+        width: 100%;
+        min-height: 50px;
+
+        padding: 12px 14px;
+
+        border-radius: 14px;
+
+        display: flex;
+        align-items: center;
+
+        font-size: 14px;
+        line-height: 1.4;
+
+        text-decoration: none;
+
+        word-break: break-word;
+
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .xland-mobile-link:active {
+        transform: scale(0.98);
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE SECTIONS
+       ----------------------------------------------------- */
+
+    .xland-mobile-section {
+        width: 100%;
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+
+    .xland-mobile-section:first-child {
+        margin-top: 0;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE BACKDROP
+       ----------------------------------------------------- */
+
+    .xland-mobile-backdrop {
+        width: 100%;
+        height: 100dvh;
+
+        position: fixed;
+        inset: 0;
+
+        touch-action: none;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 35px 20px;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 8vw, 48px);
+        line-height: 1.1;
+    }
+
+    .hero h2 {
+        font-size: clamp(18px, 5vw, 28px);
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       MAIN CONTAINER
+       ===================================================== */
+
+    .container {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* =====================================================
+       SEARCH
+       ===================================================== */
+
+    #searchInput,
+    .search-box,
+    .search-container,
+    input[type="search"] {
+        max-width: 100%;
+    }
+
+    #searchInput,
+    input[type="search"] {
+        width: 100%;
+        min-height: 46px;
+
+        font-size: 15px;
+
+        border-radius: 13px;
+
+        padding: 10px 14px;
+    }
+
+
+    /* =====================================================
+       PROJECT CARDS
+       ===================================================== */
+
+    .projects,
+    .projects-grid,
+    .project-grid {
+        width: 100%;
+        max-width: 100%;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .project-card {
+        min-width: 0;
+        width: 100%;
+
+        overflow: hidden;
+
+        border-radius: 16px;
+    }
+
+    .project-card img {
+        width: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    .project-card h3,
+    .project-card h2 {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .project-card p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .project-card a,
+    .project-card button {
+        min-height: 44px;
+    }
+
+
+    /* =====================================================
+       Xland AI FLOATING BUTTON
+       ===================================================== */
+
+    .xland-ai-floating,
+    .xland-ai-button,
+    #xlandAiButton {
+        max-width: calc(100vw - 30px);
+    }
+
+
+    /* =====================================================
+       COPILOT
+       ===================================================== */
+
+    .xland-ai-copilot {
+        width: min(92vw, 430px);
+        max-width: calc(100vw - 20px);
+
+        max-height: 75dvh;
+
+        overflow: hidden;
+    }
+
+    .xland-ai-copilot-body {
+        max-height: 55dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .xland-ai-copilot textarea,
+    .xland-ai-copilot input {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .xland-ai-copilot button {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+
+    /* =====================================================
+       COMMENTS
+       ===================================================== */
+
+    .comment-box {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 15px;
+    }
+
+    .comment-box textarea {
+        width: 100%;
+        min-height: 110px;
+
+        max-width: 100%;
+
+        font-size: 14px;
+        line-height: 1.7;
+
+        resize: vertical;
+    }
+
+    .comment-box button,
+    #comments button {
+        min-height: 44px;
+
+        padding: 10px 16px;
+
+        font-size: 14px;
+
+        touch-action: manipulation;
+    }
+
+    #comments {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       BANNER
+       ===================================================== */
+
+    .banner,
+    .banner-container,
+    .banner-slider,
+    .slider {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .banner img,
+    .banner-container img,
+    .banner-slider img,
+    .slider img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    /* =====================================================
+       UPDATE / STATUS BANNERS
+       ===================================================== */
+
+    .update-banner,
+    .status-banner,
+    .install-banner {
+        width: calc(100% - 20px);
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        overflow-wrap: anywhere;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    button,
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+        min-height: 44px;
+    }
+
+
+    /* =====================================================
+       TABLES
+       ===================================================== */
+
+    table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    /* =====================================================
+       CODE / PRE
+       ===================================================== */
+
+    pre,
+    code {
+        max-width: 100%;
+    }
+
+    pre {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+/* =========================================================
+   3. MOBILE PHONES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* -----------------------------------------------------
+       NAVBAR
+       ----------------------------------------------------- */
+
+    .xland-navbar {
+        width: calc(100% - 14px);
+
+        margin-top: 7px;
+        margin-bottom: 8px;
+
+        padding: 8px 10px;
+
+        border-radius: 16px;
+    }
+
+    .xland-navbar-logo {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+    }
+
+    .xland-navbar-brand-title {
+        font-size: 14px;
+    }
+
+    .xland-navbar-brand-sub {
+        font-size: 9px;
+    }
+
+    .xland-mobile-btn {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+
+        font-size: 20px;
+
+        border-radius: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE DRAWER
+       ----------------------------------------------------- */
+
+    .xland-mobile-panel {
+        width: min(90vw, 370px);
+        max-width: 370px;
+
+        padding: 15px 12px 25px;
+    }
+
+    .xland-mobile-link {
+        min-height: 48px;
+
+        padding: 11px 12px;
+
+        font-size: 13px;
+
+        border-radius: 13px;
+    }
+
+    .xland-mobile-close {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO
+       ----------------------------------------------------- */
+
+    .hero {
+        width: calc(100% - 14px);
+
+        padding: 28px 15px;
+
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(28px, 10vw, 40px);
+    }
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTAINER
+       ----------------------------------------------------- */
+
+    .container {
+        width: calc(100% - 14px);
+    }
+
+
+    /* -----------------------------------------------------
+       PROJECTS
+       ----------------------------------------------------- */
+
+    .projects,
+    .projects-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .project-card {
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------------------
+       COPILOT
+       ----------------------------------------------------- */
+
+    .xland-ai-copilot {
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+
+        max-height: 78dvh;
+    }
+
+
+    /* -----------------------------------------------------
+       COMMENTS
+       ----------------------------------------------------- */
+
+    .comment-box {
+        padding: 12px;
+    }
+
+    .comment-box textarea {
+        min-height: 100px;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------------------
+       BANNERS
+       ----------------------------------------------------- */
+
+    .update-banner,
+    .status-banner,
+    .install-banner {
+        width: calc(100% - 14px);
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   4. SMALL PHONES
+   320px - 400px
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .xland-navbar {
+        width: calc(100% - 10px);
+
+        padding: 7px 8px;
+
+        border-radius: 14px;
+    }
+
+    .xland-navbar-logo {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+    }
+
+    .xland-navbar-brand-title {
+        font-size: 12px;
+    }
+
+    .xland-navbar-brand-sub {
+        display: none;
+    }
+
+    .xland-mobile-btn {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+
+        font-size: 18px;
+    }
+
+    .xland-mobile-panel {
+        width: 94vw;
+        max-width: 350px;
+    }
+
+    .xland-mobile-link {
+        min-height: 46px;
+
+        font-size: 12px;
+    }
+
+    .hero {
+        width: calc(100% - 10px);
+
+        padding: 24px 12px;
+    }
+
+    .container {
+        width: calc(100% - 10px);
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero h2 {
+        font-size: 17px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .project-card h3,
+    .project-card h2 {
+        font-size: 15px;
+    }
+
+    .project-card p {
+        font-size: 12px;
+    }
+
+    .xland-ai-copilot {
+        width: calc(100vw - 12px);
+        max-width: calc(100vw - 12px);
+
+        max-height: 82dvh;
+    }
+}
+
+
+/* =========================================================
+   5. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+    .xland-navbar-brand {
+        max-width: calc(100% - 50px);
+    }
+
+    .xland-navbar-brand-title {
+        font-size: 11px;
+    }
+
+    .xland-mobile-panel {
+        width: 96vw;
+    }
+
+    .xland-mobile-link {
+        padding: 10px;
+
+        font-size: 11px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .hero h2 {
+        font-size: 16px;
+    }
+
+    .container {
+        width: calc(100% - 8px);
+    }
+}
+
+
+/* =========================================================
+   6. TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .xland-mobile-link,
+    .xland-mobile-close,
+    .xland-mobile-btn,
+    button,
+    a {
+        touch-action: manipulation;
+    }
+
+    .xland-mobile-link {
+        min-height: 48px;
+    }
+
+    button {
+        min-height: 44px;
+    }
+}
+
+
+/* =========================================================
+   7. LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .xland-mobile-panel {
+        max-height: 100dvh;
+    }
+
+    .xland-ai-copilot {
+        max-height: 88dvh;
+    }
+
+    .hero {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+
+
+/* =========================================================
+   8. ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* =========================================================
+   9. FINAL OVERFLOW PROTECTION
+   ========================================================= */
+
+.xland-mobile-panel,
+.xland-mobile-panel *,
+.container,
+.hero,
+.comment-box,
+#comments,
+.project-card {
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+
+    .container,
+    .hero,
+    .comment-box,
+    #comments,
+    .project-card,
+    .xland-ai-copilot,
+    .xland-mobile-panel {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* =========================================================
+   XLAND MOBILE - DEVELOPER DROPDOWN POSITION FIX
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    body {
+        position: relative;
+    }
+
+    /* Prevent desktop dropdowns from affecting page width */
+    .xland-nav-dropdown,
+    .xland-dropdown-panel {
+        max-width: 100vw;
+    }
+
+    .xland-dropdown-panel {
+        box-sizing: border-box;
+    }
+
+    /* Keep main page centered */
+    .container,
+    .hero,
+    .banner,
+    .banner-container,
+    .banner-slider,
+    .status-banner,
+    .update-banner,
+    .install-banner {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Prevent wide children from pushing the document */
+    .container *,
+    .hero *,
+    .banner *,
+    .banner-container *,
+    .banner-slider * {
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE EXTRA PROTECTION
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: clip;
+    }
+
+    .xland-dropdown-panel {
+        max-width: calc(100vw - 20px);
+    }
+
+    .container,
+    .hero {
+        position: relative;
+        left: auto;
+        right: auto;
+    }
+}
