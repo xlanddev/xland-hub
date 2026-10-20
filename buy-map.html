@@ -1,151 +1,1064 @@
+
 <!DOCTYPE html>
-<html lang="fa">
-
+<html lang="fa" dir="rtl">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b09">
+  <meta name="description" content="خرید مپ‌های اختصاصی Xland">
+  <title>XLAND BUY MAP | فروشگاه مپ</title>
+  <link rel="icon" type="image/png" href="xland-icon.png">
 
-<meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+    :root {
+      --bg: #070b09;
+      --panel: rgba(15, 24, 19, .88);
+      --green: #48ff9a;
+      --green2: #0acb70;
+      --muted: #8b9c91;
+      --border: rgba(72, 255, 154, .17);
+      --text: #f1fff6;
+    }
 
-<title>خرید مپ Xland</title>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<link rel="icon" type="image/png" href="xland-icon.png">
+    html {
+      scroll-behavior: smooth;
+    }
 
-<link rel="stylesheet" href="style.css">
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(0, 255, 128, .09), transparent 38%),
+        radial-gradient(ellipse at 85% 80%, rgba(0, 190, 100, .08), transparent 40%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+    }
 
+    button, input, textarea {
+      font: inherit;
+    }
 
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .6;
+    }
+
+    .ambient {
+      position: fixed;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(0, 255, 125, .08);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientFloat 12s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      top: 5%;
+      left: -150px;
+    }
+
+    .ambient.two {
+      bottom: 0;
+      right: -150px;
+      animation-delay: -5s;
+    }
+
+    @keyframes ambientFloat {
+      from { transform: translate(0, 0) scale(.9); }
+      to { transform: translate(70px, 50px) scale(1.2); }
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      max-width: 1180px;
+      margin: auto;
+      padding: 24px;
+      animation: fadeDown .8s ease both;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(72,255,154,.5);
+      border-radius: 14px;
+      background: rgba(72,255,154,.08);
+      box-shadow: 0 0 25px rgba(72,255,154,.12);
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .brand span {
+      color: var(--green);
+    }
+
+    .back-link {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: #d1e5d8;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .back-link:hover {
+      border-color: var(--green);
+      color: var(--green);
+      box-shadow: 0 0 22px rgba(72,255,154,.1);
+      transform: translateY(-2px);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, calc(100% - 36px));
+      margin: 28px auto 70px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 38px;
+      animation: fadeUp .9s .1s both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 19px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: rgba(72,255,154,.045);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      direction: ltr;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .3; transform: scale(.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 65px);
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+      text-shadow: 0 0 35px rgba(72,255,154,.3);
+    }
+
+    .hero p {
+      max-width: 530px;
+      margin: 17px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+      backdrop-filter: blur(20px);
+      animation: fadeUp .9s .2s both;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: .8;
+    }
+
+    .product-panel {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .map-art {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      margin: 20px 0;
+      border: 1px solid rgba(72,255,154,.15);
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at 50% 65%, rgba(40,255,135,.19), transparent 42%),
+        linear-gradient(145deg, #17281e, #09110d 70%);
+      perspective: 700px;
+    }
+
+    .map-art::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0 29px,
+        rgba(72,255,154,.065) 30px 31px
+      );
+      transform: rotate(-20deg);
+      animation: gridMove 14s linear infinite;
+    }
+
+    @keyframes gridMove {
+      to { background-position: 0 120px; }
+    }
+
+    .map-orb {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(72,255,154,.15);
+      border-radius: 50%;
+      box-shadow: 0 0 55px rgba(72,255,154,.08), inset 0 0 40px rgba(72,255,154,.06);
+      animation: orbPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbPulse {
+      to { transform: scale(1.12); opacity: .5; }
+    }
+
+    .voxel {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(85px, 12vw, 125px);
+      filter: drop-shadow(0 18px 20px rgba(0,0,0,.5));
+      animation: voxelFloat 4s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes voxelFloat {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    .art-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      direction: ltr;
+      padding: 7px 10px;
+      border: 1px solid rgba(72,255,154,.2);
+      border-radius: 8px;
+      background: rgba(4,12,7,.8);
+      color: var(--green);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .product-title {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .product-description {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #d0e1d5;
+      font-size: 12px;
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: rgba(72,255,154,.07);
+      color: var(--green);
+    }
+
+    .form-panel {
+      padding: clamp(20px, 4vw, 34px);
+      animation-delay: .32s;
+    }
+
+    .form-heading {
+      margin: 9px 0 7px;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .form-subtitle {
+      margin-bottom: 27px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .field {
+      margin-bottom: 19px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 9px;
+      color: #dcece1;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      color: #779283;
+      pointer-events: none;
+      transition: .25s;
+    }
+
+    input, textarea {
+      display: block;
+      width: 100%;
+      outline: none;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px;
+      background: rgba(2,8,4,.45);
+      color: var(--text);
+      font-size: 13px;
+      transition: border-color .25s, box-shadow .25s, background .25s;
+    }
+
+    input {
+      height: 51px;
+      padding: 0 45px 0 14px;
+    }
+
+    textarea {
+      min-height: 100px;
+      padding: 14px;
+      resize: vertical;
+      line-height: 1.9;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #617468;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(72,255,154,.7);
+      background: rgba(10,30,17,.6);
+      box-shadow: 0 0 0 4px rgba(72,255,154,.07), 0 0 25px rgba(72,255,154,.06);
+    }
+
+    .input-wrap:focus-within .input-icon {
+      color: var(--green);
+    }
+
+    input[readonly] {
+      color: var(--green);
+      cursor: default;
+    }
+
+    .form-error {
+      display: none;
+      margin-top: 7px;
+      color: #ff8585;
+      font-size: 11px;
+    }
+
+    .form-error.show {
+      display: block;
+      animation: shake .3s ease;
+    }
+
+    @keyframes shake {
+      25%, 75% { transform: translateX(3px); }
+      50% { transform: translateX(-3px); }
+    }
+
+    .summary {
+      margin: 24px 0 18px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: rgba(72,255,154,.035);
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .summary-row + .summary-row {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .summary-row span:first-child {
+      color: var(--muted);
+    }
+
+    .summary-row strong {
+      color: #e8fff0;
+    }
+
+    .summary-row .price {
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .buy-button {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      width: 100%;
+      min-height: 56px;
+      overflow: hidden;
+      border: 0;
+      border-radius: 13px;
+      background: linear-gradient(110deg, #36f58c, #8affba, #23d979);
+      background-size: 200% 100%;
+      color: #06160c;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(38,255,133,.16);
+      transition: transform .25s, box-shadow .25s;
+      animation: buttonShimmer 5s ease infinite;
+    }
+
+    .buy-button::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -50%;
+      left: -100%;
+      width: 60%;
+      height: 200%;
+      background: rgba(255,255,255,.5);
+      transform: rotate(25deg);
+      transition: left .6s ease;
+    }
+
+    .buy-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 13px 38px rgba(38,255,133,.27);
+    }
+
+    .buy-button:hover::before {
+      left: 150%;
+    }
+
+    .buy-button:active {
+      transform: scale(.985);
+    }
+
+    .buy-button:disabled {
+      cursor: wait;
+      opacity: .75;
+    }
+
+    @keyframes buttonShimmer {
+      0%, 100% { background-position: 0 0; }
+      50% { background-position: 100% 0; }
+    }
+
+    .security-note {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      margin-top: 15px;
+      color: #84978a;
+      font-size: 10px;
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .security-note span {
+      color: var(--green);
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 20;
+      right: 50%;
+      bottom: 24px;
+      width: max-content;
+      max-width: calc(100% - 30px);
+      padding: 14px 18px;
+      border: 1px solid rgba(255,100,100,.4);
+      border-radius: 12px;
+      background: #1a100f;
+      color: #ffdada;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(50%, 20px);
+      transition: .3s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(50%, 0);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 0 20px 30px;
+      color: #718378;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    footer strong {
+      color: var(--green);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        padding: 17px 5px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .back-link {
+        padding: 9px 11px;
+        font-size: 11px;
+      }
+
+      .page {
+        margin-top: 23px;
+      }
+
+      .hero {
+        margin-bottom: 25px;
+      }
+
+      .hero p {
+        font-size: 12px;
+      }
+
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .product-panel {
+        padding: 19px;
+      }
+
+      .map-art {
+        min-height: 210px;
+      }
+
+      .voxel {
+        font-size: 95px;
+      }
+
+      .form-panel {
+        padding: 23px 19px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="checkout">
-
-<h1>
-
-🛒 خرید مپ Xland
-
-</h1>
-
-<form>
-
-
-<label>
-نام کاربر
-</label>
-
-<input
-
-type="text"
-
-id="username"
-
-placeholder="Enter your name"
-
-required>
-
-
-<label>
-ایمیل کاربر
-</label>
-
-<input
-
-type="email"
-
-id="email"
-
-placeholder="example@email.com"
-
-required>
-
-
-<label>
-مپ انتخاب شده
-</label>
-
-<input
-
-type="text"
-
-value="Xland Map"
-
-readonly>
-
-
-<label>
-توضیحات سفارش (اختیاری)
-</label>
-
-<textarea
-
-placeholder="اگر توضیحی دارید بنویسید...">
-
-</textarea>
-
-
-<button
-
-type="button"
-
-onclick="goToPayment()">
-
-ادامه خرید
-
-</button>
-
-
-</form>
-
-</div>
-
-<script>
-
-function goToPayment(){
-
-
-let username =
-document.getElementById("username").value;
-
-
-let email =
-document.getElementById("email").value;
-
-
-
-if(username === "" || email === ""){
-
-
-alert("Please enter your name and email.");
-
-return;
-
-
-}
-
-
-
-localStorage.setItem(
-"xlandBuyerName",
-username
-);
-
-
-
-localStorage.setItem(
-"xlandBuyerEmail",
-email
-);
-
-
-
-window.location.href="YOUR-ZARINPAL-LINK";
-
-
-}
-
-</script>
-
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="ambient one"></div>
+  <div class="ambient two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Xland">
+      <span class="brand-icon">✦</span>
+      <span>XLAND <span>STORE</span></span>
+    </a>
+    <a class="back-link" href="index.html">← بازگشت به سایت</a>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        XLAND DIGITAL MARKET
+      </div>
+
+      <h1>دنیای خودت رو <span>بساز!</span></h1>
+      <p>
+        مپ‌های اختصاصی Xland رو کشف کن و ماجراجویی بعدی خودت رو شروع کن.
+        دنیای جدیدت فقط چند قدم با تو فاصله داره.
+      </p>
+    </section>
+
+    <section class="checkout-layout">
+      <article class="panel product-panel">
+        <div class="panel-label">محصول انتخاب‌شده / SELECTED MAP</div>
+
+        <div class="map-art">
+          <div class="map-orb"></div>
+          <div class="voxel" aria-hidden="true">🌲</div>
+          <div class="art-tag">XLAND ORIGINAL</div>
+        </div>
+
+        <h2 class="product-title">Xland Map</h2>
+        <p class="product-description">
+          وارد دنیای Xland شو! یک مپ برای ماجراجویی، ساخت‌وساز
+          و کشف مکان‌های تازه در دنیای Minecraft.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature">
+            <span class="feature-icon">✦</span>
+            <span>مپ اختصاصی پروژه Xland</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">⬇</span>
+            <span>دریافت فایل پس از تکمیل فرایند خرید</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">◇</span>
+            <span>تجربه‌ای تازه در دنیای Minecraft</span>
+          </div>
+        </div>
+      </article>
+
+      <section class="panel form-panel">
+        <div class="panel-label">SECURE CHECKOUT / 01</div>
+        <h2 class="form-heading">تکمیل سفارش</h2>
+        <p class="form-subtitle">
+          اطلاعاتت رو وارد کن تا برای ادامه فرایند خرید آماده بشی.
+        </p>
+
+        <form id="checkoutForm" novalidate>
+          <div class="field">
+            <label for="username">نام کاربر</label>
+            <div class="input-wrap">
+              <span class="input-icon">♙</span>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="نامت رو وارد کن"
+                autocomplete="name"
+                maxlength="80"
+                required
+              >
+            </div>
+            <div class="form-error" id="usernameError">
+              لطفاً نام خودت رو وارد کن.
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">ایمیل کاربر</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉</span>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                autocomplete="email"
+                maxlength="254"
+                required
+              >
+            </div>
+            <div class="form-error" id="emailError">
+              لطفاً یک آدرس ایمیل معتبر وارد کن.
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="mapName">مپ انتخاب‌شده</label>
+            <div class="input-wrap">
+              <span class="input-icon">▦</span>
+              <input
+                type="text"
+                id="mapName"
+                value="Xland Map"
+                readonly
+              >
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="description">توضیحات سفارش (اختیاری)</label>
+            <textarea
+              id="description"
+              name="description"
+              maxlength="1000"
+              placeholder="اگر توضیحی داری اینجا بنویس..."
+            ></textarea>
+          </div>
+
+          <div class="summary">
+            <div class="summary-row">
+              <span>محصول</span>
+              <strong>Xland Map</strong>
+            </div>
+            <div class="summary-row">
+              <span>وضعیت پرداخت</span>
+              <strong>در انتظار پرداخت</strong>
+            </div>
+            <div class="summary-row">
+              <span>مبلغ سفارش</span>
+              <strong class="price">طبق صفحه پرداخت</strong>
+            </div>
+          </div>
+
+          <button class="buy-button" id="buyButton" type="submit">
+            <span id="buttonText">ادامه خرید</span>
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <div class="security-note">
+            <span>◆</span>
+            اطلاعاتت رو درست وارد کن و قبل از پرداخت جزئیات سفارش رو بررسی کن.
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    POWERED BY <strong>XLAND</strong> · ساخت دنیاهای جدید، یک مپ در هر بار.
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <script>
+    /*
+      مهم:
+      لینک واقعی درگاه پرداخت را پایین وارد کن.
+      مثال: https://www.zarinpal.com/pg/StartPay/XXXXXXXX
+      لینک باید متعلق به درگاه و سفارش واقعی خودت باشد.
+    */
+    const PAYMENT_URL = "YOUR-ZARINPAL-LINK";
+
+    const form = document.getElementById("checkoutForm");
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const descriptionInput = document.getElementById("description");
+    const buyButton = document.getElementById("buyButton");
+    const buttonText = document.getElementById("buttonText");
+    const toast = document.getElementById("toast");
+
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3500);
+    }
+
+    function setError(id, visible) {
+      document.getElementById(id).classList.toggle("show", visible);
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    usernameInput.addEventListener("input", () => {
+      if (usernameInput.value.trim()) {
+        setError("usernameError", false);
+      }
+    });
+
+    emailInput.addEventListener("input", () => {
+      if (isValidEmail(emailInput.value.trim())) {
+        setError("emailError", false);
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const username = usernameInput.value.trim();
+      const email = emailInput.value.trim();
+      const description = descriptionInput.value.trim();
+
+      const validName = username.length >= 2;
+      const validEmail = isValidEmail(email);
+
+      setError("usernameError", !validName);
+      setError("emailError", !validEmail);
+
+      if (!validName) {
+        usernameInput.focus();
+        showToast("نام کاربر باید حداقل دو کاراکتر باشد.");
+        return;
+      }
+
+      if (!validEmail) {
+        emailInput.focus();
+        showToast("لطفاً ایمیل معتبر وارد کن.");
+        return;
+      }
+
+      if (
+        !PAYMENT_URL ||
+        PAYMENT_URL === "YOUR-ZARINPAL-LINK" ||
+        !/^https:\/\/[^\s]+$/i.test(PAYMENT_URL)
+      ) {
+        showToast("داش، اول لینک واقعی درگاه پرداخت رو در کد وارد کن! 💚");
+        return;
+      }
+
+      /*
+        این ذخیره‌سازی فقط برای راحتی مرورگر است،
+        نه ثبت امن سفارش یا تأیید پرداخت.
+      */
+      try {
+        localStorage.setItem("xlandBuyerName", username);
+        localStorage.setItem("xlandBuyerEmail", email);
+        localStorage.setItem("xlandMapName", "Xland Map");
+        localStorage.setItem("xlandOrderDescription", description);
+      } catch (error) {
+        console.warn("ذخیره اطلاعات در مرورگر انجام نشد.", error);
+      }
+
+      buyButton.disabled = true;
+      buttonText.textContent = "در حال انتقال...";
+
+      window.location.assign(PAYMENT_URL);
+    });
+
+    // ذرات نئونی پس‌زمینه
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    const particles = [];
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let animationFrame;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
+
+      canvas.width = canvasWidth * dpr;
+      canvas.height = canvasHeight * dpr;
+      canvas.style.width = canvasWidth + "px";
+      canvas.style.height = canvasHeight + "px";
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      particles.length = 0;
+
+      const count = Math.min(
+        65,
+        Math.max(20, Math.floor(canvasWidth / 20))
+      );
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvasWidth,
+          y: Math.random() * canvasHeight,
+          radius: Math.random() * 1.8 + 0.4,
+          speed: Math.random() * 0.35 + 0.12,
+          alpha: Math.random() * 0.65 + 0.15,
+          drift: (Math.random() - 0.5) * 0.3
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(72,255,154,${p.alpha})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#48ff9a";
+        ctx.fill();
+
+        if (!reduceMotion) {
+          p.y -= p.speed;
+          p.x += p.drift;
+
+          if (p.y < -5) {
+            p.y = canvasHeight + 5;
+            p.x = Math.random() * canvasWidth;
+          }
+
+          if (p.x < -5) p.x = canvasWidth + 5;
+          if (p.x > canvasWidth + 5) p.x = -5;
+        }
+      }
+
+      ctx.shadowBlur = 0;
+
+      if (!reduceMotion) {
+        animationFrame = requestAnimationFrame(drawParticles);
+      }
+    }
+
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(animationFrame);
+      resizeCanvas();
+      drawParticles();
+    });
+
+    resizeCanvas();
+    drawParticles();
+
+    // افکت حرکت ملایم کارت محصول روی دستگاه‌های دارای ماوس
+    const productPanel = document.querySelector(".product-panel");
+
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      productPanel.addEventListener("mousemove", (event) => {
+        const rect = productPanel.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        productPanel.style.transform =
+          `perspective(1000px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
+      });
+
+      productPanel.addEventListener("mouseleave", () => {
+        productPanel.style.transform =
+          "perspective(1000px) rotateY(0) rotateX(0)";
+      });
+    }
+  </script>
+
+  <script src="security.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b0a">
+<title>Xland GameDock | مرکز بازی‌ها</title>
+<link rel="icon" type="image/png" href="xland-icon.png">
+
+<style>
+:root {
+  --bg: #080b0a;
+  --panel: #101613;
+  --panel2: #151d18;
+  --green: #61ff9b;
+  --green2: #20d975;
+  --text: #f2fff6;
+  --muted: #93a79a;
+  --border: rgba(125,255,170,.13);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(24,130,70,.16), transparent 40%),
+    radial-gradient(ellipse at 90% 30%, rgba(26,100,60,.09), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(1200px, calc(100% - 36px));
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  background: rgba(8,11,10,.82);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: -.5px;
+}
+
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #061109;
+  background: linear-gradient(135deg, #9affba, #25d66e);
+  box-shadow: 0 0 30px rgba(65,255,135,.17);
+  font-size: 23px;
+}
+
+.logo small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  color: #c3d4c8;
+  font-size: 13px;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-badge {
+  border: 1px solid rgba(97,255,155,.25);
+  border-radius: 999px;
+  padding: 9px 13px;
+  color: var(--green);
+  font-size: 11px;
+}
+
+.hero {
+  padding: 65px 0 45px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 36px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(97,255,155,.04);
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--green);
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 70px);
+  line-height: 1.18;
+  letter-spacing: -2px;
+  margin: 25px 0 18px;
+}
+
+.hero h1 span {
+  color: var(--green);
+  text-shadow: 0 0 35px rgba(97,255,155,.18);
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 2.1;
+  max-width: 510px;
+  font-size: 14px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 12px;
+  padding: 14px 19px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform .2s, background .2s, border-color .2s;
+}
+
+.btn:hover { transform: translateY(-3px); }
+
+.btn-primary {
+  background: var(--green);
+  color: #061109;
+  border-color: var(--green);
+}
+
+.btn-primary:hover { background: #a2ffbf; }
+
+.btn-secondary {
+  background: rgba(255,255,255,.025);
+  color: var(--text);
+}
+
+.btn-secondary:hover { border-color: var(--green); }
+
+.hero-visual {
+  position: relative;
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.orbit {
+  position: absolute;
+  width: min(360px, 95%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(97,255,155,.14);
+  border-radius: 50%;
+  animation: orbit 24s linear infinite;
+}
+
+.orbit::before, .orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(97,255,155,.10);
+  border-radius: 50%;
+  inset: 24px;
+}
+
+.orbit::after { inset: 54px; }
+
+.orbit-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--green);
+  border-radius: 50%;
+  top: 22%;
+  left: 8%;
+  box-shadow: 0 0 22px var(--green);
+}
+
+.core {
+  width: 215px;
+  aspect-ratio: 1;
+  border-radius: 35%;
+  display: grid;
+  place-items: center;
+  font-size: 85px;
+  background: linear-gradient(145deg, #18271d, #0c120e);
+  border: 1px solid rgba(97,255,155,.24);
+  box-shadow: 0 0 80px rgba(43,255,122,.10), inset 0 0 45px rgba(43,255,122,.05);
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-chip {
+  position: absolute;
+  padding: 12px 15px;
+  background: rgba(17,26,20,.93);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: #c8e5d2;
+  font-size: 11px;
+  box-shadow: 0 12px 30px #0005;
+}
+
+.chip-one { top: 13%; right: 0; }
+.chip-two { bottom: 15%; left: 0; }
+
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.section { padding: 35px 0 55px; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  margin: 0 0 10px;
+}
+
+.section-heading p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.count {
+  font-size: 12px;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  min-height: 310px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(110deg, #111a14, #0b100d);
+}
+
+.featured-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 270px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(57,255,133,.20), transparent 50%),
+    linear-gradient(135deg, #17251a, #090d0a);
+}
+
+.featured-art::before {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border: 1px solid #61ff9b30;
+  transform: rotate(45deg);
+  border-radius: 30px;
+}
+
+.featured-art span {
+  font-size: 100px;
+  filter: drop-shadow(0 0 30px #61ff9b22);
+  animation: float 5s ease-in-out infinite;
+}
+
+.featured-content {
+  padding: 32px;
+  align-self: center;
+}
+
+.tag {
+  display: inline-flex;
+  font-size: 10px;
+  color: var(--green);
+  border: 1px solid #61ff9b35;
+  border-radius: 7px;
+  padding: 7px 10px;
+  margin-bottom: 13px;
+}
+
+.featured-content h3 { font-size: 25px; margin: 0 0 12px; }
+.featured-content p { color: var(--muted); font-size: 13px; line-height: 2; }
+.featured-content .btn { margin-top: 10px; }
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.search {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+}
+
+.search input:focus { border-color: #61ff9b75; }
+
+.filter-btn {
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 11px;
+  color: #b7c9bc;
+  cursor: pointer;
+  font-size: 12px;
+  transition: .2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  color: var(--green);
+  border-color: #61ff9b75;
+  background: #61ff9b0c;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.game-card {
+  background: linear-gradient(145deg, #131b16, #0c110e);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .28s, border-color .28s, box-shadow .28s;
+  animation: appear .55s both;
+}
+
+.game-card:hover {
+  transform: translateY(-7px);
+  border-color: #61ff9b55;
+  box-shadow: 0 20px 45px #0004, 0 0 28px #61ff9b09;
+}
+
+.game-art {
+  position: relative;
+  height: 175px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--art-bg, linear-gradient(135deg,#14261a,#0b100d));
+}
+
+.game-art::before, .game-art::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #ffffff0c;
+  border-radius: 35px;
+  transform: rotate(35deg);
+}
+
+.game-art::after {
+  width: 125px;
+  height: 125px;
+  transform: rotate(55deg);
+}
+
+.game-emoji {
+  font-size: 67px;
+  z-index: 1;
+  transition: transform .3s;
+  filter: drop-shadow(0 12px 22px #0008);
+}
+
+.game-card:hover .game-emoji { transform: scale(1.14) rotate(-5deg); }
+
+.game-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  border-radius: 7px;
+  background: #080b0ad9;
+  border: 1px solid #ffffff14;
+  padding: 7px 9px;
+  font-size: 10px;
+}
+
+.game-status.live { color: var(--green); }
+.game-status.dev { color: #ffd479; }
+
+.game-body { padding: 18px; }
+
+.game-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+.game-body h3 { margin: 0 0 10px; font-size: 17px; }
+
+.game-body p {
+  margin: 0;
+  min-height: 48px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.game-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.game-actions .btn { flex: 1; padding: 11px 8px; font-size: 11px; }
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 2;
+}
+
+.minecraft-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 30px;
+  border: 1px solid #61ff9b27;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 90% 50%, #22683b55, transparent 55%),
+    linear-gradient(110deg, #101811, #0c120e);
+}
+
+.minecraft-banner h3 { font-size: 23px; margin: 0 0 12px; }
+.minecraft-banner p { color: var(--muted); font-size: 12px; line-height: 2; }
+.minecraft-icon { font-size: 60px; }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 50;
+  background: #17251b;
+  border: 1px solid #61ff9b55;
+  color: var(--green);
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 10px 35px #0007;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: .25s;
+  font-size: 12px;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 45px; }
+  .hero-visual { min-height: 280px; }
+  .core { width: 170px; font-size: 68px; }
+  .orbit { width: 280px; }
+  .featured { grid-template-columns: 1fr; }
+  .featured-art { min-height: 220px; }
+  .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav-links { gap: 12px; }
+}
+
+@media (max-width: 520px) {
+  .container { width: calc(100% - 24px); }
+  .nav { min-height: 67px; }
+  .nav-links a:not(:last-child) { display: none; }
+  .nav-badge { font-size: 9px; }
+  .hero h1 { letter-spacing: -1px; }
+  .games-grid { grid-template-columns: 1fr; }
+  .game-art { height: 195px; }
+  .section-heading { align-items: start; }
+  .minecraft-banner { flex-direction: column; align-items: start; }
+  .featured-content { padding: 23px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home" aria-label="Xland GameDock">
+      <span class="logo-icon">✦</span>
+      <span>XLAND <small>GAME DOCK</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="منوی اصلی">
+      <a href="#games">بازی‌ها</a>
+      <a href="#coming">در حال توسعه</a>
+      <a href="#minecraft">ماینکرفت</a>
+    </nav>
+
+    <span class="nav-badge">HUB 6.0 EDITION</span>
+  </div>
+</header>
+
+<main id="home">
+  <section class="container hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> YOUR NEXT ADVENTURE STARTS HERE</div>
+      <h1>وارد دنیای<br><span>Xland Games</span> شو.</h1>
+      <p>
+        به مرکز بازی‌های Xland خوش امدی به 
+        بازی‌ها، پروژه‌های در حال توسعه و دنیای ماینکرفت
+        همه در یک محیط اختصاصی با طراحی نسل جدید.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#games">🎮 کشف بازی‌ها</a>
+        <a class="btn btn-secondary" href="#coming">مشاهده پروژه‌های آینده ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="هسته گرافیکی Xland">
+      <div class="orbit"><span class="orbit-dot"></span></div>
+      <div class="core">🎮</div>
+      <div class="hero-chip chip-one">✦ Xland Universe</div>
+      <div class="hero-chip chip-two">● GAME SYSTEM READY</div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section-heading">
+      <div>
+        <h2>⭐ بازی ویژه</h2>
+        <p>پروژه منتخب Xland در ویترین GameDock</p>
+      </div>
+      <span class="count">FEATURED PROJECT</span>
+    </div>
+
+    <article class="featured">
+      <div class="featured-art">
+        <span>🌲</span>
+      </div>
+      <div class="featured-content">
+        <span class="tag">XLAND ORIGINAL</span>
+        <h3>Endless Road Horror</h3>
+        <p>
+          یک پروژه ترسناک با فضایی تاریک و مرموز.
+          جزئیات نسخه و لینک بازی را بعد از آماده‌شدن
+          نسخه قابل انتشار در همین بخش قرار بده.
+        </p>
+        <a class="btn btn-secondary" href="#coming">مشاهده وضعیت پروژه ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="container section" id="games">
+    <div class="section-heading">
+      <div>
+        <h2>🎮 کتابخانه بازی‌ها</h2>
+        <p>پروژه‌های Xland را جست‌وجو کن و دسته‌بندی موردنظرت را انتخاب کن.</p>
+      </div>
+      <span class="count" id="gameCount">۰ بازی</span>
+    </div>
+
+    <div class="filters">
+      <label class="search">
+        <input id="searchInput" type="search" placeholder="جست‌وجوی نام بازی..." aria-label="جست‌وجوی بازی">
+      </label>
+      <button class="filter-btn active" data-filter="all">همه</button>
+      <button class="filter-btn" data-filter="released">منتشرشده</button>
+      <button class="filter-btn" data-filter="development">در حال توسعه</button>
+      <button class="filter-btn" data-filter="minecraft">ماینکرفت</button>
+    </div>
+
+    <div class="games-grid" id="gamesGrid"></div>
+  </section>
+
+  <section class="container section" id="coming">
+    <div class="section-heading">
+      <div>
+        <h2>🚧 در حال توسعه</h2>
+        <p>پروژه‌هایی که در آینده می‌تونن به کتابخانه بازی‌ها اضافه بشن.</p>
+      </div>
+    </div>
+    <div class="games-grid" id="comingGrid"></div>
+  </section>
+
+  <section class="container section" id="minecraft">
+    <div class="minecraft-banner">
+      <div>
+        <span class="tag">XLAND MINECRAFT UNIVERSE</span>
+        <h3>⛏️ دنیای ماینکرفت Xland</h3>
+        <p>
+          مپ اختصاصی و سرور Xland را کشف کن.
+          لینک‌ها را با آدرس واقعی صفحات پروژه خودت تنظیم کن.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="xland-map.html">مشاهده مپ</a>
+          <a class="btn btn-secondary" href="xland-map-server.html">صفحه سرور</a>
+        </div>
+      </div>
+      <div class="minecraft-icon">🟩</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>✦ XLAND GAMEDOCK</span>
+    <span>بخشی از دنیای Xland Hub 6.0</span>
+    <a href="#home">بازگشت به بالا ↑</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/*
+  برای اضافه‌کردن بازی، یک مورد به آرایه GAMES اضافه کن.
+  وضعیت released فقط وقتی استفاده شود که واقعاً لینک انتشار آماده باشد.
+  لینک‌های نمونه را با آدرس‌های واقعی پروژه‌ها جایگزین کن.
+*/
+
+const GAMES = [
+  {
+    id: "endless-road-horror",
+    title: "Endless Road Horror",
+    category: "horror",
+    status: "development",
+    statusLabel: "بازدید",
+    version: "1.2.30",
+    emoji: "🌲",
+    art: "linear-gradient(135deg,#263b2a,#101a13)",
+    description: "پروژه ترسناک Xland با فضایی تاریک، جاده‌ای مرموز و تجربه‌ای دلهره‌آور.",
+    detailsUrl: "endless.html",
+    downloadUrl: ""
+  },
+  {
+    id: "xland-map",
+    title: "Xland Minecraft Map",
+    category: "minecraft",
+    status: "minecraft",
+    statusLabel: "پروژه ماینکرفت",
+    version: "مشاهده صفحه مپ",
+    emoji: "⛏️",
+    art: "linear-gradient(135deg,#214b31,#102419)",
+    description: "نقشه ماینکرفت Xland؛ جزئیات، تصاویر و فایل‌های نقشه را در صفحه اختصاصی ببین.",
+    detailsUrl: "xland-map.html",
+    downloadUrl: ""
+  },
+  {
+    id: "xland-map-server",
+    title: "Xland Map Server",
+    category: "minecraft",
+    status: "minecraft",
+    statusLabel: "سرور ماینکرفت",
+    version: "صفحه اختصاصی سرور",
+    emoji: "🟩",
+    art: "linear-gradient(135deg,#31532d,#111e12)",
+    description: "اطلاعات سرور ماینکرفت Xland و راهنمای اتصال به دنیای بازی.",
+    detailsUrl: "xland-map-server.html",
+    downloadUrl: ""
+  }
+];
+
+const COMING_SOON = [
+  {
+    title: "Xland Game Project",
+    category: "بازی مستقل",
+    emoji: "🚀",
+    description: "جایگاه معرفی یکی از بازی‌های آینده Xland."
+  },
+  {
+    title: "Next Xland Adventure",
+    category: "پروژه آینده",
+    emoji: "🌌",
+    description: "یک جایگاه آماده برای معرفی پروژه بازی بعدی."
+  },
+  {
+    title: "Xland Experimental",
+    category: "آزمایشی",
+    emoji: "🧪",
+    description: "نمایش پروژه‌های آزمایشی و نسخه‌های پیش‌نمایش."
+  }
+];
+
+const grid = document.getElementById("gamesGrid");
+const comingGrid = document.getElementById("comingGrid");
+const searchInput = document.getElementById("searchInput");
+const gameCount = document.getElementById("gameCount");
+const toast = document.getElementById("toast");
+
+let activeFilter = "all";
+let toastTimeout;
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function validLocalUrl(value) {
+  if (!value) return "";
+  try {
+    const url = new URL(value, window.location.href);
+    if (url.protocol !== "https:" &&
+        url.protocol !== "http:" &&
+        url.origin !== window.location.origin) return "";
+    if (url.origin !== window.location.origin &&
+        url.protocol !== "https:") return "";
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function gameCard(game, index) {
+  const detailsUrl = validLocalUrl(game.detailsUrl);
+  const downloadUrl = validLocalUrl(game.downloadUrl);
+  const statusClass = game.status === "development" ? "dev" : "live";
+  const statusLabel = escapeHTML(game.statusLabel || "پروژه Xland");
+
+  let action = "";
+  if (detailsUrl) {
+    action = `<a class="btn btn-secondary" href="${escapeHTML(detailsUrl)}">جزئیات ↗</a>`;
+  } else if (downloadUrl) {
+    action = `<a class="btn btn-primary" href="${escapeHTML(downloadUrl)}" target="_blank" rel="noopener noreferrer">دریافت بازی</a>`;
+  } else {
+    action = `<button class="btn btn-secondary" type="button" data-unavailable="${escapeHTML(game.title)}">به‌زودی</button>`;
+  }
+
+  return `
+    <article class="game-card" style="animation-delay:${Math.min(index * 65, 400)}ms">
+      <div class="game-art" style="--art-bg:${game.art || "linear-gradient(135deg,#17251a,#0b100d)"}">
+        <span class="game-status ${statusClass}">${statusLabel}</span>
+        <span class="game-emoji">${escapeHTML(game.emoji || "🎮")}</span>
+      </div>
+      <div class="game-body">
+        <div class="game-meta">
+          <span>${escapeHTML(game.category || "بازی")}</span>
+          <span>${escapeHTML(game.version || "نسخه نامشخص")}</span>
+        </div>
+        <h3>${escapeHTML(game.title)}</h3>
+        <p>${escapeHTML(game.description || "")}</p>
+        <div class="game-actions">${action}</div>
+      </div>
+    </article>
+  `;
+}
+
+function renderGames() {
+  const query = searchInput.value.trim().toLocaleLowerCase("fa");
+
+  const filtered = GAMES.filter(game => {
+    const text = [
+      game.title,
+      game.description,
+      game.category,
+      game.statusLabel
+    ].join(" ").toLocaleLowerCase("fa");
+
+    const matchesSearch = text.includes(query);
+    const matchesFilter =
+      activeFilter === "all" ||
+      (activeFilter === "released" && game.status === "released") ||
+      (activeFilter === "development" && game.status === "development") ||
+      (activeFilter === "minecraft" && game.category === "minecraft");
+
+    return matchesSearch && matchesFilter;
+  });
+
+  grid.innerHTML = filtered.length
+    ? filtered.map(gameCard).join("")
+    : `<div class="empty">🔎<br>داش، چیزی پیدا نشد!<br>عبارت جست‌وجو یا فیلتر را تغییر بده.</div>`;
+
+  gameCount.textContent = `${filtered.length.toLocaleString("fa-IR")} پروژه`;
+}
+
+function renderComingSoon() {
+  comingGrid.innerHTML = COMING_SOON.map((game, index) => `
+    <article class="game-card" style="animation-delay:${index * 70}ms">
+      <div class="game-art" style="--art-bg:linear-gradient(135deg,#1a2920,#0b100d)">
+        <span class="game-status dev">به‌زودی</span>
+        <span class="game-emoji">${escapeHTML(game.emoji)}</span>
+      </div>
+      <div class="game-body">
+        <div class="game-meta"><span>${escapeHTML(game.category)}</span><span>پیش‌نمایش</span></div>
+        <h3>${escapeHTML(game.title)}</h3>
+        <p>${escapeHTML(game.description)}</p>
+        <div class="game-actions">
+          <button class="btn btn-secondary" type="button" data-unavailable="${escapeHTML(game.title)}">اطلاعات بیشتر</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+searchInput.addEventListener("input", renderGames);
+
+document.querySelectorAll("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+
+    document.querySelectorAll("[data-filter]").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+
+    renderGames();
+  });
+});
+
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-unavailable]");
+  if (button) {
+    showToast(`داش! «${button.dataset.unavailable}» هنوز لینک آماده‌ای نداره 😎`);
+  }
+});
+
+renderGames();
+renderComingSoon();
+</script>
+
+<script src="security.js"></script>
+
+</body>
+</html>
