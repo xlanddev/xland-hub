@@ -1,0 +1,31 @@
+
+{
+  "library": {
+    "name": "XLAND Downloads",
+    "version": "1.0",
+    "description": "Official software library developed by XLAND",
+    "developer": "XLAND",
+    "year": 2026
+  },
+  "products": [
+    {
+      "id": "xland-wifi-manager",
+      "name": "XLAND WiFi Manager",
+      "description": "A modern wireless network management tool. Monitor signal strength, analyze network quality and explore WiFi adapter information.",
+      "category": "Network Tools",
+      "version": "Alpha 0.3",
+      "status": "alpha",
+      "statusLabel": "ALPHA",
+      "size": "250 MB",
+      "icon": "./xland-icon.png",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "downloads": {
+        "windows": "./XLAND-WiFi-Manager-Windows-x64.zip",
+        "linux": "./XLAND-WiFi-Manager-Linux-x64.zip"
+      }
+    }
+  ]
+}

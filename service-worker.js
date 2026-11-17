@@ -1,4 +1,4 @@
-const CACHE_NAME = "xland-support-v998.600.100";
+const CACHE_NAME = "xland-support-v1002.1000.9000";
 
 
 const urlsToCache = [

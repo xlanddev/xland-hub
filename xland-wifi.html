@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>XLAND WiFi Manager | XLAND</title>
+
+    <meta name="description" content="Download XLAND WiFi Manager - A modern wireless network management tool by XLAND.">
+    <meta name="theme-color" content="#080c09">
+
+    <link rel="icon" type="image/png" href="./xland-icon.png">
+
+    <style>
+        :root {
+            --bg: #080c09;
+            --surface: #101711;
+            --surface2: #151e17;
+            --green: #39ff78;
+            --green2: #20c95c;
+            --text: #f0f5f0;
+            --muted: #89968c;
+            --border: rgba(57,255,120,.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .background-glow {
+            position: fixed;
+            width: 550px;
+            height: 550px;
+            background: var(--green);
+            opacity: .055;
+            filter: blur(150px);
+            border-radius: 50%;
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(8,12,9,.88);
+            backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: rgba(57,255,120,.1);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+        }
+
+        .brand span {
+            color: var(--green);
+        }
+
+        .nav-link {
+            color: var(--muted);
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .nav-link:hover {
+            color: var(--green);
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1150px;
+            margin: auto;
+            padding: 105px 25px 75px;
+            text-align: center;
+        }
+
+        .version {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: rgba(57,255,120,.08);
+            border: 1px solid var(--border);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .version-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--green);
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 76px);
+            line-height: 1.1;
+            margin: 27px 0 20px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+            text-shadow: 0 0 35px rgba(57,255,120,.2);
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 35px;
+        }
+
+        .button {
+            padding: 14px 24px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 800;
+            transition: .25s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .button-primary {
+            background: var(--green);
+            color: #061009;
+            box-shadow: 0 0 25px rgba(57,255,120,.13);
+        }
+
+        .button-primary:hover {
+            background: #80ffa8;
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(57,255,120,.3);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* PRODUCT PREVIEW */
+
+        .preview-container {
+            max-width: 930px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .preview {
+            background: #0d130e;
+            border: 1px solid rgba(57,255,120,.2);
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 25px 90px rgba(0,0,0,.4);
+        }
+
+        .preview-header {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #35483a;
+        }
+
+        .preview-title {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .preview-content {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            min-height: 280px;
+        }
+
+        .preview-sidebar {
+            padding: 22px 15px;
+            border-right: 1px solid var(--border);
+        }
+
+        .sidebar-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            color: var(--muted);
+            border-radius: 7px;
+            font-size: 12px;
+        }
+
+        .sidebar-item.active {
+            color: var(--green);
+            background: rgba(57,255,120,.09);
+        }
+
+        .preview-main {
+            padding: 25px;
+        }
+
+        .preview-main h3 {
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .network-card {
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            margin-bottom: 15px;
+        }
+
+        .network-card small {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .network-card strong {
+            display: block;
+            margin-top: 8px;
+            font-size: 23px;
+            color: var(--green);
+        }
+
+        .signal-bars {
+            display: flex;
+            align-items: end;
+            height: 60px;
+            gap: 7px;
+            margin-top: 17px;
+        }
+
+        .signal-bars span {
+            flex: 1;
+            background: var(--green);
+            border-radius: 4px 4px 0 0;
+            opacity: .75;
+        }
+
+        .signal-bars span:nth-child(1) {height: 25%}
+        .signal-bars span:nth-child(2) {height: 40%}
+        .signal-bars span:nth-child(3) {height: 35%}
+        .signal-bars span:nth-child(4) {height: 65%}
+        .signal-bars span:nth-child(5) {height: 50%}
+        .signal-bars span:nth-child(6) {height: 80%}
+        .signal-bars span:nth-child(7) {height: 95%}
+        .signal-bars span:nth-child(8) {height: 75%}
+
+        /* SECTIONS */
+
+        .section {
+            max-width: 1100px;
+            padding: 0 25px;
+            margin: 0 auto 100px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-heading small {
+            color: var(--green);
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            margin-top: 12px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .feature {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px 20px;
+            transition: .25s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .feature-icon {
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .feature h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+
+        /* DOWNLOAD */
+
+        .download-section {
+            max-width: 950px;
+            margin: auto;
+            padding: 0 25px 100px;
+        }
+
+        .download-card {
+            background:
+                radial-gradient(circle at top right, rgba(57,255,120,.09), transparent 45%),
+                var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 35px;
+        }
+
+        .download-card h2 {
+            font-size: 29px;
+            margin-bottom: 10px;
+        }
+
+        .download-card > p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .download-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0,0,0,.2);
+            border: 1px solid var(--border);
+            margin-top: 12px;
+        }
+
+        .platform {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .platform-icon {
+            font-size: 27px;
+        }
+
+        .platform h3 {
+            font-size: 15px;
+        }
+
+        .platform small {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .download-button {
+            padding: 11px 17px;
+            background: var(--green);
+            color: #061009;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 900;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+        .download-button:hover {
+            background: #8bffac;
+            transform: translateY(-2px);
+        }
+
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .requirement {
+            background: rgba(0,0,0,.2);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .requirement small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-bottom: 7px;
+        }
+
+        .requirement strong {
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        footer strong {
+            color: var(--green);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 800px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 550px) {
+            .navbar {
+                padding: 12px 5%;
+                gap: 12px;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .nav-link {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding-top: 75px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .preview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-sidebar {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .download-card {
+                padding: 23px 17px;
+            }
+
+            .download-option {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .download-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .requirements {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="brand">
+        <div class="brand-icon">
+            <img src="./xland-icon.png" alt="XLAND Logo">
+        </div>
+
+        <div>XLAND<span>.</span></div>
+    </a>
+
+    <a href="index.html" class="nav-link">
+        ← Back to XLAND HUB
+    </a>
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="version">
+        <span class="version-dot"></span>
+        XLAND SOFTWARE · ALPHA 0.3
+    </div>
+
+    <h1>
+        XLAND <span>WiFi</span><br>
+        Manager
+    </h1>
+
+    <p>
+        Take control of your wireless network.
+        Monitor signal strength, analyze network quality
+        and explore your WiFi adapter information
+        with XLAND WiFi Manager.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="#downloads" class="button button-primary">
+            ↓ Download Software
+        </a>
+
+        <a href="#features" class="button button-secondary">
+            Explore Features
+        </a>
+
+    </div>
+
+</header>
+
+<!-- PREVIEW -->
+
+<div class="preview-container">
+
+    <div class="preview">
+
+        <div class="preview-header">
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+
+            <span class="preview-title">
+                XLAND WiFi Manager
+            </span>
+        </div>
+
+        <div class="preview-content">
+
+            <div class="preview-sidebar">
+
+                <div class="sidebar-item active">
+                    ◈ Dashboard
+                </div>
+
+                <div class="sidebar-item">
+                    ◉ Networks
+                </div>
+
+                <div class="sidebar-item">
+                    ▥ Signal Monitor
+                </div>
+
+                <div class="sidebar-item">
+                    ⚙ Settings
+                </div>
+
+            </div>
+
+            <div class="preview-main">
+
+                <h3>Network Overview</h3>
+
+                <div class="network-card">
+                    <small>NETWORK SIGNAL</small>
+                    <strong>89%</strong>
+
+                    <div class="signal-bars">
+                        <span></span><span></span>
+                        <span></span><span></span>
+                        <span></span><span></span>
+                        <span></span><span></span>
+                    </div>
+                </div>
+
+                <div class="network-card">
+                    <small>NETWORK MONITOR</small>
+                    <strong>ACTIVE</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+    <div class="section-heading">
+
+        <small>POWERFUL FEATURES</small>
+
+        <h2>Network Management</h2>
+
+        <p>
+            Everything you need to understand your wireless connection.
+        </p>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">📶</div>
+            <h3>Signal Monitor</h3>
+            <p>
+                Monitor wireless signal strength
+                and observe connection quality.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Network Quality</h3>
+            <p>
+                Track network quality with
+                continuous monitoring.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Live Monitoring</h3>
+            <p>
+                Observe network performance
+                through monitoring graphs.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔌</div>
+            <h3>Adapter Information</h3>
+            <p>
+                View information about your
+                wireless network adapter.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DOWNLOAD CENTER -->
+
+<section class="download-section" id="downloads">
+
+    <div class="download-card">
+
+        <h2>Download Center</h2>
+
+        <p>
+            Get XLAND WiFi Manager for your platform.
+            Select your operating system below.
+        </p>
+
+        <!-- WINDOWS -->
+
+        <div class="download-option">
+
+            <div class="platform">
+                <div class="platform-icon">⊞</div>
+
+                <div>
+                    <h3>Windows Edition</h3>
+                    <small>Windows 10 / Windows 11 · ZIP</small>
+                </div>
+            </div>
+
+            <a
+                class="download-button"
+                href="./XLAND-WiFi-Manager-Windows-x64.zip"
+                download="XLAND-WiFi-Manager-Windows-x64.zip"
+            >
+                DOWNLOAD ↓
+            </a>
+
+        </div>
+
+        <!-- LINUX -->
+
+        <div class="download-option">
+
+            <div class="platform">
+                <div class="platform-icon">🐧</div>
+
+                <div>
+                    <h3>Linux Edition</h3>
+                    <small>Linux · ZIP</small>
+                </div>
+            </div>
+
+            <a
+                class="download-button"
+                href="./XLAND-WiFi-Manager-Linux-x64.zip"
+                download="XLAND-WiFi-Manager-Linux-x64.zip"
+            >
+                DOWNLOAD ↓
+            </a>
+
+        </div>
+
+        <!-- REQUIREMENTS -->
+
+        <div class="requirements">
+
+            <div class="requirement">
+                <small>PRODUCT</small>
+                <strong>XLAND WiFi</strong>
+            </div>
+
+            <div class="requirement">
+                <small>VERSION</small>
+                <strong>Alpha 0.3</strong>
+            </div>
+
+            <div class="requirement">
+                <small>LICENSE</small>
+                <strong>XLAND</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>XLAND</strong>. All rights reserved.
+    </p>
+
+    <p>
+        Powered by XLAND
+    </p>
+
+</footer>
+
+<!--
+    No download JavaScript is required.
+    The download links are defined directly in the HTML.
+    This page does not register a Service Worker.
+-->
+
+</body>
+</html>
