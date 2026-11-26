@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d0a">
+
+<link rel="icon" type="image/png" href="xland-icon.png">
+
+<title>XLANG - Programming Language | XLAND</title>
+
+<style>
+:root {
+    --bg: #080d0a;
+    --panel: #101a13;
+    --panel2: #142219;
+    --green: #39ff14;
+    --green2: #20c900;
+    --text: #f2fff3;
+    --muted: #9aafa0;
+    --border: rgba(57,255,20,.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: rgba(8,13,10,.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--green);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 90px 9%;
+    background:
+        radial-gradient(ellipse at 80% 40%, rgba(57,255,20,.13), transparent 40%),
+        linear-gradient(120deg,#080d0a,#0d1810);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--green);
+    border: 1px solid var(--border);
+    background: rgba(57,255,20,.07);
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(48px,8vw,90px);
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--green);
+    text-shadow: 0 0 35px rgba(57,255,20,.3);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 650px;
+    margin: 25px 0 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #071006;
+}
+
+.btn-primary:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.btn-outline:hover {
+    background: rgba(57,255,20,.1);
+    transform: translateY(-3px);
+}
+
+.version-info {
+    margin-top: 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.version-info span {
+    color: var(--muted);
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+}
+
+section {
+    padding: 85px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 span {
+    color: var(--green);
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 30px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    transition: .3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--green);
+    box-shadow: 0 10px 35px rgba(57,255,20,.08);
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.code-section {
+    background: #0b120d;
+}
+
+.code-window {
+    max-width: 850px;
+    margin: auto;
+    background: #080d0a;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
+}
+
+.code-header {
+    padding: 14px 20px;
+    background: #142019;
+    color: var(--muted);
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.code-window pre {
+    padding: 30px;
+    overflow-x: auto;
+    color: #c7f7c9;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.code-green {
+    color: var(--green);
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.download-card {
+    padding: 35px;
+    background: linear-gradient(145deg,#142219,#0d150f);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.download-card h3 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.download-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.download-card .btn {
+    width: 100%;
+    text-align: center;
+}
+
+.download-icon {
+    font-size: 35px;
+    color: var(--green);
+    margin-bottom: 15px;
+}
+
+.requirements {
+    max-width: 900px;
+    margin: auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.requirement-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.requirement-row:last-child {
+    border: none;
+}
+
+.requirement-row span:first-child {
+    color: var(--muted);
+}
+
+.requirement-row span:last-child {
+    text-align: right;
+}
+
+.notice {
+    max-width: 900px;
+    margin: 25px auto 0;
+    padding: 20px;
+    background: rgba(57,255,20,.06);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--muted);
+}
+
+.notice strong {
+    color: var(--green);
+}
+
+.release-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.release-box h3 {
+    color: var(--green);
+    margin-bottom: 15px;
+}
+
+.release-box ul {
+    padding-left: 22px;
+    color: var(--muted);
+}
+
+.release-box li {
+    margin: 9px 0;
+}
+
+.footer {
+    padding: 40px 8%;
+    text-align: center;
+    background: #060a07;
+    border-top: 1px solid var(--border);
+}
+
+.footer .logo {
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media(max-width:850px) {
+    .features {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 75px 7%;
+    }
+
+    .features,
+    .download-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+
+    .requirement-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .requirement-row span:last-child {
+        text-align: left;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">XLAND</a>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#features">Features</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#requirements">Requirements</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <span class="eyebrow">XLAND DEVELOPER TECHNOLOGY</span>
+
+        <h1>
+            Meet <span>XLANG.</span>
+        </h1>
+
+        <p>
+            A programming language designed to bring your ideas
+            to life. Write code, build applications and create
+            native executables with the XLANG ecosystem.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#downloads" class="btn btn-primary">
+                Download XLANG ↓
+            </a>
+
+            <a href="#features" class="btn btn-outline">
+                Explore Features
+            </a>
+        </div>
+
+        <div class="version-info">
+            <span>Version 0.23.0</span>
+            <span>Windows 10 / 11</span>
+            <span>64-bit</span>
+            <span>Preview Release</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="features">
+
+    <div class="section-heading">
+        <h2>Powerful <span>Technology</span></h2>
+        <p>Everything you need to start building with XLANG.</p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Interpreter</h3>
+            <p>
+                Execute XLANG source code directly without
+                requiring a C compiler.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>Virtual Machine</h3>
+            <p>
+                Run programs through the XLANG VM and its
+                bytecode execution engine.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Native Compilation</h3>
+            <p>
+                Compile XLANG programs into native executables
+                using GCC or Clang.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🖥️</div>
+            <h3>Native GUI</h3>
+            <p>
+                Create desktop applications with native
+                graphical user interfaces.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🧰</div>
+            <h3>XLANG Studio</h3>
+            <p>
+                Develop and build your projects using the
+                XLANG Studio environment.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3>Compiler Detection</h3>
+            <p>
+                Automatically detect available GCC and
+                Clang compilers for native builds.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="code-section">
+
+    <div class="section-heading">
+        <h2>Start Coding with <span>XLANG</span></h2>
+        <p>A simple example of an XLANG program.</p>
+    </div>
+
+    <div class="code-window">
+
+        <div class="code-header">
+            ● ● ● &nbsp; hello_world.xl
+        </div>
+
+        <pre><span class="code-green"># Hello World in XLANG</span>
+
+print("Hello from XLANG!")
+
+<span class="code-green"># Your programming journey starts here.</span></pre>
+
+    </div>
+
+</section>
+
+<section id="downloads">
+
+    <div class="section-heading">
+        <h2>Download <span>XLANG</span></h2>
+        <p>Get started with the latest XLANG release.</p>
+    </div>
+
+    <div class="download-grid">
+
+        <div class="download-card">
+
+            <div class="download-icon">📦</div>
+
+            <h3>XLANG Setup</h3>
+
+            <p>
+                Main installer for the XLANG programming
+                language and its core components.
+            </p>
+
+            <a href="XLANG-Setup.exe"
+               class="btn btn-primary">
+                Download Setup
+            </a>
+
+        </div>
+
+        <div class="download-card">
+
+            <div class="download-icon">💻</div>
+
+            <h3>XLANG Studio Setup</h3>
+
+            <p>
+                Install the XLANG Studio development
+                environment on your Windows computer.
+            </p>
+
+            <a href="XLANG-Studio-Setup.exe"
+               class="btn btn-primary">
+                Download Studio
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="requirements">
+
+    <div class="section-heading">
+        <h2>System <span>Requirements</span></h2>
+        <p>Check the requirements before installing XLANG.</p>
+    </div>
+
+    <div class="requirements">
+
+        <div class="requirement-row">
+            <span>Operating System</span>
+            <span>Windows 10 / 11 (64-bit)</span>
+        </div>
+
+        <div class="requirement-row">
+            <span>Interpreter</span>
+            <span>No GCC required</span>
+        </div>
+
+        <div class="requirement-row">
+            <span>Virtual Machine</span>
+            <span>No GCC required</span>
+        </div>
+
+        <div class="requirement-row">
+            <span>Native Compilation</span>
+            <span>GCC or Clang required</span>
+        </div>
+
+        <div class="requirement-row">
+            <span>Recommended Compiler</span>
+            <span>MSYS2 UCRT64 GCC</span>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        <strong>Important:</strong>
+        GCC or Clang is only required for Native Compilation.
+        XLANG Interpreter and Virtual Machine can still be
+        used without installing a C compiler.
+    </div>
+
+</section>
+
+<section id="release">
+
+    <div class="section-heading">
+        <h2>What's <span>New?</span></h2>
+        <p>XLANG 0.23.0 Preview Release</p>
+    </div>
+
+    <div class="release-box">
+
+        <h3>XLANG 0.23.0</h3>
+
+        <ul>
+            <li>Automatic GCC and Clang detection.</li>
+            <li>Improved native compiler environment.</li>
+            <li>Detailed compiler error reporting in Studio.</li>
+            <li>Better support for systems without GCC.</li>
+            <li>Continued Interpreter and VM availability.</li>
+            <li>Installer and Studio setup improvements.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="logo">XLANG</div>
+
+    <p>
+        Part of the XLAND ecosystem.
+    </p>
+
+    <p style="margin-top:12px;">
+        © 2026 XLAND. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>

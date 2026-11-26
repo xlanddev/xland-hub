@@ -1,0 +1,153 @@
+
+/* XLAND NOTIFICATIONS */
+
+.xland-notification {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    z-index: 9999;
+}
+
+.xland-notification-bell {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(0, 200, 255, .25);
+    border-radius: 14px;
+    background: #101827;
+    color: #43d9ff;
+    cursor: pointer;
+    font-size: 21px;
+    transition: .25s ease;
+}
+
+.xland-notification-bell:hover {
+    background: #142b3d;
+    border-color: #20cfff;
+    transform: translateY(-2px);
+}
+
+.xland-notification-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 20px;
+    background: #00e58b;
+    color: #06140e;
+    font: 700 11px Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xland-notification-count[hidden] {
+    display: none;
+}
+
+.xland-notification-panel {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: min(350px, calc(100vw - 30px));
+    max-height: 430px;
+    overflow-y: auto;
+    background: #0c1422;
+    border: 1px solid rgba(0, 200, 255, .2);
+    border-radius: 18px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
+    padding: 15px;
+    display: none;
+    color: #fff;
+}
+
+.xland-notification-panel.active {
+    display: block;
+    animation: xlandNotifOpen .2s ease;
+}
+
+@keyframes xlandNotifOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.xland-notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.xland-notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.xland-notification-clear {
+    border: none;
+    background: transparent;
+    color: #42d5ff;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.xland-notification-item {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 13px;
+    margin-top: 9px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    background: #121e30;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    transition: .2s;
+}
+
+.xland-notification-item:hover {
+    border-color: rgba(0, 200, 255, .5);
+    background: #172a40;
+}
+
+.xland-notification-item.unread {
+    border-right: 3px solid #00e58b;
+}
+
+.xland-notification-item strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.xland-notification-item p {
+    margin: 0;
+    color: #aab8c9;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.xland-notification-item small {
+    display: block;
+    margin-top: 7px;
+    color: #42d5ff;
+    font-size: 10px;
+}
+
+.xland-notification-empty {
+    padding: 30px 10px;
+    text-align: center;
+    color: #8293a9;
+    font-size: 13px;
+}

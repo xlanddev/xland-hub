@@ -1,0 +1,1201 @@
+/* =========================================================
+   XLAND HUB 6.2 — CINEMATIC EDITION
+   Premium dark digital ecosystem
+   Designed for the existing index.html structure.
+   Keeps existing IDs, links and JavaScript hooks intact.
+========================================================= */
+
+/* ---------- 01. Design tokens ---------- */
+
+:root {
+    --x62-bg: #070a12;
+    --x62-bg-deep: #04060b;
+    --x62-surface: #0d1422;
+    --x62-surface-2: #111c2e;
+    --x62-text: #f4f7ff;
+    --x62-muted: #a2aec2;
+
+    --x62-green: #43f59a;
+    --x62-blue: #5795ff;
+    --x62-purple: #ad83ff;
+    --x62-cyan: #35ded6;
+    --x62-gold: #ffc36b;
+
+    --x62-line: rgba(190, 210, 255, .12);
+    --x62-glass: rgba(11, 18, 31, .72);
+
+    --x62-radius: 24px;
+    --x62-shadow: 0 28px 80px rgba(0, 0, 0, .38);
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--x62-bg-deep);
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(42, 113, 255, .10), transparent 30%),
+        radial-gradient(ellipse at 88% 24%, rgba(130, 78, 230, .08), transparent 28%),
+        radial-gradient(ellipse at 50% 75%, rgba(40, 220, 160, .045), transparent 35%),
+        #070a12;
+    color: var(--x62-text);
+}
+
+/* A subtle ambient texture without external images */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .19;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+/* ---------- 02. Navbar ---------- */
+
+.xland-navbar,
+#navbar {
+    background: rgba(5, 9, 17, .82) !important;
+    border-bottom: 1px solid rgba(100, 150, 255, .16) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,.20);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+
+.xland-navbar-brand-title {
+    color: #f5f8ff !important;
+    letter-spacing: 2px;
+    text-shadow: 0 0 24px rgba(67,245,154,.18);
+}
+
+.xland-navbar-brand-sub {
+    color: #8da4c5 !important;
+    letter-spacing: 2.5px;
+}
+
+.xland-nav-link {
+    transition: color .22s ease, background .22s ease, transform .22s ease;
+}
+
+.xland-nav-link:hover {
+    color: var(--x62-green) !important;
+    background: rgba(67,245,154,.07);
+    transform: translateY(-1px);
+}
+
+.xland-navbar-ai {
+    border: 1px solid rgba(173,131,255,.32) !important;
+    background: linear-gradient(115deg, rgba(173,131,255,.15), rgba(87,149,255,.12)) !important;
+    box-shadow: 0 0 28px rgba(173,131,255,.10);
+    transition: .25s ease;
+}
+
+.xland-navbar-ai:hover {
+    border-color: rgba(173,131,255,.68) !important;
+    box-shadow: 0 0 32px rgba(173,131,255,.20);
+    transform: translateY(-2px);
+}
+
+.xland-dropdown-panel {
+    background: rgba(9, 15, 27, .97) !important;
+    border: 1px solid var(--x62-line) !important;
+    box-shadow: 0 25px 70px rgba(0,0,0,.48) !important;
+    backdrop-filter: blur(22px);
+}
+
+.xland-dropdown-item:hover {
+    background: linear-gradient(90deg, rgba(87,149,255,.13), rgba(67,245,154,.06)) !important;
+}
+
+/* ---------- 03. Cinematic hero ---------- */
+
+.xland-home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 590px;
+    width: min(1440px, 94%);
+    margin: 34px auto 76px;
+    padding: clamp(54px, 8vw, 112px) clamp(24px, 7vw, 100px);
+    display: flex;
+    align-items: center;
+
+    border: 1px solid rgba(143, 174, 255, .19) !important;
+    border-radius: 34px !important;
+
+    background:
+        radial-gradient(ellipse at 12% 18%, rgba(67,245,154,.19), transparent 34%),
+        radial-gradient(ellipse at 84% 17%, rgba(87,149,255,.23), transparent 34%),
+        radial-gradient(ellipse at 76% 88%, rgba(173,131,255,.19), transparent 38%),
+        linear-gradient(122deg, #080e19 0%, #0c1729 48%, #090d19 100%) !important;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 0 70px rgba(60,120,255,.055) !important;
+}
+
+.xland-home-hero::before {
+    content: "";
+    position: absolute;
+    width: min(48vw, 620px);
+    aspect-ratio: 1;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 1px solid rgba(120,164,255,.15);
+    box-shadow:
+        0 0 0 35px rgba(120,164,255,.025),
+        0 0 0 80px rgba(120,164,255,.018),
+        inset 0 0 90px rgba(87,149,255,.09);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.xland-home-hero::after {
+    content: "X";
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-54%);
+    font-size: clamp(250px, 35vw, 520px);
+    line-height: .8;
+    font-weight: 1000;
+    letter-spacing: -.12em;
+    color: rgba(255,255,255,.025);
+    text-shadow: 0 0 90px rgba(87,149,255,.09);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.xland-home-hero .hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .24 !important;
+    background-image:
+        linear-gradient(rgba(87,149,255,.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87,149,255,.13) 1px, transparent 1px) !important;
+    background-size: 46px 46px !important;
+    mask-image: linear-gradient(110deg, black, transparent 78%);
+    pointer-events: none;
+}
+
+.xland-home-hero .hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(95px);
+    pointer-events: none;
+}
+
+.xland-home-hero .hero-glow-1 {
+    background: rgba(67,245,154,.23) !important;
+    left: -90px;
+    top: -90px;
+}
+
+.xland-home-hero .hero-glow-2 {
+    background: rgba(87,149,255,.25) !important;
+    right: 4%;
+    bottom: -130px;
+}
+
+.xland-home-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 100%);
+}
+
+.xland-home-hero .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    margin-bottom: 24px;
+    color: #9dffc7 !important;
+    background: rgba(67,245,154,.08) !important;
+    border: 1px solid rgba(67,245,154,.28) !important;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    box-shadow: 0 0 28px rgba(67,245,154,.08);
+}
+
+.xland-home-hero .hero-content h1 {
+    margin: 0;
+    color: #f5f7ff;
+    font-size: clamp(42px, 7.4vw, 92px);
+    font-weight: 950;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    text-wrap: balance;
+    text-shadow: 0 12px 45px rgba(0,0,0,.28);
+}
+
+.xland-home-hero .hero-content h1 span {
+    display: inline-block;
+    background: linear-gradient(100deg, #53f5a1 0%, #43d9d8 28%, #5795ff 62%, #b18aff 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 26px rgba(87,149,255,.20));
+    animation: x62-gradient-flow 9s linear infinite;
+}
+
+.xland-home-hero .hero-content > p {
+    max-width: 610px;
+    margin: 24px 0 30px;
+    color: #b4c1d6 !important;
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 2.05;
+}
+
+.xland-home-hero .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.xland-home-hero .hero-btn {
+    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 22px;
+    border-radius: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.xland-home-hero .hero-btn.primary {
+    color: #04120b !important;
+    background: linear-gradient(110deg, #53f5a1, #38d9b0) !important;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 12px 32px rgba(67,245,154,.20);
+}
+
+.xland-home-hero .hero-btn.primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(67,245,154,.30);
+}
+
+.xland-home-hero .hero-btn.secondary {
+    color: #e5edff !important;
+    background: rgba(87,149,255,.09) !important;
+    border: 1px solid rgba(110,160,255,.34) !important;
+}
+
+.xland-home-hero .hero-btn.secondary:hover {
+    transform: translateY(-4px);
+    background: rgba(87,149,255,.17) !important;
+    border-color: rgba(173,131,255,.7) !important;
+    box-shadow: 0 14px 35px rgba(87,149,255,.15);
+}
+
+.xland-home-hero .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 38px;
+}
+
+.xland-home-hero .hero-stat {
+    min-width: 145px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    color: #c0cce0 !important;
+    background: rgba(8,15,28,.63) !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 15px;
+    backdrop-filter: blur(14px);
+}
+
+.xland-home-hero .hero-stat strong {
+    color: var(--x62-green) !important;
+    font-size: 22px;
+}
+
+.xland-home-hero .hero-stat:nth-child(2) strong { color: var(--x62-blue) !important; }
+.xland-home-hero .hero-stat:nth-child(3) strong { color: var(--x62-purple) !important; }
+
+.xland-home-hero .hero-x {
+    display: none;
+}
+
+/* ---------- 04. AI Copilot ---------- */
+
+.xland-ai-copilot {
+    position: relative;
+    isolation: isolate;
+    width: min(1180px, 92%);
+    margin: 0 auto 76px;
+    padding: clamp(24px, 4vw, 42px);
+    overflow: hidden;
+    border-radius: 28px !important;
+    border: 1px solid rgba(173,131,255,.24) !important;
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(173,131,255,.18), transparent 42%),
+        radial-gradient(ellipse at 100% 100%, rgba(53,222,214,.10), transparent 42%),
+        linear-gradient(135deg, rgba(17,20,42,.97), rgba(9,18,32,.97)) !important;
+    box-shadow: var(--x62-shadow);
+}
+
+.xland-ai-copilot::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    right: -110px;
+    top: -140px;
+    border: 1px solid rgba(173,131,255,.17);
+    border-radius: 50%;
+    box-shadow: 0 0 0 35px rgba(173,131,255,.025), 0 0 0 75px rgba(173,131,255,.018);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.xland-ai-copilot-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.copilot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.copilot-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.copilot-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    font-size: 27px;
+    background: linear-gradient(145deg, rgba(173,131,255,.22), rgba(87,149,255,.16)) !important;
+    border: 1px solid rgba(173,131,255,.34);
+    box-shadow: 0 10px 30px rgba(173,131,255,.14);
+}
+
+.copilot-title h2 {
+    margin: 0 0 6px;
+    color: #f4f0ff;
+    font-size: clamp(20px, 3vw, 27px);
+    font-weight: 900;
+}
+
+.copilot-title p {
+    margin: 0;
+    color: #aab6cc;
+    line-height: 1.7;
+}
+
+.copilot-online {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: #9dffc7;
+    border: 1px solid rgba(67,245,154,.22);
+    background: rgba(67,245,154,.07);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.copilot-online-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--x62-green);
+    box-shadow: 0 0 12px var(--x62-green);
+}
+
+.copilot-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px;
+    border: 1px solid rgba(120,150,255,.25) !important;
+    border-radius: 17px;
+    background: rgba(4,9,19,.62) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.copilot-search-box:focus-within {
+    border-color: rgba(173,131,255,.75) !important;
+    box-shadow: 0 0 0 4px rgba(173,131,255,.09), 0 0 30px rgba(87,149,255,.10);
+}
+
+.copilot-search-icon {
+    padding-left: 8px;
+    font-size: 20px;
+}
+
+#copilotSearch {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 6px;
+    color: #f5f4ff !important;
+    background: transparent !important;
+    border: 0 !important;
+    outline: 0 !important;
+    font: inherit;
+}
+
+#copilotSearch::placeholder {
+    color: #7787a2;
+}
+
+#copilotSearchButton {
+    padding: 12px 23px;
+    color: white !important;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(115deg, #9669f5, #4e8dff) !important;
+    box-shadow: 0 8px 22px rgba(115,105,245,.22);
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+#copilotSearchButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(115,105,245,.32);
+}
+
+.copilot-suggestions-title {
+    margin: 24px 0 12px;
+    color: #8f9eb8;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.copilot-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.copilot-suggestion {
+    padding: 9px 13px;
+    color: #d8d5f4;
+    border: 1px solid rgba(173,131,255,.20) !important;
+    border-radius: 999px;
+    background: rgba(173,131,255,.07) !important;
+    cursor: pointer;
+    transition: .22s ease;
+}
+
+.copilot-suggestion:hover {
+    color: #dffff7;
+    border-color: rgba(53,222,214,.48) !important;
+    background: rgba(53,222,214,.10) !important;
+    transform: translateY(-2px);
+}
+
+#copilotResult {
+    border: 1px solid rgba(53,222,214,.20);
+    border-radius: 17px;
+    background: rgba(53,222,214,.045);
+}
+
+#copilotResultTitle { color: #f0fffe; }
+#copilotResultDescription { color: #a8bec9; }
+
+#copilotResultLink {
+    color: #7ef5e9;
+    border-color: rgba(53,222,214,.28);
+}
+
+.copilot-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    color: #7f8da5;
+    font-size: 11px;
+}
+
+/* ---------- 05. Banner slider ---------- */
+
+.banner-slider {
+    width: min(1180px, 92%);
+    margin: 0 auto 65px;
+    border: 1px solid rgba(53,222,214,.20) !important;
+    border-radius: 24px !important;
+    background:
+        radial-gradient(ellipse at 0% 50%, rgba(53,222,214,.12), transparent 42%),
+        radial-gradient(ellipse at 100% 50%, rgba(87,149,255,.14), transparent 42%),
+        linear-gradient(120deg, #0c1727, #11152a) !important;
+    box-shadow: 0 22px 60px rgba(0,0,0,.28);
+}
+
+.banner-slider .banner-btn {
+    color: #b7fff8 !important;
+    background: rgba(53,222,214,.08) !important;
+    border: 1px solid rgba(53,222,214,.26) !important;
+    transition: .2s ease;
+}
+
+.banner-slider .banner-btn:hover {
+    color: #07151a !important;
+    background: var(--x62-cyan) !important;
+    box-shadow: 0 0 24px rgba(53,222,214,.22);
+}
+
+.banner-slider #banner-title,
+.banner-content h2 {
+    color: #f4f7ff;
+}
+
+.banner-slider #banner-text,
+.banner-content p {
+    color: #aab8cc;
+}
+
+.banner-slider #banner-link,
+.banner-content a {
+    color: var(--x62-cyan);
+}
+
+/* ---------- 06. Status and notices ---------- */
+
+#statusBanner,
+.status-banner {
+    border: 1px solid rgba(255,195,107,.25) !important;
+    border-radius: 17px;
+    background: linear-gradient(110deg, rgba(52,37,17,.88), rgba(15,22,34,.95)) !important;
+    box-shadow: 0 14px 38px rgba(0,0,0,.24);
+}
+
+#updateBanner,
+.update-banner {
+    color: #ffe6bc;
+    border-color: rgba(255,195,107,.28) !important;
+    background: linear-gradient(100deg, rgba(54,37,15,.96), rgba(20,21,29,.97)) !important;
+}
+
+#updateBanner button {
+    cursor: pointer;
+}
+
+#installBanner {
+    border: 1px solid rgba(53,222,214,.23) !important;
+    background: linear-gradient(110deg, rgba(8,39,43,.96), rgba(11,20,34,.97)) !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,.28);
+}
+
+#installBtn {
+    color: #061719 !important;
+    background: linear-gradient(110deg, #35ded6, #5795ff) !important;
+}
+
+/* ---------- 07. Main content and search ---------- */
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto 70px;
+}
+
+.container > h1 {
+    color: #f5f7ff;
+    font-size: clamp(29px, 4vw, 43px);
+    font-weight: 950;
+    letter-spacing: -.5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container > .subtitle {
+    color: #9eacc1;
+    text-align: center;
+    line-height: 1.9;
+    margin-bottom: 28px;
+}
+
+#search {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 20px;
+    color: #f3f6ff !important;
+    background: rgba(12,20,34,.88) !important;
+    border: 1px solid rgba(87,149,255,.24) !important;
+    border-radius: 15px !important;
+    outline: 0;
+    box-shadow: 0 12px 32px rgba(0,0,0,.17);
+    transition: border-color .22s ease, box-shadow .22s ease;
+}
+
+#search:focus {
+    border-color: rgba(53,222,214,.65) !important;
+    box-shadow: 0 0 0 4px rgba(53,222,214,.07), 0 14px 35px rgba(0,0,0,.2);
+}
+
+#search::placeholder { color: #7889a3; }
+
+/* ---------- 08. Comment area ---------- */
+
+.comment-box {
+    margin-top: 30px;
+    padding: clamp(20px, 3vw, 30px);
+    border: 1px solid rgba(67,245,154,.17) !important;
+    border-radius: 23px !important;
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(67,245,154,.09), transparent 45%),
+        linear-gradient(145deg, rgba(16,29,36,.94), rgba(10,16,28,.97)) !important;
+    box-shadow: 0 22px 55px rgba(0,0,0,.24);
+}
+
+.comment-header h2 {
+    color: #f2fff8;
+    font-weight: 900;
+}
+
+.comment-header p {
+    color: #9eafbd;
+}
+
+#commentInput {
+    width: 100%;
+    min-height: 130px;
+    color: #f2f6ff !important;
+    background: rgba(4,10,18,.65) !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 14px !important;
+    outline: 0;
+    padding: 16px;
+    resize: vertical;
+}
+
+#commentInput:focus {
+    border-color: rgba(67,245,154,.55) !important;
+    box-shadow: 0 0 0 4px rgba(67,245,154,.07);
+}
+
+#commentInput::placeholder { color: #74859c; }
+
+#commentCounter {
+    color: #8fa2b9;
+}
+
+.comment-footer button {
+    border: 0;
+    border-radius: 12px;
+    color: #04130b;
+    background: linear-gradient(110deg, #53f5a1, #35d9b0);
+    box-shadow: 0 9px 24px rgba(67,245,154,.16);
+    font-weight: 850;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.comment-footer button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 13px 30px rgba(67,245,154,.25);
+}
+
+/* ---------- 09. Project showcase ---------- */
+
+.xland-projects {
+    position: relative;
+    isolation: isolate;
+    width: min(1280px, 92%);
+    margin: 80px auto;
+    padding: clamp(24px, 4vw, 52px);
+    overflow: hidden;
+    border: 1px solid rgba(130,160,220,.16) !important;
+    border-radius: 30px !important;
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(87,149,255,.12), transparent 42%),
+        radial-gradient(ellipse at 100% 100%, rgba(67,245,154,.08), transparent 42%),
+        linear-gradient(145deg, #0d1727, #080e19) !important;
+    box-shadow: 0 28px 85px rgba(0,0,0,.36);
+}
+
+.xland-projects::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .25;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(180,205,255,.35) .7px, transparent .7px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(135deg, black, transparent 65%);
+}
+
+.projects-title {
+    margin: 0 0 12px !important;
+    color: #f4f7ff !important;
+    font-size: clamp(28px, 4vw, 42px) !important;
+    font-weight: 950 !important;
+    letter-spacing: -.8px !important;
+}
+
+.projects-subtitle {
+    color: #9eacc2 !important;
+    margin-bottom: 38px !important;
+    line-height: 1.9;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 20px !important;
+}
+
+.project-card {
+    --project-color: var(--x62-green);
+    --project-glow: rgba(67,245,154,.15);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 290px !important;
+    padding: clamp(22px, 3vw, 30px) !important;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 23px !important;
+    background:
+        linear-gradient(145deg, rgba(21,33,52,.96), rgba(8,15,27,.98)) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    top: -125px;
+    right: -105px;
+    border-radius: 50%;
+    background: var(--project-glow);
+    filter: blur(35px);
+    pointer-events: none;
+    transition: transform .4s ease;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, transparent, var(--project-color), transparent);
+    opacity: .8;
+}
+
+.project-card:nth-child(1) {
+    --project-color: #53f5a1;
+    --project-glow: rgba(67,245,154,.19);
+}
+
+.project-card:nth-child(2) {
+    --project-color: #b18aff;
+    --project-glow: rgba(173,131,255,.20);
+}
+
+.project-card:nth-child(3) {
+    --project-color: #35ded6;
+    --project-glow: rgba(53,222,214,.18);
+}
+
+.project-card:nth-child(4) {
+    --project-color: #5795ff;
+    --project-glow: rgba(87,149,255,.20);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: color-mix(in srgb, var(--project-color) 55%, transparent) !important;
+    box-shadow: 0 25px 55px rgba(0,0,0,.35), 0 0 30px var(--project-glow);
+}
+
+.project-card:hover::before { transform: scale(1.45); }
+
+.project-icon {
+    width: 62px !important;
+    height: 62px !important;
+    display: grid !important;
+    place-items: center;
+    margin-bottom: 18px !important;
+    border-radius: 18px !important;
+    color: var(--project-color);
+    font-size: 29px !important;
+    background: var(--project-glow) !important;
+    border: 1px solid color-mix(in srgb, var(--project-color) 42%, transparent) !important;
+    box-shadow: 0 10px 28px var(--project-glow);
+}
+
+.project-type {
+    color: var(--project-color) !important;
+    background: var(--project-glow) !important;
+    border: 1px solid color-mix(in srgb, var(--project-color) 32%, transparent) !important;
+    border-radius: 999px !important;
+    font-weight: 850;
+    letter-spacing: 1.2px;
+}
+
+.project-card h3 {
+    color: #f3f6ff !important;
+    font-size: 21px !important;
+    font-weight: 900;
+}
+
+.project-card p {
+    color: #a5b3c8 !important;
+    line-height: 1.95 !important;
+}
+
+.project-button {
+    margin-top: auto;
+    color: var(--project-color) !important;
+    background: var(--project-glow) !important;
+    border: 1px solid color-mix(in srgb, var(--project-color) 35%, transparent) !important;
+    border-radius: 11px !important;
+    font-weight: 800;
+    transition: .22s ease;
+}
+
+.project-button:hover {
+    color: #07101a !important;
+    background: var(--project-color) !important;
+    border-color: var(--project-color) !important;
+    transform: translateY(-2px);
+}
+
+/* ---------- 10. Floating AI button ---------- */
+
+.xland-ai-button {
+    border: 1px solid rgba(173,131,255,.40) !important;
+    background: linear-gradient(140deg, #9d70f4, #4f88ff) !important;
+    box-shadow: 0 12px 34px rgba(119,100,240,.32), 0 0 28px rgba(173,131,255,.18);
+}
+
+.xland-ai-button:hover {
+    box-shadow: 0 16px 42px rgba(119,100,240,.42), 0 0 35px rgba(173,131,255,.25);
+}
+
+/* ---------- 11. Loader ---------- */
+
+#loader {
+    background: #070a12 !important;
+}
+
+/* ---------- 12. Responsive ---------- */
+
+@media (max-width: 900px) {
+    .xland-home-hero {
+        min-height: 520px;
+        margin-top: 24px;
+        padding: 65px 6%;
+    }
+
+    .xland-home-hero::before {
+        width: 55vw;
+        right: -15%;
+        opacity: .65;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    }
+
+    .xland-ai-copilot,
+    .banner-slider {
+        width: 94%;
+    }
+}
+
+@media (max-width: 600px) {
+    body::before { background-size: 38px 38px; }
+
+    .xland-home-hero {
+        width: 94%;
+        min-height: auto;
+        margin: 18px auto 48px;
+        padding: 58px 22px 38px;
+        border-radius: 24px !important;
+    }
+
+    .xland-home-hero::before {
+        width: 85vw;
+        right: -34%;
+        opacity: .45;
+    }
+
+    .xland-home-hero::after {
+        right: -7%;
+        font-size: 270px;
+        opacity: .65;
+    }
+
+    .xland-home-hero .hero-content h1 {
+        font-size: clamp(39px, 12vw, 58px);
+        letter-spacing: -1.5px;
+    }
+
+    .xland-home-hero .hero-content > p {
+        font-size: 14px;
+        margin: 18px 0 24px;
+    }
+
+    .xland-home-hero .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .xland-home-hero .hero-btn {
+        width: 100%;
+    }
+
+    .xland-home-hero .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 26px;
+    }
+
+    .xland-home-hero .hero-stat {
+        min-width: 0;
+    }
+
+    .xland-ai-copilot {
+        width: 94%;
+        margin-bottom: 48px;
+        padding: 22px 17px;
+        border-radius: 22px !important;
+    }
+
+    .copilot-header {
+        align-items: flex-start;
+    }
+
+    .copilot-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+    }
+
+    .copilot-online {
+        padding: 7px 9px;
+        font-size: 9px;
+    }
+
+    .copilot-search-box {
+        flex-wrap: wrap;
+    }
+
+    #copilotSearch {
+        width: calc(100% - 55px);
+        flex: initial;
+    }
+
+    #copilotSearchButton {
+        width: 100%;
+    }
+
+    .copilot-footer {
+        flex-direction: column;
+    }
+
+    .banner-slider {
+        width: 94%;
+        margin-bottom: 48px;
+        border-radius: 19px !important;
+    }
+
+    .container {
+        width: 94%;
+        margin-bottom: 48px;
+    }
+
+    .xland-projects {
+        width: 94%;
+        margin: 52px auto;
+        padding: 24px 17px;
+        border-radius: 23px !important;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .project-card {
+        min-height: 0 !important;
+        padding: 23px !important;
+    }
+
+    .project-card:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* ---------- 13. Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* XLAND AI - Electric Blue Theme */
+.xland-ai-button {
+    background: linear-gradient(
+        135deg,
+        #1677ff,
+        #35c8ff
+    ) !important;
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.42),
+        0 0 25px rgba(40, 130, 255, 0.30) !important;
+}
+
+.xland-ai-button::after {
+    border-color: rgba(50, 145, 255, 0.45) !important;
+    box-shadow:
+        0 0 18px rgba(40, 130, 255, 0.22),
+        0 0 35px rgba(56, 189, 248, 0.18) !important;
+}
+
+.xland-ai-button:hover {
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.48),
+        0 0 30px rgba(40, 130, 255, 0.42),
+        0 0 60px rgba(56, 189, 248, 0.25) !important;
+}
+
+.xland-ai-tooltip {
+    border-color: rgba(50, 145, 255, 0.50) !important;
+}
+
+/* XLAND AI COPILOT - BLUE SEARCH BUTTON */
+
+#copilotSearchButton {
+    background: linear-gradient(
+        135deg,
+        #1677ff,
+        #35c8ff
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(100, 190, 255, 0.45) !important;
+
+    box-shadow:
+        0 8px 25px rgba(22, 119, 255, 0.25),
+        0 0 20px rgba(53, 200, 255, 0.12) !important;
+}
+
+#copilotSearchButton:hover {
+    background: linear-gradient(
+        135deg,
+        #0865ed,
+        #20b8f5
+    ) !important;
+
+    box-shadow:
+        0 12px 32px rgba(22, 119, 255, 0.40),
+        0 0 35px rgba(53, 200, 255, 0.25) !important;
+
+    transform: translateY(-3px);
+}
+
+/* XLAND COMMENTS - BLUE & NEON GREEN */
+
+#comments,
+.comment-section {
+    border-color: rgba(65, 145, 255, 0.25);
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.20),
+        0 0 25px rgba(40, 130, 255, 0.07);
+}
+
+/* Comment Input */
+#commentInput,
+#commentText,
+.comment-input,
+.comment-section textarea {
+    border: 1px solid rgba(70, 145, 255, 0.30) !important;
+    background: rgba(12, 24, 43, 0.85) !important;
+    color: #eef5ff !important;
+}
+
+#commentInput:focus,
+#commentText:focus,
+.comment-input:focus,
+.comment-section textarea:focus {
+    border-color: #398dff !important;
+    box-shadow: 0 0 18px rgba(40, 130, 255, 0.22) !important;
+    outline: none;
+}
+
+/* Send Comment Button */
+.comment-section button,
+#comments button,
+button[onclick*="addComment"] {
+    background: linear-gradient(
+        120deg,
+        #43e99a,
+        #258dff,
+        #35c8ff
+    ) !important;
+
+    color: #061321 !important;
+    border: 1px solid rgba(120, 190, 255, 0.35) !important;
+
+    box-shadow:
+        0 8px 25px rgba(37, 141, 255, 0.20),
+        0 0 20px rgba(67, 233, 154, 0.12) !important;
+
+    transition: all 0.25s ease;
+}
+
+.comment-section button:hover,
+#comments button:hover,
+button[onclick*="addComment"]:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 32px rgba(37, 141, 255, 0.32),
+        0 0 28px rgba(67, 233, 154, 0.20) !important;
+}

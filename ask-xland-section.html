@@ -1,0 +1,63 @@
+<!-- =========================================
+     ASK XLAND — VISITOR Q&A ASSISTANT
+     Place AFTER XLAND AI COPILOT and BEFORE BANNER SLIDER.
+========================================= -->
+<section class="ask-xland" id="askXland" aria-labelledby="askXlandTitle">
+    <div class="ask-xland-inner">
+
+        <div class="ask-xland-topline">
+            <span class="ask-xland-kicker"><span class="ask-xland-kicker-dot"></span> XLAND QUESTIONS</span>
+            <span class="ask-xland-version">ASK · 01</span>
+        </div>
+
+        <div class="ask-xland-heading">
+            <div class="ask-xland-heading-icon" aria-hidden="true">✦</div>
+            <div>
+                <h2 id="askXlandTitle">ASK <span>XLAND</span></h2>
+                <p>سؤالت را درباره XLAND بپرس؛ ما راهنمایی‌ات می‌کنیم.</p>
+            </div>
+        </div>
+
+        <form class="ask-xland-form" id="askXlandForm">
+            <label class="ask-xland-sr-only" for="askXlandInput">سؤال خود را درباره XLAND بنویسید</label>
+            <span class="ask-xland-search-icon" aria-hidden="true">?</span>
+            <input
+                id="askXlandInput"
+                type="text"
+                maxlength="240"
+                autocomplete="off"
+                placeholder="مثلاً: XLAND چه پروژه‌هایی دارد؟"
+            >
+            <button type="submit" id="askXlandSubmit">
+                <span>ارسال سؤال</span>
+                <span aria-hidden="true">↗</span>
+            </button>
+        </form>
+
+        <div class="ask-xland-prompts">
+            <div class="ask-xland-prompts-label">سؤال‌های پیشنهادی</div>
+            <div class="ask-xland-prompt-list">
+                <button type="button" class="ask-xland-prompt" data-ask-query="XLAND چیست؟">💡 XLAND چیست؟</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="چه بازی‌هایی در XLAND وجود دارد؟">🎮 بازی‌های XLAND</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="XLAND WiFi Manager چه کاری انجام می‌دهد؟">📶 WiFi Manager</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="چطور با پشتیبانی XLAND ارتباط بگیرم؟">🛠️ پشتیبانی</button>
+            </div>
+        </div>
+
+        <div class="ask-xland-result-area" id="askXlandResultArea" aria-live="polite" aria-atomic="false">
+            <div class="ask-xland-empty" id="askXlandEmpty">
+                <span class="ask-xland-empty-mark" aria-hidden="true">✧</span>
+                <div>
+                    <strong>چه سؤالی داری؟</strong>
+                    <p>درباره پروژه‌ها، بازی‌ها و خدمات XLAND از ما بپرس.</p>
+                </div>
+            </div>
+            <div class="ask-xland-results" id="askXlandResults" hidden></div>
+        </div>
+
+        <div class="ask-xland-footer">
+            <span><span class="ask-xland-footer-dot"></span> پاسخ‌گوی پرسش‌های XLAND</span>
+            <span>پاسخ‌ها بر اساس اطلاعات ثبت‌شده</span>
+        </div>
+    </div>
+</section>

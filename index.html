@@ -3,9 +3,7 @@
 <html lang="fa">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Xland Hub</title>
@@ -19,883 +17,943 @@
     <link rel="stylesheet" href="xland-ai-button.css">
     <link rel="stylesheet" href="xland-comments.css">
     <link rel="stylesheet" href="xland-mobile.css">
-    <!-- 🤖 XLAND AI COPILOT -->
+    <link rel="stylesheet" href="home-v62.css">
+    <link rel="stylesheet" href="ask-xland.css">
+
+    <!-- XLAND AI COPILOT -->
     <link rel="stylesheet" href="xland-ai-copilot.css">
 
     <!-- XLAND HERO -->
     <link rel="stylesheet" href="hero.css">
-
     <link rel="stylesheet" href="home-enhancement.css">
 
     <link rel="manifest" href="manifest.json">
-
-    <meta name="theme-color" content="#2563eb">
-
+    <meta name="theme-color" content="#07130d">
 
     <!-- =========================================
-            XLAND HUB PROJECTS STYLE
+         XLAND HUB PROJECTS STYLE
     ========================================= -->
 
     <style>
-
         .xland-projects {
-
             width: min(1200px, 92%);
-
             margin: 70px auto;
-
             padding: 40px;
-
             border-radius: 28px;
-
             background:
                 linear-gradient(
                     145deg,
                     rgba(255,255,255,0.07),
                     rgba(255,255,255,0.025)
                 );
-
-            border:
-                1px solid rgba(255,255,255,0.10);
-
-            box-shadow:
-                0 20px 70px rgba(0,0,0,0.30);
-
-            backdrop-filter:
-                blur(18px);
-
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 20px 70px rgba(0,0,0,0.30);
+            backdrop-filter: blur(18px);
         }
-
 
         .projects-title {
-
             text-align: center;
-
             margin-bottom: 10px;
-
             font-size: 32px;
-
             color: #ffffff;
-
             letter-spacing: 1px;
-
         }
-
 
         .projects-subtitle {
-
             text-align: center;
-
             margin-bottom: 35px;
-
             color: #94a3b8;
-
             font-size: 15px;
-
         }
-
 
         .projects-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 22px;
-
         }
 
-
         .project-card {
-
             position: relative;
-
             min-height: 250px;
-
             padding: 26px;
-
             border-radius: 22px;
-
             background:
                 linear-gradient(
                     145deg,
                     rgba(15,23,42,0.95),
                     rgba(15,23,42,0.60)
                 );
-
-            border:
-                1px solid rgba(255,255,255,0.08);
-
+            border: 1px solid rgba(255,255,255,0.08);
             overflow: hidden;
-
             transition:
                 transform .35s ease,
                 border-color .35s ease,
                 box-shadow .35s ease;
-
         }
-
 
         .project-card::before {
-
             content: "";
-
             position: absolute;
-
             width: 140px;
-
             height: 140px;
-
             top: -70px;
-
             right: -70px;
-
             border-radius: 50%;
-
-            background:
-                rgba(56,189,248,0.18);
-
-            filter:
-                blur(30px);
-
+            background: rgba(56,189,248,0.18);
+            filter: blur(30px);
             transition: .35s;
-
         }
-
 
         .project-card:hover {
-
-            transform:
-                translateY(-8px);
-
-            border-color:
-                rgba(56,189,248,0.45);
-
-            box-shadow:
-                0 18px 50px rgba(0,0,0,0.40);
-
+            transform: translateY(-8px);
+            border-color: rgba(56,189,248,0.45);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.40);
         }
-
 
         .project-card:hover::before {
-
-            transform:
-                scale(1.5);
-
-            background:
-                rgba(99,102,241,0.25);
-
+            transform: scale(1.5);
+            background: rgba(99,102,241,0.25);
         }
-
 
         .project-icon {
-
             width: 65px;
-
             height: 65px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             margin-bottom: 18px;
-
             border-radius: 18px;
-
             font-size: 32px;
-
-            background:
-                rgba(56,189,248,0.08);
-
-            border:
-                1px solid rgba(56,189,248,0.18);
-
+            background: rgba(56,189,248,0.08);
+            border: 1px solid rgba(56,189,248,0.18);
         }
-
 
         .project-card h3 {
-
             margin: 0 0 10px;
-
             font-size: 21px;
-
             color: #ffffff;
-
         }
-
 
         .project-card p {
-
             margin: 0 0 20px;
-
             color: #94a3b8;
-
             line-height: 1.8;
-
             font-size: 14px;
-
         }
-
 
         .project-type {
-
             display: inline-block;
-
-            padding:
-                5px 10px;
-
+            padding: 5px 10px;
             margin-bottom: 15px;
-
             border-radius: 20px;
-
             font-size: 11px;
-
             color: #38bdf8;
-
-            background:
-                rgba(56,189,248,0.08);
-
-            border:
-                1px solid rgba(56,189,248,0.15);
-
+            background: rgba(56,189,248,0.08);
+            border: 1px solid rgba(56,189,248,0.15);
         }
-
 
         .project-button {
-
             display: inline-block;
-
-            padding:
-                9px 15px;
-
+            padding: 9px 15px;
             border-radius: 10px;
-
             text-decoration: none;
-
             color: #38bdf8;
-
-            background:
-                rgba(56,189,248,0.08);
-
-            border:
-                1px solid rgba(56,189,248,0.15);
-
+            background: rgba(56,189,248,0.08);
+            border: 1px solid rgba(56,189,248,0.15);
             transition: .3s;
-
             font-size: 13px;
-
         }
-
 
         .project-button:hover {
-
-            background:
-                #38bdf8;
-
-            color:
-                #020617;
-
-            transform:
-                translateX(-3px);
-
+            background: #38bdf8;
+            color: #020617;
+            transform: translateX(-3px);
         }
-
 
         @media (max-width: 950px) {
-
             .projects-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
+                grid-template-columns: repeat(2, 1fr);
             }
-
         }
-
 
         @media (max-width: 600px) {
-
             .xland-projects {
-
                 width: 94%;
-
                 padding: 22px;
-
                 margin-top: 45px;
-
             }
-
 
             .projects-title {
-
                 font-size: 26px;
-
             }
-
 
             .projects-grid {
-
-                grid-template-columns:
-                    1fr;
-
+                grid-template-columns: 1fr;
             }
-
 
             .project-card {
-
                 min-height: auto;
-
             }
-
         }
 
+        
+/* =========================================
+   XLAND HUB 6.2
+   PREMIUM MULTI-COLOR DESIGN SYSTEM
+   Visual upgrade only
+========================================= */
+
+:root {
+    --xland-green: #39ff88;
+    --xland-blue: #3285ff;
+    --xland-purple: #9b6cff;
+    --xland-cyan: #16d9d2;
+    --xland-gold: #ffb547;
+
+    --xland-bg: #080d18;
+    --xland-card: #101a2a;
+    --xland-text: #f4f7ff;
+    --xland-muted: #9aa9bd;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.xland-home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 15%,
+            rgba(50,133,255,0.19),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 85% 20%,
+            rgba(155,108,255,0.18),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(57,255,136,0.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #080d18,
+            #0c1424 55%,
+            #080d18
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 25px 90px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.xland-home-hero .hero-grid {
+    opacity: 0.20;
+
+    background-image:
+        linear-gradient(rgba(50,133,255,0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(50,133,255,0.13) 1px, transparent 1px);
+
+    background-size: 48px 48px;
+}
+
+.xland-home-hero .hero-glow {
+    pointer-events: none;
+    filter: blur(90px);
+}
+
+.xland-home-hero .hero-glow-1 {
+    background: rgba(50,133,255,0.22);
+}
+
+.xland-home-hero .hero-glow-2 {
+    background: rgba(155,108,255,0.20);
+}
+
+.xland-home-hero .hero-badge {
+    color: var(--xland-green);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(57,255,136,0.12),
+            rgba(50,133,255,0.10)
+        );
+
+    border: 1px solid rgba(57,255,136,0.35);
+
+    box-shadow:
+        0 0 25px rgba(57,255,136,0.10),
+        inset 0 0 15px rgba(50,133,255,0.06);
+}
+
+.xland-home-hero .hero-content h1 span {
+    background:
+        linear-gradient(
+            100deg,
+            #39ff88,
+            #16d9d2,
+            #3285ff,
+            #9b6cff
+        );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 0 18px rgba(50,133,255,0.22));
+
+    animation: xlandColorFlow 8s linear infinite;
+}
+
+@keyframes xlandColorFlow {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.xland-home-hero .hero-content > p {
+    color: #b4c2d5;
+}
+
+.xland-home-hero .hero-btn.primary {
+    color: #041009;
+
+    background:
+        linear-gradient(
+            120deg,
+            #39ff88,
+            #16d9d2
+        );
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 8px 28px rgba(57,255,136,0.20),
+        0 0 20px rgba(22,217,210,0.10);
+}
+
+.xland-home-hero .hero-btn.primary:hover {
+    box-shadow:
+        0 12px 38px rgba(57,255,136,0.30),
+        0 0 28px rgba(22,217,210,0.22);
+
+    transform: translateY(-3px);
+}
+
+.xland-home-hero .hero-btn.secondary {
+    color: #dceaff;
+
+    background: rgba(50,133,255,0.09);
+
+    border: 1px solid rgba(50,133,255,0.38);
+}
+
+.xland-home-hero .hero-btn.secondary:hover {
+    color: white;
+
+    background: rgba(50,133,255,0.19);
+
+    border-color: var(--xland-purple);
+
+    box-shadow: 0 0 25px rgba(155,108,255,0.17);
+}
+
+.xland-home-hero .hero-stat {
+    background: rgba(12,22,39,0.55);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    backdrop-filter: blur(14px);
+}
+
+.xland-home-hero .hero-stat:nth-child(1) {
+    border-color: rgba(57,255,136,0.23);
+}
+
+.xland-home-hero .hero-stat:nth-child(2) {
+    border-color: rgba(50,133,255,0.25);
+}
+
+.xland-home-hero .hero-stat:nth-child(3) {
+    border-color: rgba(155,108,255,0.25);
+}
+
+.xland-home-hero .hero-x {
+    color: rgba(50,133,255,0.055);
+}
+
+/* =========================================
+   AI COPILOT
+========================================= */
+
+.xland-ai-copilot {
+    position: relative;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 0%,
+            rgba(155,108,255,0.14),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 90% 100%,
+            rgba(22,217,210,0.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #111126,
+            #0b1423
+        );
+
+    border: 1px solid rgba(155,108,255,0.22);
+
+    box-shadow:
+        0 20px 65px rgba(0,0,0,0.32),
+        0 0 35px rgba(155,108,255,0.05);
+}
+
+.xland-ai-copilot .copilot-icon {
+    box-shadow: 0 0 24px rgba(155,108,255,0.20);
+}
+
+.xland-ai-copilot .copilot-online-dot {
+    box-shadow: 0 0 12px var(--xland-green);
+}
+
+.xland-ai-copilot .copilot-search-box {
+    border-color: rgba(50,133,255,0.30);
+    box-shadow: 0 0 22px rgba(50,133,255,0.07);
+}
+
+.xland-ai-copilot .copilot-search-box:focus-within {
+    border-color: var(--xland-purple);
+    box-shadow:
+        0 0 0 3px rgba(155,108,255,0.10),
+        0 0 28px rgba(155,108,255,0.12);
+}
+
+.xland-ai-copilot .copilot-suggestion {
+    border-color: rgba(155,108,255,0.20);
+    background: rgba(155,108,255,0.07);
+    transition: .3s ease;
+}
+
+.xland-ai-copilot .copilot-suggestion:hover {
+    border-color: var(--xland-cyan);
+    background: rgba(22,217,210,0.12);
+    box-shadow: 0 0 18px rgba(22,217,210,0.10);
+    transform: translateY(-3px);
+}
+
+.xland-ai-copilot .copilot-open {
+    border-color: rgba(155,108,255,0.35);
+}
+
+/* =========================================
+   PROJECT CARDS
+========================================= */
+
+.xland-projects {
+    position: relative;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            ellipse at top left,
+            rgba(50,133,255,0.09),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at bottom right,
+            rgba(57,255,136,0.07),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #0d1727,
+            #080e19
+        );
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 22px 75px rgba(0,0,0,0.38),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.xland-projects .projects-title {
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #39ff88,
+            #3285ff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.xland-projects .projects-subtitle {
+    color: #a5b5ca;
+}
+
+.xland-projects .project-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,32,52,0.97),
+            rgba(8,16,29,0.96)
+        );
+
+    border-color: rgba(255,255,255,0.09);
+}
+
+/* GAME - GREEN */
+
+.xland-projects .project-card:nth-child(1) {
+    --project-color: #39ff88;
+    --project-glow: rgba(57,255,136,0.16);
+}
+
+/* HORROR GAME - PURPLE */
+
+.xland-projects .project-card:nth-child(2) {
+    --project-color: #b18aff;
+    --project-glow: rgba(155,108,255,0.19);
+}
+
+/* API - CYAN */
+
+.xland-projects .project-card:nth-child(3) {
+    --project-color: #16d9d2;
+    --project-glow: rgba(22,217,210,0.17);
+}
+
+/* DEVELOPER - BLUE */
+
+.xland-projects .project-card:nth-child(4) {
+    --project-color: #5b9cff;
+    --project-glow: rgba(50,133,255,0.19);
+}
+
+.xland-projects .project-card::before {
+    background: var(--project-glow, rgba(50,133,255,0.16));
+}
+
+.xland-projects .project-card:hover {
+    border-color: var(--project-color, #3285ff);
+
+    box-shadow:
+        0 18px 48px rgba(0,0,0,0.42),
+        0 0 25px var(--project-glow, rgba(50,133,255,0.10));
+}
+
+.xland-projects .project-card:hover::before {
+    background: var(--project-glow);
+    transform: scale(1.5);
+}
+
+.xland-projects .project-icon {
+    background: var(--project-glow);
+    border-color: var(--project-color);
+    box-shadow: 0 0 20px var(--project-glow);
+}
+
+.xland-projects .project-type {
+    color: var(--project-color);
+    background: var(--project-glow);
+    border-color: var(--project-color);
+}
+
+.xland-projects .project-button {
+    color: var(--project-color);
+    background: var(--project-glow);
+    border-color: var(--project-color);
+}
+
+.xland-projects .project-button:hover {
+    color: #080d18;
+    background: var(--project-color);
+    border-color: var(--project-color);
+}
+
+/* =========================================
+   MAIN SEARCH
+========================================= */
+
+.container #search {
+    border: 1px solid rgba(50,133,255,0.27);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(50,133,255,0.07),
+            rgba(155,108,255,0.06)
+        );
+
+    box-shadow: 0 0 22px rgba(50,133,255,0.05);
+}
+
+.container #search:focus {
+    border-color: var(--xland-cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(22,217,210,0.10),
+        0 0 25px rgba(22,217,210,0.10);
+}
+
+/* =========================================
+   COMMENT BOX
+========================================= */
+
+.container .comment-box {
+    border-color: rgba(57,255,136,0.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,34,40,0.92),
+            rgba(10,17,29,0.95)
+        );
+
+    box-shadow: 0 18px 55px rgba(0,0,0,0.25);
+}
+
+.container .comment-box textarea:focus {
+    border-color: var(--xland-green);
+    box-shadow: 0 0 20px rgba(57,255,136,0.10);
+}
+
+/* =========================================
+   BANNER SLIDER
+========================================= */
+
+.banner-slider {
+    border-color: rgba(22,217,210,0.23);
+
+    background:
+        radial-gradient(
+            ellipse at left,
+            rgba(22,217,210,0.12),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at right,
+            rgba(50,133,255,0.13),
+            transparent 45%
+        ),
+        linear-gradient(
+            120deg,
+            #0c1727,
+            #11182d
+        );
+
+    box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+}
+
+.banner-slider .banner-btn {
+    border-color: rgba(22,217,210,0.30);
+}
+
+.banner-slider .banner-btn:hover {
+    background: var(--xland-cyan);
+    color: #071018;
+    box-shadow: 0 0 20px rgba(22,217,210,0.25);
+}
+
+/* =========================================
+   STATUS BANNER
+========================================= */
+
+.status-banner {
+    border-color: rgba(255,181,71,0.28);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.25),
+        0 0 22px rgba(255,181,71,0.06);
+}
+
+/* =========================================
+   NAVBAR VISUAL DETAILS
+========================================= */
+
+.xland-navbar {
+    backdrop-filter: blur(18px);
+}
+
+.xland-navbar-brand-title {
+    text-shadow: 0 0 16px rgba(57,255,136,0.15);
+}
+
+.xland-navbar-ai {
+    box-shadow: 0 0 20px rgba(155,108,255,0.10);
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .xland-home-hero *,
+    .xland-projects *,
+    .xland-ai-copilot * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
     </style>
-
 </head>
-
 
 <body>
 
-
     <!-- =========================================
-            LOADER
+         LOADER
     ========================================= -->
 
     <div id="loader">
-
         <div class="loader"></div>
-
     </div>
 
-
     <!-- =========================================
-            🔔 UPDATE BANNER
+         UPDATE BANNER
     ========================================= -->
 
     <div id="updateBanner" class="update-banner">
-
         🎉 سایت Xland hub آپدیت شد!
-
         برای مشاهده تغییرات به بخش News Xland مراجعه کنید.
 
         <button onclick="closeBanner()">
-
-            ✖
-
-        </button>
-
+        ✖
+       </button>
     </div>
 
-
     <!-- =========================================
-            INSTALL BANNER
+         INSTALL BANNER
     ========================================= -->
 
     <div id="installBanner">
-
         <div class="install-info">
-
-            <img
-                src="xland-icon.png"
-                class="install-icon"
-                alt="Xland"
-            >
+            <img src="xland-icon.png" class="install-icon" alt="Xland">
 
             <div>
-
                 <div class="install-title">
-
                     Install Xland hub
-
                 </div>
 
                 <div class="install-sub">
-
                     Install the app for faster and easier access.
-
                 </div>
-
             </div>
-
         </div>
 
-
         <div class="install-buttons">
-
             <button id="installBtn">
-
                 Install
-
             </button>
 
             <button id="closeInstall">
-
                 ✕
-
             </button>
-
         </div>
-
     </div>
 
-
     <!-- =========================================
-            🔥 PREMIUM XLAND NAVBAR
+         PREMIUM XLAND NAVBAR
     ========================================= -->
 
     <nav class="xland-navbar" id="navbar">
 
         <!-- BRAND -->
 
-<a
-    href="index.html"
-    class="xland-navbar-brand"
->
+        <a href="index.html" class="xland-navbar-brand">
+            <span class="xland-navbar-logo">
+                <img src="xland-icon.png" alt="Xland Hub">
+            </span>
 
-    <span class="xland-navbar-logo">
+            <span class="xland-navbar-brand-text">
+                <span class="xland-navbar-brand-title">
+                    XLAND HUB
+                </span>
 
-        <img src="xland-icon.png" alt="Xland Hub">
-
-    </span>
-
-    <span class="xland-navbar-brand-text">
-
-        <span class="xland-navbar-brand-title">
-
-            XLAND HUB
-
-        </span>
-
-        <span class="xland-navbar-brand-sub">
-
-            DIGITAL ECOSYSTEM
-
-        </span>
-
-    </span>
-
-</a>
-
+                <span class="xland-navbar-brand-sub">
+                    DIGITAL ECOSYSTEM
+                </span>
+            </span>
+        </a>
 
         <!-- MAIN MENU -->
 
         <div class="xland-navbar-menu">
 
-
-            <!-- 01 -->
-
-            <a
-                href="rules.html"
-                class="xland-nav-link"
-            >
-
+            <a href="rules.html" class="xland-nav-link">
                 <span>📜</span>
-
                 <span>قوانین</span>
-
             </a>
 
-
-            <!-- 02 -->
-
-            <a
-                href="news.html"
-                class="xland-nav-link"
-            >
-
+            <a href="news.html" class="xland-nav-link">
                 <span>📰</span>
-
                 <span>News</span>
-
             </a>
 
-
-            <!-- 03 -->
-
-            <a
-                href="xland-map.html"
-                class="xland-nav-link"
-            >
-
+            <a href="xland-map.html" class="xland-nav-link">
                 <span>🗺️</span>
-
                 <span> Xland Map</span>
-
             </a>
 
-
-            <!-- 04 -->
-
-            <a
-                href="xland.html"
-                class="xland-nav-link"
-            >
-
+            <a href="xland.html" class="xland-nav-link">
                 <span>🎮</span>
-
                 <span>Xland Game</span>
-
             </a>
 
-
-            <!-- 05 -->
-
-            <a
-                href="endless.html"
-                class="xland-nav-link"
-            >
-
+            <a href="endless.html" class="xland-nav-link">
                 <span>👻</span>
-
                 <span>Endless Road</span>
-
             </a>
 
-
-            <!-- 06 -->
-
-            <a
-                href="about.html"
-                class="xland-nav-link"
-            >
-
+            <a href="about.html" class="xland-nav-link">
                 <span>ℹ️</span>
-
                 <span>درباره ما</span>
-
             </a>
 
-             <!-- 07 -->
-
-            <a
-                href="xland-map-server.html"
-                class="xland-nav-link"
-            >
-
+            <a href="xland-map-server.html" class="xland-nav-link">
                 <span>🌍</span>
-
                 <span>xland server map</span>
-
             </a>
 
-               <!-- 08 -->
-
-            <a
-                href="xland-gamedock.htm"
-                class="xland-nav-link"
-            >
-
+            <a href="xland-gamedock.htm" class="xland-nav-link">
                 <span>🌍</span>
-
                 <span>XLAND NEXUS</span>
-
             </a>
 
-
-            <!-- 07 DEVELOPER -->
+            <!-- DEVELOPER -->
 
             <div class="xland-nav-dropdown">
 
-                <a
-                    href="xland-script.html"
-                    class="xland-nav-link xland-nav-dropdown-btn"
-                >
-
+                <a href="xland-script.html" class="xland-nav-link xland-nav-dropdown-btn">
                     <span>👨‍💻</span>
-
                     <span>Developer</span>
-
-                    <span class="xland-dropdown-arrow">
-
-                        ▼
-
-                    </span>
-
+                    <span class="xland-dropdown-arrow">▼</span>
                 </a>
-
 
                 <div class="xland-dropdown-panel">
 
-
                     <div class="xland-dropdown-header">
-
                         <div class="xland-dropdown-title">
-
                             ⚡ Xland Developer
-
                         </div>
 
                         <div class="xland-dropdown-subtitle">
-
                             Tools & Services
-
                         </div>
-
                     </div>
 
-
-                    <a
-                        href="xland-script.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            📜
-
-                        </span>
+                    <a href="xland-script.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">📜</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Xland Script
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                Xland programming language
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Xland Script</span>
+                            <span class="xland-dropdown-description">Xland programming language</span>
                         </span>
-
                     </a>
 
-
-                    <a
-                        href="api.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🌍
-
-                        </span>
+                    <a href="api.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🌍</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Xland API
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                API infrastructure
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Xland API</span>
+                            <span class="xland-dropdown-description">API infrastructure</span>
                         </span>
-
                     </a>
 
-
-                    <a
-                        href="xland-news.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            📰
-
-                        </span>
+                    <a href="xland-news.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">📰</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Xland News
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                Developer news
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Xland News</span>
+                            <span class="xland-dropdown-description">Developer news</span>
                         </span>
-
                     </a>
 
-
-                    <a
-                        href="videos.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🎬
-
-                        </span>
+                    <a href="videos.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🎬</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Xland Videos
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                Videos & tutorials
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Xland Videos</span>
+                            <span class="xland-dropdown-description">Videos & tutorials</span>
                         </span>
-
                     </a>
 
-
-                    <a
-                        href="support.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🛠️
-
-                        </span>
+                    <a href="support.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🛠️</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Xland Support
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                Help & support center
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Xland Support</span>
+                            <span class="xland-dropdown-description">Help & support center</span>
                         </span>
-
                     </a>
 
-
-                    <a
-                        href="open-world-game.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🌎
-
-                        </span>
+                    <a href="open-world-game.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🌎</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                Wild Horizon
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                Open world project
-
-                            </span>
-
+                            <span class="xland-dropdown-name">Wild Horizon</span>
+                            <span class="xland-dropdown-description">Open world project</span>
                         </span>
-
                     </a>
 
-                    <a
-                        href="xland-wifi.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🌎
-
-                        </span>
+                    <a href="xland-wifi.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🌎</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                xland wifi maneger
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                xland wifi maneger
-
-                            </span>
-
+                            <span class="xland-dropdown-name">xland wifi maneger</span>
+                            <span class="xland-dropdown-description">xland wifi maneger</span>
                         </span>
-
                     </a>
 
-                    <a
-                        href="downloads.html"
-                        class="xland-dropdown-item"
-                    >
-
-                        <span class="xland-dropdown-icon">
-
-                            🏪
-
-                        </span>
+                    <a href="downloads.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🏪</span>
 
                         <span class="xland-dropdown-info">
-
-                            <span class="xland-dropdown-name">
-
-                                xland shop downlaods
-
-                            </span>
-
-                            <span class="xland-dropdown-description">
-
-                                xland shop downlaods
-
-                            </span>
-
+                            <span class="xland-dropdown-name">xland shop downlaods</span>
+                            <span class="xland-dropdown-description">xland shop downlaods</span>
                         </span>
-
                     </a>
 
+                    <a href="XLANG.html" class="xland-dropdown-item">
+                        <span class="xland-dropdown-icon">🌎</span>
+
+                        <span class="xland-dropdown-info">
+                            <span class="xland-dropdown-name">XLANG developer code</span>
+                            <span class="xland-dropdown-description">xlang developer code studio</span>
+                        </span>
+                    </a>
 
                     <div class="xland-dropdown-footer">
-
-                        <a
-                            href="xland-script.html"
-                            class="xland-dropdown-viewall"
-                        >
-
+                        <a href="xland-script.html" class="xland-dropdown-viewall">
                             🚀 Open Developer Center →
-
                         </a>
-
-                        
-
                     </div>
 
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- XLAND AI -->
 
@@ -905,268 +963,69 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-
             <span class="xland-ai-dot"></span>
-
             🤖 XLAND AI
-
         </a>
-
 
         <!-- MOBILE BUTTON -->
 
-<button 
-    class="xland-mobile-btn" 
-    id="xlandMobileBtn" 
-    type="button" 
-    aria-label="Open menu"
-    onclick="toggleMenu()"
->
-
-    ☰
-
-</button>
+        <button
+            class="xland-mobile-btn"
+            id="xlandMobileBtn"
+            type="button"
+            aria-label="Open menu"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
 
     </nav>
 
+    <!-- MOBILE BACKDROP -->
 
-    <!-- =========================================
-            MOBILE BACKDROP
-    ========================================= -->
+    <div class="xland-mobile-backdrop" id="xlandMobileBackdrop"></div>
 
-    <div
-        class="xland-mobile-backdrop"
-        id="xlandMobileBackdrop"
-    ></div>
+    <!-- MOBILE DRAWER -->
 
-
-    <!-- =========================================
-            MOBILE DRAWER
-    ========================================= -->
-
-    <aside
-        class="xland-mobile-panel"
-        id="xlandMobilePanel"
-    >
+    <aside class="xland-mobile-panel" id="xlandMobilePanel">
 
         <div class="xland-mobile-header">
-
             <div class="xland-mobile-brand">
-
                 ✕ XLAND HUB
-
             </div>
 
-            <button
-                class="xland-mobile-close"
-                id="xlandMobileClose"
-                type="button"
-            >
-
+            <button class="xland-mobile-close" id="xlandMobileClose" type="button">
                 ✕
-
             </button>
-
         </div>
-
 
         <div class="xland-mobile-links">
 
-
-            <a
-                href="rules.html"
-                class="xland-mobile-link"
-            >
-
-                📜
-
-                قوانین Xland
-
-            </a>
-
-
-            <a
-                href="news.html"
-                class="xland-mobile-link"
-            >
-
-                📰
-
-                News Xland
-
-            </a>
-
-
-            <a
-                href="xland-map.html"
-                class="xland-mobile-link"
-            >
-
-                🗺️
-
-                دانلود Map
-
-            </a>
-
-
-            <a
-                href="xland.html"
-                class="xland-mobile-link"
-            >
-
-                🎮
-
-                Xland Game
-
-            </a>
-
-
-            <a
-                href="endless.html"
-                class="xland-mobile-link"
-            >
-
-                👻
-
-                Endless Road Horror 3D
-
-            </a>
-
-
-            <a
-                href="about.html"
-                class="xland-mobile-link"
-            >
-
-                ℹ️
-
-                درباره ما
-
-            </a>
-
-            
-
+            <a href="rules.html" class="xland-mobile-link">📜 قوانین Xland</a>
+            <a href="news.html" class="xland-mobile-link">📰 News Xland</a>
+            <a href="xland-map.html" class="xland-mobile-link">🗺️ دانلود Map</a>
+            <a href="xland.html" class="xland-mobile-link">🎮 Xland Game</a>
+            <a href="endless.html" class="xland-mobile-link">👻 Endless Road Horror 3D</a>
+            <a href="about.html" class="xland-mobile-link">ℹ️ درباره ما</a>
 
             <div class="xland-mobile-section">
-
                 DEVELOPER
-
             </div>
 
-
-            <a
-                href="xland-script.html"
-                class="xland-mobile-link"
-            >
-
-                📜
-
-                Xland Script
-
-            </a>
-
-
-            <a
-                href="api.html"
-                class="xland-mobile-link"
-            >
-
-                🌍
-
-                Xland API
-
-            </a>
-
-
-            <a
-                href="xland-news.html"
-                class="xland-mobile-link"
-            >
-
-                📰
-
-                Xland News
-
-            </a>
-
-
-            <a
-                href="videos.html"
-                class="xland-mobile-link"
-            >
-
-                🎬
-
-                Xland Videos
-
-            </a>
-
-
-            <a
-                href="support.html"
-                class="xland-mobile-link"
-            >
-
-                🛠️
-
-                Xland Support
-
-            </a>
-
-
-            <a
-                href="open-world-game.html"
-                class="xland-mobile-link"
-            >
-
-                🌎
-
-                Wild Horizon Game
-
-            </a>
-
-            <a
-                href="xland-wifi.html"
-                class="xland-mobile-link"
-            >
-
-                🌎
-
-                xland wifi maneger
-
-            </a>
-
-            <a
-                href="downloads.html"
-                class="xland-mobile-link"
-            >
-
-                🏪
-
-                xland downlaods
-
-            </a>
-
-              <a
-                href="xland-map-server.html"
-                class="xland-mobile-link"
-            >
-
-                🌎
-
-                xland server
-
-            </a>
-
-
-
+            <a href="xland-script.html" class="xland-mobile-link">📜 Xland Script</a>
+            <a href="api.html" class="xland-mobile-link">🌍 Xland API</a>
+            <a href="xland-news.html" class="xland-mobile-link">📰 Xland News</a>
+            <a href="videos.html" class="xland-mobile-link">🎬 Xland Videos</a>
+            <a href="support.html" class="xland-mobile-link">🛠️ Xland Support</a>
+            <a href="open-world-game.html" class="xland-mobile-link">🌎 Wild Horizon Game</a>
+            <a href="xland-wifi.html" class="xland-mobile-link">🌎 xland wifi maneger</a>
+            <a href="downloads.html" class="xland-mobile-link">🏪 xland downlaods</a>
+            <a href="xland-map-server.html" class="xland-mobile-link">🌎 xland server</a>
+            <a href="XLANG.html" class="xland-mobile-link">🌎 XLANG developer code</a>
 
             <div class="xland-mobile-section">
-
                 AI
-
             </div>
-
 
             <a
                 href="https://xland-ai-web.onrender.com/"
@@ -1174,27 +1033,15 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
-                🤖
-
-                XLAND AI
-
+                🤖 XLAND AI
             </a>
-        
 
         </div>
-
-        
-
     </aside>
 
-
-    <!-- =========================================
-            FLOATING XLAND AI BUTTON
-    ========================================= -->
+    <!-- FLOATING XLAND AI BUTTON -->
 
     <div class="xland-ai-button-wrapper">
-
         <a
             href="https://xland-ai-web.onrender.com/"
             class="xland-ai-button"
@@ -1202,204 +1049,105 @@
             rel="noopener noreferrer"
             aria-label="Open Xland AI"
         >
-
-            <span class="xland-ai-icon">
-
-                🤖
-
-            </span>
-
+            <span class="xland-ai-icon">🤖</span>
         </a>
 
-
         <div class="xland-ai-tooltip">
-
             XLAND AI
-
         </div>
-
     </div>
 
+    <!-- STATUS BANNER -->
 
-    <!-- =========================================
-            STATUS BANNER
-    ========================================= -->
-
-    <div
-        id="statusBanner"
-        class="status-banner"
-    >
+    <div id="statusBanner" class="status-banner">
 
         <div class="status-left">
-
-            <div
-                id="statusIcon"
-                class="status-icon"
-            >
-
-                🟡
-
-            </div>
-
+            <div id="statusIcon" class="status-icon">🟡</div>
 
             <div>
-
                 <h3 id="statusTitle"></h3>
-
                 <p id="statusMessage"></p>
-
                 <small id="statusUpdated"></small>
-
             </div>
-
         </div>
-
 
         <div class="status-right">
-
-            <a
-                id="statusButton"
-                href="#"
-            >
-
+            <a id="statusButton" href="#">
                 Learn More
-
             </a>
 
-
             <button id="closeStatus">
-
                 ✕
-
             </button>
-
         </div>
-
     </div>
 
-
     <!-- =========================================
-            XLAND 6.0 HERO
+         XLAND 6.2 HERO
     ========================================= -->
 
     <section class="xland-home-hero">
 
         <div class="hero-glow hero-glow-1"></div>
-
         <div class="hero-glow hero-glow-2"></div>
-
         <div class="hero-grid"></div>
-
 
         <div class="hero-content">
 
             <div class="hero-badge">
-
-                ✦ XLAND HUB 6.1
-
+                ✦ XLAND HUB 6.2
             </div>
 
-
             <h1>
-
                 WELCOME TO
-
                 <span>XLAND</span>
-
             </h1>
 
-
             <p>
-
                 Your gateway to Xland games,
                 projects, technology and more.
-
             </p>
-
 
             <div class="hero-buttons">
 
-                <a
-                    href="xland.html"
-                    class="hero-btn primary"
-                >
-
+                <a href="xland.html" class="hero-btn primary">
                     🎮 Explore Xland Game
-
                 </a>
 
-
-                <a
-                    href="support.html"
-                    class="hero-btn secondary"
-                >
-
+                <a href="support.html" class="hero-btn secondary">
                     🛠️ Xland Support
-
                 </a>
-                
 
             </div>
-
 
             <div class="hero-stats">
 
                 <div class="hero-stat">
-
                     <strong>🎮</strong>
-
-                    <span>
-
-                        Xland Games
-
-                    </span>
-
+                    <span>Xland Games</span>
                 </div>
 
-
                 <div class="hero-stat">
-
                     <strong>⚙️</strong>
-
-                    <span>
-
-                        Xland Projects
-
-                    </span>
-
+                    <span>Xland Projects</span>
                 </div>
-
 
                 <div class="hero-stat">
-
                     <strong>🚀</strong>
-
-                    <span>
-
-                        Active Development
-
-                    </span>
-
+                    <span>Active Development</span>
                 </div>
-
-                
 
             </div>
-
         </div>
 
-
         <div class="hero-x">
-
             X
-
         </div>
 
     </section>
 
-
     <!-- =========================================
-            🤖 XLAND AI COPILOT
+         XLAND AI COPILOT
     ========================================= -->
 
     <section class="xland-ai-copilot">
@@ -1411,53 +1159,32 @@
                 <div class="copilot-brand">
 
                     <div class="copilot-icon">
-
                         🤖
-
                     </div>
-
 
                     <div class="copilot-title">
-
-                        <h2>
-
-                            Xland AI Copilot
-
-                        </h2>
-
+                        <h2>Xland AI Copilot</h2>
 
                         <p>
-
                             Find anything inside the Xland ecosystem.
-
                         </p>
-
                     </div>
-
                 </div>
 
-
                 <div class="copilot-online">
-
                     <span class="copilot-online-dot"></span>
-
                     ONLINE
-
                 </div>
 
             </div>
-
 
             <div class="copilot-search-area">
 
                 <div class="copilot-search-box">
 
                     <div class="copilot-search-icon">
-
                         🔎
-
                     </div>
-
 
                     <input
                         type="text"
@@ -1466,260 +1193,204 @@
                         autocomplete="off"
                     >
 
-
-                    <button
-                        id="copilotSearchButton"
-                        type="button"
-                    >
-
+                    <button id="copilotSearchButton" type="button">
                         جستجو
-
                     </button>
 
                 </div>
 
-
                 <div class="copilot-suggestions-title">
-
                     ⚡ QUICK ACCESS
-
                 </div>
-
 
                 <div class="copilot-suggestions">
 
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland Game"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland Game">
                         🎮 Games
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland Script"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland Script">
                         📜 Developer
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland API"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland API">
                         🌍 API
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="News Xland"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="News Xland">
                         📰 News
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland Support"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland Support">
                         🛠️ Support
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland Map"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland Map">
                         🗺️ Map
-
                     </button>
 
-
-                    <button
-                        class="copilot-suggestion"
-                        type="button"
-                        data-query="Xland AI"
-                    >
-
+                    <button class="copilot-suggestion" type="button" data-query="Xland AI">
                         🤖 Xland AI
-
                     </button>
 
                 </div>
 
-
-                <div
-                    id="copilotResult"
-                    class="copilot-result"
-                >
+                <div id="copilotResult" class="copilot-result">
 
                     <div class="copilot-result-header">
 
-                        <div
-                            id="copilotResultIcon"
-                            class="copilot-result-icon"
-                        >
-
+                        <div id="copilotResultIcon" class="copilot-result-icon">
                             🎮
-
                         </div>
 
-
                         <div class="copilot-result-info">
-
                             <h3 id="copilotResultTitle"></h3>
-
                             <p id="copilotResultDescription"></p>
-
                         </div>
 
                     </div>
 
-
-                    <a
-                        id="copilotResultLink"
-                        class="copilot-open"
-                        href="#"
-                    >
-
+                    <a id="copilotResultLink" class="copilot-open" href="#">
                         باز کردن صفحه →
-
                     </a>
 
                 </div>
 
-
-                <div
-                    id="copilotNoResult"
-                    class="copilot-no-result"
-                >
-
+                <div id="copilotNoResult" class="copilot-no-result">
                     🔎 چیزی پیدا نشد.
-
                     <br>
-
                     عبارت دیگری را امتحان کنید.
-
                 </div>
 
             </div>
 
-
             <div class="copilot-footer">
 
                 <span>
-
                     🧠 Smart Xland Navigation
-
                 </span>
 
-
                 <span>
-
                     ⚡ Powered by Xland Hub
-
                 </span>
 
             </div>
 
         </div>
-
     </section>
+ <!-- =========================================
+     ASK XLAND — VISITOR Q&A ASSISTANT
+     Place AFTER XLAND AI COPILOT and BEFORE BANNER SLIDER.
+========================================= -->
+<section class="ask-xland" id="askXland" aria-labelledby="askXlandTitle">
+    <div class="ask-xland-inner">
+
+        <div class="ask-xland-topline">
+            <span class="ask-xland-kicker"><span class="ask-xland-kicker-dot"></span> XLAND QUESTIONS</span>
+            <span class="ask-xland-version">ASK · 01</span>
+        </div>
+
+        <div class="ask-xland-heading">
+            <div class="ask-xland-heading-icon" aria-hidden="true">✦</div>
+            <div>
+                <h2 id="askXlandTitle">ASK <span>XLAND</span></h2>
+                <p>سؤالت را درباره XLAND بپرس؛ ما راهنمایی‌ات می‌کنیم.</p>
+            </div>
+        </div>
+
+        <form class="ask-xland-form" id="askXlandForm">
+            <label class="ask-xland-sr-only" for="askXlandInput">سؤال خود را درباره XLAND بنویسید</label>
+            <span class="ask-xland-search-icon" aria-hidden="true">?</span>
+            <input
+                id="askXlandInput"
+                type="text"
+                maxlength="240"
+                autocomplete="off"
+                placeholder="مثلاً: XLAND چه پروژه‌هایی دارد؟"
+            >
+            <button type="submit" id="askXlandSubmit">
+                <span>ارسال سؤال</span>
+                <span aria-hidden="true">↗</span>
+            </button>
+        </form>
+
+        <div class="ask-xland-prompts">
+            <div class="ask-xland-prompts-label">سؤال‌های پیشنهادی</div>
+            <div class="ask-xland-prompt-list">
+                <button type="button" class="ask-xland-prompt" data-ask-query="XLAND چیست؟">💡 XLAND چیست؟</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="چه بازی‌هایی در XLAND وجود دارد؟">🎮 بازی‌های XLAND</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="XLAND WiFi Manager چه کاری انجام می‌دهد؟">📶 WiFi Manager</button>
+                <button type="button" class="ask-xland-prompt" data-ask-query="چطور با پشتیبانی XLAND ارتباط بگیرم؟">🛠️ پشتیبانی</button>
+            </div>
+        </div>
+
+        <div class="ask-xland-result-area" id="askXlandResultArea" aria-live="polite" aria-atomic="false">
+            <div class="ask-xland-empty" id="askXlandEmpty">
+                <span class="ask-xland-empty-mark" aria-hidden="true">✧</span>
+                <div>
+                    <strong>چه سؤالی داری؟</strong>
+                    <p>درباره پروژه‌ها، بازی‌ها و خدمات XLAND از ما بپرس.</p>
+                </div>
+            </div>
+            <div class="ask-xland-results" id="askXlandResults" hidden></div>
+        </div>
+
+        <div class="ask-xland-footer">
+            <span><span class="ask-xland-footer-dot"></span> پاسخ‌گوی پرسش‌های XLAND</span>
+            <span>پاسخ‌ها بر اساس اطلاعات ثبت‌شده</span>
+        </div>
+    </div>
+</section>
 
 
     <!-- =========================================
-            BANNER SLIDER
+         BANNER SLIDER
     ========================================= -->
 
     <div class="banner-slider">
 
         <button class="banner-btn prev">
-
             ❮
-
         </button>
-
 
         <div class="banner-content">
 
             <h2 id="banner-title"></h2>
-
             <p id="banner-text"></p>
 
-
-            <a
-                id="banner-link"
-                href="#"
-            >
-
+            <a id="banner-link" href="#">
                 مشاهده
-
             </a>
 
-
             <div class="banner-indicators">
-
                 <span class="dot active"></span>
-
                 <span class="dot"></span>
-
                 <span class="dot"></span>
-
                 <span class="dot"></span>
-
             </div>
 
         </div>
 
-
         <button class="banner-btn next">
-
             ❯
-
         </button>
 
     </div>
 
-
     <!-- =========================================
-            MAIN CONTENT
+         MAIN CONTENT
     ========================================= -->
 
     <div class="container">
 
         <h1>
-
             XLAND Hub
-
         </h1>
 
-
         <p class="subtitle">
-
             پیشنهادها و نظرات خود را در بخش کامنت‌ها
             با ما به اشتراک بگذارید
-
         </p>
-
 
         <input
             type="text"
@@ -1727,276 +1398,184 @@
             placeholder="سرچ صفحه ی مورد نظر..."
         >
 
-
         <div class="comment-box">
 
-    <div class="comment-header">
-        <span class="comment-icon">💬</span>
+            <div class="comment-header">
+                <span class="comment-icon">💬</span>
 
-        <div>
-            <h2>ارسال کامنت</h2>
-            <p>نظر، پیشنهاد یا انتقاد خود را با ما به اشتراک بگذارید</p>
+                <div>
+                    <h2>ارسال کامنت</h2>
+                    <p>نظر، پیشنهاد یا انتقاد خود را با ما به اشتراک بگذارید</p>
+                </div>
+            </div>
+
+            <textarea
+                id="commentInput"
+                maxlength="500"
+                placeholder="نظر خود را بنویسید..."
+            ></textarea>
+
+            <div class="comment-footer">
+
+                <span id="commentCounter">
+                    0 / 500
+                </span>
+
+                <button
+                    type="button"
+                    onclick="addComment()"
+                >
+                    <span>🚀</span>
+                    ارسال کامنت
+                </button>
+
+            </div>
         </div>
-    </div>
 
-    <textarea
-        id="commentInput"
-        maxlength="500"
-        placeholder="نظر خود را بنویسید..."
-    ></textarea>
-
-    <div class="comment-footer">
-
-        <span id="commentCounter">
-            0 / 500
-        </span>
-
-        <button
-            type="button"
-            onclick="addComment()"
-        >
-            <span>🚀</span>
-            ارسال کامنت
-        </button>
+        <div id="comments"></div>
 
     </div>
-
-</div>
-
-<div id="comments"></div>
-
-</div>
-
 
     <!-- =========================================
-            XLAND PROJECTS
+         XLAND PROJECTS
     ========================================= -->
 
     <section class="xland-projects">
 
         <h2 class="projects-title">
-
             🚀 Xland Projects
-
         </h2>
 
-
         <p class="projects-subtitle">
-
             پروژه‌ها و سرویس‌های اصلی اکوسیستم Xland
-
         </p>
-
 
         <div class="projects-grid">
 
-
             <div class="project-card">
 
                 <div class="project-icon">
-
                     🎮
-
                 </div>
 
-
                 <span class="project-type">
-
                     GAME
-
                 </span>
 
-
                 <h3>
-
                     Xland Game
-
                 </h3>
 
-
                 <p>
-
                     بازی اصلی Xland با دنیایی
                     اختصاصی و تجربه‌ای متفاوت
                     برای بازیکنان.
-
                 </p>
 
-
-                <a
-                    href="xland.html"
-                    class="project-button"
-                >
-
+                <a href="xland.html" class="project-button">
                     مشاهده بازی →
-
                 </a>
 
             </div>
 
-
             <div class="project-card">
 
                 <div class="project-icon">
-
                     👻
-
                 </div>
 
-
                 <span class="project-type">
-
                     HORROR GAME
-
                 </span>
 
-
                 <h3>
-
                     Endless Road Horror 3D
-
                 </h3>
 
-
                 <p>
-
                     یک بازی ترسناک سه‌بعدی
                     با جاده‌ای بی‌پایان،
                     فضای تاریک و اتفاقات غیرمنتظره.
-
                 </p>
 
-
-                <a
-                    href="endless.html"
-                    class="project-button"
-                >
-
+                <a href="endless.html" class="project-button">
                     مشاهده بازی →
-
                 </a>
 
             </div>
 
-
             <div class="project-card">
 
                 <div class="project-icon">
-
                     🌍
-
                 </div>
 
-
                 <span class="project-type">
-
                     API
-
                 </span>
 
-
                 <h3>
-
                     Xland API
-
                 </h3>
 
-
                 <p>
-
                     زیرساخت API برای اتصال
                     پروژه‌ها و سرویس‌های مختلف
                     Xland به یکدیگر.
-
                 </p>
 
-
-                <a
-                    href="api.html"
-                    class="project-button"
-                >
-
+                <a href="api.html" class="project-button">
                     مشاهده API →
-
                 </a>
 
             </div>
 
-
             <div class="project-card">
 
                 <div class="project-icon">
-
                     📜
-
                 </div>
 
-
                 <span class="project-type">
-
                     DEVELOPER
-
                 </span>
 
-
                 <h3>
-
                     Xland Script
-
                 </h3>
 
-
                 <p>
-
                     بخش توسعه‌دهندگان Xland
                     برای ابزارها، اسکریپت‌ها
                     و منابع برنامه‌نویسی.
-
                 </p>
 
-
-                <a
-                    href="xland-script.html"
-                    class="project-button"
-                >
-
+                <a href="xland-script.html" class="project-button">
                     مشاهده →
-
                 </a>
 
             </div>
 
         </div>
-
     </section>
 
-
     <!-- =========================================
-            SCRIPTS
+         SCRIPTS
     ========================================= -->
 
     <script src="security.js"></script>
-
     <script src="script.js"></script>
-
     <script src="banner.js"></script>
-
     <script src="status.js"></script>
-
     <script src="loader.js"></script>
-
     <script src="xland-navbar.js"></script>
+    <script src="ask-xland.js"></script>
 
-    <!-- 🤖 XLAND AI COPILOT -->
-
+    <!-- XLAND AI COPILOT -->
     <script src="xland-ai-copilot.js"></script>
 
-    <!-- 💬 XLAND COMMUNITY COMMENTS 2.0 -->
-
+    <!-- XLAND COMMUNITY COMMENTS 2.0 -->
     <script src="xland-comments.js"></script>
 
-
 </body>
-
 </html>
-

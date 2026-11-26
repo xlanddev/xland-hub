@@ -152,7 +152,7 @@ nav.classList.toggle("show");
 // 🔔 Update Banner System
 // ===========================
 
-const SITE_VERSION = "8.1";
+const SITE_VERSION = "10.5";
 
 function closeBanner(){
 document.getElementById("updateBanner").style.display = "none";

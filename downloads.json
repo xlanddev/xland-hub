@@ -25,7 +25,11 @@
       "downloads": {
         "windows": "./XLAND-WiFi-Manager-Windows-x64.zip",
         "linux": "./XLAND-WiFi-Manager-Linux-x64.zip"
+        
       }
+      
+      
     }
+    
   ]
 }

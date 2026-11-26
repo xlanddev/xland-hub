@@ -1,0 +1,371 @@
+/* =========================================================
+   ASK XLAND — PREMIUM Q&A INTERFACE
+   Scoped to .ask-xland; does not restyle other site sections.
+   Persian: Vazirmatn | English: Space Grotesk
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+.ask-xland {
+    --ask-blue: #4d9cff;
+    --ask-cyan: #43d9e8;
+    --ask-green: #55f0a2;
+    --ask-text: #f2f7ff;
+    --ask-muted: #9bacc3;
+    width: min(1120px, 92%);
+    margin: 52px auto 60px;
+    color: var(--ask-text);
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    direction: rtl;
+}
+
+.ask-xland, .ask-xland * { box-sizing: border-box; }
+.ask-xland button, .ask-xland input { font-family: inherit; }
+
+.ask-xland-inner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(22px, 4.2vw, 42px);
+    border: 1px solid rgba(91, 159, 255, .25);
+    border-radius: 30px;
+    background:
+        radial-gradient(ellipse at 92% 5%, rgba(54, 132, 255, .19), transparent 36%),
+        radial-gradient(ellipse at 8% 95%, rgba(47, 224, 166, .12), transparent 38%),
+        radial-gradient(ellipse at 55% 120%, rgba(56, 190, 230, .08), transparent 48%),
+        linear-gradient(135deg, #0c1728 0%, #101d31 48%, #091421 100%);
+    box-shadow: 0 24px 75px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.ask-xland-inner::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: .22;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(110,166,230,.08) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(110,166,230,.08) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(135deg, #000, transparent 75%);
+}
+
+.ask-xland-inner::after {
+    content: "X";
+    position: absolute;
+    z-index: -1;
+    top: -100px;
+    right: -8px;
+    color: rgba(95, 160, 255, .045);
+    font: 700 330px/1 'Space Grotesk', sans-serif;
+    pointer-events: none;
+    transform: rotate(-8deg);
+}
+
+.ask-xland-topline,
+.ask-xland-heading,
+.ask-xland-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.ask-xland-kicker, .ask-xland-version, .ask-xland-prompts-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.35px;
+}
+.ask-xland-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #b9d8ff;
+    font-family: 'Space Grotesk', 'Vazirmatn', sans-serif;
+}
+.ask-xland-kicker-dot, .ask-xland-footer-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: var(--ask-green);
+    box-shadow: 0 0 0 4px rgba(85,240,162,.09), 0 0 16px rgba(85,240,162,.7);
+}
+.ask-xland-version {
+    color: #8298b5;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.ask-xland-heading {
+    justify-content: flex-start;
+    margin: 26px 0 27px;
+}
+.ask-xland-heading-icon {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(90,168,255,.42);
+    border-radius: 19px;
+    color: #e9f6ff;
+    font-size: 30px;
+    background: linear-gradient(145deg, rgba(57,139,255,.34), rgba(50,221,190,.13));
+    box-shadow: 0 10px 32px rgba(42,132,255,.17), inset 0 1px 0 rgba(255,255,255,.12);
+}
+.ask-xland-heading h2 {
+    margin: 0;
+    color: #f6f9ff;
+    font: 700 clamp(27px, 4vw, 38px)/1.15 'Space Grotesk', 'Vazirmatn', sans-serif;
+    letter-spacing: .4px;
+}
+.ask-xland-heading h2 span {
+    background: linear-gradient(95deg, #55f0a2 4%, #43d9e8 48%, #68aaff 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.ask-xland-heading p {
+    margin: 9px 0 0;
+    color: #afbed2;
+    font-size: 14px;
+    line-height: 1.9;
+    font-weight: 500;
+}
+
+.ask-xland-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 72px;
+    padding: 8px;
+    border: 1px solid rgba(89,157,242,.36);
+    border-radius: 19px;
+    background: linear-gradient(110deg, rgba(4,12,24,.86), rgba(10,24,42,.88));
+    box-shadow: 0 12px 34px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.035);
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.ask-xland-form:focus-within {
+    border-color: rgba(76,180,255,.85);
+    box-shadow: 0 0 0 4px rgba(57,140,255,.11), 0 14px 38px rgba(25,110,220,.14);
+    transform: translateY(-1px);
+}
+.ask-xland-search-icon {
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    display: grid;
+    place-items: center;
+    margin-right: 2px;
+    border: 1px solid rgba(78,163,255,.2);
+    border-radius: 13px;
+    color: #79c7ff;
+    background: rgba(57,140,255,.11);
+    font: 700 22px/1 'Space Grotesk', sans-serif;
+}
+.ask-xland-form input {
+    flex: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 0 8px;
+    border: 0 !important;
+    outline: 0 !important;
+    color: #f2f7ff !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.ask-xland-form input::placeholder { color: #778ca8; opacity: 1; }
+.ask-xland-form button {
+    flex: 0 0 auto;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    padding: 0 22px;
+    border: 1px solid rgba(194,237,255,.28);
+    border-radius: 14px;
+    color: #061522;
+    background: linear-gradient(115deg, #59efa4 0%, #45d9d9 52%, #62b8ff 100%);
+    box-shadow: 0 7px 22px rgba(55,202,183,.16);
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.ask-xland-form button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 10px 27px rgba(55,202,183,.25);
+}
+.ask-xland-form button span:last-child { font: 700 19px/1 'Space Grotesk', sans-serif; }
+
+.ask-xland-prompts { position: relative; z-index: 1; margin-top: 25px; }
+.ask-xland-prompts-label {
+    margin-bottom: 12px;
+    color: #a8bad2;
+    letter-spacing: 0;
+    font-size: 12px;
+}
+.ask-xland-prompt-list { display: flex; flex-wrap: wrap; gap: 9px; }
+.ask-xland-prompt {
+    padding: 9px 14px;
+    border: 1px solid rgba(117,158,207,.2);
+    border-radius: 999px;
+    color: #d0def0;
+    background: rgba(255,255,255,.045);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
+}
+.ask-xland-prompt:hover {
+    color: #fff;
+    border-color: rgba(73,181,232,.55);
+    background: rgba(57,140,255,.13);
+    transform: translateY(-2px);
+}
+
+.ask-xland-result-area { position: relative; z-index: 1; margin-top: 21px; }
+.ask-xland-empty {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 19px;
+    border: 1px dashed rgba(119,165,218,.27);
+    border-radius: 17px;
+    background: rgba(255,255,255,.025);
+}
+.ask-xland-empty-mark {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    color: #72c7ff;
+    background: rgba(57,140,255,.1);
+    font-size: 25px;
+}
+.ask-xland-empty strong { color: #e5efff; font-size: 13px; font-weight: 800; }
+.ask-xland-empty p { margin: 4px 0 0; color: #91a5bf; font-size: 12px; line-height: 1.9; }
+.ask-xland-results { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; }
+.ask-xland-result-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid rgba(95,159,225,.24);
+    border-radius: 19px;
+    background: linear-gradient(145deg, rgba(20,39,63,.94), rgba(10,23,39,.96));
+    box-shadow: 0 12px 34px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.04);
+    animation: askXlandAppear .3s ease both;
+}
+.ask-xland-result-card:first-child { border-color: rgba(75,215,163,.34); }
+.ask-xland-result-top { display: flex; align-items: center; gap: 12px; }
+.ask-xland-result-icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(74,165,255,.24);
+    border-radius: 14px;
+    color: #bceaff;
+    background: linear-gradient(145deg, rgba(57,140,255,.2), rgba(61,220,174,.1));
+    font-size: 21px;
+}
+.ask-xland-result-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #75c5ff;
+    font: 700 10px/1.4 'Space Grotesk', 'Vazirmatn', sans-serif;
+    letter-spacing: 1px;
+}
+.ask-xland-result-card h3 { margin: 0; color: #f1f7ff; font-size: 16px; font-weight: 800; }
+.ask-xland-result-card p { margin: 13px 0; color: #b5c5d9; font-size: 13px; line-height: 2; }
+.ask-xland-answer-card .ask-xland-answer-text { margin: 15px 0 0; color: #c2cede; line-height: 2; white-space: normal; }
+.ask-xland-answer-card .ask-xland-answer-text p { margin: 0 0 9px; color: inherit; line-height: inherit; }
+.ask-xland-answer-card .ask-xland-answer-text p:last-child { margin-bottom: 0; }
+.ask-xland-answer-card .ask-xland-answer-bullet { position: relative; padding-right: 19px; }
+.ask-xland-answer-card .ask-xland-answer-bullet::before {
+    content: ""; position: absolute; right: 0; top: .9em; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--ask-green); box-shadow: 0 0 10px rgba(85,240,162,.4);
+}
+.ask-xland-result-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 14px;
+    padding: 9px 13px;
+    border: 1px solid rgba(85,240,162,.25);
+    border-radius: 11px;
+    color: #76efb2;
+    background: rgba(85,240,162,.07);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: .2s ease;
+}
+.ask-xland-result-link:hover { color: #071a18; background: #65eab0; border-color: #65eab0; }
+.ask-xland-no-match {
+    grid-column: 1 / -1;
+    padding: 17px;
+    border: 1px solid rgba(255,181,71,.22);
+    border-radius: 14px;
+    color: #e3d2b0;
+    background: rgba(255,181,71,.05);
+    font-size: 13px;
+    line-height: 1.9;
+}
+.ask-xland-footer {
+    justify-content: space-between;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #8296b0;
+    font-size: 10px;
+    font-weight: 500;
+}
+.ask-xland-footer > span:first-child { display: inline-flex; align-items: center; gap: 9px; }
+.ask-xland-footer-dot { width: 6px; height: 6px; flex-basis: 6px; }
+.ask-xland-sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+@keyframes askXlandAppear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 650px) {
+    .ask-xland { width: 94%; margin: 36px auto 43px; }
+    .ask-xland-inner { padding: 21px 16px; border-radius: 23px; }
+    .ask-xland-inner::after { font-size: 230px; top: -55px; right: -10px; }
+    .ask-xland-version { font-size: 9px; }
+    .ask-xland-heading { margin: 21px 0; gap: 12px; }
+    .ask-xland-heading-icon { flex-basis: 48px; width: 48px; height: 48px; border-radius: 15px; font-size: 25px; }
+    .ask-xland-heading h2 { font-size: 27px; }
+    .ask-xland-heading p { font-size: 12px; }
+    .ask-xland-form { gap: 5px; min-height: 60px; padding: 5px; border-radius: 15px; }
+    .ask-xland-search-icon { width: 35px; height: 35px; flex-basis: 35px; font-size: 19px; }
+    .ask-xland-form input { height: 44px; padding: 0 4px; font-size: 11px; }
+    .ask-xland-form button { min-height: 44px; gap: 6px; padding: 0 11px; border-radius: 11px; font-size: 11px; }
+    .ask-xland-prompt-list { gap: 7px; }
+    .ask-xland-prompt { padding: 8px 10px; font-size: 11px; }
+    .ask-xland-result-card { padding: 16px; }
+    .ask-xland-result-card h3 { font-size: 14px; }
+    .ask-xland-result-card p { font-size: 12px; }
+    .ask-xland-footer { align-items: flex-start; gap: 8px; font-size: 9px; }
+}
+@media (max-width: 390px) {
+    .ask-xland-form button { padding: 0 8px; }
+    .ask-xland-form button span:first-child { font-size: 10px; }
+    .ask-xland-footer { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ask-xland *, .ask-xland *::before, .ask-xland *::after {
+        animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important;
+    }
+}

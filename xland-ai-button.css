@@ -70,13 +70,9 @@
         1px solid rgba(255, 255, 255, 0.28);
 
     box-shadow:
-
-        0 10px 35px
-        rgba(0, 0, 0, 0.42),
-
-        0 0 0
-        rgba(99, 102, 241, 0);
-
+    0 10px 35px rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(40, 130, 255, 0.15);
+    
     backdrop-filter:
         blur(15px);
 
